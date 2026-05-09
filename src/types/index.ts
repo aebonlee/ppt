@@ -277,6 +277,9 @@ export type DesignTemplateId = 'modern-corporate' | 'minimal-clean' | 'bold-grad
 
 export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
 
+export type CoverLayoutVariant = 'top-panel' | 'left-panel' | 'full-bleed' | 'center-band';
+export type ContentLayoutVariant = 'default' | 'top-accent' | 'clean-wide';
+
 export interface TemplateLayout {
   sidebar: { enabled: boolean; width: number; accentHeight: number };
   marginX: number;
@@ -328,6 +331,8 @@ export interface DesignTemplate {
   description: string;
   descriptionKo: string;
   category: TemplateCategory;
+  coverLayoutVariant?: CoverLayoutVariant;
+  contentLayoutVariant?: ContentLayoutVariant;
   layout: TemplateLayout;
   typography: TemplateTypography;
   decorations: TemplateDecorations;
