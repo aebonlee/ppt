@@ -245,8 +245,8 @@ const TopicStep: React.FC = () => {
       alert('지원하지 않는 파일 형식입니다. (.pptx, .pdf, .txt, .md, .docx)');
       return;
     }
-    if (file.size > 10 * 1024 * 1024) {
-      alert('파일 크기가 10MB를 초과합니다.');
+    if (file.size > 50 * 1024 * 1024) {
+      alert('파일 크기가 50MB를 초과합니다.');
       return;
     }
     setParsing(true);
@@ -316,7 +316,7 @@ const TopicStep: React.FC = () => {
           {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업로드하세요 (선택)'}
         </div>
         <div className="file-upload-hint">
-          .pptx, .pdf, .txt, .md, .docx — 최대 10MB
+          .pptx, .pdf, .txt, .md, .docx — 최대 50MB
         </div>
       </div>
 

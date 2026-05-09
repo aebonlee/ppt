@@ -4,7 +4,7 @@
  */
 
 const SUPPORTED_EXTENSIONS = ['.txt', '.md', '.pdf', '.docx', '.pptx'];
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 export function isSupported(file: File): boolean {
   const ext = getFileExtension(file);
@@ -19,7 +19,7 @@ export function getFileExtension(file: File): string {
 
 export async function extractTextFromFile(file: File): Promise<string> {
   if (file.size > MAX_FILE_SIZE) {
-    throw new Error('파일 크기가 10MB를 초과합니다.');
+    throw new Error('파일 크기가 50MB를 초과합니다.');
   }
 
   const ext = getFileExtension(file);
