@@ -272,7 +272,8 @@ export type SlideOrientation = 'portrait' | 'landscape';
 
 // ─── Design Template ───
 export type DesignTemplateId = 'modern-corporate' | 'minimal-clean' | 'bold-gradient'
-  | 'classic-formal' | 'tech-startup' | 'magazine' | 'education' | 'elegant';
+  | 'classic-formal' | 'tech-startup' | 'magazine' | 'education' | 'elegant'
+  | 'pitch-deck' | 'dark-professional' | 'infographic' | 'nature-organic';
 
 export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
 
