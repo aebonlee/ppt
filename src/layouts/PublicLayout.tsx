@@ -11,6 +11,7 @@ const Generate = lazy(() => import('../pages/Generate'));
 const MyPresentations = lazy(() => import('../pages/MyPresentations'));
 const Preview = lazy(() => import('../pages/Preview'));
 const Pricing = lazy(() => import('../pages/Pricing'));
+const Templates = lazy(() => import('../pages/Templates'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Auth 페이지 (features.auth로 토글)
@@ -63,6 +64,7 @@ const PublicLayout = (): ReactElement => {
 
             {/* PPT 전용 페이지 */}
             <Route path="/generate" element={<Generate />} />
+            <Route path="/templates" element={<Templates />} />
             <Route path="/my-presentations" element={<AuthGuard><MyPresentations /></AuthGuard>} />
             <Route path="/preview" element={<Preview />} />
             <Route path="/pricing" element={<Pricing />} />

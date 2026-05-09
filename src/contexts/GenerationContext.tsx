@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation, SlideData } from '../types';
+import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation, SlideData, DesignTemplateId } from '../types';
 import { generatePresentation, savePresentation } from '../services/aiService';
 import { useAuth } from './AuthContext';
 import { getDecryptedKey } from '../services/settingsService';
@@ -18,6 +18,8 @@ interface GenerationState {
   setOrientation: (o: SlideOrientation) => void;
   colorSchemeId: string;
   setColorSchemeId: (id: string) => void;
+  designTemplateId: DesignTemplateId;
+  setDesignTemplateId: (id: DesignTemplateId) => void;
   aiEngine: 'openai' | 'claude';
   setAiEngine: (e: 'openai' | 'claude') => void;
   apiKey: string;
@@ -61,6 +63,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [slideCount, setSlideCount] = useState(15);
   const [orientation, setOrientation] = useState<SlideOrientation>('portrait');
   const [colorSchemeId, setColorSchemeId] = useState('charcoal-yellow');
+  const [designTemplateId, setDesignTemplateId] = useState<DesignTemplateId>('modern-corporate');
   const [aiEngine, setAiEngine] = useState<'openai' | 'claude'>('openai');
   const [apiKey, setApiKey] = useState('');
   const [additionalInstructions, setAdditionalInstructions] = useState('');
@@ -90,6 +93,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       slideCount,
       orientation,
       colorSchemeId,
+      designTemplateId,
       language: 'ko',
       aiEngine,
       apiKey: apiKey || undefined,
@@ -108,7 +112,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         message: err.message || '생성 실패',
       });
     }
-  }, [topic, slideCount, orientation, colorSchemeId, aiEngine, apiKey, additionalInstructions, referenceContent]);
+  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent]);
 
   const save = useCallback(async () => {
     if (!presentation) return;
@@ -130,6 +134,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setSlideCount(15);
     setOrientation('portrait');
     setColorSchemeId('charcoal-yellow');
+    setDesignTemplateId('modern-corporate');
     setAiEngine('openai');
     setApiKey('');
     setAdditionalInstructions('');
@@ -145,6 +150,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     <GenerationContext.Provider value={{
       step, setStep, topic, setTopic, slideCount, setSlideCount,
       orientation, setOrientation, colorSchemeId, setColorSchemeId,
+      designTemplateId, setDesignTemplateId,
       aiEngine, setAiEngine, apiKey, setApiKey,
       additionalInstructions, setAdditionalInstructions,
       uploadedFile, setUploadedFile, referenceContent, setReferenceContent,

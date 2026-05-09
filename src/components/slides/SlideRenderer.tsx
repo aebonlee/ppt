@@ -1,5 +1,6 @@
 import React from 'react';
-import type { SlideData, ColorScheme } from '../../types';
+import type { SlideData, ColorScheme, DesignTemplateId, DesignTemplate } from '../../types';
+import { getDesignTemplate } from '../../config/designTemplates';
 import { CoverSlide } from './templates/CoverSlide';
 import { TOCSlide } from './templates/TOCSlide';
 import { SectionCoverSlide } from './templates/SectionCoverSlide';
@@ -16,13 +17,16 @@ interface SlideRendererProps {
   height: number;
   scale?: number;
   className?: string;
+  designTemplateId?: DesignTemplateId;
 }
 
 export const SlideRenderer: React.FC<SlideRendererProps> = ({
-  slide, colorScheme, width, height, scale = 1, className = ''
+  slide, colorScheme, width, height, scale = 1, className = '', designTemplateId
 }) => {
+  const template: DesignTemplate = getDesignTemplate(designTemplateId || 'modern-corporate');
+
   const renderSlide = () => {
-    const props = { slide, colors: colorScheme, width, height };
+    const props = { slide, colors: colorScheme, width, height, template };
     switch (slide.type) {
       case 'cover': return <CoverSlide {...props} />;
       case 'toc': return <TOCSlide {...props} />;
@@ -44,7 +48,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
       overflow: 'hidden',
       transform: scale !== 1 ? `scale(${scale})` : undefined,
       transformOrigin: 'top left',
-      fontFamily: "'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif",
+      fontFamily: template.typography.fontFamily,
       WebkitFontSmoothing: 'antialiased',
     }}>
       {renderSlide()}

@@ -1,18 +1,30 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { GenerationProvider, useGeneration } from '../contexts/GenerationContext';
-import { colorSchemes } from '../config/colorSchemes';
+import { colorSchemes, getColorScheme } from '../config/colorSchemes';
+import { designTemplates } from '../config/designTemplates';
+import { sampleCoverSlide } from '../config/sampleSlides';
 import { SlideRenderer } from '../components/slides/SlideRenderer';
 import { SlideStrip } from '../components/slides/SlideStrip';
 import { extractTextFromFile, isSupported, getFileExtension } from '../services/fileParserService';
 import { exportAsHtmlZip, exportAsPdf, exportAsPptx } from '../services/exportService';
 import { processEditRequest, type ChatMessage } from '../services/chatEditService';
 import ChatPanel from '../components/ChatPanel';
-import type { SlideOrientation } from '../types';
+import type { SlideOrientation, DesignTemplateId } from '../types';
 import '../styles/generate.css';
 
 const GenerateWizard: React.FC = () => {
   const gen = useGeneration();
+  const location = window.location;
+
+  // Handle ?template=xxx query param
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const templateParam = params.get('template') as DesignTemplateId | null;
+    if (templateParam && designTemplates.some(t => t.id === templateParam)) {
+      gen.setDesignTemplateId(templateParam);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -74,6 +86,36 @@ const GenerateWizard: React.FC = () => {
                 />
                 <div className="range-labels">
                   <span>5</span><span>15</span><span>30</span><span>50</span>
+                </div>
+              </div>
+
+              {/* Design template */}
+              <div className="config-section">
+                <label className="config-label">디자인 템플릿</label>
+                <div className="template-picker-grid">
+                  {designTemplates.map(dt => {
+                    const previewColors = getColorScheme(gen.colorSchemeId);
+                    return (
+                      <button
+                        key={dt.id}
+                        className={`template-picker-btn ${gen.designTemplateId === dt.id ? 'active' : ''}`}
+                        onClick={() => gen.setDesignTemplateId(dt.id)}
+                        title={dt.descriptionKo}
+                      >
+                        <div className="template-picker-preview">
+                          <SlideRenderer
+                            slide={sampleCoverSlide}
+                            colorScheme={previewColors}
+                            width={595}
+                            height={842}
+                            scale={0.13}
+                            designTemplateId={dt.id}
+                          />
+                        </div>
+                        <span className="template-picker-name">{dt.nameKo}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -449,6 +491,7 @@ const ResultView: React.FC = () => {
                 width={width}
                 height={height}
                 scale={scale}
+                designTemplateId={pres.designTemplateId}
               />
             </div>
             <div className="slide-nav">
@@ -465,6 +508,7 @@ const ResultView: React.FC = () => {
             onSelectSlide={setCurrentSlide}
             width={width}
             height={height}
+            designTemplateId={pres.designTemplateId}
           />
         </div>
 

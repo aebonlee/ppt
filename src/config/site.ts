@@ -55,6 +55,7 @@ const site: SiteConfig = {
   menuItems: [
     { path: '/', labelKey: 'nav.home' },
     { path: '/generate', labelKey: 'site.nav.generate' },
+    { path: '/templates', labelKey: 'site.nav.templates' },
     { path: '/my-presentations', labelKey: 'site.nav.myPresentations' },
     { path: '/pricing', labelKey: 'site.nav.pricing' },
   ],

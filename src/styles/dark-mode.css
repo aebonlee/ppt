@@ -1626,3 +1626,86 @@
 [data-theme="dark"] .empty-state p {
   color: #9CA3AF;
 }
+
+/* ── Template Picker (Generate Step 1) ── */
+[data-theme="dark"] .template-picker-btn {
+  background: #1F2937;
+  border-color: transparent;
+}
+
+[data-theme="dark"] .template-picker-btn.active {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .template-picker-btn:hover:not(.active) {
+  border-color: #4B5563;
+}
+
+[data-theme="dark"] .template-picker-name {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .template-picker-preview {
+  background: #111827;
+}
+
+/* ── Template Gallery Page ── */
+[data-theme="dark"] .template-filter-tab {
+  background: #1F2937;
+  border-color: #374151;
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .template-filter-tab:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .template-filter-tab.active {
+  border-color: transparent;
+  color: #fff;
+}
+
+[data-theme="dark"] .template-gallery-card {
+  background: rgba(31, 41, 55, 0.85);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .template-gallery-preview {
+  background: #111827;
+}
+
+[data-theme="dark"] .template-color-dots {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .template-color-dot.active {
+  border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .template-gallery-name {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .template-gallery-category {
+  background: rgba(74, 143, 231, 0.15);
+  color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .template-gallery-desc {
+  color: #9CA3AF;
+}
+
+/* ── Home Page - Templates Preview ── */
+[data-theme="dark"] .templates-preview-section {
+  background: #111827;
+}
+
+[data-theme="dark"] .template-preview-card {
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .template-preview-name {
+  color: #D1D5DB;
+}

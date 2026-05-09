@@ -97,6 +97,7 @@ const Preview: React.FC = () => {
           colorScheme={presentation.colorScheme}
           width={width}
           height={height}
+          designTemplateId={presentation.designTemplateId}
         />
       </div>
 

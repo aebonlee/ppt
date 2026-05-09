@@ -72,6 +72,7 @@ export async function generatePresentation(
     description: aiResponse.description,
     orientation: request.orientation,
     colorScheme,
+    designTemplateId: request.designTemplateId,
     canvas,
     slides: validatedSlides,
     createdAt: new Date().toISOString(),

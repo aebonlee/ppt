@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { colorSchemes } from '../config/colorSchemes';
+import { designTemplates } from '../config/designTemplates';
+import { sampleCoverSlide } from '../config/sampleSlides';
+import { SlideRenderer } from '../components/slides/SlideRenderer';
 import '../styles/home.css';
 
 const Home: React.FC = () => {
@@ -29,7 +32,7 @@ const Home: React.FC = () => {
             </button>
           </div>
           <div className="hero-stats">
-            <div className="stat"><span className="stat-number">8</span><span className="stat-label">슬라이드 템플릿</span></div>
+            <div className="stat"><span className="stat-number">8</span><span className="stat-label">디자인 템플릿</span></div>
             <div className="stat"><span className="stat-number">8</span><span className="stat-label">색상 테마</span></div>
             <div className="stat"><span className="stat-number">3</span><span className="stat-label">내보내기 형식</span></div>
           </div>
@@ -103,6 +106,36 @@ const Home: React.FC = () => {
                 <div className="theme-name">{cs.nameKo}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Design Templates Preview */}
+      <section className="section templates-preview-section">
+        <div className="container">
+          <h2 className="section-title">8가지 디자인 템플릿</h2>
+          <p className="section-subtitle">프레젠테이션 목적에 맞는 디자인 스타일을 선택하세요</p>
+          <div className="templates-preview-grid">
+            {designTemplates.slice(0, 4).map(dt => (
+              <div key={dt.id} className="template-preview-card" onClick={() => navigate(`/generate?template=${dt.id}`)}>
+                <div className="template-preview-slide">
+                  <SlideRenderer
+                    slide={sampleCoverSlide}
+                    colorScheme={colorSchemes[0]}
+                    width={595}
+                    height={842}
+                    scale={0.2}
+                    designTemplateId={dt.id}
+                  />
+                </div>
+                <div className="template-preview-name">{dt.nameKo}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 24 }}>
+            <button className="btn btn-hero-secondary" onClick={() => navigate('/templates')}>
+              전체 템플릿 보기
+            </button>
           </div>
         </div>
       </section>

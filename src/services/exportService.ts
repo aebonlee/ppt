@@ -12,6 +12,7 @@ export async function exportAsHtmlZip(presentation: PresentationData): Promise<v
     canvas: presentation.canvas,
     orientation: presentation.orientation,
     colorScheme: presentation.colorScheme.id,
+    designTemplateId: presentation.designTemplateId || 'modern-corporate',
     slideCount: presentation.slides.length,
     createdAt: presentation.createdAt,
   };

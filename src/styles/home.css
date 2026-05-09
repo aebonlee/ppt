@@ -303,6 +303,48 @@
   font-weight: 600;
 }
 
+/* Design Templates Preview */
+.templates-preview-section {
+  background: #f8f8f8;
+}
+
+.templates-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.template-preview-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.template-preview-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.template-preview-slide {
+  padding: 16px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.template-preview-name {
+  padding: 12px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+}
+
 /* CTA */
 .cta-section {
   background: var(--hero-bg);
@@ -340,7 +382,8 @@
   .steps-grid {
     grid-template-columns: 1fr;
   }
-  .themes-grid {
+  .themes-grid,
+  .templates-preview-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .hero-actions {

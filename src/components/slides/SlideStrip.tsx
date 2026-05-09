@@ -1,5 +1,5 @@
 import React from 'react';
-import type { SlideData, ColorScheme } from '../../types';
+import type { SlideData, ColorScheme, DesignTemplateId } from '../../types';
 import { SlideRenderer } from './SlideRenderer';
 
 interface SlideStripProps {
@@ -9,10 +9,11 @@ interface SlideStripProps {
   onSelectSlide: (index: number) => void;
   width: number;
   height: number;
+  designTemplateId?: DesignTemplateId;
 }
 
 export const SlideStrip: React.FC<SlideStripProps> = ({
-  slides, colorScheme, currentIndex, onSelectSlide, width, height
+  slides, colorScheme, currentIndex, onSelectSlide, width, height, designTemplateId
 }) => {
   const thumbWidth = 120;
   const thumbScale = thumbWidth / width;
@@ -44,7 +45,7 @@ export const SlideStrip: React.FC<SlideStripProps> = ({
           }}
         >
           <div style={{ transform: `scale(${thumbScale})`, transformOrigin: 'top left', pointerEvents: 'none' }}>
-            <SlideRenderer slide={slide} colorScheme={colorScheme} width={width} height={height} />
+            <SlideRenderer slide={slide} colorScheme={colorScheme} width={width} height={height} designTemplateId={designTemplateId} />
           </div>
           <div style={{
             position: 'absolute', bottom: 0, left: 0, right: 0,

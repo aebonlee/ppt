@@ -270,6 +270,68 @@ export type Language = 'ko' | 'en';
 export type SlideType = 'cover' | 'toc' | 'section-cover' | 'content' | 'diagram' | 'workbook' | 'summary' | 'back-cover';
 export type SlideOrientation = 'portrait' | 'landscape';
 
+// ─── Design Template ───
+export type DesignTemplateId = 'modern-corporate' | 'minimal-clean' | 'bold-gradient'
+  | 'classic-formal' | 'tech-startup' | 'magazine' | 'education' | 'elegant';
+
+export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
+
+export interface TemplateLayout {
+  sidebar: { enabled: boolean; width: number; accentHeight: number };
+  marginX: number;
+  contentMarginX: number;
+  sectionSpacing: number;
+  sectionStartY: number;
+  chapterBox: { enabled: boolean; shape: 'square' | 'circle' | 'rounded'; size: number };
+  footer: { lineColor: string; pageNumberFormat: 'pad3' | 'pad2' | 'plain' | 'dash' };
+  headerY: number;
+  headerLineY: number;
+}
+
+export interface TemplateTypography {
+  fontFamily: string;
+  coverHeadline: { fontSize: number; fontWeight: number; letterSpacing: string; lineHeight: number };
+  coverSubtitle: { fontSize: number; fontWeight: number; letterSpacing: string };
+  bodyText: { fontSize: number; fontWeight: number; lineHeight: number; textAlign: 'left' | 'justify' };
+  sectionTitle: { fontSize: number; fontWeight: number };
+  chapterLabel: { fontSize: number; fontWeight: number; letterSpacing: string };
+  chapterTitle: { fontSize: number; fontWeight: number; lineHeight: number };
+  labelText: { fontSize: number; fontWeight: number; letterSpacing: string };
+  tocTitle: { fontSize: number; fontWeight: number; lineHeight: number };
+  summaryHeadline: { fontSize: number; fontWeight: number; letterSpacing: string; lineHeight: number };
+}
+
+export interface TemplateDecorations {
+  cover: {
+    topPanelRatio: number;
+    gridOverlay: boolean;
+    cornerAccents: boolean;
+    cornerSize: number;
+    categoryChip: { shape: 'square' | 'pill' | 'rounded' };
+  };
+  bulletStyle: 'diamond' | 'circle' | 'dash' | 'none';
+  calloutStyle: { borderRadius: number; borderLeftWidth: number };
+  dividerStyle: 'solid' | 'dashed' | 'double' | 'none';
+  sectionCover: { partNumberFontSize: number; accentBarWidth: number; accentBarHeight: number };
+  summary: { dotPattern: boolean; cornerMarkSize: number };
+  workbook: { stepBlockSize: number; stepBlockShape: 'square' | 'rounded'; checkboxShape: 'square' | 'circle'; checkboxSize: number; checklistBorder: 'dashed' | 'solid' | 'none' };
+  diagram: { cardBorderRadius: number; cardBorder: boolean; headerHeight: number };
+  toc: { accentBarWidth: number; accentBarHeight: number; sectionSpacing: number };
+  codeBlock: { background: string; borderLeftWidth: number };
+}
+
+export interface DesignTemplate {
+  id: DesignTemplateId;
+  name: string;
+  nameKo: string;
+  description: string;
+  descriptionKo: string;
+  category: TemplateCategory;
+  layout: TemplateLayout;
+  typography: TemplateTypography;
+  decorations: TemplateDecorations;
+}
+
 export interface ColorScheme {
   id: string;
   name: string;
@@ -384,6 +446,7 @@ export interface PresentationData {
   author?: string;
   orientation: SlideOrientation;
   colorScheme: ColorScheme;
+  designTemplateId?: DesignTemplateId;
   canvas: { width: number; height: number };
   slides: SlideData[];
   createdAt?: string;
@@ -395,6 +458,7 @@ export interface GenerateRequest {
   slideCount: number;
   orientation: SlideOrientation;
   colorSchemeId: string;
+  designTemplateId?: DesignTemplateId;
   language: 'ko' | 'en';
   aiEngine: 'openai' | 'claude';
   apiKey?: string;

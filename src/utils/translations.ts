@@ -174,6 +174,7 @@ export const translations: Record<string, Record<string, unknown>> = {
     site: {
       nav: {
         generate: 'PPT 생성',
+        templates: '템플릿 갤러리',
         myPresentations: '내 프레젠테이션',
         pricing: '요금제'
       },
@@ -186,6 +187,16 @@ export const translations: Record<string, Record<string, unknown>> = {
       generate: {
         title: 'PPT 생성',
         subtitle: 'AI가 자동으로 전문 프레젠테이션을 만들어 드립니다'
+      },
+      templates: {
+        title: '디자인 템플릿',
+        subtitle: '프레젠테이션에 맞는 디자인을 선택하세요',
+        useThis: '이 템플릿으로 만들기',
+        all: '전체',
+        business: '비즈니스',
+        creative: '크리에이티브',
+        academic: '학술',
+        minimal: '미니멀'
       },
       pricing: {
         title: '요금제',
@@ -373,6 +384,7 @@ export const translations: Record<string, Record<string, unknown>> = {
     site: {
       nav: {
         generate: 'Generate PPT',
+        templates: 'Template Gallery',
         myPresentations: 'My Presentations',
         pricing: 'Pricing'
       },
@@ -385,6 +397,16 @@ export const translations: Record<string, Record<string, unknown>> = {
       generate: {
         title: 'Generate PPT',
         subtitle: 'AI creates professional presentations for you automatically'
+      },
+      templates: {
+        title: 'Design Templates',
+        subtitle: 'Choose the right design for your presentation',
+        useThis: 'Use this template',
+        all: 'All',
+        business: 'Business',
+        creative: 'Creative',
+        academic: 'Academic',
+        minimal: 'Minimal'
       },
       pricing: {
         title: 'Pricing',
