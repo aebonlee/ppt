@@ -16,7 +16,7 @@ const SEOHead = ({ title, description, path = '', ogImage, noindex = false }: SE
   const DEFAULT_DESC = site.description;
   const fullTitle = title ? `${title} | ${SITE}` : SITE;
   const desc = description || DEFAULT_DESC;
-  const image = ogImage || `${BASE}/assets/images/og-default.png`;
+  const image = ogImage || `${BASE}/og-image.png`;
 
   // useLanguage is called to stay consistent with original (future i18n SEO)
   useLanguage();
