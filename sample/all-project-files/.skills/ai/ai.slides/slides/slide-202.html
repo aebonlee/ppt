@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; }
+    th { background-color: #E2E8F0; color: #1B3A6E; font-weight: 700; padding: 10px; border: 1px solid #CBD5E1; }
+    td { padding: 8px 6px; border: 1px solid #CBD5E1; color: #2C2C2A; line-height: 1.3; }
+    .highlight-need { font-weight: 700; color: #E53E3E; background-color: #FFF5F5; padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 145px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">16</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">외부 감사 대비<br/>자료 정리</p>
+<p style="font-size: 11px; color: #FFC857; line-height: 1; text-align: center; margin-top: 8px;">2/3</p>
+</div>
+<!-- 예상 결과 -->
+<!-- Increased height of background card to 510px and textbox width/positioning to fit the table -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 505px; height: 510px; background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 228px; width: 475px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">📋 예상 결과</p>
+<p style="font-size: 15px; font-weight: 700; color: #2C2C2A; text-align: center; margin-bottom: 15px;">== 외부 감사 대비 체크리스트 ==</p>
+<table>
+<thead>
+<tr>
+<th style="width: 25%;">요구 자료</th>
+<th style="width: 12%;">보유 여부</th>
+<th style="width: 18%;">자료 위치</th>
+<th style="width: 20%;">보완 필요</th>
+<th style="width: 12%;">담당자</th>
+<th style="width: 13%;">기한</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">[1] 분기별 결산서(4건)</td>
+<td>O</td>
+<td>회계팀 폴더</td>
+<td>보완 없음</td>
+<td>김주임</td>
+<td>5.10</td>
+</tr>
+<tr>
+<td style="text-align: left;">[2] 집행 내역서(분기별)</td>
+<td>O</td>
+<td>ERP 시스템</td>
+<td>출력 필요</td>
+<td>이대리</td>
+<td>5.12</td>
+</tr>
+<tr>
+<td style="text-align: left;">[3] 자산 대장(전체)</td>
+<td>O</td>
+<td>자산팀</td>
+<td>감가상각 업데이트 필요</td>
+<td>박팀장</td>
+<td>5.15</td>
+</tr>
+<tr>
+<td style="text-align: left;">[4] 이상 거래 사유서</td>
+<td>△</td>
+<td>부분 보유</td>
+<td><span class="highlight-need">[생성 필요]</span> 추가 작성</td>
+<td>김주임</td>
+<td>5.18</td>
+</tr>
+<tr>
+<td style="text-align: left;">[5] 예산 전용 사유서</td>
+<td>O</td>
+<td>회계 폴더</td>
+<td>보완 없음</td>
+<td>이대리</td>
+<td>5.10</td>
+</tr>
+<tr>
+<td style="text-align: left;">[6] 카드 거래 내역</td>
+<td>O</td>
+<td>ERP</td>
+<td>출력+분류 필요</td>
+<td>박팀장</td>
+<td>5.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">196</p>
+</div>
+</div>
+</body>
+</html>

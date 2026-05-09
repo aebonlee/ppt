@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li, h1, h2, h3 { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+    th, td { padding: 8px; border: 1px solid #D3D1C7; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">11</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.4; text-align: center; opacity: 0.95;">시설 점검표<br/>자동 생성</p>
+<p style="font-size: 10px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 10px;">2/2</p>
+</div>
+<!-- ① 예상 결과 헤더 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 6px;">📋 예상 결과</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 130px; left: 213px; width: 498px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- ② 예상 결과 박스 - Height increased to prevent table overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 145px; left: 213px; width: 498px; height: 350px; background-color: #F1EFE8; border-left: 4px solid #1B3A6E; border-radius: 3px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 155px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px; text-align: center;">[강의실 일일 점검표]</p>
+<table>
+<thead>
+<tr style="background-color: #1B3A6E; color: white;">
+<th style="width: 20%; text-align: center;">분류</th>
+<th style="width: 58%;">점검 항목</th>
+<th style="width: 22%; text-align: center;">상태</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #ffffff;">
+<td style="font-weight: bold; text-align: center; color: #1B3A6E;">시청각 장비</td>
+<td style="color: #2C2C2A;">프로젝터 화면 출력 및 마이크/스피커 음향 상태</td>
+<td style="text-align: center; color: #5F5E5A; white-space: nowrap;">□ 양호 □ 불량</td>
+</tr>
+<tr style="background-color: #F5F8FC;">
+<td style="font-weight: bold; text-align: center; color: #1B3A6E;">책걸상</td>
+<td style="color: #2C2C2A;">파손된 책걸상 유무 확인 및 전체 배열 상태</td>
+<td style="text-align: center; color: #5F5E5A; white-space: nowrap;">□ 양호 □ 불량</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="font-weight: bold; text-align: center; color: #1B3A6E;">조명/공조</td>
+<td style="color: #2C2C2A;">전체 형광등 점등 상태 및 냉난방기 소음/작동 여부</td>
+<td style="text-align: center; color: #5F5E5A; white-space: nowrap;">□ 양호 □ 불량</td>
+</tr>
+<tr style="background-color: #F5F8FC;">
+<td style="font-weight: bold; text-align: center; color: #1B3A6E;">청결도</td>
+<td style="color: #2C2C2A;">칠판 청결도, 지우개 상태 및 쓰레기통 비움 여부</td>
+<td style="text-align: center; color: #5F5E5A; white-space: nowrap;">□ 양호 □ 불량</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="font-weight: bold; text-align: center; color: #1B3A6E;">안전</td>
+<td style="color: #2C2C2A;">소화기 정상 비치 및 소방 대피도 부착 상태</td>
+<td style="text-align: center; color: #5F5E5A; white-space: nowrap;">□ 양호 □ 불량</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ③ 직접 해보기 박스 - Top adjusted to avoid overlap and height increased for balance -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 515px; left: 213px; width: 498px; height: 185px; background-color: #F5F8FC; border: 1.5px dashed #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 530px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">✅ 직접 해보기</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7; margin-bottom: 12px;">본인 담당 시설 1개를 정해 이전 페이지의 프롬프트로 점검표를 생성해 보세요.</p>
+<p style="font-size: 13px; color: #5F5E5A; line-height: 2.0; padding-left: 10px;">- 대상 시설: ____________________________________________________</p>
+<p style="font-size: 13px; color: #5F5E5A; line-height: 2.0; padding-left: 10px;">- 추가된 핵심 점검 항목 2가지:</p>
+<p style="font-size: 13px; color: #5F5E5A; line-height: 2.0; padding-left: 20px;">1) ___________________________________________________________</p>
+<p style="font-size: 13px; color: #5F5E5A; line-height: 2.0; padding-left: 20px;">2) ___________________________________________________________</p>
+</div>
+<!-- ④ TIP 콜아웃 - Repositioned to fill lower space -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 720px; left: 213px; width: 498px; height: 95px; background-color: #FAEEDA; border-left: 4px solid #FFC857; border-radius: 3px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 735px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; color: #633806; line-height: 1.65;"><span style="font-weight: 700; color: #1B3A6E; margin-right: 6px;">💡 TIP</span>점검표는 한 번 잘 만들어두면 매년 업데이트만 해서 계속 쓸 수 있습니다. AI가 생성한 마크다운 표를 복사해 워드나 엑셀로 옮긴 뒤, 부서 공용 폴더에 저장해 동료들과 표준 양식으로 공유하세요.</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">131</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 (Height adjusted to align with prompt box bottom visually) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 150px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 122px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 4px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 12px;">07</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">어떤 차트를<br/>써야 할까<br/>1/2</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 100px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 123px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">학습 목표</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6;">데이터 유형과 전달하고자 하는 메시지에 가장 적합한 차트 유형을 AI의 추천을 통해 선택한다.</p>
+</div>
+<!-- ② 시나리오 본문 (Moved down slightly to increase separation) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 245px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">시나리오</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.7; text-align: justify;">부서별 출장비 지출 추이를 부서장에게 보고해야 합니다. 막대그래프, 꺾은선그래프, 파이차트 중 어떤 것을 써야 부서별 추이 비교를 한눈에 보여줄 수 있을지 고민입니다.</p>
+</div>
+<!-- ③ 따라하기 프롬프트 박스 (Expanded height and moved down to balance vertical space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 380px; left: 213px; width: 498px; height: 420px; background-color: #F1EFE8; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 405px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 20px;">따라하기 프롬프트</p>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">역할: <span style="font-weight: 400; color: #2C2C2A;">차트 추천 비서</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">작업: <span style="font-weight: 400; color: #2C2C2A;">데이터와 핵심 메시지에 맞는 최적의 차트 유형 추천</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">데이터 특징: <span style="font-weight: 400; color: #2C2C2A;">부서별 월별 출장비 지출 내역 (시계열 + 범주형 혼합)</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">전달 메시지: <span style="font-weight: 400; color: #2C2C2A;">부서별 지출 추이 비교</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">산출물: <span style="font-weight: 400; color: #2C2C2A;">1순위 차트 + 2순위 차트 + 추천/비추천 이유</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA;">출력 형식: <span style="font-weight: 400; color: #2C2C2A;">차트 적합성 비교 표</span></p>
+<p style="font-size: 15px; font-weight: 700; color: #2E5BBA; line-height: 1.5;">안전장치: <span style="font-weight: 400; color: #2C2C2A;">데이터 건수가 너무 적거나 차트화가 무의미한 경우, 차트 대신 표(Table) 작성을 권장할 것.</span></p>
+</div>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">169</p>
+</div>
+</div>
+</body>
+</html>

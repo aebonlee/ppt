@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">13</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">인사 통계 표·<br/>차트 데이터</p>
+<p style="font-size: 11px; color: #B5D4F4; text-align: center; margin-top: 10px;">2/2</p>
+</div>
+<!-- ① 섹션 헤더 "📋 예상 결과" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">📋 예상 결과</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 135px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- ② 예상 결과 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 145px; left: 213px; width: 498px; height: 410px; background-color: #F1EFE8; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 157px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 11px; font-family: monospace; color: #2C2C2A; line-height: 1.45; white-space: pre-wrap;">=== 1) 부서별 인원 분포 ===
+부서명 | 인원 | %
+학사지원과 | 35 | 17.5%
+인사과 | 28 | 14.0%
+총무과 | 25 | 12.5%
+… (이하 생략)
+
+=== 2) 직급별 인원 분포 ===
+직급 | 인원 | %
+주임 | 45 | 22.5%
+대리 | 52 | 26.0%
+과장 | 38 | 19.0%
+… (이하 생략)
+
+=== 3) 근속연수별 분포 ===
+구간 | 인원 | %
+0~3년 | 48 | 24.0%
+3~7년 | 65 | 32.5%
+7~15년 | 58 | 29.0%
+15년 이상 | 29 | 14.5%
+
+=== 차트용 CSV ===
+직급,인원수
+주임,45
+대리,52
+과장,38
+…
+
+=== [확인 필요] 별도 표 ===
+주임 X | 주임 | [모호] | 3.5 | 2024-03-01</p>
+</div>
+<!-- ③ 섹션 헤더 "통계 결과의 활용 — 인사이트 추출" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 575px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">통계 결과의 활용 — 인사이트 추출</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 605px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- ④ 인사이트 표 -->
+<!-- Table Header -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 620px; left: 213px; width: 230px; height: 28px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 626px; left: 220px; width: 216px; z-index: 10;">
+<p style="font-size: 12px; color: #ffffff; font-weight: 600; text-align: center;">통계 패턴</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 620px; left: 444px; width: 267px; height: 28px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 626px; left: 451px; width: 253px; z-index: 10;">
+<p style="font-size: 12px; color: #ffffff; font-weight: 600; text-align: center;">인사이트</p>
+</div>
+<!-- Table Row 1 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 648px; left: 213px; width: 230px; height: 40px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 659px; left: 220px; width: 216px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">특정 직급 비중 60% 이상</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 648px; left: 444px; width: 267px; height: 40px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 659px; left: 451px; width: 253px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">직급 불균형 — 승진·신규 채용 검토 필요</p>
+</div>
+<!-- Table Row 2 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 688px; left: 213px; width: 230px; height: 40px; background-color: #ffffff; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 699px; left: 220px; width: 216px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">근속 0~3년 비중 30% 이상</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 688px; left: 444px; width: 267px; height: 40px; background-color: #ffffff; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 699px; left: 451px; width: 253px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">신규 인력 다수 — OJT·멘토링 강화 필요</p>
+</div>
+<!-- Table Row 3 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 728px; left: 213px; width: 230px; height: 40px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 739px; left: 220px; width: 216px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">특정 부서 인원 급증</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 728px; left: 444px; width: 267px; height: 40px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 739px; left: 451px; width: 253px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">업무량 변화 — 인력 재배치 검토</p>
+</div>
+<!-- ⑤ 직접 해보기 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 795px; left: 213px; width: 498px; height: 145px; background-color: #F5F8FC; border: 1.5px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 807px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">✅ 직접 해보기</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6; margin-bottom: 8px;">본인 부서 명단(20명 이상)을 위 프롬프트로 통계 처리해 보세요.</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.8;">- 통계 처리 소요 시간: <span style="display:inline-block; width:50px; border-bottom:1px solid #1B3A6E;"></span> 분<br/>
+- 가장 흥미로웠던 인사이트: <span style="display:inline-block; width:280px; border-bottom:1px solid #1B3A6E;"></span><br/>
+- 차트로 시각화하면 좋겠다 싶은 표: <span style="display:inline-block; width:50px; border-bottom:1px solid #1B3A6E;"></span>번</p>
+</div>
+<!-- ⑥ TIP 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 960px; left: 213px; width: 498px; height: 65px; background-color: #FAEEDA; border-left: 4px solid #FFC857; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 972px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; color: #633806; line-height: 1.6;"><span style="font-weight: 700; color: #1B3A6E; margin-right: 8px;">💡 TIP</span>차트는 AI에 그리지 말고 엑셀에서 직접 그리세요. CSV를 엑셀에 붙여넣고 「삽입 &gt; 차트」 한 번이면 끝납니다.</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">81</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">03</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">피벗 테이블 설계 가이드<br/>2/2</p>
+</div>
+<!-- ① 예상 결과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">📋 예상 결과</p>
+<p style="font-size: 14px; font-weight: 600; color: #2E5BBA; margin-bottom: 6px;">[필드 배치 표]</p>
+</div>
+<!-- 필드 배치 표: Increased height slightly and added padding to fix paint overflow and flush edge -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 145px; left: 213px; width: 498px; height: 105px; background-color: #ffffff; border: 1px solid #B5D4F4; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 155px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6;">• <b>행:</b> 부서명<br/>• <b>열:</b> 월(YYYY-MM)<br/>• <b>값:</b> 금액 합계<br/>• <b>필터:</b> 출장 사유</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 270px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #2E5BBA; margin-bottom: 6px;">[엑셀 메뉴 흐름 단계]</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 295px; left: 213px; width: 498px; height: 160px; background-color: #F5F8FC; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 305px; left: 223px; width: 478px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.8;">① 데이터 범위 선택<br/>② 삽입 탭 → 피벗 테이블<br/>③ 새 워크시트<br/>④ 필드 드래그<br/>⑤ 값 합계 설정<br/>⑥ 천 단위 콤마 서식</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 475px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #2E5BBA; margin-bottom: 6px;">[결과 미리보기 표 - 부서×월 매트릭스]</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 500px; left: 213px; width: 498px; height: 110px; background-color: #ffffff; border: 1px solid #B5D4F4; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 510px; left: 223px; width: 478px; z-index: 10;">
+<table style="width: 100%; border-collapse: collapse; font-size: 12px; color: #2C2C2A; text-align: right;">
+<tr style="background-color: #F5F8FC; border-bottom: 1px solid #B5D4F4;">
+<th style="padding: 6px; text-align: left;">부서명</th>
+<th style="padding: 6px;">2026-03</th>
+<th style="padding: 6px;">2026-04</th>
+<th style="padding: 6px;">총합계</th>
+</tr>
+<tr style="border-bottom: 1px solid #e0e0e0;">
+<td style="padding: 6px; text-align: left;">학사지원과</td>
+<td style="padding: 6px;">120,000</td>
+<td style="padding: 6px;">240,000</td>
+<td style="padding: 6px;">360,000</td>
+</tr>
+<tr>
+<td style="padding: 6px; text-align: left;">학생지원과</td>
+<td style="padding: 6px;">80,000</td>
+<td style="padding: 6px;">150,000</td>
+<td style="padding: 6px;">230,000</td>
+</tr>
+</table>
+</div>
+<!-- ② 직접 해보기 박스: Redistributed downwards -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 645px; left: 213px; width: 498px; height: 160px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 665px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 15px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 15px;">본인 부서 데이터로 피벗 설계 후 결과 표 생성:</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 730px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 765px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- ③ TIP 콜아웃: Redistributed downwards -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 835px; left: 213px; width: 498px; height: 80px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 850px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #7B5E14; line-height: 1.6; text-align: justify;">
+<span style="font-weight: 700; color: #D69E2E; margin-right: 10px; letter-spacing: 0.5px;">TIP</span>행=카테고리/명목 변수, 열=시간, 값=수치 합계 - 기본 원칙입니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">160</p>
+</div>
+</div>
+</body>
+</html>

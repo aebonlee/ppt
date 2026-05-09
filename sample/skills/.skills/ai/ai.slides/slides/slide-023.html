@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- Running Head -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- Side Tag -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">09</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">자주 쓰는<br/>프롬프트를<br/>템플릿으로</p>
+</div>
+<!-- 1. 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 50px; background-color: #F5F8FC; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 120px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; font-weight: 500; line-height: 1.5;">반복되는 업무 프롬프트를 템플릿화하여 매번 빠르게 재사용한다.</p>
+</div>
+<!-- 2. 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 175px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.7; text-align: justify;">매주 회의록 요약, 매월 보고서 초안 등 반복 업무는 템플릿으로 표준화하면 30초만에 작업을 시작할 수 있습니다.</p>
+</div>
+<!-- 3. 따라하기 3단계 - FIXED: Increased height to 125px to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 235px; left: 213px; width: 498px; height: 125px; background-color: #ffffff; border: 1px solid #D3D1C7; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 250px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #1B3A6E; font-weight: 700; margin-bottom: 8px;">1) 변수를 [대괄호]로 표시</p>
+<p style="font-size: 13px; color: #2C2C2A; margin-bottom: 8px;">예: "[회의명] 회의록을 [3]줄로 요약"</p>
+<p style="font-size: 14px; color: #1B3A6E; font-weight: 700; margin-bottom: 8px;">2) 저장 위치 <span style="font-size:13px; font-weight:400; color:#5F5E5A;">메모장·노션·사내 위키에 템플릿 모아두기</span></p>
+<p style="font-size: 14px; color: #1B3A6E; font-weight: 700;">3) 공유 <span style="font-size:13px; font-weight:400; color:#5F5E5A;">동료와 공유해 부서 표준 템플릿으로 정착</span></p>
+</div>
+<!-- 4. 템플릿 카드 3개 - Shifted down to accommodate larger Step 3 box -->
+<!-- Card 1 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 380px; left: 213px; width: 498px; height: 80px; background-color: #F1EFE8; border-radius: 6px; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 395px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 5px;">📅 회의록 요약 템플릿</p>
+<p style="font-size: 13px; color: #2C2C2A;">"[회의명] 회의록을 [N]줄로 요약. 결정사항·후속 조치·담당자 명시"</p>
+</div>
+<!-- Card 2 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 470px; left: 213px; width: 498px; height: 80px; background-color: #F1EFE8; border-radius: 6px; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 485px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 5px;">📄 공문 초안 템플릿</p>
+<p style="font-size: 13px; color: #2C2C2A;">"[주제]에 관한 공문 초안. 제목/수신/참조/본문/붙임 형식, 학교 양식"</p>
+</div>
+<!-- Card 3 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 560px; left: 213px; width: 498px; height: 80px; background-color: #F1EFE8; border-radius: 6px; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 575px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 5px;">✉️ 이메일 답변 템플릿</p>
+<p style="font-size: 13px; color: #2C2C2A;">"[학생/부서] 문의 답변. 격식 있는 톤, 3단락(상황 확인-답변-안내)"</p>
+</div>
+<!-- 5. 직접 해보기 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 670px; left: 213px; width: 498px; height: 180px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 685px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 600; color: #1B3A6E; margin-bottom: 15px; display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px;"></span>직접 해보기 — 본인 업무에서 반복되는 작업 3개를 적고 템플릿 초안 만들기</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 735px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 717px; left: 233px; width: 30px; z-index: 10;"><p style="font-size: 14px; color:#1B3A6E;">1)</p></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 775px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 757px; left: 233px; width: 30px; z-index: 10;"><p style="font-size: 14px; color:#1B3A6E;">2)</p></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 815px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 797px; left: 233px; width: 30px; z-index: 10;"><p style="font-size: 14px; color:#1B3A6E;">3)</p></div>
+<!-- 6. TIP 콜아웃 - Redistributed down to fill space -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 890px; left: 213px; width: 498px; height: 95px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 905px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #633806; line-height: 1.7; text-align: justify;">
+      💡 <span style="font-weight: 700; color: #1B3A6E; margin-right: 8px; letter-spacing: 0.5px;">TIP</span>부록 A '프롬프트 카드 모음'을 참고해 팀 표준 템플릿을 정비하세요. 한 번 만들어두면 부서 전체의 업무 시간이 절약됩니다.
+    </p>
+</div>
+<!-- Page Number -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">40</p>
+</div>
+</div>
+</body>
+</html>

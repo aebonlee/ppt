@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">05</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">좋은 프롬프트의<br/>4요소</p>
+</div>
+<!-- ① 학습 목표 -->
+<!-- Fixed height and overflow: increased height from 50 to 65 to accommodate wrapped text and prevent paint overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 65px; background-color: #F5F8FC; border-left: 4px solid #5F5E5A; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 115px; left: 230px; width: 470px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; font-weight: 500; line-height: 1.4;">학습 목표: 좋은 프롬프트가 갖춰야 할 4가지 핵심 요소를 이해하고 본인 업무에 적용한다.</p>
+</div>
+<!-- ② 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 185px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.7; text-align: justify;">같은 작업도 한 줄짜리 막연한 지시('회의 안건 정리해 줘')와 4요소를 갖춘 프롬프트의 결과 차이는 큽니다. 4요소를 익히면 어떤 업무에도 응용 가능합니다.</p>
+</div>
+<!-- ③ 4요소 표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 250px; left: 213px; width: 244px; height: 95px; background-color: #eef2f9; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 265px; left: 228px; width: 214px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #1B3A6E; margin-bottom: 5px;">① 역할 Role</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;">누가 답할 것인가<br/><span style="color: #5F5E5A;">(예: "당신은 10년 차 행정 직원입니다")</span></p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 250px; left: 467px; width: 244px; height: 95px; background-color: #eef2f9; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 265px; left: 482px; width: 214px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #1B3A6E; margin-bottom: 5px;">② 맥락 Context</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;">어떤 상황인가<br/><span style="color: #5F5E5A;">(예: "신입 OJT 일정을 짜야 합니다")</span></p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 355px; left: 213px; width: 244px; height: 95px; background-color: #eef2f9; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 370px; left: 228px; width: 214px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #1B3A6E; margin-bottom: 5px;">③ 작업 Task</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;">무엇을 해 달라는가<br/><span style="color: #5F5E5A;">(예: "5일짜리 일정표를 만들어 주세요")</span></p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 355px; left: 467px; width: 244px; height: 95px; background-color: #eef2f9; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 370px; left: 482px; width: 214px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #1B3A6E; margin-bottom: 5px;">④ 형식 Format</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;">어떻게 정리할 것인가<br/><span style="color: #5F5E5A;">(예: "시간대별 표 형태로")</span></p>
+</div>
+<!-- ④ 좋은 프롬프트 예시 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 480px; left: 213px; width: 498px; height: 26px; background-color: #1B3A6E; border-radius: 6px 6px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 489px; left: 223px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 489px; left: 236px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 489px; left: 249px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 506px; left: 213px; width: 498px; height: 160px; background-color: #2C2C2A; border-radius: 0 0 6px 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 520px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.92); margin-bottom: 15px;">좋은 프롬프트 예시</p>
+<div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.22); padding: 12px; border-radius: 4px;">
+<p style="font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.6;">당신은 10년 차 대학 행정 직원입니다(역할). 신입 OJT 일정을 짜야 합니다(맥락). 5일짜리 일정표를 만들어 주세요(작업). 시간대별 (시간/활동/담당자) 표 형태로 정리해 주세요(형식).</p>
+</div>
+</div>
+<!-- ⑤ 예상 결과 박스 -->
+<!-- Increased height to 160 to prevent paint overflow of the content -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 700px; left: 213px; width: 498px; height: 160px; background-color: #F1EFE8; border-radius: 0 6px 6px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 700px; left: 213px; width: 6px; height: 160px; background-color: #1B3A6E; border-radius: 4px 0 0 4px; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 715px; left: 238px; width: 453px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; letter-spacing: 0.5px; margin-bottom: 8px;">예상 결과</p>
+<p style="font-family: monospace; font-size: 14px; line-height: 1.8; color: #2C2C2A;">실제 결과:<br/>1일차 09:00~12:00 부서 소개<br/>13:00~18:00 시스템 계정 발급...<br/><br/><span style="color: #5F5E5A;">(시간/활동/담당자 표로 깔끔하게 정리됨)</span></p>
+</div>
+<!-- ⑥ TIP 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 885px; left: 213px; width: 498px; height: 90px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 900px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #633806; line-height: 1.7; text-align: justify;">
+💡 <span style="font-weight: 700; color: #1B3A6E; margin-right: 8px;">TIP</span>4요소를 모두 채울 필요는 없지만 '작업'과 '형식'은 거의 항상 필요합니다. 이 두 가지만 명확히 해도 결과 품질이 크게 향상됩니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">27</p>
+</div>
+</div>
+</body>
+</html>

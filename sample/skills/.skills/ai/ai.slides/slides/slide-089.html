@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 170px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">14</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">개인정보<br/>마스킹<br/>자동화</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 10px;">2/2</p>
+</div>
+<!-- ① 섹션 헤더 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; padding-bottom: 6px; border-bottom: 1.5px solid #1B3A6E;">📋 예상 결과 (TSV)</p>
+</div>
+<!-- ② 예상 결과 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 145px; left: 213px; width: 498px; height: 200px; background-color: #F1EFE8; border-left: 4px solid #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 157px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11.5px; color: #2C2C2A; line-height: 1.65; white-space: pre-wrap;">식별자 | 사번 | 주민번호 | 휴대폰 | 이메일
+김○○ | EMP-N1 | 88****-***** | 010-****-5678 | a***@jnu.ac.kr
+이○○ | EMP-N2 | 92****-***** | 010-****-5432 | d***@jnu.ac.kr
+박○○ | EMP-N3 | 90****-***** | 010-****-1234 | p***@jnu.ac.kr
+…
+
+— 변환: 200건 / 마스킹 누락: 0건
+— [검토 필요]: 2건 (이메일 형식 비표준)</p>
+</div>
+<!-- ③ 직접 해보기 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 365px; left: 213px; width: 498px; height: 165px; background-color: #F5F8FC; border: 1.5px dashed #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 377px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">✅ 직접 해보기</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7; margin-bottom: 8px;">본인 부서 명단(원본) 5건을 위 프롬프트로 마스킹해 보세요.</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;">- 마스킹 처리 소요 시간: ____ 분<br/>- 마스킹 누락이 발견되었는가: □ 있음 □ 없음<br/>- 발견되었다면 어느 항목인지: _______________________<br/>- AI가 처리하기 어려웠던 형식: _______________________</p>
+</div>
+<!-- ④ 주의 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 550px; left: 213px; width: 498px; height: 110px; background-color: #FFF1E5; border-left: 4px solid #C53030; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 562px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;"><span style="color: #C53030; font-weight: 700;">⚠️ 주의</span> · 마스킹 자동화는 도구일 뿐, 최종 책임은 본인입니다. AI가 마스킹한 결과를 그대로 외부에 보내지 마세요. 사람이 한 번 더 눈으로 점검하는 단계가 반드시 필요합니다. 특히 첫 번째와 마지막 행은 확률적으로 누락이 발생합니다.</p>
+</div>
+<!-- ⑤ 섹션 헤더 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 685px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; padding-bottom: 6px; border-bottom: 1.5px solid #1B3A6E;">2.5절 정리</p>
+</div>
+<!-- ⑥ 정리 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 725px; left: 213px; width: 498px; height: 145px; background-color: transparent; border: 1px solid #E2E8F0; border-left: 4px solid #1D9E75; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 737px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7; margin-bottom: 8px;">✅ 인사 명단을 학교 표준 형식(부서명·직급·근속·입사일)으로 일괄 정리할 수 있다.</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7; margin-bottom: 8px;">✅ 정제된 명단으로 부서별·직급별·근속연수별 통계 표·차트 데이터를 자동 생성할 수 있다.</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;">✅ 개인정보 마스킹을 학교 표준 규칙에 맞게 자동화하여 안전한 입력 형식으로 변환할 수 있다.</p>
+</div>
+<!-- ⑦ TIP 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 890px; left: 213px; width: 498px; height: 70px; background-color: #FAEEDA; border-left: 4px solid #FFC857; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 902px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;"><span style="color: #1B3A6E; font-weight: 700;">💡 TIP</span> · 2.5절은 인사 데이터의 「정제 → 분석 → 안전」 3단계입니다. 마스킹 → 정제 → 통계의 순서로 매번 진행하세요. 순서가 바뀌면 사고가 납니다.</p>
+</div>
+<!-- ⑧ 다음 절 안내 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 980px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 13px; color: #5F5E5A; line-height: 1.6; padding: 0 14px;">▶ 다음 절: 2.6 채용·평가·교육 — 채용 공고문, 면접 질문지, 평가 코멘트, 직원 교육 일정.</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">83</p>
+</div>
+</div>
+</body>
+</html>

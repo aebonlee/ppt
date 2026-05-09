@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #e7e7e4; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">12</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">인사 명단 정제<br/><span style="font-size: 10px; opacity: 0.7;">1/3</span></p>
+</div>
+<!-- ① 학습 목표 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 80px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 119px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6;">부서 이동 후 제각각이 된 부서명·직급·근속 표기를 학교 표준 형식으로 일괄 정리한다. 인사 데이터는 입력 전 5등급 분류를 통과시켜야 한다.</p>
+</div>
+<!-- ② 섹션 헤더 "시나리오" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 215px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E;">시나리오</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 240px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- ③ 시나리오 박스 (Height increased to prevent text overflow) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 165px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 269px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7; margin-bottom: 8px;">인사 발령이 끝난 직후, 부서 명단 200행짜리 엑셀이 도착했습니다. 작성자가 여러 명이라 표기가 제각각입니다.</p>
+<ul style="font-size: 13px; color: #2C2C2A; line-height: 1.7; padding-left: 20px;">
+<li>부서명: 「학사지원과」, 「학사 지원과」, 「학사지원」, 「학사」 등 4가지로 혼재</li>
+<li>직급: 「주임」, 「主任」, 「Junior」 등 한·중·영 혼용</li>
+<li>근속: 「3년」, 「3년 6개월」, 「2024.03 입사」 등 단위 혼재</li>
+</ul>
+</div>
+<!-- ④ 섹션 헤더 "표준화 대상 — 4가지" (Adjusted top to accommodate taller box above) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 445px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E;">표준화 대상 — 4가지</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 470px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- ⑤ 표준화 표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 485px; left: 213px; width: 498px; height: 36px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 494px; left: 223px; width: 60px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">항목</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 494px; left: 293px; width: 200px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">비표준 예</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 494px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">표준 형식</p>
+</div>
+<!-- 표 내용 행 1 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 521px; left: 213px; width: 498px; height: 36px; background-color: #F5F8FC; border-bottom: 1px solid #B5D4F4; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 530px; left: 223px; width: 60px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; text-align: center;">부서명</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 530px; left: 293px; width: 200px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">학사지원과/학사 지원과/학사지원/학사</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 530px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">학사지원과 (학교 공식 명칭)</p>
+</div>
+<!-- 표 내용 행 2 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 557px; left: 213px; width: 498px; height: 36px; background-color: #ffffff; border-bottom: 1px solid #B5D4F4; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 566px; left: 223px; width: 60px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; text-align: center;">직급</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 566px; left: 293px; width: 200px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">주임/主任/Junior</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 566px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">주임 (한국어 표준)</p>
+</div>
+<!-- 표 내용 행 3 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 593px; left: 213px; width: 498px; height: 36px; background-color: #F5F8FC; border-bottom: 1px solid #B5D4F4; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 602px; left: 223px; width: 60px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; text-align: center;">근속</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 602px; left: 293px; width: 200px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">3년/3년 6개월/2024.03 입사</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 602px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">3.5년 (소수점 1자리)</p>
+</div>
+<!-- 표 내용 행 4 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 629px; left: 213px; width: 498px; height: 36px; background-color: #ffffff; border-bottom: 1px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 638px; left: 223px; width: 60px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; text-align: center;">입사일</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 638px; left: 293px; width: 200px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">2024.03/2024-03-01/2024년 3월</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 638px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">2024-03-01 (ISO 형식)</p>
+</div>
+<!-- ⑥ 보안 강조 박스 (Shifted down slightly to fill space and prevent crowding) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 760px; left: 213px; width: 498px; height: 120px; background-color: #FFF1E5; border-left: 4px solid #C53030; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 772px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #C53030; margin-bottom: 8px;">⚠️ 인사 명단 입력 전 5등급 통과시키기</p>
+<ul style="font-size: 13px; color: #2C2C2A; line-height: 1.7; padding-left: 20px;">
+<li>직원 이름·사번·연락처 → 모두 마스킹/임시코드로 치환</li>
+<li>「김○○ 주임」 → 「주임 A」, 「EMP-2024-01」</li>
+<li>「KEEP IT MASKED」 원칙 — 가공 후에도 입력 시 한 번 더 점검</li>
+</ul>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">77</p>
+</div>
+</div>
+</body>
+</html>

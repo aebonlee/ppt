@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">01</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">지저분한 표<br/>정제하기</p>
+</div>
+<!-- 예상 결과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">예상 결과</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-bottom: 8px;">복사해서 엑셀에 붙여넣기 좋은 <strong>TSV 형식 정제된 표</strong>:</p>
+<div style="background-color: #F8F9FA; padding: 15px; border-radius: 6px; border: 1px solid #E2E8F0;">
+<p style="font-family: 'D2Coding', monospace; font-size: 13px; color: #2C2C2A; line-height: 1.8;">
+부서명	금액(원)	날짜	출장자	사유<br/>
+학사지원과	120,000	2026-04-15	김전남	학회 참석<br/>
+학생지원과	85,000	2026-04-16	이광주	학생 면담<br/>
+정보화본부 [추정]	50,000	2026-04-17	박기술	시스템 점검
+</p>
+</div>
+<ul style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-top: 12px; padding-left: 18px;">
+<li style="margin-bottom: 4px;"><strong>부서명 표준화:</strong> 학사지원과/학사처/학지과 → <strong>학사지원과</strong> (학교 공식 명칭 적용)</li>
+<li style="margin-bottom: 4px;"><strong>금액 통일:</strong> 120,000/12만원/120000 → <strong>120,000</strong> (1,000 단위 콤마)</li>
+<li style="margin-bottom: 4px;"><strong>날짜 통일:</strong> 2026-04-15/26.4.15/4월 15일 → <strong>2026-04-15</strong> (YYYY-MM-DD 형식)</li>
+<li style="margin-bottom: 4px;"><strong>불확실한 데이터 식별:</strong> 정보화본부 [추정]처럼 AI가 추측한 경우 <strong>[추정]</strong> 태그 명시</li>
+</ul>
+</div>
+<!-- 직접 해보기 -->
+<!-- Fixed: Increased shape height to 160px and moved elements down to accommodate text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 440px; left: 213px; width: 498px; height: 160px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 455px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-bottom: 10px;">본인 부서의 최근 한 달 출장비 또는 지출결의 데이터 50건을 AI에 입력해 정제해 보세요.</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 6px;">□ 데이터 입력 완료    □ TSV 형식 확인    □ 엑셀 붙여넣기 성공</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 15px;">정제 과정에서 발견된 [추정] 태그 개수: (    )개</p>
+</div>
+<!-- Fixed: Adjusted decorative line top to 565px to align with moved text -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 565px; left: 470px; width: 40px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- TIP -->
+<!-- Fixed: Moved TIP section down to avoid overlap with enlarged '직접 해보기' card -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 625px; left: 213px; width: 498px; height: 100px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 640px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #5C4B25; line-height: 1.6; text-align: justify;">
+<span style="font-weight: 700; color: #D69E2E; margin-right: 10px; letter-spacing: 0.5px;">TIP</span><strong>추정 행은 반드시 원본 확인 후 확정하세요.</strong> AI는 패턴이 부족하거나 정보가 불완전한 데이터를 임의로 표준화할 위험이 있습니다. [추정] 태그가 붙은 행은 원본 영수증이나 품의서를 꼭 대조해야 합니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">156</p>
+</div>
+</div>
+</body>
+</html>

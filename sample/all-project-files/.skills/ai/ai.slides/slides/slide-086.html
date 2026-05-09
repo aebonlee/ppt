@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">13</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">인사 통계 표·<br/>차트 데이터</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 10px;">1/2</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 80px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 119px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">Step 12에서 정제된 명단을 바탕으로 부서별·직급별·근속연수별 통계 표를 자동 생성하고, 차트용 데이터로 가공한다.</p>
+</div>
+<!-- ② 섹션 헤더 "시나리오" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1.5px solid #1B3A6E;">시나리오</p>
+</div>
+<!-- ③ 시나리오 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 265px; left: 213px; width: 498px; height: 110px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 284px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.75;">부서장이 「우리 부서 인력 구성을 한눈에 보고 싶다」고 요청했습니다. 200명 명단을 직급별·근속별로 집계해 보고용 표 3개와 차트 데이터를 만들어야 합니다.</p>
+</div>
+<!-- ④ 섹션 헤더 "따라하기 — 통계 생성 프롬프트" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 410px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1.5px solid #1B3A6E;">따라하기 — 통계 생성 프롬프트</p>
+</div>
+<!-- ⑤ 다크 네이비 코드박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 455px; left: 213px; width: 498px; height: 570px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 475px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #ffffff; line-height: 1.6; white-space: pre-wrap;">[역할] 너는 인사 데이터 분석가다.
+
+[입력]
+(Step 12에서 정제된 TSV 명단 — 마스킹 완료)
+주임 A | 주임 | 학사지원과 | 3.5 | 2024-03-01
+대리 B | 대리 | 학사지원과 | 3.5 | 2022-09-15
+…
+
+[작업]
+다음 3가지 통계를 표 형식으로 만들어 주세요.
+
+1) 부서별 인원 분포
+   컬럼: 부서명 | 인원 수 | 전체 대비 %
+2) 직급별 인원 분포
+   컬럼: 직급 | 인원 수 | 전체 대비 %
+3) 근속연수별 분포 (구간: 0~3년, 3~7년, 7~15년, 15년 이상)
+   컬럼: 근속 구간 | 인원 수 | 전체 대비 %
+
+[차트용 데이터]
+각 표의 마지막에 차트 작성용 CSV 형식 추가
+예) 직급,인원수
+주임,45
+대리,52
+…
+
+[원칙]
+- 본문에 명시된 데이터만 사용 (추론 금지)
+- 결측치는 「[확인 필요]」 라벨로 별도 표 분리
+- % 는 소수점 1자리, 합계가 100%가 되도록 보정
+- 마스킹된 식별자는 그대로 유지</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">80</p>
+</div>
+</div>
+</body>
+</html>

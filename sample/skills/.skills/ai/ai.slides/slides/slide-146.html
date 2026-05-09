@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">15</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">비품 발주서<br/>자동 작성</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 6px;">2/2</p>
+</div>
+<!-- ① 예상 결과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">📋 예상 결과</p>
+</div>
+<!-- 예상 결과 코드 블록 영역 (배경) - Increased height to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 135px; left: 213px; width: 498px; height: 550px; background-color: #2C2C2A; border-radius: 6px; z-index: 1;"></div>
+<!-- 예상 결과 내용 (텍스트) - Adjusted top and width for better fit -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 150px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5;">=== 비품 발주서 ===</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5; margin-top: 6px;">발주처: ○○부서<br/>발주일: 2026년 ○월 ○일<br/>납기일: 2026년 ○월 ○일</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5; margin-top: 10px;">[발주 품목 내역]</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #B5D4F4; line-height: 1.45;">| 연번 | 품명 | 규격 | 수량 | 단가 | 공급가액 | 부가세 | 합계 |<br/>|---|---|---|---|---|---|---|---|<br/>| 1 | A4 복사용지 | 80g (박스) | 10 | 18,000 | 180,000 | 18,000 | 198,000 |<br/>| 2 | 토너 카트리지 | 모델명X | 2 | 85,000 | 170,000 | 17,000 | 187,000 |<br/>| 3 | 결재철 | A4 세로 | 30 | 1,500 | 45,000 | 4,500 | 49,500 |</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5; margin-top: 10px;">총 합계 금액: 금 434,500 원 (VAT 포함)</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5; margin-top: 12px;">[결재 라인]<br/>작성자(담당):     검토자(팀장):     승인자(부서장):</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #E8E8E8; line-height: 1.5; margin-top: 18px;">=== 3개 업체 견적 비교표 ===</p>
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #B5D4F4; line-height: 1.45;">| 업체명 | 총 견적 금액 | 납기 가능일 | 품질 등급 | 비고 (선정 여부 등) |<br/>|---|---|---|---|---|<br/>| A문구 | 434,500원 | D+2일 | 상 | 최저가, 학교 등록 업체 (선정) |<br/>| B오피스 | 450,000원 | D+1일 | 상 | 빠른 납기 |<br/>| C유통 | 425,000원 | D+5일 | 중 | 납기 지연 |</p>
+</div>
+<!-- ② 직접 해보기 박스 - Moved down to accommodate expanded first card -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 710px; left: 213px; width: 498px; height: 160px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 725px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 8px;">본인 부서의 다음 분기 필요 사무용품 리스트를 작성해 보세요.</p>
+</div>
+<!-- 직접 해보기 입력선 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 785px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 815px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 845px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- ③ TIP 콜아웃 - Moved down to maintain spacing and fill tail -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 890px; left: 213px; width: 498px; height: 100px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 905px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #5F5E5A; line-height: 1.6;">
+<span style="font-weight: 700; color: #D9A02A; margin-right: 10px; letter-spacing: 0.5px;">TIP</span>학교에 등록된 업체를 우선적으로 고려하며, 발주 전 반드시 해당 업체의 공식 견적서를 기준으로 단가를 재확인하세요. AI가 생성한 단가는 참고용입니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">140</p>
+</div>
+</div>
+</body>
+</html>

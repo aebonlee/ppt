@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">02</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">학생 공지문 일괄 생성</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 10px;">1/2</p>
+</div>
+<!-- ① 학습 목표 박스 - Fixed height/padding to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 95px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 115px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.55;">학사 일정 1건을 학년별·학과별로 미세 조정된 여러 버전의 공지문으로 일괄 생성한다. 동일 사안의 정보 일관성을 유지하면서 받는 사람별 톤을 다르게 한다.</p>
+</div>
+<!-- ② 섹션 헤더 "시나리오" -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 251px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 225px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E;">시나리오</p>
+</div>
+<!-- ③ 시나리오 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 265px; left: 213px; width: 498px; height: 115px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 279px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.65; text-align: justify;">수강 정정 기간(3.16~3.20)이 다가옵니다. 1학년은 처음 정정을 하는 학년이라 절차 설명이 자세해야 하고, 2~4학년은 변경점만 알리면 충분합니다. 또한 외국인 학생이 많은 학과는 영문 안내 추가도 필요합니다.</p>
+</div>
+<!-- ④ 섹션 헤더 "따라하기 — 학년별 일괄 공지 프롬프트" -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 426px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 400px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E;">따라하기 — 학년별 일괄 공지 프롬프트</p>
+</div>
+<!-- ⑤ 다크 네이비 코드박스 - Adjusted height and distribution -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 440px; left: 213px; width: 498px; height: 575px; background-color: #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 455px; left: 230px; width: 464px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 10.5px; color: #FFFFFF; line-height: 1.55;">[역할] 너는 학사 공지문 작성 전문가다.<br/>
+<br/>
+[작업]<br/>
+다음 사안을 4가지 버전으로 작성해 주세요.<br/>
+<br/>
+[사안]<br/>
+- 1학기 수강 정정 기간: 2026.03.16(월)~03.20(금)<br/>
+- 정정 가능 시간: 평일 09:00~18:00<br/>
+- 정정 시스템: 학사정보시스템(sis.jnu.ac.kr) &gt; 수강정정<br/>
+- 정정 시 유의: 추가 시 강의 정원 확인, 삭제 시 학점 미달 주의<br/>
+- 문의: 학사지원과(062-530-○○○○)<br/>
+<br/>
+[4가지 버전]<br/>
+(1) 1학년 안내 — 절차 자세히 (250자 내외)<br/>
+   • 처음 정정하는 학년임을 가정<br/>
+   • 학사정보시스템 접속 → 메뉴 위치 안내<br/>
+   • 자주 발생하는 실수 1~2개 미리 경고<br/>
+(2) 2~4학년 안내 — 핵심만 (150자 내외)<br/>
+   • 일정·시스템·문의처만<br/>
+(3) 외국인 학생 영문 (English Notice, 200 words)<br/>
+   • 격식 톤<br/>
+   • Course Add/Drop period<br/>
+(4) 학과 행정실 게시판용 — 게시 형식 (150자 내외)<br/>
+   • 「📌 [중요]」 시작<br/>
+   • 굵은 글씨로 일정 강조<br/>
+<br/>
+[원칙]<br/>
+- 4가지 버전이 동일한 사실 정보를 일관되게 전달<br/>
+- 각 버전 사이에 「===== (버전명) =====」 구분<br/>
+- 마지막에 「일관성 점검: 일자 일치 / 시스템 URL 일치」 표시</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1065px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">105</p>
+</div>
+</div>
+</body>
+</html>

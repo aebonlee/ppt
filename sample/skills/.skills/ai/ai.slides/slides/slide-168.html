@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">04</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">기초 통계<br/>요약 1/2</p>
+</div>
+<!-- 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 90px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">평균·표준편차·이상치를 자동으로 식별하고 1쪽 요약 보고서로 정리한다.</p>
+</div>
+<!-- 시나리오 본문 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify;">강의 만족도 설문 결과 200건(5점 척도)이 수집되었습니다. 강좌별·문항별 평균을 분석하고 의미 있는 통계를 요약해야 합니다.</p>
+</div>
+<!-- 따라하기 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 310px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">따라하기 프롬프트</p>
+</div>
+<!-- Fix: Extended shape height to 460px to accommodate overflowing text -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 345px; left: 213px; width: 498px; height: 460px; background-color: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 360px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[역할]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-bottom: 10px; padding-left: 10px;">당신은 정확한 데이터 해석을 돕는 통계 분석 비서입니다.</p>
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[작업]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-bottom: 10px; padding-left: 10px;">제공된 데이터를 분석하여 기초 통계 요약 보고서를 작성해 주세요.</p>
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[데이터]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-bottom: 10px; padding-left: 10px;">강의 만족도 200건 5점 척도 데이터 (데이터 첨부)</p>
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[산출물 및 분석 기준]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-bottom: 10px; padding-left: 10px;">• 1쪽 A4 분량으로 요약<br/>• 전체 평균, 강좌별 평균 계산<br/>• 이상치 식별 (기준: 평균에서 ±2σ 벗어난 값)</p>
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[형식]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-bottom: 10px; padding-left: 10px;">마크다운 표 + 주요 결과 요약문</p>
+<p style="font-size: 14px; color: #2E5BBA; font-weight: 600; line-height: 1.8;">[안전장치]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8; padding-left: 10px;">응답 수 30건 미만인 강좌는 통계적으로 신뢰하기 어렵다는 점을 명확히 표기해 주세요.</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">162</p>
+</div>
+</div>
+</body>
+</html>

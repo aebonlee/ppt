@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- Header -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- Step Indicator -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">11</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">같은 프롬프트,<br/>다른 모델</p>
+</div>
+<!-- Learning Objective -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 60px; background-color: #F5F8FC; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 115px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 12px; font-weight: 600; color: #5F5E5A; margin-bottom: 4px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.5;">같은 프롬프트를 여러 모델에 보내 결과를 비교하고 모델별 성격을 체감한다.</p>
+</div>
+<!-- Intro Text -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 195px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify;">공문 초안 작성에 어떤 모델이 적합한지 직접 비교해 봅시다. 5분이면 충분합니다.</p>
+</div>
+<!-- 5-Step Card -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 200px; background-color: #2C2C2A; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 32px; background-color: #1B3A6E; border-radius: 6px 6px 0 0; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 267px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 13px; color: #ffffff; font-weight: 600;">따라하기 5단계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 305px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 14px; color: rgba(255,255,255,0.92); line-height: 1.8;">
+      1) 동일 프롬프트 준비: "신입 직원 OJT 안내 공문 초안"<br/>
+      2) GPT-4o로 실행 → 결과 저장<br/>
+      3) 새 대화에서 Claude 3.5 Sonnet으로 동일 프롬프트<br/>
+      4) 새 대화에서 Gemini 1.5 Pro로 동일 프롬프트<br/>
+      5) 세 결과를 한 화면에 놓고 비교
+    </p>
+</div>
+<!-- Comparison Results -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 495px; left: 213px; width: 498px; height: 185px; background-color: #F1EFE8; border-radius: 6px; border-left: 6px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 510px; left: 238px; width: 453px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; letter-spacing: 0.5px; margin-bottom: 12px;">비교 결과 (예시)</p>
+<p style="font-size: 14px; line-height: 1.9; color: #2C2C2A;">
+<span style="font-weight: 600; color: #1B3A6E;">GPT-4o</span>: 균형 잡힌 문장, 표준적 톤 (적합도: ★★★★)<br/>
+<span style="font-weight: 600; color: #1B3A6E;">Claude 3.5 Sonnet</span>: 격식·근거 충실, 공문에 특히 적합 (적합도: ★★★★★)<br/>
+<span style="font-weight: 600; color: #1B3A6E;">Gemini 1.5 Pro</span>: 속도 빠름, 톤이 가벼울 수 있음 (적합도: ★★★)
+    </p>
+</div>
+<!-- Try It Yourself -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 710px; left: 213px; width: 498px; height: 155px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 725px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 600; color: #1B3A6E; display: flex; align-items: center;">
+<span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px;"></span>직접 해보기 — 본인 업무 프롬프트로 비교해 보세요
+    </p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.9; margin-top: 12px;">
+      프롬프트: ________________________________________________<br/>
+      GPT-4o 최고 적합 ( )<br/>
+      Claude 3.5 Sonnet 최고 적합 ( )<br/>
+      Gemini 1.5 Pro 최고 적합 ( )
+    </p>
+</div>
+<!-- TIP Card -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 895px; left: 213px; width: 498px; height: 100px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 913px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #633806; line-height: 1.7; text-align: justify;">
+<span style="font-weight: 700; color: #1B3A6E; margin-right: 12px; letter-spacing: 0.5px;">TIP</span>💡 반복 실험을 통해 본인 업무에 가장 맞는 모델을 발견하세요. 부서별·업무별로 최적 모델이 다를 수 있습니다.
+    </p>
+</div>
+<!-- Footer -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">49</p>
+</div>
+</div>
+</body>
+</html>

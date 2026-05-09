@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">17</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">외부 도구 연동의<br/>한계와 대안</p>
+</div>
+<!-- 우측 콘텐츠: 학습 목표 (회색 박스) - Height increased to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 62px; background-color: #F5F8FC; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; font-weight: 600; line-height: 1.4;">학습 목표: 전남대GPT로 직접 처리할 수 없는 작업의 경계를 알고 우회 방법을 익힌다.</p>
+</div>
+<!-- 우측 콘텐츠: 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 185px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6; text-align: justify;">엑셀 매크로를 자동 실행하거나 한글 문서를 직접 편집하는 일은 AI 채팅창의 한계 밖입니다. 한계를 알고 우회 방법을 활용해야 합니다.</p>
+</div>
+<!-- 한계와 대안 표 (3열) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 40px; background-color: #1B3A6E; border-radius: 6px 6px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 270px; left: 223px; width: 120px; z-index: 10;">
+<p style="font-size: 14px; color: #ffffff; font-weight: 700; text-align: center;">한계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 270px; left: 353px; width: 140px; z-index: 10;">
+<p style="font-size: 14px; color: #ffffff; font-weight: 700; text-align: center;">이유</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 270px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 14px; color: #ffffff; font-weight: 700; text-align: center;">대안</p>
+</div>
+<!-- 행 1 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 300px; left: 213px; width: 498px; height: 80px; background-color: #ffffff; border-bottom: 1px solid #E0E0E0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 320px; left: 223px; width: 120px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; font-weight: 600; text-align: center;">매크로 자동 실행</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 320px; left: 353px; width: 140px; z-index: 10;">
+<p style="font-size: 13px; color: #5F5E5A; text-align: center;">채팅창은 코드 실행 불가</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 310px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 13px; color: #2E5BBA; font-weight: 500; line-height: 1.5;">AI에 매크로 코드를 짜달라고 한 뒤 사람이 엑셀에서 실행</p>
+</div>
+<!-- 행 2 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 380px; left: 213px; width: 498px; height: 80px; background-color: #F5F8FC; border-bottom: 1px solid #E0E0E0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 400px; left: 223px; width: 120px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; font-weight: 600; text-align: center;">외부 시스템 직접 조작</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 400px; left: 353px; width: 140px; z-index: 10;">
+<p style="font-size: 13px; color: #5F5E5A; text-align: center;">보안상 불가</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 390px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 13px; color: #2E5BBA; font-weight: 500; line-height: 1.5;">절차 문서·체크리스트 작성 후 사람이 실행</p>
+</div>
+<!-- 행 3 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 460px; left: 213px; width: 498px; height: 80px; background-color: #ffffff; border-bottom: 1px solid #E0E0E0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 480px; left: 223px; width: 120px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; font-weight: 600; text-align: center;">100MB 이상 대용량</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 480px; left: 353px; width: 140px; z-index: 10;">
+<p style="font-size: 13px; color: #5F5E5A; text-align: center;">토큰(입력 용량) 한계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 470px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 13px; color: #2E5BBA; font-weight: 500; line-height: 1.5;">파일을 분할하거나 핵심 영역만 추출해 입력</p>
+</div>
+<!-- 행 4 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 540px; left: 213px; width: 498px; height: 80px; background-color: #F5F8FC; border-radius: 0 0 6px 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 560px; left: 223px; width: 120px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; font-weight: 600; text-align: center;">실시간 데이터 조회</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 550px; left: 353px; width: 140px; z-index: 10;">
+<p style="font-size: 13px; color: #5F5E5A; text-align: center; line-height: 1.5;">학습 시점 이후<br/>최신 정보 부재</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 550px; left: 503px; width: 198px; z-index: 10;">
+<p style="font-size: 13px; color: #2E5BBA; font-weight: 500; line-height: 1.5;">본인이 최신 데이터를 직접 입력 후 분석 요청</p>
+</div>
+<!-- 우회 패턴 박스 - Height increased to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 650px; left: 213px; width: 498px; height: 120px; background-color: #F1EFE8; border-radius: 0 6px 6px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 650px; left: 213px; width: 6px; height: 120px; background-color: #1B3A6E; border-radius: 4px 0 0 4px; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 665px; left: 238px; width: 453px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; letter-spacing: 0.5px; margin-bottom: 8px;">우회 패턴</p>
+<p style="font-size: 15px; line-height: 1.7; color: #2C2C2A;">
+AI는 <strong>'코드·절차·요약'</strong>에 강하고, 사람은 <strong>'실행·검증·판단'</strong>에 강합니다. 둘을 분담하세요.<br/>
+<span style="color: #2E5BBA; font-weight: 600;">— AI (설계·문서화) ⇄ 사람 (실행·확인)</span>
+</p>
+</div>
+<!-- TIP 콜아웃 - Redistributed down to balance empty space -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 810px; left: 213px; width: 498px; height: 80px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 828px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #633806; line-height: 1.7; text-align: left;">
+<span style="font-weight: 700; color: #1B3A6E; margin-right: 12px; letter-spacing: 0.5px;">💡 TIP</span>한계를 인정하는 것이 효율의 시작입니다. 모든 일을 AI에 맡기려 하지 말고 적합한 분량을 분담하세요.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">71</p>
+</div>
+</div>
+</body>
+</html>

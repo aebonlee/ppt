@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">16</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">폐기 자산<br/>처분 보고서</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 20px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">2/2</p>
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">📋 예상 결과</p>
+</div>
+<!-- 예상 결과 박스 (카드 높이를 높여 오버플로우 해결) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 165px; left: 213px; width: 498px; height: 360px; background-color: #F8F9FA; border-radius: 6px; border: 1px solid #E2E8F0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 180px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #2C2C2A; margin-bottom: 8px;">== 폐기 자산 처분 보고서 ==</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5; margin-bottom: 12px;"><strong>[처분 대상 요약]</strong><br/>총 30건</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5; margin-bottom: 12px;"><strong>[사유별 분류]</strong><br/>- 고장: 12건<br/>- 노후: 10건<br/>- 파손: 5건<br/>- 중복: 2건<br/>- 기타: 1건</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5; margin-bottom: 12px;"><strong>[자산별 상세 내역 (발췌)]</strong><br/>| 자산번호 | 품명 | 취득일 | 취득가 | 잔존가 | 사유 | 처분방법 |<br/>|---|---|---|---|---|---|---|<br/>| ... | ... | ... | ... | ... | ... | ... |</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;"><strong>[폐기 방법]</strong><br/>매각, 재활용, 소각, HDD 완전 파기 등</p>
+</div>
+<!-- 주의사항 박스 (위치 조정) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 545px; left: 213px; width: 498px; height: 90px; background-color: #FFF5F5; border-radius: 6px; border-left: 4px solid #E53E3E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 560px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #9B2C2C; line-height: 1.6;">
+<span style="font-weight: 700; color: #E53E3E; margin-right: 10px;">주의</span>개인정보가 저장된 기기(PC, 노트북 등)는 정보 보안 규정에 따라 반드시 데이터 완전 파기(디가우징 또는 천공) 절차를 거친 후 폐기해야 합니다.
+</p>
+</div>
+<!-- 직접 해보기 박스 (위치 조정 및 하단 여백 채우기 위해 카드 크기 확장 및 재배치) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 655px; left: 213px; width: 498px; height: 160px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 670px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 10px;">본인 부서의 폐기 대상 자산 10건을 정리하여 프롬프트에 입력해 보세요.</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 740px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 770px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- TIP 박스 (위치 조정) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 835px; left: 213px; width: 498px; height: 80px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 850px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #7B5E1A; line-height: 1.6;">
+<span style="font-weight: 700; color: #D69E2E; margin-right: 10px;">TIP</span>폐기 처분은 몰아서 하기보다 연 1회(예: 12월) 정례화하여 정기적으로 처리하는 것이 재물조사 시 혼란을 줄이는 방법입니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">142</p>
+</div>
+</div>
+</body>
+</html>

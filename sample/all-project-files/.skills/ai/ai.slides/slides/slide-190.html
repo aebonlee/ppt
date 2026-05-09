@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 15px; }
+    th { background-color: #1B3A6E; color: white; padding: 12px 8px; border: 1px solid #B5D4F4; text-align: center; font-weight: 600; }
+    td { padding: 14px 10px; border: 1px solid #B5D4F4; text-align: right; line-height: 1.4; }
+    td:first-child { text-align: center; }
+    td:last-child { text-align: left; }
+    .urgent { color: #E53E3E; font-weight: bold; }
+    .low { color: #2E5BBA; font-weight: bold; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">12</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">월별 집행률 점검<br/>2/3</p>
+</div>
+<!-- 예상 결과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 18px; font-weight: 700; color: #1B3A6E; margin-bottom: 16px;">📋 예상 결과</p>
+<p style="font-size: 18px; color: #2C2C2A; font-weight: 600; margin-bottom: 15px;">== 8월 말 학사지원과 예산 집행률 점검 ==</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>예산(원)</th>
+<th>집행누계(원)</th>
+<th>집행률</th>
+<th>잔여액(원)</th>
+<th>상태/활용 제안</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인건비</td>
+<td>12,000,000</td>
+<td>8,400,000</td>
+<td>70%</td>
+<td>3,600,000</td>
+<td>정상</td>
+</tr>
+<tr>
+<td>운영비</td>
+<td>3,500,000</td>
+<td>2,975,000</td>
+<td><span class="urgent">85%</span></td>
+<td>525,000</td>
+<td><span class="urgent">[긴급] 절감 필요</span></td>
+</tr>
+<tr>
+<td>사업비</td>
+<td>8,000,000</td>
+<td>2,400,000</td>
+<td><span class="low">30%</span></td>
+<td>5,600,000</td>
+<td><span class="low">[저집행] 4분기 집중 활용</span></td>
+</tr>
+<tr>
+<td>출장비</td>
+<td>5,200,000</td>
+<td>4,420,000</td>
+<td><span class="urgent">85%</span></td>
+<td>780,000</td>
+<td><span class="urgent">[긴급] 추경 검토</span></td>
+</tr>
+<tr style="background-color: #F1EFE8; font-weight: bold;">
+<td style="padding: 16px 10px;">합계</td>
+<td>28,700,000</td>
+<td>18,195,000</td>
+<td style="text-align: center;">63%</td>
+<td>10,505,000</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">184</p>
+</div>
+</div>
+</body>
+</html>

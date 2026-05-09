@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04 데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">4.1 엑셀 데이터 정리 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">01</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">지저분한 표<br/>정제하기</p>
+<p style="font-size: 10px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 8px;">1/2</p>
+</div>
+<!-- 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 90px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">부서명·금액·날짜 표기가 제각각인 출장비 데이터를 학교 표준 형식으로 자동 정제한다.</p>
+</div>
+<!-- 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify; margin-bottom: 8px;">50건의 출장비 정산 데이터를 취합했습니다. 그런데 입력자가 달라 표기가 제각각입니다.</p>
+<ul style="font-size: 14px; color: #2C2C2A; line-height: 1.6; padding-left: 20px; margin-bottom: 0;">
+<li><strong>부서명:</strong> '학사지원과', '학사처', '학지과' 등 혼용</li>
+<li><strong>금액:</strong> '120,000', '12만원', '120000'</li>
+<li><strong>날짜:</strong> '2026-04-15', '26.4.15', '4월 15일'</li>
+</ul>
+</div>
+<!-- 따라하기 프롬프트 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 380px; left: 213px; width: 498px; height: 380px; background-color: #F1EFE8; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 395px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">따라하기 프롬프트</p>
+<p style="font-size: 14px; font-weight: 700; color: #5F5E5A; margin-bottom: 4px;">[역할]</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 12px; padding-left: 10px;">당신은 전남대학교 행정 데이터를 다루는 엑셀 정제 비서입니다.</p>
+<p style="font-size: 14px; font-weight: 700; color: #5F5E5A; margin-bottom: 4px;">[작업]</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 12px; padding-left: 10px;">아래 제공된 출장비 데이터를 다음 표준화 규칙에 맞게 정제해 주세요.</p>
+<p style="font-size: 14px; font-weight: 700; color: #5F5E5A; margin-bottom: 4px;">[표준화 규칙]</p>
+<ul style="font-size: 14px; color: #2C2C2A; line-height: 1.6; padding-left: 30px; margin-bottom: 12px;">
+<li>부서명: 약어를 학교 공식 명칭으로 통일 (예: 학지과 → 학사지원과)</li>
+<li>금액: 천 단위 콤마 추가, 뒤에 '원' 단위 통일 (예: 120,000원)</li>
+<li>날짜: YYYY-MM-DD 형식으로 통일 (예: 2026-04-15)</li>
+</ul>
+<p style="font-size: 14px; font-weight: 700; color: #5F5E5A; margin-bottom: 4px;">[형식 및 안전장치]</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">결과는 복사하기 쉽게 마크다운 TSV 형식으로 출력해 주세요.<br/>만약 정보가 불확실하여 AI가 추정한 행이 있다면, 비고란에 '[추정]' 태그를 표시해 주세요.</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">155</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+    th { background-color: #1B3A6E; color: white; padding: 10px 8px; text-align: left; border: 1px solid #B5D4F4; }
+    td { padding: 10px 8px; border: 1px solid #B5D4F4; color: #2C2C2A; line-height: 1.5; }
+    tr:nth-child(even) { background-color: #F5F8FC; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">07</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">어떤 차트를 써야<br/>할까</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 250px; left: 83px; width: 106px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; text-align: center; font-weight: 700;">2/2</p>
+</div>
+<!-- 예상 결과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">📋 예상 결과</p>
+<p style="font-size: 14px; font-weight: 600; color: #2E5BBA; margin-bottom: 8px;">== 차트 적합성 비교 표 ==</p>
+<table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+<colgroup>
+<col style="width: 15%;"/>
+<col style="width: 25%;"/>
+<col style="width: 20%;"/>
+<col style="width: 40%;"/>
+</colgroup>
+<tr>
+<th>추천도</th>
+<th>차트 유형</th>
+<th>적합도</th>
+<th>장점 / 단점</th>
+</tr>
+<tr>
+<td style="font-weight: 700; color: #1B3A6E; text-align: center;">1순위</td>
+<td>묶은 막대 차트<br/><span style="font-size: 11px; color: #5F5E5A;">(Grouped Bar)</span></td>
+<td style="color: #FFC857; letter-spacing: 1px; font-size: 11px;">★★★★★</td>
+<td><span style="font-weight: 600;">[장점]</span> 부서별 비교 직관적, 월별 추이 동시 표현 가능</td>
+</tr>
+<tr>
+<td style="font-weight: 700; color: #1B3A6E; text-align: center;">2순위</td>
+<td>선 그래프<br/><span style="font-size: 11px; color: #5F5E5A;">(Line Chart)</span></td>
+<td style="color: #FFC857; letter-spacing: 1px; font-size: 11px;">★★★★☆</td>
+<td><span style="font-weight: 600;">[장점]</span> 추세 강조<br/><span style="font-weight: 600;">[단점]</span> 부서가 5개 이하일 때만 적합</td>
+</tr>
+<tr>
+<td style="font-weight: 700; color: #E53E3E; text-align: center;">비추천</td>
+<td>원 그래프<br/><span style="font-size: 11px; color: #5F5E5A;">(Pie Chart)</span></td>
+<td style="color: #FFC857; letter-spacing: 1px; font-size: 11px;">★☆☆☆☆</td>
+<td><span style="font-weight: 600;">[단점]</span> 시간 추이를 표현할 수 없음</td>
+</tr>
+<tr>
+<td style="font-weight: 700; color: #E53E3E; text-align: center;">비추천</td>
+<td>누적 막대 차트<br/><span style="font-size: 11px; color: #5F5E5A;">(Stacked Bar)</span></td>
+<td style="color: #FFC857; letter-spacing: 1px; font-size: 11px;">★★☆☆☆</td>
+<td><span style="font-weight: 600;">[단점]</span> 부서별 정확한 금액 비교가 어려움</td>
+</tr>
+</table>
+</div>
+<!-- 직접 해보기 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 515px; left: 213px; width: 498px; height: 185px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 530px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 15px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-bottom: 12px;">본인 부서에서 다루는 데이터 1건을 골라, AI에게 가장 적합한 차트를 추천받아 보세요.</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 25px; font-weight: 600;">데이터 내용 (예: 프로그램 만족도 점수):</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 618px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 635px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 25px; font-weight: 600;">AI가 추천한 1순위 차트:</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 675px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- TIP 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 735px; left: 213px; width: 498px; height: 100px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 750px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #5F5E5A; line-height: 1.6; text-align: justify;">
+<span style="font-weight: 700; color: #D97706; margin-right: 10px; letter-spacing: 0.5px;">TIP</span>차트 선택의 핵심 질문은 이것입니다. <span style="font-weight: 600; color: #2C2C2A;">"시청자가 5초 안에 무엇을 알아야 하는가?"</span> 화려한 차트보다 직관적으로 메시지가 전달되는 가장 단순한 차트가 좋은 시각화입니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">170</p>
+</div>
+</div>
+</body>
+</html>

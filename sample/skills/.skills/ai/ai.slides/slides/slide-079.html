@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #e7e7e4; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 180px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">10</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">1쪽 요약<br/>보고서</p>
+<p style="font-size: 10px; color: #B5D4F4; line-height: 1.3; text-align: center; margin-top: 4px;">Executive<br/>Summary</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 12px;">3/3</p>
+</div>
+<!-- ① 섹션 헤더 "모델 전환의 효과" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 21px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">모델 전환의 효과</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 140px; left: 213px; width: 498px; height: 2px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- 설명 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 155px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 13.5px; color: #2C2C2A; line-height: 1.6; text-align: justify;">이 작업을 단일 모델(GPT-4o 한 번)로만 시도해 보면, 30쪽 자료를 한 번에 처리하느라 핵심 수치가 누락되거나, 보고서 톤이 다듬어지지 않은 형태로 나옵니다. 단계를 나누면 각 단계의 모델이 자기 강점에 집중할 수 있어 결과 품질이 크게 올라갑니다.</p>
+</div>
+<!-- ② 비교 표 - Increased width slightly to prevent paint overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 245px; left: 213px; width: 504px; height: 36px; background-color: #1B3A6E; border-radius: 4px 4px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 254px; left: 213px; width: 168px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">작업 단계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 254px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">단일 모델 (GPT-4o만)</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 254px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #ffffff; text-align: center;">모델 전환 (Claude → GPT)</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 281px; left: 213px; width: 504px; height: 36px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 291px; left: 223px; width: 148px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; font-weight: 500;">핵심 수치 추출 정확도</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 291px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: center;">보통</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 291px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">높음</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 317px; left: 213px; width: 504px; height: 36px; background-color: #ffffff; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 327px; left: 223px; width: 148px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; font-weight: 500;">보고서 톤 자연스러움</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 327px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">높음</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 327px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">높음</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 353px; left: 213px; width: 504px; height: 36px; background-color: #F5F8FC; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 363px; left: 223px; width: 148px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; font-weight: 500;">처장 성향 반영</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 363px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: center;">부족</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 363px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">충실</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 389px; left: 213px; width: 504px; height: 36px; background-color: #ffffff; border-bottom: 1px solid #D3D1C7; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 399px; left: 223px; width: 148px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; font-weight: 500;">작업 시간</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 399px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">짧음 (5분)</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 399px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: center;">보통 (10분)</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 425px; left: 213px; width: 504px; height: 36px; background-color: #F5F8FC; border-bottom: 1px solid #1B3A6E; border-radius: 0 0 4px 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 435px; left: 223px; width: 148px; z-index: 10;">
+<p style="font-size: 12px; color: #2C2C2A; font-weight: 500;">본인 검토 부담</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 435px; left: 381px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #E53E3E; font-weight: 700; text-align: center;">큼</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 435px; left: 549px; width: 168px; z-index: 10;">
+<p style="font-size: 12px; color: #2E5BBA; font-weight: 700; text-align: center;">작음</p>
+</div>
+<!-- ③ 직접 해보기 박스 - Increased height and adjusted padding/line-height to fix clipping -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 495px; left: 213px; width: 504px; height: 260px; background-color: #F5F8FC; border: 1.5px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 509px; left: 227px; width: 476px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">✅ 직접 해보기</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5; margin-bottom: 14px;">본인 부서의 분기 결과 자료(또는 긴 사업 결과 자료) 한 가지를 위 2단계 워크플로우로 1쪽 요약 보고서로 만들어 보세요.</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 2.1;">- 원본 자료 분량: _________________ 쪽</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 2.1;">- 1단계 (Claude) 처리 시간: _________________ 분</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 2.1;">- 2단계 (GPT) 처리 시간: _________________ 분</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 2.1;">- 본인 검토 시간: _________________ 분</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 2.1;">- 결과 만족도 — 처장에게 그대로 제출 가능한가: ⭐⭐⭐⭐⭐</p>
+</div>
+<!-- ④ TIP 콜아웃 - Moved down to redistribute space -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 790px; left: 213px; width: 504px; height: 95px; background-color: #FAEEDA; border-radius: 6px; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 805px; left: 227px; width: 476px; z-index: 10;">
+<p style="font-size: 13px; color: #633806; line-height: 1.7; text-align: justify;">
+<span style="font-weight: 700; color: #D97706; margin-right: 5px;">💡 TIP ·</span> 같은 작업을 두 번째부터는 1단계+2단계를 한 카드로 묶어 두면 더 빠릅니다. 본인 부서장의 성향(숫자 선호 / 결정 사항 선호 / 그래프 선호 등)에 맞춘 카드를 한 번 만들어 두면 평생 씁니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">73</p>
+</div>
+</div>
+</body>
+</html>

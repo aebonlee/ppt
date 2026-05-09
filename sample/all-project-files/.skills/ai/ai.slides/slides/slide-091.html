@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">15</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">채용 공고문<br/>작성</p>
+<p style="font-size: 10px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 15px;">1/2</p>
+</div>
+<!-- ① 학습 목표 박스 - Increase height to prevent text overflow/clipping -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 95px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 116px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6;">부서 신규 채용 공고문을 차별적 표현(성별·연령·외모·결혼)을 배제하고 직무 기반으로 작성한다. AI 생성 결과의 자체 점검 단계를 반드시 통과한다.</p>
+</div>
+<!-- ② 섹션 헤더 "시나리오" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; padding-bottom: 5px; border-bottom: 1.5px solid #1B3A6E;">시나리오</p>
+</div>
+<!-- ③ 시나리오 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 90px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 274px; left: 227px; width: 470px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;">학사지원과에서 학사 데이터 관리 업무를 담당할 일반 임기제 직원 1명을 채용합니다. 학교 인재경영팀에 보낼 채용 공고문이 필요합니다. 마감은 3일 후입니다.</p>
+</div>
+<!-- ④ 섹션 헤더 "따라하기 — 공고문 작성 프롬프트" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 375px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16pt; font-weight: 700; color: #1B3A6E; padding-bottom: 5px; border-bottom: 1.5px solid #1B3A6E;">따라하기 — 공고문 작성 프롬프트</p>
+</div>
+<!-- ⑤ 다크 네이비 코드박스 - Adjusted height to fit bottom space and prevent flush edge -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 415px; left: 213px; width: 498px; height: 615px; background-color: #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 430px; left: 230px; width: 464px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 10.5px; color: #ffffff; line-height: 1.6;">[역할] 너는 대학 행정부서의 채용 담당 직원이다. 차별 없는 직무 기반 공고문을 작성한다.<br/><br/>[작업] 다음 정보를 바탕으로 채용 공고문을 작성해 줘.<br/><br/>[채용 정보]<br/>- 부서: 학사지원과<br/>- 직무: 학사 데이터 관리 (일반 임기제, 1명)<br/>- 주요 업무: 학적 변동 데이터 입력·검증, 통계 자료 작성, 관련 공문 발송<br/>- 자격: 학사 학위 이상, 엑셀·한글·워드 능숙, 한국어 의사소통<br/>- 우대: 대학 행정 경력, 통계 분석 도구 사용 경험<br/>- 근무: 본관 학사지원과, 주 5일, 09:00~18:00<br/>- 계약: 1년 (성과 평가 후 연장 가능)<br/>- 마감: 2026.05.20<br/><br/>[형식 — 공고문 구성]<br/>1. 채용 직무 (직무명·인원·부서)<br/>2. 주요 업무 (3~5개 글머리)<br/>3. 자격 요건 (필수)<br/>4. 우대 사항<br/>5. 근무 조건<br/>6. 전형 절차 (서류·면접)<br/>7. 제출 서류 및 마감일<br/>8. 문의처<br/><br/>[자체 점검 — 차별 표현 배제]<br/>- 성별·연령·외모·결혼 여부 관련 표현 절대 금지<br/>- 「젊은」, 「활발한」, 「밝은」 같은 인상 평가형 형용사 금지<br/>- 「남자/여자만 가능」 같은 표현 금지<br/>- 학력 명시 시 「~ 이상」 표현으로 (특정 대학 명시 금지)<br/>- 작성 후 마지막에 「자체 점검 결과」 섹션 추가:<br/>  ✅ 차별 표현 0건 / 직무 외 요건 0건 / [검토 필요] N건</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">85</p>
+</div>
+</div>
+</body>
+</html>

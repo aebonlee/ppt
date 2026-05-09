@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">21</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">입력하면<br/>안 되는 정보</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 6px;">2/3</p>
+</div>
+<!-- 우측 콘텐츠: [섹션 1] 등급별 상세 설명 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1px solid #1B3A6E;">등급별 상세 설명</p>
+</div>
+<!-- 1등급 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 145px; left: 213px; width: 498px; height: 115px; background-color: #FFF5F5; border-left: 4px solid #E53E3E; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 157px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #C53030; margin-bottom: 6px;">🔴 1등급 — 절대 금지</p>
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5; margin-bottom: 8px;">한 번의 실수가 형사·민사 책임으로 이어질 수 있습니다. 표 입력 전 헤더에 1등급 컬럼이 있는지 확인하세요.</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 215px; left: 233px; width: 458px; height: 30px; background-color: #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 224px; left: 243px; width: 438px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #ffffff;">주민등록번호 / 계좌번호·신용카드번호 / 비밀번호·보안 코드 / 의료 정보·진단 기록</p>
+</div>
+<!-- 2등급 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 275px; left: 213px; width: 498px; height: 80px; background-color: #FFFAF0; border-left: 4px solid #ED8936; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 287px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #DD6B20; margin-bottom: 6px;">🟠 2등급 — 강한 금지</p>
+<p style="font-size: 11px; color: #2C2C2A; line-height: 1.5;">학번·사번 같은 식별번호는 다른 정보와 결합 시 개인을 특정할 수 있습니다.<br/><span style="font-weight: 600;">학생 학번/명단, 직원 사번/명단, 휴대폰·이메일, 학생 성적·생활기록·면담 기록</span></p>
+</div>
+<!-- 3등급 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 370px; left: 213px; width: 498px; height: 165px; background-color: #FFFFF0; border-left: 4px solid #ECC94B; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 382px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #B7791F; margin-bottom: 6px;">🟡 3등급 — 가공 필수</p>
+<p style="font-size: 11px; color: #2C2C2A; line-height: 1.5; margin-bottom: 8px;">학교 미공개 정보. 일부 가공·익명화 후 가능.</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 430px; left: 233px; width: 224px; height: 28px; background-color: #E2E8F0; z-index: 1; border-top-left-radius: 4px;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 430px; left: 457px; width: 234px; height: 28px; background-color: #E2E8F0; z-index: 1; border-top-right-radius: 4px;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 437px; left: 233px; width: 224px; z-index: 10;">
+<p style="font-size: 11px; font-weight: 700; color: #4A5568; text-align: center;">원본 (입력 금지)</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 437px; left: 457px; width: 234px; z-index: 10;">
+<p style="font-size: 11px; font-weight: 700; color: #4A5568; text-align: center;">가공 후 (입력 가능)</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 458px; left: 233px; width: 224px; height: 25px; background-color: #ffffff; border-bottom: 1px solid #E2E8F0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 458px; left: 457px; width: 234px; height: 25px; background-color: #ffffff; border-bottom: 1px solid #E2E8F0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 463px; left: 241px; width: 208px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">"학생지원과 2026 예산안 5억 2천만 원"</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 463px; left: 465px; width: 218px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">"A 부서 예산안 — 약 5억"</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 483px; left: 233px; width: 224px; height: 25px; background-color: #ffffff; border-bottom: 1px solid #E2E8F0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 483px; left: 457px; width: 234px; height: 25px; background-color: #ffffff; border-bottom: 1px solid #E2E8F0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 488px; left: 241px; width: 208px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">"이○○ 직원 인사 평가 B등급"</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 488px; left: 465px; width: 218px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">"직원 A 평가 결과 분포 분석"</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 508px; left: 233px; width: 224px; height: 25px; background-color: #ffffff; z-index: 1; border-bottom-left-radius: 4px;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 508px; left: 457px; width: 234px; height: 25px; background-color: #ffffff; z-index: 1; border-bottom-right-radius: 4px;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 513px; left: 241px; width: 208px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">입학 면접 답변 원문</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 513px; left: 465px; width: 218px; z-index: 10;">
+<p style="font-size: 11px; color: #2C2C2A;">답변 유형 분류</p>
+</div>
+<!-- 우측 콘텐츠: [섹션 2] 30초 판단 절차 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 565px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1px solid #1B3A6E;">30초 판단 절차</p>
+<p style="font-size: 12px; color: #2C2C2A; line-height: 1.5; margin-top: 12px;">새로운 자료를 AI에 입력하기 전, 다음 3가지 질문을 머릿속으로 던지세요.</p>
+</div>
+<!-- Q1 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 635px; left: 213px; width: 498px; height: 75px; background-color: #F5F8FC; border-left: 3px solid #2E5BBA; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 647px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 12px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">Q1. 학생·직원 개인을 특정할 수 있는 정보가 있는가?</p>
+<p style="font-size: 11px; color: #4A4A4A; line-height: 1.5; padding-left: 20px;">→ <span style="font-weight: 600; color: #E53E3E;">Yes: 2등급 이상, 가공·삭제 후 입력</span><br/>→ <span style="font-weight: 600; color: #2E5BBA;">No: Q2로</span></p>
+</div>
+<!-- Q2 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 725px; left: 213px; width: 498px; height: 75px; background-color: #F5F8FC; border-left: 3px solid #2E5BBA; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 737px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 12px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">Q2. 학교 외부에 아직 공개되지 않은 정보인가?</p>
+<p style="font-size: 11px; color: #4A4A4A; line-height: 1.5; padding-left: 20px;">→ <span style="font-weight: 600; color: #D69E2E;">Yes: 3등급, 가공 검토</span><br/>→ <span style="font-weight: 600; color: #2E5BBA;">No: Q3로</span></p>
+</div>
+<!-- Q3 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 815px; left: 213px; width: 498px; height: 75px; background-color: #F5F8FC; border-left: 3px solid #2E5BBA; border-radius: 0 4px 4px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 827px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 12px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">Q3. 학교 외부 사람에게 보여 줘도 무방한가?</p>
+<p style="font-size: 11px; color: #4A4A4A; line-height: 1.5; padding-left: 20px;">→ <span style="font-weight: 600; color: #38A169;">Yes: 5등급, 자유롭게 입력</span><br/>→ <span style="font-weight: 600; color: #2E5BBA;">No: 4등급, 주의해서 입력</span></p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">88</p>
+</div>
+</div>
+</body>
+</html>

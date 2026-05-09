@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+    th, td { border: 1px solid #B5D4F4; padding: 10px 6px; text-align: center; font-size: 14px; }
+    th { background-color: #F5F8FC; font-weight: 700; color: #1B3A6E; }
+    td { color: #2C2C2A; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">04</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">기초 통계<br/>요약 2/2</p>
+</div>
+<!-- ① 예상 결과 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 460px; background-color: #F5F8FC; border: 1px solid #B5D4F4; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 16px;">📋 예상 결과</p>
+<p style="font-size: 15px; font-weight: 700; color: #2C2C2A; margin-bottom: 12px; background: #E2E8F0; padding: 4px 8px; display: inline-block;">== 강의 만족도 1쪽 요약 ==</p>
+<p style="font-size: 14px; font-weight: 700; color: #2E5BBA; margin-bottom: 8px;">1) 전체 평균: <span style="color: #2C2C2A; font-weight: normal;">4.2/5.0 (n=200, σ=0.65)</span></p>
+<p style="font-size: 14px; font-weight: 700; color: #2E5BBA; margin-bottom: 10px; margin-top: 12px;">2) 강좌별 평균 표:</p>
+<table>
+<tr>
+<th>강좌명</th>
+<th>응답수</th>
+<th>평균</th>
+<th>표준편차</th>
+</tr>
+<tr>
+<td>A강좌</td>
+<td>45</td>
+<td>4.7</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>B강좌</td>
+<td>40</td>
+<td>4.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>C강좌</td>
+<td>50</td>
+<td>3.8</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td style="color: #E53E3E; font-weight: bold;">D강좌</td>
+<td>47</td>
+<td style="color: #E53E3E; font-weight: bold;">2.9 (이상치)</td>
+<td>0.9</td>
+</tr>
+</table>
+<p style="font-size: 14px; font-weight: 700; color: #2E5BBA; margin-bottom: 6px; margin-top: 8px;">3) 이상치 식별:</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 6px; padding-left: 10px;">• D강좌 2.9 (-2.1σ) - 전체 평균 대비 1.3점 낮음, 우선 점검 권장</p>
+<p style="font-size: 14px; font-weight: 700; color: #2E5BBA; margin-bottom: 6px; margin-top: 8px;">4) 신뢰 주의:</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 4px; padding-left: 10px;">• E강좌 응답 18건은 통계 신뢰성 부족 (분석에서 제외됨)</p>
+</div>
+<!-- ② 직접 해보기 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 590px; left: 213px; width: 498px; height: 170px; background-color: #ffffff; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 615px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 20px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 15px; color: #2C2C2A; margin-bottom: 16px;">본인 부서의 만족도/평가 데이터로 1쪽 요약 작성</p>
+<p style="font-size: 15px; color: #2C2C2A; margin-bottom: 12px;">• 대상 데이터: ________________________</p>
+<p style="font-size: 15px; color: #2C2C2A; margin-bottom: 8px;">• 요약 생성 여부:   □ 성공   □ 필요 보완</p>
+</div>
+<!-- ③ 주의/TIP 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 785px; left: 213px; width: 498px; height: 110px; background-color: #FFF9E6; border-radius: 6px; border-left: 4px solid #D69E2E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 805px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #975A16; line-height: 1.7; text-align: justify;">
+<span style="font-weight: 700; color: #D69E2E; margin-right: 10px; letter-spacing: 0.5px;">TIP</span>평균값은 반드시 엑셀 <span style="font-family: monospace; background: #FEEBC8; padding: 1px 4px; border-radius: 3px;">AVERAGE</span> 함수로 교차 검증하세요. AI 계산 결과를 그대로 신뢰하지 말고, 요약 서식의 초안으로만 활용해야 합니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">163</p>
+</div>
+</div>
+</body>
+</html>

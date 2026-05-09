@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">15</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">분기 결산 보고서<br/>작성</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 4px;">2/3</p>
+</div>
+<!-- 예상 결과 본문 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 60px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">📋 예상 결과</p>
+</div>
+<!-- 마크다운 결과 컨테이너 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 180px; left: 213px; width: 498px; height: 750px; background-color: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 215px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #2C2C2A; text-align: center; margin-bottom: 35px;">== 2026년 3분기 학사지원과 결산 보고서 ==</p>
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">1) 분기 개요</p>
+<p style="font-size: 14px; color: #4A5568; line-height: 1.8; margin-bottom: 35px;">• 7~9월 집행 누계: 21,500,000원<br/>• 예산 대비 집행률: 75%</p>
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">2) 항목별 집행 현황 표</p>
+</div>
+<!-- 테이블 배경 (adjusted top and lowered to prevent text overlap) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 405px; left: 233px; width: 458px; height: 32px; background-color: #E2E8F0; z-index: 2;"></div>
+<!-- 테이블 텍스트 (adjusted top to avoid overlapping with section header) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 412px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 12px; font-weight: 700; color: #2D3748; display: flex;">
+<span style="flex: 1; text-align: center;">항목</span>
+<span style="flex: 1.5; text-align: center;">예산</span>
+<span style="flex: 1.5; text-align: center;">집행</span>
+<span style="flex: 1; text-align: center;">집행률</span>
+<span style="flex: 1.5; text-align: center;">잔여</span>
+</p>
+<div style="border-bottom: 1px solid #CBD5E0; margin: 6px 0;"></div>
+<p style="font-size: 12px; color: #4A5568; display: flex; margin: 12px 0;">
+<span style="flex: 1; text-align: center;">인건비</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">12,000,000</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">9,300,000</span>
+<span style="flex: 1; text-align: center;">77.5%</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">2,700,000</span>
+</p>
+<div style="border-bottom: 1px solid #E2E8F0; margin: 6px 0;"></div>
+<p style="font-size: 12px; color: #4A5568; display: flex; margin: 12px 0;">
+<span style="flex: 1; text-align: center;">운영비</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">3,500,000</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">3,150,000</span>
+<span style="flex: 1; text-align: center; color: #E53E3E; font-weight: 700;">90.0%</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">350,000</span>
+</p>
+<div style="border-bottom: 1px solid #E2E8F0; margin: 6px 0;"></div>
+<p style="font-size: 12px; color: #4A5568; display: flex; margin: 12px 0;">
+<span style="flex: 1; text-align: center;">사업비</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">8,000,000</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">4,800,000</span>
+<span style="flex: 1; text-align: center; color: #3182CE; font-weight: 700;">60.0%</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">3,200,000</span>
+</p>
+<div style="border-bottom: 1px solid #E2E8F0; margin: 6px 0;"></div>
+<p style="font-size: 12px; color: #4A5568; display: flex; margin: 12px 0;">
+<span style="flex: 1; text-align: center;">출장비</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">5,200,000</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">4,250,000</span>
+<span style="flex: 1; text-align: center;">81.7%</span>
+<span style="flex: 1.5; text-align: right; padding-right: 15px;">950,000</span>
+</p>
+</div>
+<!-- 하단 보고서 텍스트 (adjusted top and increased line spacing to fill container) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 650px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">3) 주요 사업 진행</p>
+<p style="font-size: 14px; color: #4A5568; line-height: 1.8; margin-bottom: 24px;">• 신입생 OT 완료<br/>• 학사 데이터 정제 진행 중</p>
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">4) 4분기 전망</p>
+<p style="font-size: 14px; color: #4A5568; line-height: 1.8; margin-bottom: 24px;">• 사업비(60%) 집중 집행 필요<br/>• 출장비(81.7%) 추경 검토 요망</p>
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">5) 개선 제안</p>
+<p style="font-size: 14px; color: #4A5568; line-height: 1.8;">• 분기 정례 점검 강화</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">193</p>
+</div>
+</div>
+</body>
+</html>

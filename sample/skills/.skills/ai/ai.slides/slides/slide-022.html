@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">08</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">제약과 검증<br/>추가하기</p>
+</div>
+<!-- 우측 콘텐츠 -->
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 50px; background-color: #F5F8FC; border-radius: 6px; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 120px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #1B3A6E; font-weight: 600; line-height: 1.5;">학습 목표: 결과 일관성을 위해 제약 조건과 검증 단계를 프롬프트에 명시한다.</p>
+</div>
+<!-- ② 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 175px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify; font-weight: 600; margin-bottom: 5px;">시나리오</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; text-align: justify;">같은 프롬프트로 매번 다른 결과가 나오면 곤란합니다. 보고서 양식·글자 수·금지어·표기 규칙 등을 명시해 변동성을 줄입니다.</p>
+</div>
+<!-- ③ 따라하기 3단계 카드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 255px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #1B3A6E; font-weight: 600; margin-bottom: 8px;">따라하기 3단계</p>
+<ul style="padding-left: 20px; font-size: 13.5px; color: #2C2C2A; line-height: 1.7;">
+<li><strong>1) 제약 조건 명시</strong> - "최대 200자 이내", "표 형식 필수", "법령은 인용하지 말 것", "숫자는 반올림 없이"</li>
+<li><strong>2) 검증 지시</strong> - "작성 후 5가지 항목 누락 여부를 스스로 점검하고 체크리스트로 보고"</li>
+<li><strong>3) 출력 형식 고정</strong> - JSON·표·번호 매김으로 후처리 용이하게</li>
+</ul>
+</div>
+<!-- ④ 코드박스 예시(다크 네이비) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 395px; left: 213px; width: 498px; height: 26px; background-color: #1B3A6E; border-radius: 6px 6px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 404px; left: 223px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 404px; left: 236px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 404px; left: 249px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 421px; left: 213px; width: 498px; height: 250px; background-color: #2C2C2A; border-radius: 0 0 6px 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 435px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.92); margin-bottom: 10px;">프롬프트 예시</p>
+<div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.22); padding: 12px; border-radius: 4px;">
+<p style="font-family: monospace; font-size: 13px; color: rgba(255,255,255,0.78); line-height: 1.5;">
+위 내용을 보고서로 작성해 주세요.<br/><br/>
+제약 조건:<br/>
+- 최대 500자 이내<br/>
+- 표 형식 필수<br/>
+- 법령 인용 금지<br/>
+- 숫자는 원자료 그대로<br/><br/>
+작성 완료 후 다음 5개 항목의 충족 여부를 ✅/❌로 보고:<br/>
+① 글자 수 ② 표 포함 ③ 법령 미인용 ④ 숫자 정확 ⑤ 결론 포함
+</p>
+</div>
+</div>
+<!-- ⑤ 예상 결과 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 690px; left: 213px; width: 498px; height: 200px; background-color: #F1EFE8; border-radius: 0 6px 6px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 690px; left: 213px; width: 6px; height: 200px; background-color: #1B3A6E; border-radius: 4px 0 0 4px; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 705px; left: 238px; width: 453px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; letter-spacing: 0.5px; margin-bottom: 10px;">예상 결과</p>
+<p style="font-family: monospace; font-size: 14px; line-height: 1.7; color: #2C2C2A;">
+[본문 출력] ...<br/><br/>
+✅ ① 글자 수 487자<br/>
+✅ ② 표 1개 포함<br/>
+✅ ③ 법령 미인용<br/>
+✅ ④ 원자료 그대로 사용<br/>
+✅ ⑤ 결론 3줄 포함
+</p>
+</div>
+<!-- ⑥ 주의 콜아웃 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 910px; left: 213px; width: 498px; height: 90px; background-color: #FDEFEF; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 925px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #A62828; line-height: 1.7; text-align: justify;">
+<span style="font-weight: 700; margin-right: 12px; letter-spacing: 0.5px;">⚠️ 주의</span>AI의 자기 검증은 100% 신뢰할 수 없습니다. 
+반드시 사람이 마지막 검토를 수행해야 합니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">36</p>
+</div>
+</div>
+</body>
+</html>
