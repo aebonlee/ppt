@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; table-layout: fixed; }
+    th { background-color: #1B3A6E; color: white; padding: 12px 8px; text-align: center; border: 1px solid #1B3A6E; font-weight: 500; }
+    td { padding: 12px 8px; border: 1px solid #B5D4F4; color: #2C2C2A; text-align: center; line-height: 1.3; overflow: hidden; }
+    tr:nth-child(even) { background-color: #F5F8FC; }
+    .bold-row { font-weight: 700; background-color: #E8F0FE; color: #1B3A6E; }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">18</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">월 마감 자동화<br/>워크플로우<br/>2/3</p>
+</div>
+<!-- 7가지 마감 작업 카드 매핑 표 -->
+<!-- Increased height from 410px to 540px to prevent text overflow and accommodate table content -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 540px; background-color: #ffffff; border: 1px solid #B5D4F4; border-top: 4px solid #1B3A6E; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">📋 7가지 마감 작업 카드 매핑 표</p>
+<table>
+<thead>
+<tr>
+<th style="width: 25%;">작업</th>
+<th style="width: 35%;">사용 카드</th>
+<th style="width: 15%;">소요 시간</th>
+<th style="width: 25%;">검증 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 출근부 점검</td>
+<td>인사 명단 정제 카드</td>
+<td>3분</td>
+<td>엑셀 합계</td>
+</tr>
+<tr>
+<td>② 예산 집행률</td>
+<td>월별 집행률 점검 카드</td>
+<td>4분</td>
+<td>부서 ERP 비교</td>
+</tr>
+<tr>
+<td>③ 영수증 처리</td>
+<td>회계 용어·계정 과목 분류 카드</td>
+<td>5분</td>
+<td>회계팀 매뉴얼</td>
+</tr>
+<tr>
+<td>④ 이상 거래 점검</td>
+<td>이상 거래 탐지 카드</td>
+<td>4분</td>
+<td>영수증 재확인</td>
+</tr>
+<tr>
+<td>⑤ 회의록 통합</td>
+<td>정기 회의록 시리즈 카드</td>
+<td>5분</td>
+<td>원본 대조</td>
+</tr>
+<tr>
+<td>⑥ 민원 통계</td>
+<td>민원 분석 카드</td>
+<td>4분</td>
+<td>부서 일지 대조</td>
+</tr>
+<tr>
+<td>⑦ 보고 자료 작성</td>
+<td>분기 결산 보고서 카드</td>
+<td>5분</td>
+<td>데이터 교차 검증</td>
+</tr>
+<tr class="bold-row">
+<td colspan="2" style="text-align: right; padding-right: 15px;">합계</td>
+<td>30분</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 부가 설명 -->
+<!-- Moved 'top' down to 670px to avoid overlap with the expanded table card above -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 670px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; text-align: justify; padding: 20px; background-color: #F5F8FC; border-radius: 6px; border-left: 4px solid #2E5BBA;">
+<span style="font-weight: 700; color: #1B3A6E;">💡 워크플로우 운영 핵심:</span> 7개의 카드를 연속적으로 사용하여 월 마감에 소요되던 수십 시간을 30분 이내로 압축합니다. 각 단계별로 <b>검증 방법</b>을 반드시 준수하여 AI의 결과물에 대한 신뢰성을 확보해야 합니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">202</p>
+</div>
+</div>
+</body>
+</html>

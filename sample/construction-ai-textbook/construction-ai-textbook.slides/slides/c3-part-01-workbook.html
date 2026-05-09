@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>교재 3 · Part 01 · ③ 워크북</title>
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#1B2D5C; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="08 4도구 셋업 워크북" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <!-- HEADER -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:45px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 01 · 워크북</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:700; color:#6B7280;">GENAI · TOOLBOX</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#1B2D5C; z-index:5;"></div>
+
+  <!-- SIDE TAG -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center; justify-content:center; font-size:11px; letter-spacing:0.32em; font-weight:800; color:#FFFFFF;">
+    PART 01 · 워크북
+  </div>
+
+  <!-- STEP CHIP -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:96px; width:90px; height:90px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:104px; width:90px; height:81px; z-index:11; text-align:center;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#F4B400;">STEP</div>
+    <div style="font-size:32px; font-weight:900; color:#FFFFFF; line-height:1; margin-top:2px;">01</div>
+    <div style="font-size:9px; letter-spacing:0.18em; color:#F4B400; margin-top:8px;">ACCOUNT</div>
+    <div style="font-size:9px; letter-spacing:0.18em; color:#F4B400;">SETUP</div>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:200px; top:104px; width:500px; height:80px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ③ · 워크북</div>
+    <div style="font-size:27px; font-weight:900; color:#1B2D5C; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">4대 도구 동시 셋업</div>
+    <div style="font-size:13.3px; font-weight:500; color:#1B2D5C; margin-top:5px; line-height:1.6;">한 번의 셋업으로 ChatGPT · Claude · Genspark · Gemini를 모두 비교 사용 가능한 환경을 만듭니다.</div>
+  </div>
+
+  <!-- 학습 목표 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:606px; height:78px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:5px; height:78px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:230px; width:570px; height:63px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">학습 목표</div>
+    <div style="font-size:12px; color:#2D2D2D; line-height:1.65; margin-top:4px;">
+      회사 계정으로 4대 GenAI 서비스에 동시에 가입하고, <b>데이터 학습 차단 옵션</b>을 켠 뒤, 같은 프롬프트를 네 도구에 보내 출력 차이를 직접 확인합니다.
+    </div>
+  </div>
+
+  <!-- 시나리오 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:606px; height:78px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:5px; height:78px; background:#1B2D5C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:324px; width:570px; height:63px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">시나리오</div>
+    <div style="font-size:12px; color:#2D2D2D; line-height:1.65; margin-top:4px;">
+      "다음 주부터는 한 가지 도구만 쓰지 말고 <b>그때그때 적합한 도구</b>를 골라 쓰자"는 부서장 지시. 우선 4도구 모두 회사 계정으로 가입한 뒤, <b>같은 견적 요청</b>을 네 도구에 보내 결과를 비교해 보기로 합니다.
+    </div>
+  </div>
+
+  <!-- 4-TOOL CHECK GRID -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:412px; width:606px; height:24px; z-index:10;">
+    <div style="font-size:20px; font-weight:800; color:#1B2D5C; letter-spacing:-0.012em;">따라하기 — 4도구 동시 셋업</div>
+  </div>
+
+  <!-- TABLE -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:456px; width:608px; height:236px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:456px; width:608px; height:30px; background:#1B2D5C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:456px; width:608px; height:30px; z-index:11; display:flex; align-items:center; padding:0 14px; font-size:10px; letter-spacing:0.18em; font-weight:800; color:#F4B400;">
+    <div style="width:120px;">도구</div>
+    <div style="width:130px;">URL</div>
+    <div style="width:120px;">회사 계정 가입</div>
+    <div style="width:130px;">학습 차단 옵션</div>
+    <div style="flex:1;">월 비용 (참고)</div>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:486px; width:608px; height:206px; z-index:11; padding:0 14px; font-size:11.5px; line-height:1.5; color:#2D2D2D;">
+    <div style="display:flex; padding:9px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:120px; font-weight:900; color:#1B2D5C;">ChatGPT</div>
+      <div style="width:130px;">chat.openai.com</div>
+      <div style="width:120px;">☐ 완료</div>
+      <div style="width:130px;">설정 → Data → OFF</div>
+      <div style="flex:1;">Plus $20 / Team</div>
+    </div>
+    <div style="display:flex; padding:9px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:120px; font-weight:900; color:#1B2D5C;">Claude</div>
+      <div style="width:130px;">claude.ai</div>
+      <div style="width:120px;">☐ 완료</div>
+      <div style="width:130px;">기본값으로 차단</div>
+      <div style="flex:1;">Pro $20 / Team</div>
+    </div>
+    <div style="display:flex; padding:9px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:120px; font-weight:900; color:#1B2D5C;">Genspark</div>
+      <div style="width:130px;">genspark.ai</div>
+      <div style="width:120px;">☐ 완료</div>
+      <div style="width:130px;">설정 → Privacy</div>
+      <div style="flex:1;">Free / Plus</div>
+    </div>
+    <div style="display:flex; padding:9px 0;">
+      <div style="width:120px; font-weight:900; color:#1B2D5C;">Gemini</div>
+      <div style="width:130px;">gemini.google.com</div>
+      <div style="width:120px;">☐ 완료</div>
+      <div style="width:130px;">활동 → 일시중지</div>
+      <div style="flex:1;">Workspace 포함</div>
+    </div>
+  </div>
+
+  <!-- 직접 해보기 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:710px; width:610px; height:174px; background:#FFFAF6; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:726px; width:570px; height:144px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">직접 해보기</div>
+    <div style="font-size:12.5px; color:#2D2D2D; line-height:1.7; margin-top:6px;">
+      ① 위 표의 4개 항목을 모두 <b>☑ 완료</b> 로 체크하세요.<br>
+      ② 같은 프롬프트 한 줄("HX220A 22톤 굴착기 1년 임대 견적서 1쪽 작성")을 4도구에 보내 보세요.<br>
+      ③ 출력의 <b>속도 · 길이 · 인용 표기 · 표 사용 여부</b>를 1줄씩 메모하세요.<br>
+      ④ 4개 출력 중 <b>오늘 업무에 가장 가까운 1개</b> 를 골라 ★ 표시하세요.
+    </div>
+  </div>
+
+  <!-- 주의 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:902px; width:606px; height:74px; background:#FFFFFF; border:1px solid #C0392B; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:902px; width:5px; height:74px; background:#C0392B; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:914px; width:570px; height:58px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#C0392B;">주의 · CAUTION</div>
+    <div style="font-size:11.5px; color:#2D2D2D; line-height:1.65; margin-top:4px;">
+      <b>4도구 동시 가입 ≠ 4도구 동시 사용 허용</b>. 회사가 라이선스를 부여한 도구만 회사 데이터로 쓰세요. 무료 계정으로 회사 견적·고객명·차대번호를 입력하면 모델 학습 데이터로 흘러갈 수 있습니다.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:1058px; width:680px; height:1px; background:#D6D0C2; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1075px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.18em; color:#6B7280;">³ 가격 · UI 옵션은 2026년 1월 기준 — 분기마다 재확인 권장</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:800; color:#1B2D5C;">028</span>
+  </div>
+
+</div>
+</body>
+</html>

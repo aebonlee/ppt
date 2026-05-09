@@ -1,0 +1,705 @@
+{
+  "page": 5,
+  "size_pt": {
+    "w": 612.0,
+    "h": 859.0
+  },
+  "rotation": 0,
+  "text_layer_chars": 319,
+  "spans_count": 36,
+  "images_count": 8,
+  "drawings_count": 10,
+  "screenshot": "pages/page_005.png",
+  "text": "Part\n05\n3D MRI 분류 모델\n➊ 3D MRI 이미지\n128\n1. 3차원 이미지 데이터\n128\n2. MRI 이미지\n133\n➋ MRI 영상 분류 모델 개발 실습\n135\n1. 데이터셋: IXI Dataset\n135\n2. MONAI\n139\n3. 3D 영상 분류 모델 개발 실습\n143\nPart\n06\n3D CT 장기 분할 모델 개발\n➊ 3D 영상 분할 모델\n150\n1. 3D 영상 분할 모델 소개\n150\n➋ Automatic Mixed Precision\n156\n02 CT 영상 장기 분할 모델 개발\n161\n1. 데이터셋: BTCV\n161\n2. 학습 파이프라인 구축\n163\n",
+  "spans": [
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        161.0,
+        131.2,
+        177.8
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "05",
+      "bbox": [
+        109.0,
+        172.1,
+        132.2,
+        206.9
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "3D MRI 분류 모델",
+      "bbox": [
+        146.7,
+        172.0,
+        288.8,
+        199.0
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        228.8,
+        162.3,
+        240.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "3D MRI 이미지",
+      "bbox": [
+        164.2,
+        226.1,
+        243.6,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "128",
+      "bbox": [
+        501.1,
+        226.1,
+        522.1,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 3차원 이미지 데이터",
+      "bbox": [
+        166.5,
+        247.8,
+        263.0,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "128",
+      "bbox": [
+        505.1,
+        247.8,
+        522.1,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. MRI 이미지",
+      "bbox": [
+        166.5,
+        260.7,
+        227.8,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "133",
+      "bbox": [
+        505.1,
+        260.7,
+        522.1,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        289.0,
+        162.3,
+        301.0
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "MRI 영상 분류 모델 개발 실습",
+      "bbox": [
+        164.2,
+        286.3,
+        319.0,
+        304.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "135",
+      "bbox": [
+        501.1,
+        286.3,
+        522.1,
+        304.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 데이터셋: IXI Dataset",
+      "bbox": [
+        166.5,
+        308.0,
+        272.4,
+        323.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "135",
+      "bbox": [
+        505.1,
+        308.0,
+        522.1,
+        323.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. MONAI",
+      "bbox": [
+        166.5,
+        321.0,
+        210.8,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "139",
+      "bbox": [
+        505.1,
+        321.0,
+        522.1,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. 3D 영상 분류 모델 개발 실습",
+      "bbox": [
+        166.5,
+        334.0,
+        300.7,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "143",
+      "bbox": [
+        505.1,
+        334.0,
+        522.1,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        401.3,
+        131.2,
+        418.1
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "06",
+      "bbox": [
+        109.0,
+        412.4,
+        132.2,
+        447.2
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "3D CT 장기 분할 모델 개발",
+      "bbox": [
+        146.7,
+        412.3,
+        356.3,
+        439.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        469.0,
+        162.3,
+        481.0
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "3D 영상 분할 모델",
+      "bbox": [
+        164.2,
+        466.3,
+        259.0,
+        484.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "150",
+      "bbox": [
+        501.1,
+        466.3,
+        522.1,
+        484.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 3D 영상 분할 모델 소개",
+      "bbox": [
+        166.5,
+        488.0,
+        278.9,
+        503.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "150",
+      "bbox": [
+        505.1,
+        488.0,
+        522.1,
+        503.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        516.3,
+        162.3,
+        528.3
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "Automatic Mixed Precision",
+      "bbox": [
+        164.2,
+        513.6,
+        310.0,
+        531.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "156",
+      "bbox": [
+        501.2,
+        513.6,
+        522.1,
+        531.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "02 CT 영상 장기 분할 모델 개발",
+      "bbox": [
+        166.5,
+        535.3,
+        303.0,
+        550.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "161",
+      "bbox": [
+        505.1,
+        535.3,
+        522.1,
+        550.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "1. 데이터셋: BTCV",
+      "bbox": [
+        166.5,
+        548.3,
+        244.6,
+        563.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "161",
+      "bbox": [
+        505.1,
+        548.3,
+        522.1,
+        563.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 학습 파이프라인 구축",
+      "bbox": [
+        166.5,
+        561.3,
+        265.8,
+        576.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "163",
+      "bbox": [
+        505.1,
+        561.3,
+        522.1,
+        576.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    }
+  ],
+  "images": [
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        286.5,
+        612.3,
+        381.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        381.9,
+        612.3,
+        477.4
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        477.4,
+        612.3,
+        572.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        572.9,
+        612.3,
+        668.3
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        668.3,
+        612.3,
+        763.8
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 8212,
+      "bbox": [
+        -0.0,
+        0.1,
+        612.3,
+        191.0
+      ],
+      "px_w": 2551,
+      "px_h": 796,
+      "asset_path": "media/img_xref_8212.jpeg"
+    },
+    {
+      "xref": 8213,
+      "bbox": [
+        -0.0,
+        191.0,
+        612.3,
+        286.5
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_8213.png"
+    },
+    {
+      "xref": 8214,
+      "bbox": [
+        -0.0,
+        763.8,
+        612.3,
+        859.0
+      ],
+      "px_w": 2551,
+      "px_h": 395,
+      "asset_path": "media/img_xref_8214.png"
+    }
+  ],
+  "drawings": [
+    {
+      "bbox": [
+        0.0,
+        286.5,
+        612.0,
+        381.9
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        382.0,
+        612.0,
+        477.4
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        477.4,
+        612.0,
+        572.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        572.9,
+        612.0,
+        668.3
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        668.4,
+        612.0,
+        763.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        763.8,
+        612.0,
+        859.0
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        145.1,
+        201.3,
+        527.4,
+        201.3
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        201.3,
+        527.4,
+        201.3
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        441.6,
+        527.4,
+        441.6
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        441.6,
+        527.4,
+        441.6
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    }
+  ],
+  "links": []
+}

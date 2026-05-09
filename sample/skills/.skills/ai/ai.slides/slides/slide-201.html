@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 (Y-axis redistribution: Moved down to fill space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 125px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 138px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">16</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">외부 감사<br/>대비 자료<br/>정리 1/3</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 125px; left: 213px; width: 498px; height: 110px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 142px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">학습 목표</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6;">외부 감사 대비 체크리스트를 자동 생성하고 부서 자료와 매핑·보완 계획을 수립한다.</p>
+</div>
+<!-- ② 시나리오 본문 (Spacing adjustments for redistribution) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 275px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">시나리오</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.7; text-align: justify;">연 1회 외부 회계 감사 1개월 전 - 감사실에서 자료 요구 공문이 도착했습니다. 부서별 회계·예산·자산 자료를 정리하여 누락 없이 제출해야 합니다.</p>
+</div>
+<!-- ③ 따라하기 프롬프트 (Box height increased and contents redistributed to fill vertical space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 415px; left: 213px; width: 498px; height: 480px; background-color: #FFFFFF; border: 1.5px solid #2E5BBA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 440px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #2E5BBA; margin-bottom: 24px;">따라하기 프롬프트</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 2.1;">
+<span style="font-weight: 700;">역할:</span> 외부 감사 대비 자료 정리 비서<br/>
+<span style="font-weight: 700;">작업:</span> 요구 자료 체크리스트 + 부서 보유 자료 매핑 + 보완 계획<br/>
+<span style="font-weight: 700;">입력 데이터:</span> 감사실 요구 자료 목록 (예: 분기별 결산서·집행 내역서·자산 대장·이상 거래 사유서 등)<br/>
+<span style="font-weight: 700;">산출물:</span> 요구 항목별 매핑 표 (요구 자료·부서 보유 여부·자료 위치·보완 필요 여부·담당자·기한)<br/>
+<span style="font-weight: 700;">형식:</span> 마크다운 표<br/>
+<span style="font-weight: 700;">안전장치:</span> 보유하지 않은 자료는 [생성 필요] 표시
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">195</p>
+</div>
+</div>
+</body>
+</html>

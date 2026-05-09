@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="940" viewBox="0 0 680 470" role="img">
+<title>VOL.01 내지 디자인 샘플 — 챕터 표제지와 본문 펼침면</title>
+<desc>왼쪽 Chapter 03 표제지와 오른쪽 3.2절 본문이 마주 보는 펼침면 형태로 구성된 내지 디자인 샘플</desc>
+<style>
+.bk-h{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;letter-spacing:-0.02em}
+.bk-b{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:400}
+.bk-m{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR',sans-serif;font-weight:500}
+.bk-en{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.18em}
+.bk-num{font-family:'Noto Sans CJK KR',sans-serif;font-weight:700}
+.bk-mono{font-family:'Noto Sans Mono CJK KR','D2Coding',ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-weight:400}
+</style>
+
+<rect x="40" y="30" width="290" height="420" fill="#F4EFE3"/>
+<rect x="328" y="30" width="2" height="420" fill="#E2DBC9"/>
+
+<text x="60" y="50" class="bk-en" font-size="8" fill="#888780">PART 02 · 프롬프트 엔지니어링</text>
+<text x="310" y="50" class="bk-en" font-size="8" fill="#888780" text-anchor="end">23</text>
+
+<text x="60" y="115" class="bk-en" font-size="10" fill="#185FA5">CHAPTER</text>
+<line x1="60" y1="125" x2="100" y2="125" stroke="#185FA5" stroke-width="0.6"/>
+<text x="60" y="200" class="bk-num" font-size="76" fill="#185FA5">03</text>
+
+<text x="60" y="240" class="bk-h" font-size="22" fill="#1F1F1D">건설기계 업무용</text>
+<text x="60" y="266" class="bk-h" font-size="22" fill="#1F1F1D">프롬프트 패턴</text>
+
+<rect x="60" y="282" width="36" height="3" fill="#EF9F27"/>
+
+<text x="60" y="313" class="bk-b" font-size="11" fill="#5A5A56">정비 · 품질 · 안전 · 영업 · 부품 등</text>
+<text x="60" y="329" class="bk-b" font-size="11" fill="#5A5A56">건설기계 직무 영역별로 검증된 프롬</text>
+<text x="60" y="345" class="bk-b" font-size="11" fill="#5A5A56">프트 8가지 패턴을 익히고, 자기 업무</text>
+<text x="60" y="361" class="bk-b" font-size="11" fill="#5A5A56">에 맞는 프롬프트 라이브러리를 직접</text>
+<text x="60" y="377" class="bk-b" font-size="11" fill="#5A5A56">설계해본다.</text>
+
+<text x="60" y="408" class="bk-m" font-size="10" fill="#185FA5">학습 목표</text>
+<line x1="60" y1="414" x2="80" y2="414" stroke="#185FA5" stroke-width="0.5"/>
+<text x="60" y="430" class="bk-b" font-size="10.5" fill="#1F1F1D">· 직무별 프롬프트 패턴 8종 이해</text>
+<text x="60" y="445" class="bk-b" font-size="10.5" fill="#1F1F1D">· 자신의 업무용 프롬프트 5종 작성</text>
+
+<rect x="350" y="30" width="290" height="420" fill="#F4EFE3"/>
+<rect x="350" y="30" width="2" height="420" fill="#E2DBC9"/>
+
+<text x="370" y="50" class="bk-en" font-size="8" fill="#888780">CHAPTER 03 · 프롬프트 패턴</text>
+<text x="620" y="50" class="bk-en" font-size="8" fill="#888780" text-anchor="end">29</text>
+
+<text x="370" y="92" class="bk-en" font-size="9" fill="#BA7517">SECTION 3.2</text>
+<text x="370" y="118" class="bk-h" font-size="17" fill="#1F1F1D">정비 업무 프롬프트 패턴</text>
+<rect x="370" y="128" width="24" height="2.5" fill="#185FA5"/>
+
+<text x="370" y="155" class="bk-b" font-size="11" fill="#1F1F1D">동일한 고장 증상이라도 모델, 운전 환경,</text>
+<text x="370" y="171" class="bk-b" font-size="11" fill="#1F1F1D">사용 이력에 따라 원인이 달라진다. 따라</text>
+<text x="370" y="187" class="bk-b" font-size="11" fill="#1F1F1D">서 정비 업무 프롬프트에는 다음 네 가지</text>
+<text x="370" y="203" class="bk-b" font-size="11" fill="#1F1F1D">맥락을 반드시 함께 제공해야 한다.</text>
+
+<g>
+<text x="370" y="232" class="bk-num" font-size="11" fill="#BA7517">1.</text>
+<text x="386" y="232" class="bk-b" font-size="11" fill="#1F1F1D">장비 모델 · 시리얼 · 가동시간</text>
+<text x="370" y="251" class="bk-num" font-size="11" fill="#BA7517">2.</text>
+<text x="386" y="251" class="bk-b" font-size="11" fill="#1F1F1D">발생 시점과 작업 환경 정보</text>
+<text x="370" y="270" class="bk-num" font-size="11" fill="#BA7517">3.</text>
+<text x="386" y="270" class="bk-b" font-size="11" fill="#1F1F1D">직접 확인한 증상과 알람 코드</text>
+<text x="370" y="289" class="bk-num" font-size="11" fill="#BA7517">4.</text>
+<text x="386" y="289" class="bk-b" font-size="11" fill="#1F1F1D">이미 시도한 점검 항목</text>
+</g>
+
+<rect x="370" y="310" width="250" height="120" fill="#FBF3E0" stroke="#EF9F27" stroke-width="0.5"/>
+<rect x="370" y="310" width="3" height="120" fill="#EF9F27"/>
+<text x="382" y="328" class="bk-en" font-size="8" fill="#BA7517">PROMPT EXAMPLE</text>
+<text x="382" y="350" class="bk-mono" font-size="9.5" fill="#1F1F1D">역할: 굴착기 정비 30년차 베테랑</text>
+<text x="382" y="365" class="bk-mono" font-size="9.5" fill="#1F1F1D">장비: R220-9, 가동 6,400h</text>
+<text x="382" y="380" class="bk-mono" font-size="9.5" fill="#1F1F1D">증상: 시동 5분 후 출력 저하</text>
+<text x="382" y="395" class="bk-mono" font-size="9.5" fill="#1F1F1D">조치: 연료필터 교체 (효과 없음)</text>
+<text x="382" y="416" class="bk-m" font-size="9.5" fill="#BA7517">→ 가능한 원인 5가지를 가능성 순으로</text>
+</svg>

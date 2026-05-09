@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">06</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">정기 회의록<br/>시리즈 관리</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 12px;">1/2</p>
+</div>
+<!-- ① 학습 목표 - Fix: height increased to accommodate text without overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 100px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">4주치 회의록을 한꺼번에 분석해 월간 리뷰·미해결 작업·반복 안건을 자동으로 추출한다.</p>
+</div>
+<!-- ② 섹션 제목 "시나리오" - Shifted down -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 235px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- 시나리오 박스 - Shifted down -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 275px; left: 213px; width: 498px; height: 85px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 287px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;">월말이 다가오면 부서장에게 한 달간 진행 상황을 보고해야 합니다. 4주치 회의록을 다시 읽으며 정리하면 두세 시간 걸리는 작업을 AI에 맡겨 봅니다.</p>
+</div>
+<!-- ③ 섹션 제목 "따라하기 — 시리즈 분석 프롬프트" - Shifted down to fill empty space -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 395px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">따라하기 — 시리즈 분석 프롬프트</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 420px; left: 213px; width: 498px; height: 1px; background-color: #1B3A6E; z-index: 1;"></div>
+<!-- 큰 코드박스 - Shifted down and height adjusted for better layout balance -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 435px; left: 213px; width: 498px; height: 480px; background-color: #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 455px; left: 227px; width: 470px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #ffffff; line-height: 1.8;">[역할] 너는 회의록 시리즈 분석 비서다.<br/><br/>[작업] 다음 4주치 회의록을 분석해 월간 리뷰를 작성해 주세요.<br/><br/>[분석 항목]<br/>1. 핵심 결정 사항 (3~5개로 압축)<br/>2. 미해결 작업 (담당자·원인별)<br/>3. 반복 안건 (3주 이상 등장한 주제)<br/>4. 다음 달 우선순위 (제안)<br/><br/>[출력 형식]<br/>- 마크다운 표 + 번호 매김<br/>- 마지막에 「부서장 보고용 1쪽 요약」 추가<br/><br/>[회의록 4건]<br/>주차 1: ...<br/>주차 2: ...<br/>주차 3: ...<br/>주차 4: ...</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">114</p>
+</div>
+</div>
+</body>
+</html>

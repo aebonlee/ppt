@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #e7e7e4; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">14</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95; margin-bottom: 12px;">개인정보 마스킹 자동화</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center;">1/2</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 90px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6;">주민번호·연락처·이메일·이름이 섞인 명단을 학교 표준 형식으로 자동 마스킹한다. AI에 입력 가능한 안전 형식으로 변환하는 게 목적이다.</p>
+</div>
+<!-- ② 섹션 헤더 "학교 표준 마스킹 규칙" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 215px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1.5px solid #1B3A6E; padding-bottom: 6px;">학교 표준 마스킹 규칙</p>
+</div>
+<!-- ③ 마스킹 규칙 표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 235px; border: 1px solid #D3D1C7; border-radius: 4px; background-color: #FFFFFF; z-index: 1;"></div>
+<!-- 표 헤더 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 36px; background-color: #1B3A6E; border-radius: 4px 4px 0 0; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 263px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #FFFFFF; display: flex;">
+<span style="width: 100px; text-align: center;">항목</span>
+<span style="width: 200px; text-align: center;">원본</span>
+<span style="width: 198px; text-align: center;">마스킹 후</span>
+</p>
+</div>
+<!-- 표 내용 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 291px; left: 213px; width: 498px; z-index: 10;">
+<div style="font-size: 12px; color: #2C2C2A; line-height: 1.5;">
+<div style="display: flex; padding: 7px 0; border-bottom: 1px solid #E2E8F0; background-color: #F5F8FC;">
+<span style="width: 100px; text-align: center; font-weight: 600;">이름</span>
+<span style="width: 200px; padding-left: 16px;">김민수</span>
+<span style="width: 182px; padding-left: 16px;">김○○ 또는 직책 A</span>
+</div>
+<div style="display: flex; padding: 7px 0; border-bottom: 1px solid #E2E8F0;">
+<span style="width: 100px; text-align: center; font-weight: 600;">사번</span>
+<span style="width: 200px; padding-left: 16px;">2024-12345</span>
+<span style="width: 182px; padding-left: 16px;">EMP-XX-XXX 또는 임시 코드</span>
+</div>
+<div style="display: flex; padding: 7px 0; border-bottom: 1px solid #E2E8F0; background-color: #F5F8FC;">
+<span style="width: 100px; text-align: center; font-weight: 600;">주민번호</span>
+<span style="width: 200px; padding-left: 16px;">880101-1234567</span>
+<span style="width: 182px; padding-left: 16px;">88****-*****</span>
+</div>
+<div style="display: flex; padding: 7px 0; border-bottom: 1px solid #E2E8F0;">
+<span style="width: 100px; text-align: center; font-weight: 600;">휴대폰</span>
+<span style="width: 200px; padding-left: 16px;">010-1234-5678</span>
+<span style="width: 182px; padding-left: 16px;">010-****-5678</span>
+</div>
+<div style="display: flex; padding: 7px 0; border-bottom: 1px solid #E2E8F0; background-color: #F5F8FC;">
+<span style="width: 100px; text-align: center; font-weight: 600;">이메일</span>
+<span style="width: 200px; padding-left: 16px;">abc@jnu.ac.kr</span>
+<span style="width: 182px; padding-left: 16px;">a***@jnu.ac.kr</span>
+</div>
+<div style="display: flex; padding: 7px 0;">
+<span style="width: 100px; text-align: center; font-weight: 600;">주소</span>
+<span style="width: 200px; padding-left: 16px;">광주광역시 북구 ○○동 ○○번지</span>
+<span style="width: 182px; padding-left: 16px;">광주광역시 북구 (이후 마스킹)</span>
+</div>
+</div>
+</div>
+<!-- ④ 섹션 헤더 "따라하기 — 마스킹 프롬프트" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 520px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1.5px solid #1B3A6E; padding-bottom: 6px;">따라하기 — 마스킹 프롬프트</p>
+</div>
+<!-- ⑤ 다크 네이비 코드박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 560px; left: 213px; width: 498px; height: 440px; background-color: #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 575px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #FFFFFF; line-height: 1.6; white-space: pre-wrap;">[역할] 너는 학교 인사 데이터의 개인정보 마스킹 자동화 도구다.
+
+[입력 데이터]
+(엑셀에서 복사한 명단 — 원본 그대로)
+김민수 | 2024-12345 | 880101-1234567 | 010-1234-5678 | abc@jnu.ac.kr
+이영희 | 2023-11111 | 920215-2345678 | 010-9876-5432 | def@jnu.ac.kr
+…
+
+[작업]
+모든 행을 학교 표준 마스킹 규칙에 맞게 변환:
+- 이름 → 「성+○○」 형식 (예: 김○○)
+- 사번 → 「EMP-N1」 임시 코드 (행 순서대로 N1, N2, ...)
+- 주민번호 → 「YY****-*****」
+- 휴대폰 → 「010-****-뒷4자리」
+- 이메일 → 첫 글자만 노출 후 별표 (a***@도메인)
+
+[출력 형식]
+- 마스킹된 데이터를 TSV로 출력
+- 마지막 행에 「변환: N건 / 마스킹 누락: 0건」 표시
+
+[원칙]
+- 한 행이라도 마스킹 누락이 의심되면 「[검토 필요]」 표시
+- 외부 도메인 이메일(@gmail.com 등)은 도메인까지 마스킹</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">82</p>
+</div>
+</div>
+</body>
+</html>

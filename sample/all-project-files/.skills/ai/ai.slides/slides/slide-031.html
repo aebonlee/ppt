@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>Step 15 워드/한글 문서 작업</title>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- Running Head -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- Side Tag -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">15</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">워드/한글<br/>문서 작업</p>
+</div>
+<!-- Content 1: 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 60px; background-color: #F5F8FC; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 120px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6; font-weight: 600;">학습 목표: 워드·한글 문서를 전남대GPT로 다듬는 표준 흐름을 익힌다.</p>
+</div>
+<!-- Content 2: 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 185px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify;">부서장이 보낸 공문 초안 한글 파일을 격식·맞춤법·요약본까지 함께 다듬어야 합니다.</p>
+</div>
+<!-- Content 3: 따라하기 3단계 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 250px; left: 213px; width: 498px; z-index: 10;">
+<ul style="list-style: none; padding-left: 0;">
+<li style="font-size: 15px; color: #2C2C2A; line-height: 1.7; margin-bottom: 12px;"><strong>1) 본문 복사</strong> - 한글/워드에서 본문만 선택 후 Ctrl+C (서식은 자동 제거됨)</li>
+<li style="font-size: 15px; color: #2C2C2A; line-height: 1.7; margin-bottom: 12px;"><strong>2) 프롬프트와 함께 붙여넣기</strong> - "다음 공문을 격식 있게 다듬고 맞춤법 점검 후 3줄 요약"</li>
+<li style="font-size: 15px; color: #2C2C2A; line-height: 1.7;"><strong>3) 결과 적용</strong> - 한글로 다시 붙여넣기 시 "텍스트만 붙여넣기" 옵션 사용 (서식 깨짐 방지)</li>
+</ul>
+</div>
+<!-- Content 4: 코드박스 예시 -->
+<!-- Increased height from 110px to 130px to prevent text overflow/flush edge -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 400px; left: 213px; width: 498px; height: 130px; background-color: #2C2C2A; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 415px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.92); line-height: 1.6;">다음 공문 초안을 격식 있게 다듬고 맞춤법을 점검해 주세요. 마지막에 3줄 요약을 추가해 주세요.<br/><br/>// [공문 본문 붙여넣기]</p>
+</div>
+<!-- Content 5: 한글 vs 워드 차이 표 -->
+<!-- Shifted down to accommodate larger codebox and redistribute vertical space -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 560px; left: 213px; width: 498px; height: 140px; background-color: #F1EFE8; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 560px; left: 462px; width: 1px; height: 140px; background-color: #D3D1C7; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 585px; left: 233px; width: 209px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px; text-align: center;">한글</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; text-align: center;">표·수식 깨짐 주의,<br/>텍스트 위주 작업 권장</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 585px; left: 482px; width: 209px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px; text-align: center;">워드</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; text-align: center;">마크다운 표 자동 변환 가능,<br/>표 작업도 무난</p>
+</div>
+<!-- Content 6: TIP 콜아웃 -->
+<!-- Shifted down to fill empty space at bottom -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 730px; left: 213px; width: 498px; height: 90px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 748px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #633806; line-height: 1.6;"><span style="font-weight: 700; color: #1B3A6E; margin-right: 8px;">💡 TIP</span>한글 문서의 표는 그대로 복사하면 깨집니다. 표만 따로 엑셀에 붙여넣고 정리한 뒤 다시 한글로 옮기세요.</p>
+</div>
+<!-- Page Number -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">65</p>
+</div>
+</div>
+</body>
+</html>

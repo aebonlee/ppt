@@ -1,0 +1,978 @@
+{
+  "page": 4,
+  "size_pt": {
+    "w": 612.0,
+    "h": 859.0
+  },
+  "rotation": 0,
+  "text_layer_chars": 473,
+  "spans_count": 57,
+  "images_count": 8,
+  "drawings_count": 10,
+  "screenshot": "pages/page_004.png",
+  "text": "Contents\nPart\n03\n피부암 진단 모델 고도화\n➊ 고도화 전략\n60\n1. 평가 결과 해석\n60\n2. 데이터 품질 및 양 향상\n62\n3. 모델 아키텍쳐 개선\n63\n➋ 이미지 분류 모델 소개\n65\n1. CNN\n65\n2. Transformer\n74\n➌ 피부암 진단 모델 고도화 학습\n79\n1. timm 프레임워크\n79\n2. 전이학습 실습\n83\n3. 평가 결과 해석 실습\n87\n➍ Multi-modal과 VQA\n92\n1. Multi-modal\n92\n2. VQA 소개\n96\nPart\n04\n객체 탐지 및 이미지 분할 개요\n➊ 객체 탐지 및 이미지 분할 개요\n100\n1. 객체 탐지 개념\n100\n2. 객체 탐지 모델\n103\n3. 이미지 분할 개념\n107\n4. 이미지 분할 모델\n109\n➋ 안저사진 혈관 분리 모델 실습\n112\n1. Semantic segmentation 모델 구현\n112\n2. Semantic segmentation 모델 평가\n123\n",
+  "spans": [
+    {
+      "text": "Contents",
+      "bbox": [
+        65.3,
+        66.7,
+        185.4,
+        111.7
+      ],
+      "font": "IBMPlexSansKRSemiBold",
+      "size": 30.0,
+      "color": 9474192,
+      "flags": 16
+    },
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        161.0,
+        131.2,
+        177.8
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "03",
+      "bbox": [
+        109.0,
+        172.1,
+        132.2,
+        206.9
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "피부암 진단 모델 고도화",
+      "bbox": [
+        146.7,
+        172.9,
+        327.3,
+        199.9
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        228.8,
+        162.3,
+        240.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "고도화 전략",
+      "bbox": [
+        164.2,
+        226.1,
+        222.3,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "60",
+      "bbox": [
+        508.1,
+        226.1,
+        522.1,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 평가 결과 해석",
+      "bbox": [
+        166.5,
+        247.8,
+        240.4,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "60",
+      "bbox": [
+        510.7,
+        247.8,
+        522.1,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 데이터 품질 및 양 향상",
+      "bbox": [
+        166.5,
+        260.7,
+        275.3,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "62",
+      "bbox": [
+        510.7,
+        260.7,
+        522.1,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. 모델 아키텍쳐 개선",
+      "bbox": [
+        166.5,
+        273.8,
+        257.3,
+        288.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "63",
+      "bbox": [
+        510.7,
+        273.8,
+        522.1,
+        288.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        302.0,
+        162.3,
+        314.0
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "이미지 분류 모델 소개",
+      "bbox": [
+        164.2,
+        299.3,
+        275.4,
+        317.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "65",
+      "bbox": [
+        508.0,
+        299.3,
+        522.1,
+        317.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. CNN",
+      "bbox": [
+        166.5,
+        321.0,
+        199.3,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "65",
+      "bbox": [
+        510.8,
+        321.0,
+        522.1,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. Transformer",
+      "bbox": [
+        166.5,
+        334.0,
+        232.6,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "74",
+      "bbox": [
+        510.7,
+        334.0,
+        522.1,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➌ ",
+      "bbox": [
+        146.7,
+        362.3,
+        162.3,
+        374.3
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "피부암 진단 모델 고도화 학습",
+      "bbox": [
+        164.2,
+        359.6,
+        312.3,
+        377.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "79",
+      "bbox": [
+        508.0,
+        359.6,
+        522.1,
+        377.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. timm 프레임워크",
+      "bbox": [
+        166.5,
+        381.3,
+        249.5,
+        396.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "79",
+      "bbox": [
+        510.7,
+        381.3,
+        522.1,
+        396.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 전이학습 실습",
+      "bbox": [
+        166.5,
+        394.2,
+        235.6,
+        409.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "83",
+      "bbox": [
+        510.7,
+        394.2,
+        522.1,
+        409.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. 평가 결과 해석 실습",
+      "bbox": [
+        166.5,
+        407.3,
+        262.1,
+        422.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "87",
+      "bbox": [
+        510.7,
+        407.3,
+        522.1,
+        422.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➍ ",
+      "bbox": [
+        146.7,
+        435.5,
+        162.3,
+        447.5
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "Multi-modal과 VQA",
+      "bbox": [
+        164.2,
+        432.8,
+        267.6,
+        450.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "92",
+      "bbox": [
+        508.0,
+        432.8,
+        522.1,
+        450.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. Multi-modal",
+      "bbox": [
+        166.5,
+        454.5,
+        231.8,
+        469.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "92",
+      "bbox": [
+        510.7,
+        454.5,
+        522.1,
+        469.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. VQA 소개",
+      "bbox": [
+        166.5,
+        467.5,
+        220.3,
+        482.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "96",
+      "bbox": [
+        510.7,
+        467.5,
+        522.1,
+        482.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        534.8,
+        131.2,
+        551.6
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "04",
+      "bbox": [
+        109.0,
+        545.9,
+        132.2,
+        580.7
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "객체 탐지 및 이미지 분할 개요",
+      "bbox": [
+        146.7,
+        545.8,
+        375.3,
+        572.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        602.5,
+        162.3,
+        614.5
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "객체 탐지 및 이미지 분할 개요",
+      "bbox": [
+        164.2,
+        599.8,
+        318.3,
+        617.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "100",
+      "bbox": [
+        501.1,
+        599.8,
+        522.1,
+        617.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 객체 탐지 개념",
+      "bbox": [
+        166.5,
+        621.5,
+        240.4,
+        636.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "100",
+      "bbox": [
+        505.1,
+        621.5,
+        522.1,
+        636.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 객체 탐지 모델",
+      "bbox": [
+        166.5,
+        634.5,
+        240.4,
+        649.6
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "103",
+      "bbox": [
+        505.1,
+        634.5,
+        522.1,
+        649.6
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. 이미지 분할 개념",
+      "bbox": [
+        166.5,
+        647.5,
+        248.9,
+        662.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "107",
+      "bbox": [
+        505.1,
+        647.5,
+        522.1,
+        662.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "4. 이미지 분할 모델",
+      "bbox": [
+        166.5,
+        660.5,
+        248.9,
+        675.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "109",
+      "bbox": [
+        505.1,
+        660.5,
+        522.1,
+        675.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        688.8,
+        162.3,
+        700.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "안저사진 혈관 분리 모델 실습",
+      "bbox": [
+        164.2,
+        686.1,
+        312.4,
+        704.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "112",
+      "bbox": [
+        501.1,
+        686.1,
+        522.1,
+        704.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. Semantic segmentation 모델 구현",
+      "bbox": [
+        166.5,
+        707.8,
+        326.9,
+        722.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "112",
+      "bbox": [
+        505.1,
+        707.8,
+        522.1,
+        722.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. Semantic segmentation 모델 평가",
+      "bbox": [
+        166.5,
+        720.8,
+        326.9,
+        735.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "123",
+      "bbox": [
+        505.1,
+        720.8,
+        522.1,
+        735.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    }
+  ],
+  "images": [
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        286.5,
+        612.3,
+        381.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        381.9,
+        612.3,
+        477.4
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        477.4,
+        612.3,
+        572.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        572.9,
+        612.3,
+        668.3
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        668.3,
+        612.3,
+        763.8
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 8212,
+      "bbox": [
+        -0.0,
+        0.1,
+        612.3,
+        191.0
+      ],
+      "px_w": 2551,
+      "px_h": 796,
+      "asset_path": "media/img_xref_8212.jpeg"
+    },
+    {
+      "xref": 8213,
+      "bbox": [
+        -0.0,
+        191.0,
+        612.3,
+        286.5
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_8213.png"
+    },
+    {
+      "xref": 8214,
+      "bbox": [
+        -0.0,
+        763.8,
+        612.3,
+        859.0
+      ],
+      "px_w": 2551,
+      "px_h": 395,
+      "asset_path": "media/img_xref_8214.png"
+    }
+  ],
+  "drawings": [
+    {
+      "bbox": [
+        0.0,
+        286.5,
+        612.0,
+        381.9
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        382.0,
+        612.0,
+        477.4
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        477.4,
+        612.0,
+        572.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        572.9,
+        612.0,
+        668.3
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        668.4,
+        612.0,
+        763.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        763.8,
+        612.0,
+        859.0
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        145.1,
+        202.2,
+        527.4,
+        202.2
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        202.2,
+        527.4,
+        202.2
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        575.1,
+        527.4,
+        575.1
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        575.1,
+        527.4,
+        575.1
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    }
+  ],
+  "links": []
+}

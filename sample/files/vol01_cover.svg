@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="860" viewBox="0 0 280 430" role="img">
+<title>VOL.01 생성형 AI 업무 자동화 — 표지</title>
+<desc>건설기계 실무자를 위한 생성형 AI 업무 자동화 교재 표지 디자인</desc>
+<style>
+.cv-title{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;letter-spacing:-0.03em}
+.cv-sub{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:400;letter-spacing:-0.02em}
+.cv-meta{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.18em}
+.cv-vl{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.15em}
+.cv-vn{font-family:'Noto Sans CJK KR',sans-serif;font-weight:700}
+.cv-foot{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.12em}
+.cv-fk{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR',sans-serif;font-weight:500;letter-spacing:0.05em}
+</style>
+
+<rect x="0" y="0" width="280" height="430" fill="#042C53"/>
+<rect x="6" y="0" width="274" height="200" fill="#0C447C"/>
+<rect x="0" y="0" width="6" height="430" fill="#0A3A6E"/>
+<rect x="6" y="0" width="274" height="3" fill="#FAC775"/>
+
+<text x="22" y="32" class="cv-meta" font-size="9" fill="#FAC775">CONSTRUCTION × AI</text>
+<text x="22" y="46" class="cv-meta" font-size="8" fill="#85B7EB">실무자 양성 시리즈</text>
+
+<text x="264" y="32" class="cv-vl" font-size="9" fill="#FAC775" text-anchor="end">VOLUME</text>
+<text x="264" y="56" class="cv-vn" font-size="22" fill="#FAC775" text-anchor="end">01</text>
+
+<g opacity="0.55">
+<line x1="22" y1="85" x2="250" y2="85" stroke="#FAC775" stroke-width="0.4"/>
+<line x1="22" y1="100" x2="180" y2="100" stroke="#FAC775" stroke-width="0.4"/>
+<line x1="60" y1="115" x2="250" y2="115" stroke="#FAC775" stroke-width="0.4"/>
+<circle cx="22" cy="85" r="2.4" fill="#FAC775"/>
+<circle cx="100" cy="85" r="2.4" fill="#FAC775"/>
+<circle cx="180" cy="85" r="3.4" fill="#EF9F27"/>
+<circle cx="250" cy="85" r="2.4" fill="#FAC775"/>
+<circle cx="22" cy="100" r="1.8" fill="#85B7EB"/>
+<circle cx="100" cy="100" r="1.8" fill="#85B7EB"/>
+<circle cx="180" cy="100" r="1.8" fill="#85B7EB"/>
+<circle cx="60" cy="115" r="1.8" fill="#FAC775"/>
+<circle cx="140" cy="115" r="3.4" fill="#EF9F27"/>
+<circle cx="220" cy="115" r="1.8" fill="#FAC775"/>
+<line x1="180" y1="85" x2="140" y2="115" stroke="#EF9F27" stroke-width="0.5"/>
+<line x1="100" y1="85" x2="180" y2="100" stroke="#FAC775" stroke-width="0.4"/>
+</g>
+
+<g transform="translate(140,165)">
+<path d="M -55 -8 L -25 -28 L 35 -28 L 55 -8 L 35 12 L -25 12 Z" fill="#EF9F27"/>
+<rect x="-8" y="-3" width="38" height="6" fill="#FAC775"/>
+<circle cx="0" cy="2" r="5" fill="#042C53"/>
+<circle cx="42" cy="-32" r="2.4" fill="#FAC775" opacity="0.95"/>
+<circle cx="50" cy="-22" r="1.8" fill="#FAC775" opacity="0.7"/>
+<circle cx="56" cy="-14" r="1.4" fill="#FAC775" opacity="0.45"/>
+</g>
+
+<text x="22" y="260" class="cv-title" font-size="32" fill="#FFFFFF">생성형 AI</text>
+<text x="22" y="296" class="cv-title" font-size="32" fill="#FAC775">업무 자동화</text>
+<line x1="22" y1="316" x2="78" y2="316" stroke="#FAC775" stroke-width="2.5"/>
+<text x="22" y="346" class="cv-sub" font-size="12.5" fill="#B5D4F4">건설기계 실무자를 위한</text>
+<text x="22" y="364" class="cv-sub" font-size="12.5" fill="#B5D4F4">프롬프트 · 문서 · 챗봇 자동화</text>
+
+<line x1="22" y1="395" x2="250" y2="395" stroke="#185FA5" stroke-width="0.4"/>
+<text x="22" y="415" class="cv-fk" font-size="9" fill="#85B7EB">건설기계 재직자 AI 교육</text>
+<text x="250" y="415" class="cv-foot" font-size="8" fill="#85B7EB" text-anchor="end">CON·AI EDU SERIES</text>
+</svg>

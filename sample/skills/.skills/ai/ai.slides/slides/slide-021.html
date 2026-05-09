@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">07</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">단계 분해와<br/>사고 유도</p>
+</div>
+<!-- 우측 콘텐츠 -->
+<!-- ① 학습 목표 - 고정: 높이 증가시켜 텍스트 넘침 해결 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 62px; background-color: #F5F8FC; border-radius: 4px; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 115px; left: 233px; width: 468px; z-index: 10;">
+<p style="font-size: 14px; color: #1B3A6E; font-weight: 600; line-height: 1.5;">학습 목표: 복잡한 작업을 한 번에 시키지 않고 단계로 분해해 더 정확한 결과를 얻는다.</p>
+</div>
+<!-- ② 시나리오 - 위치 소폭 조정 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 175px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify; margin-bottom: 12px;"><span style="font-weight: 600; color: #1B3A6E;">시나리오:</span> 예산 분석 보고서를 한 번에 요청하면 두루뭉술한 결과가 나오기 쉽습니다. 분석→비교→결론 3단계로 나눠 진행해 보세요.</p>
+</div>
+<!-- ③ 따라하기 3단계 카드 - 높이 소폭 확장 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 180px; border: 1px solid #D3D1C7; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 36px; background-color: #F1EFE8; border-radius: 6px 6px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 263px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #1B3A6E;">따라하기 3단계</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 305px; left: 233px; width: 458px; z-index: 10;">
+<ul style="font-size: 14px; color: #2C2C2A; line-height: 1.8; margin-left: 20px;">
+<li><span style="font-weight: 600; color: #1B3A6E;">1) 단계 명시</span> - "다음 순서로 작업해 주세요: 1) 데이터 정리 2) 비교 분석 3) 결론 도출"</li>
+<li><span style="font-weight: 600; color: #1B3A6E;">2) 사고 유도</span> - "단계별로 생각해 주세요(Think step by step)" 추가</li>
+<li><span style="font-weight: 600; color: #1B3A6E;">3) 중간 점검</span> - 한 단계 끝에서 멈추고 검토 후 다음 단계 진행</li>
+</ul>
+</div>
+<!-- ④ 코드박스 예시 - 텍스트 넘침 해결을 위해 높이 증가 (180->205) 및 위치 조정 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 455px; left: 213px; width: 498px; height: 26px; background-color: #1B3A6E; border-radius: 6px 6px 0 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 464px; left: 223px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 464px; left: 236px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 464px; left: 249px; width: 8px; height: 8px; background-color: rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 481px; left: 213px; width: 498px; height: 205px; background-color: #2C2C2A; border-radius: 0 0 6px 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 495px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.92); margin-bottom: 10px;">프롬프트 예시</p>
+<div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.22); padding: 12px; border-radius: 4px;">
+<p style="font-family: monospace; font-size: 13px; color: rgba(255,255,255,0.78); line-height: 1.6;">다음을 단계별로 진행해 주세요.<br/>
+1단계: 원자료에서 불필요한 열을 제거하고 핵심 지표 3개만 남겨 요약. 끝나면 멈추고 보고.<br/>
+2단계: 작년 동기 대비 증감률 비교표 작성.<br/>
+3단계: 시사점 3가지 도출.<br/>
+단계별로 생각하며 진행해 주세요.</p>
+</div>
+</div>
+<!-- ⑤ 예상 결과 박스 - 위치 조정 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 710px; left: 213px; width: 498px; height: 130px; background-color: #F1EFE8; border-radius: 0 6px 6px 0; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 710px; left: 213px; width: 6px; height: 130px; background-color: #1B3A6E; border-radius: 4px 0 0 4px; z-index: 2;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 725px; left: 238px; width: 453px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; letter-spacing: 0.5px; margin-bottom: 8px;">예상 결과</p>
+<p style="font-size: 14px; line-height: 1.8; color: #2C2C2A;">
+<span style="font-weight: 600;">[1단계 결과]</span> 핵심 지표 3개 정리 완료, 다음 단계 진행 가능<br/>
+→ <span style="font-weight: 600;">[2단계 결과]</span> 증감률 표 작성 완료<br/>
+→ <span style="font-weight: 600;">[3단계 결과]</span> 시사점 3가지 (정책 효과·예산 효율성·향후 보완점)
+</p>
+</div>
+<!-- ⑥ TIP 콜아웃 - 위치 조정 및 하단 공백 활용을 위해 소폭 아래로 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 865px; left: 213px; width: 498px; height: 80px; background-color: #FAEEDA; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 883px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; color: #633806; line-height: 1.7; text-align: justify;">
+<span style="font-weight: 700; color: #1B3A6E; margin-right: 12px; letter-spacing: 0.5px;">💡 TIP</span>복잡한 일일수록 분해가 핵심입니다. 한 번에 5단계 이상은 피하고 2~4단계로 쪼개세요.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">33</p>
+</div>
+</div>
+</body>
+</html>

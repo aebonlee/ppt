@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">06</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">민원 분석</p>
+<p style="font-size: 11px; color: #B5D4F4; text-align: center; margin-top: 4px;">1/2</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 80px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">50건 이상 누적 민원 데이터의 유형별 분류·빈도·개선 제안을 도출한다.</p>
+</div>
+<!-- ② 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 215px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1px solid #1B3A6E; margin-bottom: 15px;">시나리오</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 260px; left: 213px; width: 498px; height: 80px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 275px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.7;">한 학기 동안 접수된 학생 민원 데이터를 정리하여 자주 발생하는 문제를 분석하고, 부서 업무 개선을 위한 보고서 초안을 작성하고자 합니다.</p>
+</div>
+<!-- ③ 사전 준비 (개인정보 비식별화) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 370px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1px solid #1B3A6E; margin-bottom: 15px;">사전 준비 (개인정보 비식별화)</p>
+<p style="font-size: 13px; color: #E53E3E; font-weight: 600; line-height: 1.7; margin-bottom: 8px;">⚠️ 민원 데이터에는 개인정보가 포함될 가능성이 높습니다. AI 입력 전 반드시 비식별화해야 합니다.</p>
+<ul style="font-size: 13px; color: #2C2C2A; line-height: 1.6; margin-left: 20px;">
+<li style="margin-bottom: 4px;">학생 이름 → "학생 A", "학생 B" 등으로 치환</li>
+<li style="margin-bottom: 4px;">학번, 연락처, 이메일 → 전부 삭제 또는 마스킹</li>
+</ul>
+</div>
+<!-- ④ 따라하기 프롬프트 - Moved down to resolve overlap -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 520px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; padding-bottom: 8px; border-bottom: 1px solid #1B3A6E; margin-bottom: 15px;">따라하기 — 민원 분석 프롬프트</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 565px; left: 213px; width: 498px; height: 430px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 580px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11px; color: #ffffff; line-height: 1.6;">[역할] 너는 데이터 분석을 통해 인사이트를 도출하는 행정 전문가다.<br/><br/>
+[입력 데이터]<br/>
+(여기에 비식별화된 한 학기 민원 데이터 50건 이상 붙여넣기)<br/>
+일자 | 내용<br/>
+03-05 | 수강신청 언제까지인가요?<br/>
+...<br/><br/>
+[작업]<br/>
+입력된 민원 데이터를 분석하여 다음 4가지를 도출해 줘.<br/><br/>
+1) 유형 분류: 민원 내용을 5~7개 핵심 유형으로 분류<br/>
+2) 빈도 분석: 가장 많이 접수된 민원 유형 상위 5개 및 비율(%)<br/>
+3) 시점 분석: 특정 시기(예: 학기 초, 시험 기간)에 집중된 민원 패턴<br/>
+4) 개선 단서: 위 분석을 바탕으로 행정 부서가 선제적으로 개선할 수 있는 단서 3가지 제안 (예: 특정 시기 전 사전 안내문 발송)<br/><br/>
+[출력 형식]<br/>
+- 보고서 형식으로 깔끔하게 마크다운 표와 불릿을 혼용하여 정리<br/>
+- 객관적인 톤 유지</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">114</p>
+</div>
+</div>
+</body>
+</html>

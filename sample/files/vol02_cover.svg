@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="860" viewBox="0 0 280 430" role="img">
+<title>VOL.02 현장 데이터 디지털화 — 표지</title>
+<desc>건설기계 현장의 암묵지를 AI 자산으로 전환하는 실무 교재 표지 디자인</desc>
+<style>
+.cv-title{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;letter-spacing:-0.03em}
+.cv-sub{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:400;letter-spacing:-0.02em}
+.cv-meta{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.18em}
+.cv-vl{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.15em}
+.cv-vn{font-family:'Noto Sans CJK KR',sans-serif;font-weight:700}
+.cv-foot{font-family:'Noto Sans CJK KR',sans-serif;font-weight:500;letter-spacing:0.12em}
+.cv-fk{font-family:'Noto Sans CJK KR','Pretendard','Noto Sans KR',sans-serif;font-weight:500;letter-spacing:0.05em}
+</style>
+
+<rect x="0" y="0" width="280" height="430" fill="#04342C"/>
+<rect x="6" y="0" width="274" height="200" fill="#085041"/>
+<rect x="0" y="0" width="6" height="430" fill="#06433A"/>
+<rect x="6" y="0" width="274" height="3" fill="#F0997B"/>
+
+<text x="22" y="32" class="cv-meta" font-size="9" fill="#F0997B">FIELD × DATA</text>
+<text x="22" y="46" class="cv-meta" font-size="8" fill="#5DCAA5">실무자 양성 시리즈</text>
+
+<text x="264" y="32" class="cv-vl" font-size="9" fill="#F0997B" text-anchor="end">VOLUME</text>
+<text x="264" y="56" class="cv-vn" font-size="22" fill="#F0997B" text-anchor="end">02</text>
+
+<g opacity="0.6">
+<g fill="#9FE1CB">
+<circle cx="22" cy="80" r="1.5"/><circle cx="52" cy="80" r="1.5"/><circle cx="82" cy="80" r="2.4"/><circle cx="112" cy="80" r="1.5"/><circle cx="142" cy="80" r="1.5"/><circle cx="172" cy="80" r="1.5"/><circle cx="202" cy="80" r="2.4"/><circle cx="232" cy="80" r="1.5"/><circle cx="262" cy="80" r="1.5"/>
+<circle cx="22" cy="110" r="2.4"/><circle cx="52" cy="110" r="1.5"/><circle cx="82" cy="110" r="1.5"/><circle cx="112" cy="110" r="1.5"/><circle cx="142" cy="110" r="2.4"/><circle cx="172" cy="110" r="1.5"/><circle cx="202" cy="110" r="1.5"/><circle cx="232" cy="110" r="2.4"/><circle cx="262" cy="110" r="1.5"/>
+<circle cx="22" cy="140" r="1.5"/><circle cx="52" cy="140" r="2.4"/><circle cx="82" cy="140" r="1.5"/><circle cx="112" cy="140" r="2.4"/><circle cx="142" cy="140" r="1.5"/><circle cx="172" cy="140" r="2.4"/><circle cx="202" cy="140" r="1.5"/><circle cx="232" cy="140" r="1.5"/><circle cx="262" cy="140" r="2.4"/>
+</g>
+<circle cx="82" cy="80" r="2.2" fill="#F0997B"/>
+<circle cx="142" cy="110" r="2.2" fill="#F0997B"/>
+<circle cx="112" cy="140" r="2.2" fill="#F0997B"/>
+<circle cx="232" cy="110" r="2.2" fill="#F0997B"/>
+<line x1="82" y1="80" x2="142" y2="110" stroke="#F0997B" stroke-width="0.6"/>
+<line x1="142" y1="110" x2="112" y2="140" stroke="#F0997B" stroke-width="0.6"/>
+<line x1="142" y1="110" x2="232" y2="110" stroke="#F0997B" stroke-width="0.6"/>
+<line x1="232" y1="110" x2="262" y2="140" stroke="#F0997B" stroke-width="0.5"/>
+</g>
+
+<g transform="translate(140,170)">
+<path d="M -58 16 L -46 -14 L -34 16 Z" fill="#F0997B"/>
+<rect x="-60" y="14" width="28" height="3" fill="#F0997B"/>
+<line x1="-12" y1="0" x2="10" y2="0" stroke="#9FE1CB" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M 4 -4 L 10 0 L 4 4" stroke="#9FE1CB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(20,-15)" fill="#9FE1CB">
+<rect x="0" y="0" width="6" height="6"/><rect x="9" y="0" width="6" height="6"/><rect x="18" y="0" width="6" height="6"/>
+<rect x="0" y="9" width="6" height="6"/><rect x="9" y="9" width="6" height="6" fill="#F0997B"/><rect x="18" y="9" width="6" height="6"/>
+<rect x="0" y="18" width="6" height="6"/><rect x="9" y="18" width="6" height="6"/><rect x="18" y="18" width="6" height="6"/>
+</g>
+</g>
+
+<text x="22" y="260" class="cv-title" font-size="32" fill="#FFFFFF">현장 데이터</text>
+<text x="22" y="296" class="cv-title" font-size="32" fill="#9FE1CB">디지털화</text>
+<line x1="22" y1="316" x2="78" y2="316" stroke="#F0997B" stroke-width="2.5"/>
+<text x="22" y="346" class="cv-sub" font-size="12.5" fill="#9FE1CB">건설기계 현장의 암묵지를</text>
+<text x="22" y="364" class="cv-sub" font-size="12.5" fill="#9FE1CB">AI 자산으로 전환하는 실무</text>
+
+<line x1="22" y1="395" x2="250" y2="395" stroke="#0F6E56" stroke-width="0.4"/>
+<text x="22" y="415" class="cv-fk" font-size="9" fill="#5DCAA5">건설기계 재직자 AI 교육</text>
+<text x="250" y="415" class="cv-foot" font-size="8" fill="#5DCAA5" text-anchor="end">CON·AI EDU SERIES</text>
+</svg>

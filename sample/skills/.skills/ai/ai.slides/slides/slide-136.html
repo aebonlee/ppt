@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">11</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">시설 점검표<br/>자동 생성<br/><span style="font-size:10px; color:#B5D4F4;">1/2</span></p>
+</div>
+<!-- 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 90px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 120px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">시설 종류별 표준 점검표를 일괄 자동 생성하여 점검 업무의 효율성을 높인다.</p>
+</div>
+<!-- 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1px solid #1B3A6E; padding-bottom: 4px; margin-bottom: 12px;">시나리오</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 85px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 265px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.6; text-align: justify;">강의실/세미나실 5개 시설의 시청각 장비, 청결 상태 등을 포함한 체크리스트 작성이 필요합니다. 매번 수기로 작성하는 대신 AI를 활용하여 체계적인 점검표를 생성하고자 합니다.</p>
+</div>
+<!-- 따라하기 프롬프트 구조 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 360px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1px solid #1B3A6E; padding-bottom: 4px; margin-bottom: 12px;">따라하기 — 시설 점검표 생성 프롬프트</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 395px; left: 213px; width: 498px; height: 430px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 407px; left: 228px; width: 468px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 11.5px; color: #ffffff; line-height: 1.65;">[역할] 너는 학교 시설 점검 관리자다.<br/><br/>[작업]<br/>다음 시설에 대한 일일 점검 체크리스트 표를 작성해 줘.<br/><br/>[대상 시설]<br/>- 대형 강의실 (100석 이상)<br/>- 소형 세미나실 (30석 이하)<br/><br/>[점검 항목 필수 포함]<br/>- 시청각 장비 (프로젝터, 마이크, 스크린)<br/>- 비품 (책상, 의자, 칠판/마카)<br/>- 환경 (조명, 냉난방기, 환기)<br/>- 청결 상태 (바닥, 쓰레기통)<br/><br/>[양식 및 형식]<br/>- 각 시설별로 구분된 마크다운 표 생성<br/>- 컬럼: 점검 항목 | 세부 확인 사항 | 상태(양호/불량) | 비고<br/><br/>[안전 장치]<br/>- 일반적인 대학 시설에 맞는 현실적인 항목만 포함<br/>- 누락된 중요 항목이 있다면 스스로 판단하여 1~2개 추가</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">130</p>
+</div>
+</div>
+</body>
+</html>

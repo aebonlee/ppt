@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Part 01 · ① 생성형 AI 개요</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#1A2332; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="06 1-① 생성형 AI 개요" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:36px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:flex-end;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 01 · 생성형 AI · 건설기계 산업 이해</span>
+    <span style="font-size:10px; letter-spacing:0.18em; font-weight:600; color:#6B7280;">CONSTRUCTION MACHINERY × GenAI</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#1A2332; z-index:5;"></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; display:flex; align-items:center; justify-content:center;">
+    <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:0.42em; font-weight:800; color:#ffffff;">PART 01 · 생성형 AI · 건설기계 산업 이해</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:128px; width:54px; height:54px; background:#F4B400; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:128px; width:54px; height:54px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:900; color:#1A2332; letter-spacing:-0.04em;">
+    <span>01</span>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:165px; top:135px; width:535px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ①</div>
+    <div style="font-size:27px; font-weight:900; color:#1A2332; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">생성형 AI 개요와 LLM 작동 원리</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:230px; width:606px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; background:#E8521C;"></div>
+      <div style="font-size:23px; font-weight:800; color:#1A2332; letter-spacing:-0.012em;">1. 생성형 AI란 무엇인가</div>
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:280px; width:606px; z-index:10;">
+    <div style="font-size:20px; font-weight:800; color:#1A2332; letter-spacing:-0.005em;">
+      <span style="color:#F4B400;">◆</span>&nbsp; "다음 단어를 잘 맞히는 모델"이라는 한 문장
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:316px; width:606px; z-index:10;">
+    <div style="font-size:13.3px; font-weight:400; color:#2D2D2D; line-height:1.75; text-align:justify;">
+      ChatGPT, Microsoft Copilot, Gemini와 같은 도구를 묶어 <b>생성형 AI(Generative AI)</b>라고 부릅니다. 그 안에는 대규모 언어 모델(LLM, Large Language Model)이 있고, 이 모델이 하는 일은 단 한 가지입니다 — <b>"앞에 주어진 글을 보고, 다음 단어로 가장 그럴듯한 것을 고른다."</b> 이 단순한 동작을 수십억 개 매개변수와 수조 개 토큰으로 학습하면, 우리가 흔히 보는 견적서·정비 보고서·이메일 같은 문서를 만들어 낼 수 있게 됩니다. 따라서 잘 쓰는 비결은 모델이 <b>다음 단어를 잘 고를 수 있게</b> 충분한 맥락과 지시를 주는 것입니다.
+    </div>
+  </div>
+
+  <!-- 다이어그램 박스 — LLM 동작 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:495px; width:606px; height:240px; background:#F5F2EC; border:1px solid #D6D0C2; z-index:1;"></div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:510px; width:580px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">FIG. 1-1 · HOW LLM PREDICTS THE NEXT TOKEN</div>
+  </div>
+
+  <!-- 토큰 시퀀스 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:120px; top:560px; width:96px; height:50px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:120px; top:560px; width:96px; height:50px; z-index:11; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:13px; font-weight:700;">
+    <span>오늘</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:226px; top:560px; width:96px; height:50px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:226px; top:560px; width:96px; height:50px; z-index:11; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:13px; font-weight:700;">
+    <span>현장</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:332px; top:560px; width:96px; height:50px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:332px; top:560px; width:96px; height:50px; z-index:11; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:13px; font-weight:700;">
+    <span>굴착기</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:438px; top:560px; width:96px; height:50px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:438px; top:560px; width:96px; height:50px; z-index:11; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:13px; font-weight:700;">
+    <span>고장</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:544px; top:560px; width:50px; height:50px; background:#F4B400; z-index:5; display:flex; align-items:center; justify-content:center;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:544px; top:560px; width:50px; height:50px; z-index:11; display:flex; align-items:center; justify-content:center; color:#1A2332; font-size:18px; font-weight:900;">
+    <span>?</span>
+  </div>
+
+  <!-- 후보 분포 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:610px; top:530px; width:74px; height:14px; background:#E8521C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:610px; top:543px; width:80px; z-index:11;">
+    <div style="font-size:9px; font-weight:700; color:#1A2332;">신고 · 0.42</div>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:610px; top:572px; width:50px; height:10px; background:#1A2332; opacity:0.7; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:610px; top:583px; width:80px; z-index:11;">
+    <div style="font-size:9px; color:#6B7280;">발생 · 0.21</div>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:610px; top:601px; width:30px; height:8px; background:#1A2332; opacity:0.4; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:610px; top:610px; width:80px; z-index:11;">
+    <div style="font-size:9px; color:#6B7280;">접수 · 0.13</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:640px; width:580px; z-index:11;">
+    <div style="font-size:11.5px; line-height:1.6; color:#2D2D2D;">
+      <b style="color:#1A2332;">"오늘 현장 굴착기 고장"</b> 다음에 올 단어로 모델이 <b style="color:#E8521C;">"신고"</b>의 확률을 가장 높게 평가했습니다. 이 선택을 한 칸씩 반복하면 한 문단, 한 페이지 분량의 보고서가 완성됩니다.
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:760px; width:606px; z-index:10;">
+    <div style="font-size:13.3px; font-weight:400; color:#2D2D2D; line-height:1.75; text-align:justify;">
+      이 동작 방식을 이해하면 두 가지가 달라집니다. 첫째, <b>모델은 사실을 검색하지 않습니다.</b> 학습 시점에 본 분포에서 그럴듯한 것을 골라낼 뿐이며, 그래서 모델이 자신만만하게 틀리는 <b>환각(hallucination)</b>이 생깁니다. 둘째, <b>맥락이 길수록 답이 좋아집니다.</b> 회사 표준 견적 양식·정비 매뉴얼 일부·고객 요청 메일을 함께 붙여 주면 모델이 고를 수 있는 단어 분포가 우리 회사 톤에 가깝게 좁혀집니다.
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:935px; width:606px; height:88px; background:#FFF6D6; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:935px; width:5px; height:88px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:948px; width:570px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.28em; font-weight:800; color:#C99300;">KEY POINT</div>
+    <div style="font-size:13.3px; font-weight:600; color:#1A2332; margin-top:5px; line-height:1.6;">생성형 AI는 <b>검색 엔진이 아닌 예측 모델</b>입니다. 회사 표준과 사실 자료를 충분히 붙여 주는 것이 환각을 줄이는 가장 빠른 방법입니다.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:1062px; width:680px; height:1px; background:#D6D0C2; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1075px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.04em; color:#6B7280; font-family:serif;">¹⁾ LLM(Large Language Model): 대규모 언어 모델. GPT-4o · Claude · Gemini 등이 대표적이다.</span>
+    <span style="font-size:11px; font-weight:800; color:#1A2332;">009</span>
+  </div>
+
+</div>
+</body>
+</html>

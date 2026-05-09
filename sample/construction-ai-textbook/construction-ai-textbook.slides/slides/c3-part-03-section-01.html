@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>교재 3 · Part 03 · ① 병행 워크플로</title>
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#1B2D5C; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="14 릴레이·병렬·검증" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <!-- HEADER -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:45px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 03 · 병행 활용 워크플로</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:700; color:#6B7280;">GENAI · TOOLBOX</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#1B2D5C; z-index:5;"></div>
+
+  <!-- SIDE TAG -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center; justify-content:center; font-size:11px; letter-spacing:0.32em; font-weight:800; color:#FFFFFF;">
+    PART 03 · 병행 활용 워크플로
+  </div>
+
+  <!-- CHAPTER NUMBER -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:96px; width:54px; height:54px; background:#F4B400; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:96px; width:54px; height:54px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:900; color:#1B2D5C; letter-spacing:-0.04em;">
+    01
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:160px; top:98px; width:540px; height:60px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ①</div>
+    <div style="font-size:27px; font-weight:900; color:#1B2D5C; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">한 업무, 두 도구 — 릴레이·병렬·검증</div>
+  </div>
+
+  <!-- KEY TOPIC -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:185px; width:606px; height:36px; z-index:10;">
+    <div style="display:flex; gap:8px; align-items:center;">
+      <div style="width:8px; height:8px; background:#E8521C;"></div>
+      <div style="font-size:20px; font-weight:800; color:#1B2D5C; letter-spacing:-0.012em;">1. 도구를 잇는 세 가지 패턴</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:235px; width:606px; height:130px; z-index:10;">
+    <div style="font-size:13.3px; line-height:1.85; color:#2D2D2D; letter-spacing:-0.005em;">
+      한 업무를 끝까지 가져가려면 도구 하나로는 부족합니다. 4대 도구를 잇는 방식은 세 가지입니다 — <b>릴레이</b>(앞 도구의 출력 → 뒷 도구의 입력), <b>병렬</b>(같은 입력을 여러 도구에 보내 가장 좋은 것 선택), <b>검증</b>(한 도구 출력을 다른 도구에 점검). 사실성이 중요하면 검증을, 시간이 부족하면 병렬을, 길고 깊이 있는 업무는 릴레이를 씁니다.
+    </div>
+  </div>
+
+  <!-- RELAY DIAGRAM -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:380px; width:608px; height:240px; background:#F5F2EC; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:394px; width:580px; height:13px; z-index:11; font-size:9px; letter-spacing:0.32em; font-weight:800; color:#1B2D5C;">
+    FIG. 3-1 · RELAY WORKFLOW (계약서 검토 자동화 예시)
+  </div>
+
+  <!-- 4 step boxes -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:120px; top:430px; width:130px; height:120px; background:#F4B400; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:120px; top:445px; width:130px; z-index:11; text-align:center;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#1B2D5C;">STEP 01</div>
+    <div style="font-size:16px; font-weight:900; color:#1B2D5C; margin-top:4px;">Genspark</div>
+    <div style="font-size:10px; color:#1B2D5C; margin-top:8px; line-height:1.5; padding:0 10px;">유사 사례 / 표준 약관 조사</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:250px; top:480px; width:30px; height:30px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; color:#1B2D5C;">→</div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:280px; top:430px; width:130px; height:120px; background:#E8521C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:280px; top:445px; width:130px; z-index:11; text-align:center; color:#FFFFFF;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800;">STEP 02</div>
+    <div style="font-size:16px; font-weight:900; margin-top:4px;">Claude</div>
+    <div style="font-size:10px; margin-top:8px; line-height:1.5; padding:0 10px;">계약서 PDF 통째 분석 + 인용</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:410px; top:480px; width:30px; height:30px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; color:#1B2D5C;">→</div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:440px; top:430px; width:130px; height:120px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:440px; top:445px; width:130px; z-index:11; text-align:center; color:#FFFFFF;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#F4B400;">STEP 03</div>
+    <div style="font-size:16px; font-weight:900; margin-top:4px;">ChatGPT</div>
+    <div style="font-size:10px; margin-top:8px; line-height:1.5; padding:0 10px;">결재용 1쪽 요약 + 표 정리</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:570px; top:480px; width:30px; height:30px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; color:#1B2D5C;">→</div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:600px; top:430px; width:96px; height:120px; background:#FFFFFF; border:2px solid #1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:600px; top:445px; width:96px; z-index:11; text-align:center;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">STEP 04</div>
+    <div style="font-size:14px; font-weight:900; color:#1B2D5C; margin-top:4px;">Gemini</div>
+    <div style="font-size:10px; color:#2D2D2D; margin-top:8px; line-height:1.5; padding:0 6px;">Docs에 자동 게시</div>
+  </div>
+
+  <!-- caption -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:570px; width:580px; height:40px; z-index:11; font-size:11px; line-height:1.65; color:#2D2D2D;">
+    네 도구가 모두 자기 강점만 쓰고 있는 흐름입니다. 사람의 역할은 <b>STEP마다 출력 1줄을 검수해 다음 도구에 보내는 것</b>뿐.
+  </div>
+
+  <!-- 3 PATTERN CARDS -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:640px; width:606px; height:24px; z-index:10;">
+    <div style="font-size:20px; font-weight:800; color:#1B2D5C; letter-spacing:-0.012em;">2. 세 가지 병행 패턴</div>
+  </div>
+
+  <!-- relay -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:680px; width:198px; height:170px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:680px; width:198px; height:8px; background:#1B2D5C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:702px; width:170px; height:140px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">PATTERN A</div>
+    <div style="font-size:14px; font-weight:900; color:#1B2D5C; margin-top:4px;">RELAY · 릴레이</div>
+    <div style="font-size:11px; color:#2D2D2D; line-height:1.6; margin-top:6px;">
+      앞 도구의 출력을 뒷 도구의 입력으로. <b>긴 업무</b>에 적합하지만 한 단계 실수가 끝까지 따라가니 단계마다 검수.
+    </div>
+  </div>
+
+  <!-- parallel -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:298px; top:680px; width:198px; height:170px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:298px; top:680px; width:198px; height:8px; background:#E8521C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:312px; top:702px; width:170px; height:140px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">PATTERN B</div>
+    <div style="font-size:14px; font-weight:900; color:#1B2D5C; margin-top:4px;">PARALLEL · 병렬</div>
+    <div style="font-size:11px; color:#2D2D2D; line-height:1.6; margin-top:6px;">
+      같은 입력을 여러 도구에 동시에. <b>시간이 부족</b>하거나 결과 품질이 들쭉날쭉할 때 가장 좋은 출력 1개 채택.
+    </div>
+  </div>
+
+  <!-- verify -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:502px; top:680px; width:202px; height:170px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:502px; top:680px; width:202px; height:8px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:516px; top:702px; width:170px; height:140px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">PATTERN C</div>
+    <div style="font-size:14px; font-weight:900; color:#1B2D5C; margin-top:4px;">VERIFY · 교차검증</div>
+    <div style="font-size:11px; color:#2D2D2D; line-height:1.6; margin-top:6px;">
+      한 도구의 출력을 다른 도구로 점검. <b>사실성·법규</b>가 중요한 업무 — 견적 수치, 계약 조항 검수에 필수.
+    </div>
+  </div>
+
+  <!-- KEY POINT -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:880px; width:606px; height:104px; background:#FFF8E0; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:880px; width:5px; height:104px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:894px; width:570px; height:74px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">핵심 정리</div>
+    <div style="font-size:13.3px; color:#2D2D2D; line-height:1.7; margin-top:5px;">
+      처음부터 4도구를 모두 쓰지 마세요. <b>1주차 — 한 도구</b>, <b>2주차 — 두 도구 병렬</b>, <b>3주차 — 릴레이</b>, <b>4주차 — 교차검증</b> 순으로 도입하면 학습 곡선이 가장 완만합니다.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:1010px; width:680px; height:1px; background:#D6D0C2; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1085px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.18em; color:#6B7280;">⁷ 릴레이·병렬·검증 — 도구 협업 패턴 분류는 본 교재의 정의</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:800; color:#1B2D5C;">083</span>
+  </div>
+
+</div>
+</body>
+</html>

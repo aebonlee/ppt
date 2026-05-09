@@ -1,0 +1,259 @@
+{
+  "page": 7,
+  "size_pt": {
+    "w": 612.0,
+    "h": 859.0
+  },
+  "rotation": 0,
+  "text_layer_chars": 63,
+  "spans_count": 10,
+  "images_count": 5,
+  "drawings_count": 4,
+  "screenshot": "pages/page_007.png",
+  "text": "Part\n01 의료 영상 처리 기초\n➊ 의료 영상 AI 활용 사례\n➋ 디지털 영상과 의료 영상\n➌ 실습 환경 구축\n",
+  "spans": [
+    {
+      "text": "Part",
+      "bbox": [
+        177.2,
+        148.5,
+        211.5,
+        174.9
+      ],
+      "font": "BebasNeue",
+      "size": 22.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "01",
+      "bbox": [
+        177.2,
+        166.1,
+        213.7,
+        220.6
+      ],
+      "font": "BebasNeue",
+      "size": 45.5,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": " ",
+      "bbox": [
+        213.7,
+        171.8,
+        232.0,
+        217.4
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 25.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "의료 영상 처리 기초",
+      "bbox": [
+        232.0,
+        171.8,
+        440.3,
+        209.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 25.0,
+      "color": 2779456,
+      "flags": 17
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        232.0,
+        238.1,
+        250.2,
+        252.1
+      ],
+      "font": "HaansoftBatang",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "의료 영상 AI 활용 사례",
+      "bbox": [
+        252.3,
+        235.0,
+        391.0,
+        255.9
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        232.0,
+        262.0,
+        250.2,
+        276.0
+      ],
+      "font": "HaansoftBatang",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "디지털 영상과 의료 영상",
+      "bbox": [
+        252.3,
+        258.8,
+        394.3,
+        279.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "➌ ",
+      "bbox": [
+        232.0,
+        285.8,
+        250.2,
+        299.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "실습 환경 구축",
+      "bbox": [
+        252.3,
+        282.7,
+        339.0,
+        303.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 14.0,
+      "color": 10929991,
+      "flags": 16
+    }
+  ],
+  "images": [
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        0.2,
+        612.3,
+        95.6
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        286.5,
+        612.3,
+        382.0
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 8216,
+      "bbox": [
+        -0.0,
+        382.0,
+        612.3,
+        763.8
+      ],
+      "px_w": 2551,
+      "px_h": 1592,
+      "asset_path": "media/img_xref_8216.jpeg"
+    },
+    {
+      "xref": 8217,
+      "bbox": [
+        -0.0,
+        763.8,
+        612.3,
+        859.1
+      ],
+      "px_w": 2551,
+      "px_h": 395,
+      "asset_path": "media/img_xref_8217.jpeg"
+    },
+    {
+      "xref": 8215,
+      "bbox": [
+        -0.0,
+        95.6,
+        612.3,
+        286.5
+      ],
+      "px_w": 2551,
+      "px_h": 796,
+      "asset_path": "media/img_xref_8215.jpeg"
+    }
+  ],
+  "drawings": [
+    {
+      "bbox": [
+        0.0,
+        0.2,
+        612.0,
+        95.6
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        286.6,
+        612.0,
+        382.0
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        230.4,
+        209.8,
+        508.0,
+        209.8
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        230.4,
+        209.8,
+        508.0,
+        209.8
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    }
+  ],
+  "links": []
+}

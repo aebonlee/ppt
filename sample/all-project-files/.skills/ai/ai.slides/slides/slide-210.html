@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 (Extended height to fill vertical space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">19</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">부서장 보고용<br/>1쪽 대시보드</p>
+<p style="font-size: 11px; color: #FFC857; line-height: 1.45; text-align: center; margin-top: 6px;">1/3</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 100px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 122px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">학습 목표</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6;">한 달 핵심 지표를 1쪽 대시보드 텍스트로 자동 생성하여 효율적으로 부서장에게 보고할 수 있다.</p>
+</div>
+<!-- ② 시나리오 본문 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 240px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">시나리오</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.75; text-align: justify;">매월 5일은 부서장 월례 회의가 있는 날입니다. 앞선 Step 18에서 모은 7가지 월 마감 결과를 종합하여 부서장에게 1쪽 분량으로 간결하게 보고하고자 합니다.</p>
+</div>
+<!-- ③ 따라하기 프롬프트 박스 (Expanded height and moved down to balance space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 380px; left: 213px; width: 498px; height: 500px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 405px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #FFC857; margin-bottom: 18px;">프롬프트 작성 (부서장 월례 보고 작성 비서)</p>
+<p style="font-size: 15px; color: #FFFFFF; line-height: 1.9; font-family: 'Noto Sans KR', sans-serif;">
+<span style="color: #B5D4F4; font-weight: 600;">역할:</span> 당신은 전남대학교 행정실의 부서장 월례 보고서 작성 비서입니다.<br/>
+<span style="color: #B5D4F4; font-weight: 600;">작업:</span> 제공된 6가지 마감 결과를 바탕으로 1쪽 대시보드 형식의 보고서를 작성하세요.<br/>
+<span style="color: #B5D4F4; font-weight: 600;">입력 자료:</span> [Step 18의 1~6단계 결과 복사 후 붙여넣기]<br/>
+<span style="color: #B5D4F4; font-weight: 600;">부서장 성향:</span> 데이터 중심, 핵심 요약 선호<br/>
+<span style="color: #B5D4F4; font-weight: 600;">구성 요건:</span><br/>
+  ① 요약: 전체 상황을 3줄 이내로 브리핑<br/>
+  ② 핵심 지표: 표 형태로 정리 (집행률, 출근부 등)<br/>
+  ③ 주요 사업 현황: 진행 중인 사업 2건<br/>
+  ④ 주의 항목: 예산 부족 우려, 이상 거래 등 점검 사항<br/>
+  ⑤ 다음 달 우선순위: 3가지 핵심 목표<br/>
+<span style="color: #B5D4F4; font-weight: 600;">형식:</span> 마크다운(A4 1쪽 분량)<br/>
+<span style="color: #B5D4F4; font-weight: 600;">안전장치:</span> 명확하지 않거나 추정한 수치 뒤에는 반드시 [추정] 태그를 추가할 것.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">204</p>
+</div>
+</div>
+</body>
+</html>

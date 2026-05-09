@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #ffffff; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 160px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">19</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">인사 발령 공문 일괄 작성</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.7); text-align: center; margin-top: 6px;">1/2</p>
+</div>
+<!-- ① 학습 목표 박스 - Increase height to prevent text overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 95px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; border-radius: 2px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 116px; left: 227px; width: 470px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 4px;">학습 목표</p>
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.5;">30명 이상의 인사 발령 데이터를 바탕으로 개인별 통지 공문을 일괄 자동 생성한다. 워드 작업이 용이한 형태로 출력하여 일괄 인쇄·발송 가능하게 한다.</p>
+</div>
+<!-- ② 섹션 헤더 "시나리오" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 215px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1.5px solid #1B3A6E; padding-bottom: 6px;">시나리오</p>
+</div>
+<!-- ③ 시나리오 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 255px; left: 213px; width: 498px; height: 115px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; border-radius: 2px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 266px; left: 227px; width: 470px; z-index: 10;">
+<p style="font-size: 13px; color: #2C2C2A; line-height: 1.65; text-align: justify;">2026년 3월 1일자 정기 인사 발령으로 32명의 직원에게 발령 통지 공문을 보내야 합니다. 한 명씩 작성하면 하루 종일 걸리지만, AI 일괄 작성으로 30분 내 마무리가 가능합니다. 인사 발령 명단(마스킹 완료)이 엑셀로 도착했습니다.</p>
+</div>
+<!-- ④ 섹션 헤더 "따라하기" -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 390px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; border-bottom: 1.5px solid #1B3A6E; padding-bottom: 6px;">따라하기 — 발령 공문 일괄 생성 프롬프트</p>
+</div>
+<!-- ⑤ 다크 네이비 코드박스 - Adjusted height and typography to fit content -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 430px; left: 213px; width: 498px; height: 590px; background-color: #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 442px; left: 225px; width: 474px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 10px; color: #FFFFFF; line-height: 1.4; white-space: pre-wrap;">[역할] 너는 학교 인사 발령 공문 작성자다.
+
+[입력 — 인사 발령 명단(마스킹)]
+식별자 | 발령 전 부서 | 발령 후 부서 | 발령 직급 | 발령일
+주임 A | 학사지원과 | 인사과 | 주임 | 2026-03-01
+대리 B | 인사과 | 학사지원과 | 대리 | 2026-03-01
+…
+
+[작업]
+입력 명단의 모든 행에 대해 개인별 발령 통지 공문을 작성해 줘.
+
+[공문 형식 — 행정안전부 표준]
+== 발령 통지 == (n번째 / 32명 중)
+
+전남대학교 [발령일자] 인사 발령 통지
+수신: [식별자]
+참조: [발령 후 부서장]
+
+1. 귀하를 다음과 같이 인사 발령합니다.
+   - 발령 직급: [발령 직급]
+   - 발령 부서: [발령 후 부서]
+   - 발령일: [발령일]
+2. 발령 전 부서: [발령 전 부서]
+3. 인수인계는 발령일 1주 전까지 완료하시기 바랍니다.
+4. 발령일에 신 부서로 출근하시기 바랍니다.
+
+전남대학교 인사처장
+
+[일괄 출력]
+- 32건을 한 번에 출력
+- 각 공문 사이에 「— 페이지 구분 —」 표시
+- 마지막에 「변환 점검: 32건 / 누락 0건 / 오류 0건」
+
+[원칙]
+- 마스킹된 식별자 그대로 유지 (실명 복원 금지)
+- 입력에 없는 정보 추가 금지
+- 발령일·직급·부서명을 한 글자도 변경 금지
+- 결측치 발견 시 「[확인 필요]」 표시 후 사람 검토 요청</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">94</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Part 03 · ① 라벨링 표준 · 스키마</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#0F3A2E; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="14 3-① 라벨링 스키마" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:36px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:flex-end;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 03 · 디지털화 · 라벨링</span>
+    <span style="font-size:10px; letter-spacing:0.18em; font-weight:600; color:#6B7280;">FIELD DATA × DIGITALIZATION</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#0F3A2E; z-index:5;"></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#0F3A2E; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; display:flex; align-items:center; justify-content:center;">
+    <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:0.42em; font-weight:800; color:#ffffff;">PART 03 · 디지털화 · 라벨링</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:96px; width:54px; height:54px; background:#F4B400; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:96px; width:54px; height:54px; z-index:11; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:900; color:#0F3A2E; letter-spacing:-0.04em;">
+    <span>01</span>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:165px; top:103px; width:535px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ①</div>
+    <div style="font-size:27px; font-weight:900; color:#0F3A2E; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">라벨링 표준 · 스키마 설계</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:202px; width:606px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; background:#E8521C;"></div>
+      <div style="font-size:23px; font-weight:800; color:#0F3A2E; letter-spacing:-0.012em;">1. 처음이 가장 중요하다</div>
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:248px; width:606px; z-index:10;">
+    <div style="font-size:13.3px; font-weight:400; color:#2D2D2D; line-height:1.75; text-align:justify;">
+      한 번 정한 라벨 스키마는 보통 6개월 이상 사용되며, 중간에 바꾸면 기존 데이터를 모두 다시 라벨링해야 합니다. 따라서 <b>최소 라벨 세트(MVL)</b>로 시작하되, 확장 여지를 남겨 두는 것이 핵심입니다. 스키마는 <b>레이블 ID · 정의 · 예시 · 반례 · 모호한 경계</b> 다섯 가지로 문서화합니다.</div>
+  </div>
+
+  <!-- 라벨 스키마 다이어그램 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:400px; width:340px; height:240px; background:#F5F2EC; border:1px solid #D6D0C2; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:414px; width:300px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">FIG. 3-1 · LABEL SCHEMA CARD</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:114px; top:450px; width:300px; height:170px; background:#FFFFFF; border:1px solid #0F3A2E; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:114px; top:450px; width:300px; height:30px; background:#0F3A2E; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:450px; width:300px; height:30px; z-index:11; display:flex; align-items:center; justify-content:center;">
+    <span style="font-size:11px; letter-spacing:0.24em; font-weight:800; color:#F4B400;">LABEL · INJECTOR_CLOG</span>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:128px; top:490px; width:280px; z-index:11;">
+    <div style="font-size:11px; line-height:1.7; color:#2D2D2D;">
+      <div><b style="color:#0F3A2E;">정의</b> — 인젝터 막힘으로 분사 불균일</div>
+      <div><b style="color:#0F3A2E;">예시</b> — 냉시동 시 엔진음 무거움</div>
+      <div><b style="color:#0F3A2E;">반례</b> — 밸브 간극 변화 (BLOWBY로)</div>
+      <div><b style="color:#E8521C;">경계</b> — 둘 다 의심 시 OBD 결과 우선</div>
+    </div>
+  </div>
+
+  <!-- 우측 표 -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:454px; top:400px; width:246px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">최소 라벨 세트 (MVL)</div>
+    <div style="font-size:13.3px; line-height:1.85; color:#2D2D2D; margin-top:8px;">
+      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #D6D0C2;"><span>NORMAL</span><span style="font-weight:800; color:#0F3A2E;">정상</span></div>
+      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #D6D0C2;"><span>INJECTOR_CLOG</span><span style="font-weight:800; color:#0F3A2E;">인젝터</span></div>
+      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #D6D0C2;"><span>BLOWBY</span><span style="font-weight:800; color:#0F3A2E;">밸브</span></div>
+      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #D6D0C2;"><span>UNCERTAIN</span><span style="font-weight:800; color:#E8521C;">보류</span></div>
+      <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>OTHER</span><span style="font-weight:800; color:#6B7280;">기타</span></div>
+    </div>
+    <div style="font-size:11px; color:#6B7280; line-height:1.55; margin-top:14px;">UNCERTAIN과 OTHER 두 칸을 반드시 두세요. 분류가 애매한 케이스를 강제로 끼워 넣으면 데이터셋 전체가 오염됩니다.</div>
+  </div>
+
+  <!-- 소단원 2 -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:670px; width:606px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; background:#E8521C;"></div>
+      <div style="font-size:23px; font-weight:800; color:#0F3A2E; letter-spacing:-0.012em;">2. 스키마 설계의 세 단계</div>
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:716px; width:198px; height:170px; background:#0F3A2E; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:716px; width:198px; height:8px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:740px; width:170px; z-index:11; color:#ffffff;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#F4B400;">PHASE 01</div>
+    <div style="font-size:15px; font-weight:800; margin-top:6px; line-height:1.25;">MVL 만들기</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.7); margin-top:8px; line-height:1.55;">3~5개 라벨로 시작.<br>UNCERTAIN 필수.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:298px; top:716px; width:198px; height:170px; background:#F4B400; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:298px; top:716px; width:198px; height:8px; background:#0F3A2E; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:312px; top:740px; width:170px; z-index:11; color:#0F3A2E;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800;">PHASE 02</div>
+    <div style="font-size:15px; font-weight:800; margin-top:6px; line-height:1.25;">파일럿 100건</div>
+    <div style="font-size:11px; color:rgba(26,35,50,0.65); margin-top:8px; line-height:1.55;">두 사람이 같은 100건<br>독립적으로 라벨링.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:502px; top:716px; width:198px; height:170px; background:#FFFFFF; border:2px solid #0F3A2E; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:502px; top:716px; width:198px; height:8px; background:#E8521C; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:516px; top:740px; width:170px; z-index:11; color:#0F3A2E;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#E8521C;">PHASE 03</div>
+    <div style="font-size:15px; font-weight:800; margin-top:6px; line-height:1.25;">스키마 확정</div>
+    <div style="font-size:11px; color:#6B7280; margin-top:8px; line-height:1.55;">IAA &gt; 0.7 달성 시<br>전체 라벨링 시작.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:910px; width:606px; height:96px; background:#FFF6D6; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:910px; width:5px; height:96px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:924px; width:570px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.28em; font-weight:800; color:#C99300;">핵심 정리</div>
+    <div style="font-size:13.3px; font-weight:600; color:#0F3A2E; margin-top:6px; line-height:1.65;">
+      <span style="background:#FFFFFF; padding:1px 6px; font-weight:800;">MVL</span> → <span style="background:#FFFFFF; padding:1px 6px; font-weight:800;">파일럿</span> → <span style="background:#FFFFFF; padding:1px 6px; font-weight:800;">IAA 검증</span> 순서로 스키마를 굳혀 가세요.<br>
+      이 순서를 지키면 6개월 뒤에도 같은 스키마로 데이터를 쌓을 수 있습니다.
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:1062px; width:680px; height:1px; background:#D6D0C2; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1075px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.04em; color:#6B7280; font-family:serif;">⁷⁾ IAA(Inter-Annotator Agreement): 두 명 이상의 라벨러가 같은 라벨을 붙인 비율. Cohen's kappa 등으로 측정.</span>
+    <span style="font-size:11px; font-weight:800; color:#0F3A2E;">082</span>
+  </div>
+
+</div>
+</body>
+</html>

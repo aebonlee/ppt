@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 180px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 12px;">12</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">점검 결과 →<br/>보수 요청 공문</p>
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 25px;">1/2</p>
+</div>
+<!-- ① 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 100px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">학습 목표</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6;">점검 결과에서 조치 필요 항목을 추출하여 시설팀 보수 요청 공문으로 자동 변환한다.</p>
+</div>
+<!-- ② 시나리오 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 235px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 17px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+<div style="border-bottom: 1.5px solid #1B3A6E; width: 100%; margin-bottom: 15px;"></div>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 285px; left: 213px; width: 498px; height: 110px; background-color: #F1EFE8; border-left: 3px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 300px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8;">강의실 30개 점검 결과 중 조치가 필요한 8건을 시설팀에 보수 요청 공문으로 보내야 합니다. 긴급도에 따라 일반과 긴급으로 분류하여 체계적인 공문으로 변환합니다.</p>
+</div>
+<!-- ③ 따라하기 — 프롬프트 구조 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 435px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 17px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">따라하기 — 프롬프트 구조</p>
+<div style="border-bottom: 1.5px solid #1B3A6E; width: 100%; margin-bottom: 15px;"></div>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 485px; left: 213px; width: 498px; height: 530px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 510px; left: 235px; width: 454px; z-index: 10;">
+<p style="font-family: 'D2Coding', monospace; font-size: 12px; color: #ffffff; line-height: 1.7;">[역할]<br/>너는 행정부서의 시설 관리 담당자야.<br/><br/>[작업]<br/>다음 점검 결과 중 조치 필요 항목을 바탕으로 보수 요청 공문을 작성해줘.<br/><br/>[구성]<br/>1. 두문: 수신(시설팀장), 참조(관련 부서)<br/>2. 본문: 목적, 상세 요청 내용(표 형식)<br/>3. 결문: 발신 명의<br/><br/>[우선순위 기준]<br/>- 긴급: 안전과 직결된 사항, 즉각적인 조치가 필요한 사항<br/>- 일반: 미관상 문제, 사용에 큰 지장이 없는 사항<br/><br/>[표 양식]<br/>| 연번 | 시설명 | 조치 필요 사항 | 우선순위 | 비고 |<br/><br/>[형식]<br/>행정안전부 공문서 작성 표준에 맞춰 명확하고 간결하게 작성.<br/><br/>[안전장치]<br/>- 민감한 개인 정보는 제외<br/>- 추측성 내용 배제, 점검 결과 기반으로만 작성</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">132</p>
+</div>
+</div>
+</body>
+</html>

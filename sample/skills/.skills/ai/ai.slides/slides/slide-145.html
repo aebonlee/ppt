@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 03</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">학사행정 / 총무·시설</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">15</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">비품 발주서<br/>자동 작성<br/><span style="font-size: 10px; color: #B5D4F4;">1/2</span></p>
+</div>
+<!-- 학습 목표 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 95px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">소모품 견적 비교를 통해 최적의 업체를 선정하고, 표준 발주서 양식에 맞춘 문서를 자동 작성한다.</p>
+</div>
+<!-- 시나리오 본문 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 230px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.7; text-align: justify;">부서 사무용품에 대한 분기별 발주 시기가 도래했습니다. 3개 업체의 견적을 비교하여 합리적인 구매를 진행하고, 최종 선정된 학교 등록 업체를 대상으로 발주서를 작성해야 합니다.</p>
+</div>
+<!-- 따라하기 프롬프트 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 340px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">따라하기 프롬프트</p>
+</div>
+<!-- 프롬프트 배경 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 375px; left: 213px; width: 498px; height: 460px; background-color: #F1EFE8; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 395px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.8;">
+<span style="font-weight: 700; color: #1B3A6E;">[역할]</span> 행정 부서 비품/소모품 구매 담당자<br/>
+<span style="font-weight: 700; color: #1B3A6E;">[작업]</span> 아래 발주 대상을 바탕으로 3개 업체 견적을 비교하고 발주서를 작성해 줘.<br/><br/>
+<span style="font-weight: 700; color: #1B3A6E;">[발주 대상]</span><br/>
+- A4 복사용지 10박스, 검정 볼펜 50자루, 수정테이프 20개, 파일 철 30개<br/><br/>
+<span style="font-weight: 700; color: #1B3A6E;">[발주서 양식]</span><br/>
+- 품명, 규격, 수량, 단가, 공급가액, 합계, 납기<br/><br/>
+<span style="font-weight: 700; color: #1B3A6E;">[견적비교 가이드]</span><br/>
+- 임의의 3개 업체를 상정하여 단가/납기/품질 등급 비교 표 작성<br/>
+- 비교 결과 "학교 등록 업체"를 우선 선정하여 발주서 작성<br/><br/>
+<span style="font-weight: 700; color: #1B3A6E;">[형식]</span> 마크다운 표 형식 (견적 비교표 1개, 최종 발주서 1개)<br/>
+<span style="font-weight: 700; color: #1B3A6E;">[안전장치]</span> 실제 계약 시에는 정확한 단가 및 견적서 기준을 준수해야 함을 명시
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">139</p>
+</div>
+</div>
+</body>
+</html>

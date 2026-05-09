@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 (Height expanded to fill vertical space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 930px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">10</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">부서 예산안<br/>초안 작성</p>
+</div>
+<!-- ① 학습 목표 (Repositioned and height adjusted) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 110px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 125px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">학습 목표</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6;">작년 집행 내역을 기반으로 차년도 부서 예산안 초안을 자동 생성한다.</p>
+</div>
+<!-- ② 시나리오 본문 (Moved down and spacing increased) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 260px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 18px; font-weight: 700; color: #1B3A6E; margin-bottom: 16px;">시나리오</p>
+<p style="font-size: 17px; color: #2C2C2A; line-height: 1.8; text-align: justify;">10월 말 예산 시즌 - 학사지원과 작년 집행 내역(인건비·운영비·사업비 등 항목별)을 기반으로 차년도 예산안 초안을 작성합니다.</p>
+</div>
+<!-- ③ 따라하기 프롬프트 (Moved down and line spacing increased to fill vertical tail) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 430px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 18px; font-weight: 700; color: #1B3A6E; margin-bottom: 24px;">따라하기 프롬프트</p>
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">역할:</span> 예산 편성 보조</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">작업:</span> 2026 부서 예산안 초안 작성</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">입력 데이터:</span> 2025 항목별 집행 내역</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">산출물:</span> 항목·세부항목·2025집행·2026요구·증감률·산출 근거</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">형식:</span> TSV</p>
+<p style="font-size: 16px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">• <span style="font-weight: 600; color: #2E5BBA;">안전장치:</span> 산출 근거가 불명확한 항목은 [확인 필요] 표시</p>
+</div>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">176</p>
+</div>
+</div>
+</body>
+</html>

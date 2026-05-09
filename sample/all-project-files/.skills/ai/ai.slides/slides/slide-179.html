@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 04</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">데이터 분석 / 예산·회계</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 (Height fixed, vertical position adjusted) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 120px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 133px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">09</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">인사이트<br/>한 줄 요약<br/>1/2</p>
+</div>
+<!-- ① 학습 목표 (Vertical position and height increased to fill space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 120px; left: 213px; width: 498px; height: 100px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 135px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 700; color: #1B3A6E; margin-bottom: 10px;">학습 목표</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.6;">분석 결과에서 의사결정에 필요한 핵심 인사이트 3가지를 한 줄씩 추출한다.</p>
+</div>
+<!-- ② 시나리오 본문 (Moved down) -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 250px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">시나리오</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify;">부서별 출장비 데이터를 보고서에 인용하기 위해 핵심 메시지 3개를 정리해야 함.</p>
+</div>
+<!-- ③ 따라하기 프롬프트 (Moved down and height increased to balance vertical space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 360px; left: 213px; width: 498px; height: 420px; background-color: #2C2C2A; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 385px; left: 238px; width: 448px; z-index: 10;">
+<p style="font-size: 16px; font-weight: 700; color: #FFC857; margin-bottom: 18px;">따라하기 프롬프트</p>
+<p style="font-size: 15px; color: #F1EFE8; line-height: 1.9;">
+<span style="color: #A0C4FF;">[역할]</span> 인사이트 요약 비서<br/>
+<span style="color: #A0C4FF;">[작업]</span> 핵심 인사이트 3줄 추출<br/>
+<span style="color: #A0C4FF;">[데이터]</span> 부서별·월별 출장비 + 가설 검증 결과<br/>
+<span style="color: #A0C4FF;">[산출물]</span> 3가지 한 줄 인사이트 + 각 인사이트별 근거 데이터<br/>
+<span style="color: #A0C4FF;">[인사이트 유형]</span><br/>
+  ① 패턴<br/>
+  ② 비교<br/>
+  ③ 관심 사항(주의·우려)<br/>
+<span style="color: #A0C4FF;">[형식]</span> 글머리 기호 + 근거<br/>
+<span style="color: #FF8B8B;">[안전장치]</span> 인사이트는 반드시 데이터로 뒷받침할 것
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">173</p>
+</div>
+</div>
+</body>
+</html>

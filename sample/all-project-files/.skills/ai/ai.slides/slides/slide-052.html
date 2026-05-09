@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 02</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">문서·인사 행정 자동화</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">01</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">표준 공문 양식 익히기</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.6); text-align: center;">2/3</p>
+</div>
+<!-- 따라하기 섹션 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 105px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 18px; font-weight: 700; color: #1B3A6E; padding-bottom: 6px;">따라하기 — 프롬프트 작성</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 136px; left: 213px; width: 498px; height: 2px; background-color: #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 155px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">다음 프롬프트를 그대로 복사해 전남대GPT에 붙여넣고 결과를 확인하세요.</p>
+</div>
+<!-- 큰 코드박스 (Increased height and redistributed) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 200px; left: 213px; width: 498px; height: 480px; background-color: #1B3A6E; border-radius: 4px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 225px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-family: 'D2Coding', 'Cascadia Code', Consolas, monospace; font-size: 13px; color: #FFFFFF; line-height: 1.8;">
+[역할] 너는 대학 행정부서의 공문 작성 전문가다.<br/>
+<br/>
+[작업] 다음 사항을 행정안전부 공문서 작성 표준에 맞게 작성해 주세요.<br/>
+- 발신: 학생지원과<br/>
+- 수신: 정보화본부장<br/>
+- 제목: 학생 통계 자료 협조 요청<br/>
+- 본문 내용:<br/>
+  • 목적: 2026학년도 학생 현황 보고서 작성<br/>
+  • 요청 자료:<br/>
+    (가) 2026학년도 신입생 학과별 분포<br/>
+    (나) 최근 3년간 휴학·복학 추이<br/>
+  • 마감: 2026년 5월 15일(금)<br/>
+  • 형식: 엑셀 파일<br/>
+<br/>
+[형식] 두문·본문·결문 모두 포함, 격식 어휘 사용<br/>
+[안전] 구체 조항 번호 인용 금지, 개인정보 미포함
+</p>
+</div>
+<!-- TIP 콜아웃 (Moved down to fill space) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 710px; left: 213px; width: 498px; height: 90px; background-color: #FAEEDA; border-left: 4px solid #FFC857; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 728px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.7; text-align: justify;">
+💡 학교 자체 양식이 따로 있다면 Few-shot 패턴을 사용하세요. 기존 양식 1~2개를 예시로 함께 입력하면 결과 품질이 크게 올라갑니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">101</p>
+</div>
+</div>
+</body>
+</html>

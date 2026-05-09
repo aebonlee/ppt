@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>교재 3 · Part 02 · ③ 워크북</title>
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#1B2D5C; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="12 4도구 비교 워크북" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <!-- HEADER -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:45px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 02 · 워크북</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:700; color:#6B7280;">GENAI · TOOLBOX</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#1B2D5C; z-index:5;"></div>
+
+  <!-- SIDE TAG -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center; justify-content:center; font-size:11px; letter-spacing:0.32em; font-weight:800; color:#FFFFFF;">
+    PART 02 · 워크북
+  </div>
+
+  <!-- STEP CHIP -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:96px; width:90px; height:90px; background:#1B2D5C; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:104px; width:90px; height:81px; z-index:11; text-align:center;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#F4B400;">STEP</div>
+    <div style="font-size:32px; font-weight:900; color:#FFFFFF; line-height:1; margin-top:2px;">02</div>
+    <div style="font-size:9px; letter-spacing:0.18em; color:#F4B400; margin-top:8px;">SAME · PROMPT</div>
+    <div style="font-size:9px; letter-spacing:0.18em; color:#F4B400;">4 · TOOLS</div>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:200px; top:104px; width:500px; height:80px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ③ · 워크북</div>
+    <div style="font-size:27px; font-weight:900; color:#1B2D5C; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">같은 프롬프트 → 4도구 비교</div>
+    <div style="font-size:13.3px; font-weight:500; color:#1B2D5C; margin-top:5px; line-height:1.6;">한 가지 견적 업무를 4도구에 동시에 보내고 결과의 차이를 직접 측정합니다.</div>
+  </div>
+
+  <!-- 학습 목표 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:606px; height:78px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:5px; height:78px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:230px; width:570px; height:63px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">학습 목표</div>
+    <div style="font-size:12px; color:#2D2D2D; line-height:1.65; margin-top:4px;">
+      한 가지 업무 입력을 ChatGPT·Claude·Genspark·Gemini에 똑같이 보내, <b>속도·길이·정확도·출력 형식</b>의 차이를 표로 정리하고 도구 선택 근거를 만듭니다.
+    </div>
+  </div>
+
+  <!-- 시나리오 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:606px; height:78px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:5px; height:78px; background:#1B2D5C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:324px; width:570px; height:63px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">시나리오</div>
+    <div style="font-size:12px; color:#2D2D2D; line-height:1.65; margin-top:4px;">
+      "송도 현장에 22톤 굴착기 1년 임대 가능?" 한 줄 메일을 받았습니다. <b>같은 프롬프트</b>를 4도구에 보내 "추천 모델 + 월 임대료 + 추천 이유 + 추가 옵션"을 받아 보세요.
+    </div>
+  </div>
+
+  <!-- PROMPT BOX -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:412px; width:610px; height:88px; background:#F2F0EA; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:422px; width:580px; height:18px; z-index:10;">
+    <div style="display:inline-block; background:#F4B400; color:#1B2D5C; font-size:9px; font-weight:900; padding:3px 8px; letter-spacing:0.18em;">[코드 2-1]</div>
+    <span style="font-size:11px; font-weight:700; color:#1B2D5C; margin-left:8px;">공통 프롬프트 — 4도구 동일 입력</span>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:447px; width:580px; height:50px; z-index:11; font-family:'D2Coding','Consolas','Menlo',monospace; font-size:10.5px; line-height:1.65; color:#2D2D2D; white-space:pre-wrap;">[역할] 너는 우리 회사 영업부 견적 담당자다.
+[입력] "송도 현장 / 22톤급 굴착기 / 1년 임대 / 가능 모델·월 임대료 문의"
+[출력] 추천 모델 1개 + 월 임대료 + 추천 이유 + 추가 옵션 3가지 (표 1쪽)</div>
+
+  <!-- 4-TOOL OUTPUT TABLE -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:520px; width:606px; height:24px; z-index:10;">
+    <div style="font-size:20px; font-weight:800; color:#1B2D5C; letter-spacing:-0.012em;">따라하기 — 출력 비교 표</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:560px; width:608px; height:282px; background:#FFFFFF; border:1px solid #1B2D5C; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:560px; width:608px; height:32px; background:#1B2D5C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:572px; width:580px; z-index:11; display:flex; align-items:center; font-size:10.5px; letter-spacing:0.18em; font-weight:800; color:#F4B400;">
+    <div style="width:118px;">도구</div>
+    <div style="width:90px;">응답 시간</div>
+    <div style="width:110px;">분량 (줄)</div>
+    <div style="width:120px;">표 사용</div>
+    <div style="flex:1;">한 줄 평</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:600px; width:580px; height:240px; z-index:11; font-size:11.5px; line-height:1.5; color:#2D2D2D;">
+    <div style="display:flex; padding:10px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:118px; font-weight:900; color:#1B2D5C;">ChatGPT</div>
+      <div style="width:90px;">_____ 초</div>
+      <div style="width:110px;">_____ 줄</div>
+      <div style="width:120px;">☐ 있음 ☐ 없음</div>
+      <div style="flex:1; color:#6B7280;">_______________________</div>
+    </div>
+    <div style="display:flex; padding:10px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:118px; font-weight:900; color:#1B2D5C;">Claude</div>
+      <div style="width:90px;">_____ 초</div>
+      <div style="width:110px;">_____ 줄</div>
+      <div style="width:120px;">☐ 있음 ☐ 없음</div>
+      <div style="flex:1; color:#6B7280;">_______________________</div>
+    </div>
+    <div style="display:flex; padding:10px 0; border-bottom:1px dashed #E8E4DA;">
+      <div style="width:118px; font-weight:900; color:#1B2D5C;">Genspark</div>
+      <div style="width:90px;">_____ 초</div>
+      <div style="width:110px;">_____ 줄</div>
+      <div style="width:120px;">☐ 있음 ☐ 없음</div>
+      <div style="flex:1; color:#6B7280;">_______________________</div>
+    </div>
+    <div style="display:flex; padding:10px 0;">
+      <div style="width:118px; font-weight:900; color:#1B2D5C;">Gemini</div>
+      <div style="width:90px;">_____ 초</div>
+      <div style="width:110px;">_____ 줄</div>
+      <div style="width:120px;">☐ 있음 ☐ 없음</div>
+      <div style="flex:1; color:#6B7280;">_______________________</div>
+    </div>
+  </div>
+
+  <!-- 직접 해보기 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:858px; width:610px; height:134px; background:#FFFAF6; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:874px; width:570px; height:104px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#1B2D5C;">직접 해보기</div>
+    <div style="font-size:12px; color:#2D2D2D; line-height:1.7; margin-top:5px;">
+      ① 4도구의 출력 중 <b>오늘 메일 회신용</b>으로 가장 적합한 것을 ★ 표시 하세요.<br>
+      ② 그 ★ 출력을 <b>고른 이유 한 문장</b>을 옆에 적으세요.<br>
+      ③ <b>다른 도구의 좋은 부분 1개</b>를 골라 ★ 출력에 합쳐 보세요 — 이것이 Part 03의 "병행 워크플로"의 출발점입니다.
+    </div>
+  </div>
+
+  <!-- 주의 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:1010px; width:606px; height:42px; background:#FFFFFF; border:1px solid #C0392B; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:1010px; width:5px; height:42px; background:#C0392B; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:1018px; width:570px; height:33px; z-index:10;">
+    <div style="font-size:10.5px; color:#2D2D2D; line-height:1.55;">
+      <b style="color:#C0392B;">주의</b> · 단가표·고객명 등 회사 데이터를 첨부하면 <b>학습 차단 옵션 ON</b> 인지 다시 확인하세요.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1085px; width:680px; height:14px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.18em; color:#6B7280;">⁶ 같은 프롬프트라도 매 호출마다 출력은 달라질 수 있음 — 재현성은 시드 옵션 활용</span>
+    <span style="font-size:9px; letter-spacing:0.28em; font-weight:800; color:#1B2D5C;">068</span>
+  </div>
+
+</div>
+</body>
+</html>

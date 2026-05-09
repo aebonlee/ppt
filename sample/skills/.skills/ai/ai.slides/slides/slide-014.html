@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<style>
+    body { margin: 0; padding: 0; overflow: hidden; background-color: #f5f8fc; }
+    p, ul, li { margin: 0; padding: 0; }
+    .slide-container {
+      width: 794px;
+      height: 1123px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-sizing: border-box;
+      border: 1.5px solid #1B3A6E;
+    }
+  </style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- 러닝 헤드 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 83px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; letter-spacing: 0.5px;">CHAPTER 01</p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 38px; left: 411px; width: 300px; z-index: 10;">
+<p style="font-size: 12px; color: #1B3A6E; font-weight: 500; letter-spacing: 0.5px; text-align: right;">전남대GPT와 8종 LLM 활용 기초</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 60px; left: 83px; width: 628px; height: 1px; background-color: #B5D4F4; z-index: 1;"></div>
+<!-- 좌측 STEP 사이드 태그 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 83px; width: 106px; height: 140px; background-color: #1B3A6E; border-radius: 8px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 93px; width: 86px; z-index: 10;">
+<p style="font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 500; letter-spacing: 2px; text-align: center; margin-bottom: 2px;">STEP</p>
+<p style="font-size: 34px; color: #ffffff; font-weight: 700; line-height: 1; text-align: center; margin-bottom: 8px;">01</p>
+<p style="font-size: 12px; color: #ffffff; line-height: 1.45; text-align: center; opacity: 0.95;">플랫폼 접속과<br/>로그인</p>
+</div>
+<!-- ① 학습 목표 -->
+<!-- Fix: Increased height from 75px to 90px to prevent text overflow reported in machine-assisted details -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 105px; left: 213px; width: 498px; height: 90px; background-color: #F5F8FC; border-left: 4px solid #1B3A6E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 118px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 13px; font-weight: 700; color: #1B3A6E; margin-bottom: 6px;">학습 목표</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6;">학교 메일 계정으로 전남대GPT에 로그인하고 메인 화면 4영역(모델 선택/입력창/대화 목록/사용량)을 5분 안에 파악한다.</p>
+</div>
+<!-- ② 시나리오 본문 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 220px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 8px;">시나리오</p>
+<p style="font-size: 15px; color: #2C2C2A; line-height: 1.7; text-align: justify;">월요일 아침 부서장이 전남대GPT를 한번 써 보라고 합니다. 들어 본 적은 있지만 직접 써 본 적은 없는 도구입니다. 어떻게 들어가는지부터 확인해 봅시다.</p>
+</div>
+<!-- ③ 따라하기 3단계 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 335px; left: 213px; width: 498px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 12px;">따라하기</p>
+<p style="font-size: 15px; font-weight: 600; color: #2E5BBA; margin-bottom: 4px;">1) 브라우저 접속</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-bottom: 16px; padding-left: 10px;">Chrome이나 Edge 브라우저에서 <span style="font-family: monospace; background: #F1EFE8; padding: 2px 6px; border-radius: 3px; color: #1B3A6E;">https://aioni.jnu.ac.kr</span> 접속</p>
+<p style="font-size: 15px; font-weight: 600; color: #2E5BBA; margin-bottom: 4px;">2) 학교 메일 계정으로 로그인</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; margin-bottom: 16px; padding-left: 10px;">• 학교 메일 계정(<span style="font-family: monospace;">@jnu.ac.kr</span>) 사용 (별도 회원가입 불필요)<br/>• 최초 접속 시 비밀번호 변경 안내가 나올 수 있음</p>
+<p style="font-size: 15px; font-weight: 600; color: #2E5BBA; margin-bottom: 4px;">3) 메인 화면 4영역 확인</p>
+<p style="font-size: 14px; color: #2C2C2A; line-height: 1.6; padding-left: 10px;">① 모델 선택 (상단 드롭다운)   ② 입력창 (가운데)<br/>③ 대화 목록 (좌측 사이드바)   ④ 사용량 표시 (우측/하단)</p>
+</div>
+<!-- ④ 직접 해보기 박스 -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 620px; left: 213px; width: 498px; height: 180px; background-color: #F5F8FC; border: 2px dashed #1B3A6E; border-radius: 6px; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 635px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 15px; font-weight: 700; color: #1B3A6E; margin-bottom: 15px;"><span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #1B3A6E; border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>직접 해보기</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 12px;">로그인 성공 여부:   □ 성공   □ 실패</p>
+<p style="font-size: 14px; color: #2C2C2A; margin-bottom: 15px;">모델 목록 중 3개 적어보기:</p>
+</div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 725px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 755px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 785px; left: 233px; width: 458px; height: 1px; background-color: #B5D4F4; z-index: 2;"></div>
+<!-- ⑤ 주의 콜아웃 (붉은톤) -->
+<div data-object="true" data-object-type="shape" style="position: absolute; top: 850px; left: 213px; width: 498px; height: 100px; background-color: #FFF5F5; border-radius: 6px; border-left: 4px solid #E53E3E; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 865px; left: 233px; width: 458px; z-index: 10;">
+<p style="font-size: 14px; color: #9B2C2C; line-height: 1.6; text-align: justify;">
+<span style="font-weight: 700; color: #E53E3E; margin-right: 10px; letter-spacing: 0.5px;">주의</span>로그인 실패 시 학교 메일 비밀번호가 만료되었을 가능성이 큽니다. <span style="font-family: monospace; background: #FED7D7; padding: 1px 4px; border-radius: 3px;">mail.jnu.ac.kr</span>에서 비밀번호를 확인 후 재시도해 보세요. 계속 안 될 경우 정보화본부(062-530-XXXX)로 문의 바랍니다.
+</p>
+</div>
+<!-- 페이지 번호 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; top: 1055px; left: 661px; width: 50px; z-index: 10;">
+<p style="font-size: 12px; color: #5F5E5A; text-align: right;">15</p>
+</div>
+</div>
+</body>
+</html>

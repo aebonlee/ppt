@@ -1,0 +1,978 @@
+{
+  "page": 3,
+  "size_pt": {
+    "w": 612.0,
+    "h": 859.0
+  },
+  "rotation": 0,
+  "text_layer_chars": 458,
+  "spans_count": 57,
+  "images_count": 8,
+  "drawings_count": 10,
+  "screenshot": "pages/page_003.png",
+  "text": "Part\n01\n의료 영상 처리 기초\n➊ 의료 영상 AI 활용 사례\n2\n1. 의료 영상 분야에서의 AI 도입\n2\n2. 의료 영상 AI 개발 사례\n4\n➋ 디지털 영상과 의료 영상\n9\n1. 디지털 영상과 의료 영상 개념\n9\n2. 의료 영상의 종류\n10\n3. 컴퓨터 비전 문제 종류\n15\n➌ 실습 환경 구축\n18\n1. Colab 기본 사용법 실습\n18\nPart\n02\n피부암 진단 모델 개발\n➊ 머신러닝 프로젝트\n22\n1. 머신러닝 프로젝트 파이프라인\n22\n2. 머신러닝 프레임워크 소개 및 실습\n32\n➋ 이미지 분류 개요\n35\n1. 이미지 분류 개념\n35\n2. 고전적 이미지 분류 기법\n37\n3. CNN: LeNet\n40\n➌ 피부암 진단 모델 개발\n44\n1. Pytorch 기초\n44\n2. 데이터셋: ISIC 2016\n48\n3. LeNet 구현 실습\n53\n4. 모델 학습\n56\n5. 이미지 분류 모델 평가\n58\nContents\n",
+  "spans": [
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        161.0,
+        131.2,
+        177.8
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "01",
+      "bbox": [
+        109.0,
+        172.1,
+        132.2,
+        206.9
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "의료 영상 처리 기초",
+      "bbox": [
+        146.7,
+        172.0,
+        296.5,
+        199.0
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        228.8,
+        162.3,
+        240.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "의료 영상 AI 활용 사례",
+      "bbox": [
+        164.2,
+        226.1,
+        282.9,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "2",
+      "bbox": [
+        515.1,
+        226.1,
+        522.3,
+        244.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 의료 영상 분야에서의 AI 도입",
+      "bbox": [
+        166.5,
+        247.8,
+        302.2,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2",
+      "bbox": [
+        516.4,
+        247.8,
+        522.4,
+        262.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 의료 영상 AI 개발 사례",
+      "bbox": [
+        166.5,
+        260.7,
+        276.8,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "4",
+      "bbox": [
+        516.4,
+        260.7,
+        522.4,
+        275.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        289.0,
+        162.3,
+        301.0
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "디지털 영상과 의료 영상",
+      "bbox": [
+        164.2,
+        286.3,
+        285.8,
+        304.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "9",
+      "bbox": [
+        515.1,
+        286.3,
+        522.3,
+        304.3
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 디지털 영상과 의료 영상 개념",
+      "bbox": [
+        166.5,
+        308.0,
+        300.8,
+        323.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "9",
+      "bbox": [
+        516.4,
+        308.0,
+        522.4,
+        323.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 의료 영상의 종류",
+      "bbox": [
+        166.5,
+        321.0,
+        248.9,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "10",
+      "bbox": [
+        510.7,
+        321.0,
+        522.1,
+        336.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. 컴퓨터 비전 문제 종류",
+      "bbox": [
+        166.5,
+        334.0,
+        270.6,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "15",
+      "bbox": [
+        510.7,
+        334.0,
+        522.1,
+        349.0
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➌ ",
+      "bbox": [
+        146.7,
+        362.3,
+        162.3,
+        374.3
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "실습 환경 구축",
+      "bbox": [
+        164.2,
+        359.6,
+        238.5,
+        377.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "18",
+      "bbox": [
+        508.1,
+        359.6,
+        522.1,
+        377.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. Colab 기본 사용법 실습",
+      "bbox": [
+        166.5,
+        381.3,
+        278.0,
+        396.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "18",
+      "bbox": [
+        510.7,
+        381.3,
+        522.1,
+        396.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "Part",
+      "bbox": [
+        109.0,
+        448.5,
+        131.2,
+        465.3
+      ],
+      "font": "BebasNeue",
+      "size": 14.0,
+      "color": 6184542,
+      "flags": 4
+    },
+    {
+      "text": "02",
+      "bbox": [
+        109.0,
+        459.7,
+        132.2,
+        494.4
+      ],
+      "font": "BebasNeue",
+      "size": 29.0,
+      "color": 7385923,
+      "flags": 4
+    },
+    {
+      "text": "피부암 진단 모델 개발",
+      "bbox": [
+        146.7,
+        459.6,
+        311.9,
+        486.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 18.0,
+      "color": 2779456,
+      "flags": 16
+    },
+    {
+      "text": "➊ ",
+      "bbox": [
+        146.7,
+        516.3,
+        162.3,
+        528.3
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "머신러닝 프로젝트",
+      "bbox": [
+        164.2,
+        513.6,
+        253.4,
+        531.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "22",
+      "bbox": [
+        508.1,
+        513.6,
+        522.1,
+        531.6
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 머신러닝 프로젝트 파이프라인",
+      "bbox": [
+        166.5,
+        535.3,
+        299.8,
+        550.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "22",
+      "bbox": [
+        510.7,
+        535.3,
+        522.1,
+        550.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 머신러닝 프레임워크 소개 및 실습",
+      "bbox": [
+        166.5,
+        548.3,
+        317.8,
+        563.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "32",
+      "bbox": [
+        510.7,
+        548.3,
+        522.1,
+        563.3
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➋ ",
+      "bbox": [
+        146.7,
+        576.5,
+        162.3,
+        588.5
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "이미지 분류 개요",
+      "bbox": [
+        164.2,
+        573.8,
+        248.8,
+        591.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "35",
+      "bbox": [
+        508.0,
+        573.8,
+        522.1,
+        591.8
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. 이미지 분류 개념",
+      "bbox": [
+        166.5,
+        595.5,
+        248.9,
+        610.6
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "35",
+      "bbox": [
+        510.7,
+        595.5,
+        522.1,
+        610.6
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 고전적 이미지 분류 기법",
+      "bbox": [
+        166.5,
+        608.5,
+        279.1,
+        623.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "37",
+      "bbox": [
+        510.7,
+        608.5,
+        522.1,
+        623.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. CNN: LeNet",
+      "bbox": [
+        166.5,
+        621.5,
+        231.8,
+        636.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "40",
+      "bbox": [
+        510.7,
+        621.5,
+        522.1,
+        636.5
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "➌ ",
+      "bbox": [
+        146.7,
+        649.8,
+        162.3,
+        661.8
+      ],
+      "font": "HaansoftBatang",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 4
+    },
+    {
+      "text": "피부암 진단 모델 개발",
+      "bbox": [
+        164.2,
+        647.1,
+        275.4,
+        665.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "44",
+      "bbox": [
+        508.0,
+        647.1,
+        522.1,
+        665.1
+      ],
+      "font": "IBMPlexSansKR,Bold",
+      "size": 12.0,
+      "color": 10929991,
+      "flags": 16
+    },
+    {
+      "text": "1. Pytorch 기초",
+      "bbox": [
+        166.5,
+        668.8,
+        234.6,
+        683.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "44",
+      "bbox": [
+        510.7,
+        668.8,
+        522.1,
+        683.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "2. 데이터셋: ISIC 2016",
+      "bbox": [
+        166.5,
+        681.8,
+        267.8,
+        696.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "48",
+      "bbox": [
+        510.7,
+        681.8,
+        522.1,
+        696.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "3. LeNet 구현 실습",
+      "bbox": [
+        166.5,
+        694.8,
+        248.7,
+        709.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "53",
+      "bbox": [
+        510.7,
+        694.8,
+        522.1,
+        709.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "4. 모델 학습",
+      "bbox": [
+        166.5,
+        707.8,
+        218.7,
+        722.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "56",
+      "bbox": [
+        510.7,
+        707.8,
+        522.1,
+        722.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "5. 이미지 분류 모델 평가",
+      "bbox": [
+        166.5,
+        720.8,
+        270.6,
+        735.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "58",
+      "bbox": [
+        510.7,
+        720.8,
+        522.1,
+        735.8
+      ],
+      "font": "IBMPlexSansKR",
+      "size": 10.0,
+      "color": 0,
+      "flags": 0
+    },
+    {
+      "text": "Contents",
+      "bbox": [
+        65.3,
+        66.7,
+        185.4,
+        111.7
+      ],
+      "font": "IBMPlexSansKRSemiBold",
+      "size": 30.0,
+      "color": 9474192,
+      "flags": 16
+    }
+  ],
+  "images": [
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        286.5,
+        612.3,
+        381.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        381.9,
+        612.3,
+        477.4
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        477.4,
+        612.3,
+        572.9
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        572.9,
+        612.3,
+        668.3
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 9310,
+      "bbox": [
+        -0.0,
+        668.3,
+        612.3,
+        763.8
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_9310.png"
+    },
+    {
+      "xref": 8212,
+      "bbox": [
+        -0.0,
+        0.1,
+        612.3,
+        191.0
+      ],
+      "px_w": 2551,
+      "px_h": 796,
+      "asset_path": "media/img_xref_8212.jpeg"
+    },
+    {
+      "xref": 8213,
+      "bbox": [
+        -0.0,
+        191.0,
+        612.3,
+        286.5
+      ],
+      "px_w": 2551,
+      "px_h": 398,
+      "asset_path": "media/img_xref_8213.png"
+    },
+    {
+      "xref": 8214,
+      "bbox": [
+        -0.0,
+        763.8,
+        612.3,
+        859.0
+      ],
+      "px_w": 2551,
+      "px_h": 395,
+      "asset_path": "media/img_xref_8214.png"
+    }
+  ],
+  "drawings": [
+    {
+      "bbox": [
+        0.0,
+        286.5,
+        612.0,
+        381.9
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        382.0,
+        612.0,
+        477.4
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        477.4,
+        612.0,
+        572.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        572.9,
+        612.0,
+        668.3
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        668.4,
+        612.0,
+        763.8
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        0.0,
+        763.8,
+        612.0,
+        859.0
+      ],
+      "kind": "f",
+      "stroke": null,
+      "fill": "#FFFFFF",
+      "width": 0.0
+    },
+    {
+      "bbox": [
+        145.1,
+        201.3,
+        527.4,
+        201.3
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        201.3,
+        527.4,
+        201.3
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        488.9,
+        527.4,
+        488.9
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    },
+    {
+      "bbox": [
+        145.1,
+        488.9,
+        527.4,
+        488.9
+      ],
+      "kind": "s",
+      "stroke": "#223F69",
+      "fill": null,
+      "width": 0.36
+    }
+  ],
+  "links": []
+}

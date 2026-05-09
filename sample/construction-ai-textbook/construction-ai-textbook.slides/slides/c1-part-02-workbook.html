@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Part 02 · 워크북 — 견적서 자동 작성</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<style>
+  body { margin:0; padding:0; overflow:hidden; font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif; color:#1A2332; -webkit-font-smoothing:antialiased; }
+</style>
+</head>
+<body>
+<div data-screen-label="12 2-③ 워크북 견적서" class="slide-container" style="position:relative; width:794px; height:1123px; overflow:hidden; background:#FFFFFF;">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:36px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:flex-end;">
+    <span style="font-size:10px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">PART 02 · 프롬프트 엔지니어링</span>
+    <span style="font-size:10px; letter-spacing:0.18em; font-weight:600; color:#6B7280;">WORKBOOK · 견적서 자동 작성</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:57px; top:62px; width:680px; height:1px; background:#1A2332; z-index:5;"></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:520px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:0; top:130px; width:36px; height:80px; background:#F4B400; z-index:6;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:0; top:230px; width:36px; height:420px; z-index:11; display:flex; align-items:center; justify-content:center;">
+    <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:0.42em; font-weight:800; color:#ffffff;">PART 02 · 워크북</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:96px; width:90px; height:90px; background:#1A2332; z-index:5;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:104px; width:90px; z-index:11; text-align:center; color:#ffffff;">
+    <div style="font-size:9px; letter-spacing:0.32em; font-weight:800; color:#F4B400;">STEP</div>
+    <div style="font-size:36px; font-weight:900; line-height:1; margin-top:4px; letter-spacing:-0.04em;">02</div>
+    <div style="font-size:8px; letter-spacing:0.18em; font-weight:600; color:rgba(255,255,255,0.6); margin-top:6px;">QUOTE · WRITE</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:200px; top:96px; width:500px; z-index:10;">
+    <div style="font-size:11px; letter-spacing:0.3em; font-weight:800; color:#E8521C;">CHAPTER · ③ · 워크북</div>
+    <div style="font-size:27px; font-weight:900; color:#1A2332; line-height:1.25; letter-spacing:-0.018em; margin-top:2px;">견적서 자동 작성</div>
+    <div style="font-size:13px; font-weight:500; color:#6B7280; margin-top:6px; line-height:1.55;">고객 요청 메일 한 통 → 견적서 1쪽으로 5분 안에 변환합니다.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:606px; height:78px; background:#FFF6D6; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:218px; width:5px; height:78px; background:#F4B400; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:230px; width:570px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#C99300;">학습 목표</div>
+    <div style="font-size:13.3px; font-weight:500; color:#1A2332; margin-top:5px; line-height:1.6;">고객의 자유 형식 요청 메일에서 사양을 추출하고, 회사 단가표를 적용해 <b>견적서 1쪽 + 추천 옵션 1개</b>를 5분 안에 만들어 냅니다.</div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:606px; height:78px; background:#F5F2EC; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:312px; width:5px; height:78px; background:#1A2332; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:324px; width:570px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#1A2332;">시나리오</div>
+    <div style="font-size:13.3px; font-weight:500; color:#2D2D2D; margin-top:5px; line-height:1.6;">"인천 현장에 22톤급 굴착기 1년 임대 가능한가요?"라는 한 줄짜리 문의가 왔습니다. 사양·기간·옵션을 정리해 견적서 형태로 회신해야 합니다.</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:412px; width:606px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; background:#E8521C;"></div>
+      <div style="font-size:20px; font-weight:800; color:#1A2332; letter-spacing:-0.012em;">따라하기 — 입력 자료 → 견적</div>
+    </div>
+  </div>
+
+  <!-- 입력 박스 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:456px; width:294px; height:178px; background:#F8F8F8; border:1px solid #D6D0C2; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:468px; width:280px; z-index:11;">
+    <div style="font-size:9px; letter-spacing:0.28em; font-weight:800; color:#E8521C;">INPUT · 고객 메일</div>
+    <div style="font-size:11.5px; line-height:1.65; color:#1A2332; margin-top:8px;">
+      안녕하세요, ㈜대성건설 김영호입니다.<br>
+      인천 송도 현장에 <b>22톤급 굴착기</b> 1년 임대가 필요한데, 가능한 모델과 월 임대료, 정기 점검 포함 여부 알려주세요. 작업 시작은 4월 1일입니다.
+    </div>
+  </div>
+
+  <!-- 우측 안내 -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:404px; top:456px; width:296px; z-index:10;">
+    <div style="font-size:13.3px; line-height:1.7; color:#2D2D2D;">
+      <div style="margin-bottom:8px;"><b style="color:#E8521C;">1)</b>&nbsp; ChatGPT에 <b style="color:#1A2332;">[코드 2-3]</b> 프롬프트를 붙여넣고, 위 메일을 [맥락]에 그대로 입력합니다.</div>
+      <div style="margin-bottom:8px;"><b style="color:#E8521C;">2)</b>&nbsp; 첨부로 <b style="color:#1A2332;">단가표.xlsx</b>(또는 PDF)를 업로드합니다 — 환각을 막는 핵심.</div>
+      <div><b style="color:#E8521C;">3)</b>&nbsp; 출력된 견적서를 회사 양식(.docx)에 붙여넣고, <b style="color:#1A2332;">금액 · 차대번호 · 시작일</b>만 사람이 검수합니다.</div>
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:94px; top:660px; width:606px; z-index:10;">
+    <div style="display:inline-block; font-size:10px; letter-spacing:0.24em; font-weight:800; color:#1A2332; padding:4px 10px; background:#F4B400;">[코드 2-3]</div>
+    <span style="font-size:13.3px; font-weight:700; color:#1A2332; margin-left:8px;">견적서 작성 — 5요소 완성형 프롬프트</span>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:695px; width:606px; height:138px; background:#F8F8F8; border-left:4px solid #1A2332; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:108px; top:707px; width:580px; z-index:11;">
+    <div style="font-size:11.5px; font-weight:500; color:#1A2332; line-height:1.7; font-family:'D2Coding','Consolas',monospace;">
+      <div><span style="color:#E8521C;">[역할]</span> 너는 우리 회사 영업부 견적 담당자다. (말투: 공손, 어휘: B2B)</div>
+      <div><span style="color:#E8521C;">[맥락]</span> 첨부 단가표.xlsx를 단가의 유일한 기준으로 사용한다.</div>
+      <div><span style="color:#E8521C;">[지시]</span> 아래 고객 메일에서 사양을 추출하고, 단가표에서 모델 3개를 골라</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;옵션별 견적을 만들어라. 추천 1개를 굵게 표시하고 이유 한 줄.</div>
+      <div><span style="color:#E8521C;">[형식]</span> 견적서 1쪽 (헤더/본문/금액 합계). 금액 단위는 KRW 천원 단위.</div>
+      <div><span style="color:#E8521C;">[제한]</span> 단가표에 없는 모델은 추천하지 마라. 모르면 "확인 후 회신"으로 답한다.</div>
+    </div>
+  </div>
+
+  <!-- 직접 해보기 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:858px; width:606px; height:130px; background:#FFFFFF; border:2px dashed #1A2332; z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:874px; width:570px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <div style="width:14px; height:14px; border:2px solid #1A2332; background:#FFFFFF;"></div>
+      <div style="font-size:13.3px; font-weight:800; color:#1A2332;">직접 해보기</div>
+    </div>
+    <div style="font-size:11.5px; color:#2D2D2D; line-height:1.85; margin-top:8px;">
+      <div>① 추천된 모델 1개의 모델명을 적어보세요. &nbsp;<span style="display:inline-block; border-bottom:1px solid #6B7280; min-width:240px;"></span></div>
+      <div>② 추천 이유 한 문장을 옮겨 적으세요. &nbsp;<span style="display:inline-block; border-bottom:1px solid #6B7280; min-width:330px;"></span></div>
+      <div>③ 사람이 검수해야 할 항목 3가지는? &nbsp;<span style="display:inline-block; border-bottom:1px solid #6B7280; min-width:330px;"></span></div>
+    </div>
+  </div>
+
+  <!-- 주의 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:1010px; width:606px; height:42px; background:#FFEEE6; z-index:1;"></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute; left:94px; top:1010px; width:5px; height:42px; background:#E8521C; z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:114px; top:1018px; width:570px; z-index:10;">
+    <div style="font-size:10px; letter-spacing:0.3em; font-weight:800; color:#C0392B;">주의</div>
+    <div style="font-size:11.5px; font-weight:500; color:#1A2332; margin-top:2px; line-height:1.4;">단가표를 첨부하지 않으면 모델은 시장 평균값을 추정합니다 — 회사 마진과 어긋날 수 있으니 반드시 첨부하세요.</div>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute; left:57px; top:1075px; width:680px; z-index:10; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:9px; letter-spacing:0.04em; color:#6B7280; font-family:serif;">⁶⁾ 단가표 업로드는 ChatGPT Team/Enterprise 또는 Copilot 환경에서만 안전하게 사용한다.</span>
+    <span style="font-size:11px; font-weight:800; color:#1A2332;">068</span>
+  </div>
+
+</div>
+</body>
+</html>
