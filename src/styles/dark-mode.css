@@ -1257,3 +1257,372 @@
   border-color: var(--primary-blue);
   color: #fff;
 }
+
+/* ═══════════════════════════════════════════
+   PPT-specific Dark Mode Rules
+   ═══════════════════════════════════════════ */
+
+/* ── Generate Page ── */
+[data-theme="dark"] .wizard-step {
+  background: #1F2937;
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .wizard-step.active {
+  color: #fff;
+}
+
+[data-theme="dark"] .wizard-step.completed {
+  background: rgba(74, 143, 231, 0.15);
+  color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .wizard-panel {
+  background: rgba(31, 41, 55, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .wizard-panel h2 {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .wizard-desc {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .topic-input {
+  background: #1F2937;
+  border-color: #374151;
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .topic-input:focus {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .config-label {
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .config-hint {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .orientation-btn {
+  background: #1F2937;
+  border-color: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .orientation-btn.active {
+  border-color: var(--primary-blue);
+  color: #fff;
+}
+
+[data-theme="dark"] .engine-btn {
+  background: #1F2937;
+  border-color: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .engine-btn.active {
+  border-color: var(--primary-blue);
+  color: #fff;
+}
+
+[data-theme="dark"] .color-scheme-btn {
+  background: #1F2937;
+  border-color: transparent;
+}
+
+[data-theme="dark"] .color-scheme-btn.active {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .color-scheme-name {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .api-key-input,
+[data-theme="dark"] .additional-input {
+  background: #1F2937;
+  border-color: #374151;
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .api-key-input:focus,
+[data-theme="dark"] .additional-input:focus {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: #4B5563;
+}
+
+/* Progress */
+[data-theme="dark"] .progress-message {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .progress-bar-container {
+  background: #374151;
+}
+
+/* Result */
+[data-theme="dark"] .result-header h2 {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .result-info {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .result-info span {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .slide-preview-area {
+  background: #1F2937;
+}
+
+[data-theme="dark"] .slide-nav button {
+  background: #374151;
+  border-color: #4B5563;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .slide-nav span {
+  color: #D1D5DB;
+}
+
+/* ── File Upload ── */
+[data-theme="dark"] .file-upload-zone {
+  border-color: #4B5563;
+  background: rgba(31, 41, 55, 0.5);
+}
+
+[data-theme="dark"] .file-upload-zone:hover,
+[data-theme="dark"] .file-upload-zone.drag-over {
+  border-color: var(--primary-blue);
+  background: rgba(74, 143, 231, 0.08);
+}
+
+[data-theme="dark"] .file-upload-text {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .file-upload-hint {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .file-upload-selected {
+  background: rgba(74, 143, 231, 0.15);
+  color: var(--primary-blue-light);
+}
+
+/* ── Chat Panel ── */
+[data-theme="dark"] .chat-panel {
+  background: rgba(31, 41, 55, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .chat-panel-header {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .chat-empty {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .chat-suggestion {
+  background: #1F2937;
+  border-color: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .chat-suggestion:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue-light);
+  background: rgba(74, 143, 231, 0.1);
+}
+
+[data-theme="dark"] .chat-message.assistant {
+  background: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .chat-typing {
+  background: #374151;
+}
+
+[data-theme="dark"] .chat-typing span {
+  background: #6B7280;
+}
+
+[data-theme="dark"] .chat-input-area {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .chat-input-area input {
+  background: #1F2937;
+  border-color: #374151;
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .chat-input-area input:focus {
+  border-color: var(--primary-blue);
+}
+
+/* ── Export Dropdown ── */
+[data-theme="dark"] .export-dropdown {
+  background: #1F2937;
+  border-color: #374151;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .export-option {
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .export-option:hover {
+  background: #374151;
+}
+
+/* ── Saved Key Indicator ── */
+[data-theme="dark"] .saved-key-indicator {
+  background: rgba(46, 125, 50, 0.15);
+  border-color: rgba(46, 125, 50, 0.3);
+  color: #6EE7B7;
+}
+
+/* ── Home Page ── */
+[data-theme="dark"] .features-section {
+  background: #111827;
+}
+
+[data-theme="dark"] .section-title {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .section-subtitle {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .feature-card {
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .feature-title {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .feature-desc {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .how-section {
+  background: #1F2937;
+}
+
+[data-theme="dark"] .step-title {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .step-desc {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .themes-section {
+  background: #111827;
+}
+
+[data-theme="dark"] .theme-name {
+  color: #9CA3AF;
+}
+
+/* ── Pricing Page ── */
+[data-theme="dark"] .pricing-card {
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .pricing-card.highlighted {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .plan-name {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .plan-note {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .pricing-header {
+  border-bottom-color: #374151;
+}
+
+[data-theme="dark"] .plan-features li {
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .plan-features li.excluded {
+  color: #4B5563;
+}
+
+[data-theme="dark"] .faq-item {
+  background: rgba(31, 41, 55, 0.6);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .faq-question {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .faq-answer {
+  color: #9CA3AF;
+}
+
+/* ── My Presentations ── */
+[data-theme="dark"] .presentation-card {
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .pres-orientation,
+[data-theme="dark"] .pres-slide-count {
+  background: #374151;
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .pres-title {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .pres-desc {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .pres-date {
+  color: #4B5563;
+}
+
+[data-theme="dark"] .empty-state h3 {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .empty-state p {
+  color: #9CA3AF;
+}

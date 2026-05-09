@@ -7,6 +7,7 @@
 .empty-icon {
   font-size: 64px;
   margin-bottom: 16px;
+  animation: float 3s ease-in-out infinite;
 }
 
 .empty-state h3 {
@@ -28,15 +29,30 @@
 }
 
 .presentation-card {
-  background: #fff;
-  border: 1px solid #e0e0e0;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.5);
   border-radius: 12px;
   padding: 20px;
-  transition: box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient, linear-gradient(135deg, #0046C8, #4A8FE7));
 }
 
 .presentation-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
 }
 
 .pres-card-header {

@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
-import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation } from '../types';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation, SlideData } from '../types';
 import { generatePresentation, savePresentation } from '../services/aiService';
+import { useAuth } from './AuthContext';
+import { getDecryptedKey } from '../services/settingsService';
 
 interface GenerationState {
   // Wizard step
@@ -23,15 +25,25 @@ interface GenerationState {
   additionalInstructions: string;
   setAdditionalInstructions: (instructions: string) => void;
 
+  // File upload
+  uploadedFile: File | null;
+  setUploadedFile: (file: File | null) => void;
+  referenceContent: string;
+  setReferenceContent: (content: string) => void;
+
   // Generation
   progress: GenerationProgress;
   presentation: PresentationData | null;
   generate: () => Promise<void>;
   reset: () => void;
+  updateSlides: (slides: SlideData[]) => void;
 
   // Save
   savedId: string | null;
   save: () => Promise<void>;
+
+  // Saved API key
+  hasSavedKey: boolean;
 }
 
 const defaultProgress: GenerationProgress = {
@@ -43,6 +55,7 @@ const defaultProgress: GenerationProgress = {
 const GenerationContext = createContext<GenerationState | null>(null);
 
 export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user } = useAuth();
   const [step, setStep] = useState(0);
   const [topic, setTopic] = useState('');
   const [slideCount, setSlideCount] = useState(15);
@@ -51,9 +64,25 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [aiEngine, setAiEngine] = useState<'openai' | 'claude'>('openai');
   const [apiKey, setApiKey] = useState('');
   const [additionalInstructions, setAdditionalInstructions] = useState('');
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [referenceContent, setReferenceContent] = useState('');
   const [progress, setProgress] = useState<GenerationProgress>(defaultProgress);
   const [presentation, setPresentation] = useState<PresentationData | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [hasSavedKey, setHasSavedKey] = useState(false);
+
+  // Auto-load saved API key when user or aiEngine changes
+  useEffect(() => {
+    if (!user) return;
+    getDecryptedKey(aiEngine).then(key => {
+      if (key) {
+        setApiKey(key);
+        setHasSavedKey(true);
+      } else {
+        setHasSavedKey(false);
+      }
+    }).catch(() => setHasSavedKey(false));
+  }, [user, aiEngine]);
 
   const generate = useCallback(async () => {
     const request: GenerateRequest = {
@@ -65,6 +94,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       aiEngine,
       apiKey: apiKey || undefined,
       additionalInstructions: additionalInstructions || undefined,
+      referenceContent: referenceContent || undefined,
     };
 
     try {
@@ -78,7 +108,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         message: err.message || '생성 실패',
       });
     }
-  }, [topic, slideCount, orientation, colorSchemeId, aiEngine, apiKey, additionalInstructions]);
+  }, [topic, slideCount, orientation, colorSchemeId, aiEngine, apiKey, additionalInstructions, referenceContent]);
 
   const save = useCallback(async () => {
     if (!presentation) return;
@@ -90,6 +120,10 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }
   }, [presentation]);
 
+  const updateSlides = useCallback((slides: SlideData[]) => {
+    setPresentation(prev => prev ? { ...prev, slides, updatedAt: new Date().toISOString() } : prev);
+  }, []);
+
   const reset = useCallback(() => {
     setStep(0);
     setTopic('');
@@ -99,9 +133,12 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setAiEngine('openai');
     setApiKey('');
     setAdditionalInstructions('');
+    setUploadedFile(null);
+    setReferenceContent('');
     setProgress(defaultProgress);
     setPresentation(null);
     setSavedId(null);
+    setHasSavedKey(false);
   }, []);
 
   return (
@@ -110,7 +147,9 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       orientation, setOrientation, colorSchemeId, setColorSchemeId,
       aiEngine, setAiEngine, apiKey, setApiKey,
       additionalInstructions, setAdditionalInstructions,
-      progress, presentation, generate, reset, savedId, save,
+      uploadedFile, setUploadedFile, referenceContent, setReferenceContent,
+      progress, presentation, generate, reset, updateSlides,
+      savedId, save, hasSavedKey,
     }}>
       {children}
     </GenerationContext.Provider>

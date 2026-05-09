@@ -522,6 +522,143 @@
   border-top: 1px solid var(--border-light);
 }
 
+/* ── API Key Management (MyPage) ── */
+.api-key-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.api-key-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.api-key-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.api-key-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.api-key-item label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.api-key-item input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  font-family: monospace;
+}
+
+.api-key-item input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(0, 70, 200, 0.1);
+}
+
+.api-key-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.api-key-actions button {
+  padding: 6px 12px;
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.api-key-save-btn {
+  background: var(--primary-blue);
+  color: #fff;
+  border-color: var(--primary-blue) !important;
+}
+
+.api-key-save-btn:hover {
+  background: var(--primary-blue-dark);
+}
+
+.api-key-delete-btn {
+  background: #fff;
+  color: #c00;
+}
+
+.api-key-delete-btn:hover {
+  background: #fee;
+  border-color: #c00 !important;
+}
+
+.api-key-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+.api-key-hint {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+[data-theme="dark"] .api-key-section {
+  border-top-color: #374151;
+}
+
+[data-theme="dark"] .api-key-section h3 {
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .api-key-item input {
+  background: #1F2937;
+  border-color: #374151;
+  color: #F9FAFB;
+}
+
+[data-theme="dark"] .api-key-actions button {
+  border-color: #374151;
+}
+
+[data-theme="dark"] .api-key-delete-btn {
+  background: transparent;
+  color: #FCA5A5;
+}
+
+[data-theme="dark"] .api-key-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: #EF4444 !important;
+}
+
+[data-theme="dark"] .api-key-saved {
+  color: #6EE7B7;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .auth-fullpage {

@@ -97,9 +97,15 @@
 }
 
 .hero-stats {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   gap: 48px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 24px 40px;
 }
 
 .stat {
@@ -152,21 +158,34 @@
 }
 
 .feature-card {
-  background: #fff;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.5);
   padding: 32px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
 }
 
 .feature-icon {
   font-size: 36px;
   margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: var(--primary-gradient, linear-gradient(135deg, #0046C8, #4A8FE7));
+  color: #fff;
+  -webkit-text-fill-color: initial;
 }
 
 .feature-title {
@@ -203,8 +222,11 @@
 .step-num {
   font-size: 48px;
   font-weight: 900;
-  color: var(--primary-blue);
-  opacity: 0.2;
+  background: var(--primary-gradient, linear-gradient(135deg, #0046C8, #4A8FE7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.7;
   margin-bottom: 8px;
 }
 
@@ -236,6 +258,14 @@
 
 .theme-card {
   text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.theme-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
 .theme-preview {
@@ -291,6 +321,11 @@
   font-size: 16px;
   opacity: 0.9;
   margin-bottom: 32px;
+}
+
+.cta-section .btn,
+.cta-section .btn-hero-primary {
+  animation: pulse-glow 2.5s infinite;
 }
 
 /* Responsive */

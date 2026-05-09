@@ -1,8 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { GenerationProvider, useGeneration } from '../contexts/GenerationContext';
 import { colorSchemes } from '../config/colorSchemes';
 import { SlideRenderer } from '../components/slides/SlideRenderer';
 import { SlideStrip } from '../components/slides/SlideStrip';
+import { extractTextFromFile, isSupported, getFileExtension } from '../services/fileParserService';
+import { exportAsHtmlZip, exportAsPdf, exportAsPptx } from '../services/exportService';
+import { processEditRequest, type ChatMessage } from '../services/chatEditService';
+import ChatPanel from '../components/ChatPanel';
 import type { SlideOrientation } from '../types';
 import '../styles/generate.css';
 
@@ -30,29 +35,7 @@ const GenerateWizard: React.FC = () => {
 
         {/* Step 0: Topic */}
         {gen.step === 0 && (
-          <div className="wizard-panel">
-            <h2>프레젠테이션 주제</h2>
-            <p className="wizard-desc">어떤 주제로 프레젠테이션을 만들까요?</p>
-            <textarea
-              className="topic-input"
-              placeholder="예: 인공지능의 역사와 미래 발전 방향"
-              value={gen.topic}
-              onChange={e => gen.setTopic(e.target.value)}
-              rows={4}
-            />
-            <div className="wizard-desc" style={{ marginTop: 12, fontSize: 13, color: '#888' }}>
-              구체적으로 작성할수록 더 좋은 결과를 얻을 수 있습니다.
-            </div>
-            <div className="wizard-actions">
-              <button
-                className="btn btn-primary"
-                disabled={!gen.topic.trim()}
-                onClick={() => gen.setStep(1)}
-              >
-                다음: 설정 →
-              </button>
-            </div>
-          </div>
+          <TopicStep />
         )}
 
         {/* Step 1: Config */}
@@ -138,14 +121,20 @@ const GenerateWizard: React.FC = () => {
               {/* API Key */}
               <div className="config-section">
                 <label className="config-label">API 키 (선택)</label>
+                {gen.hasSavedKey && (
+                  <div className="saved-key-indicator">✓ 저장된 API 키 사용 중</div>
+                )}
                 <input
                   type="password"
                   className="api-key-input"
-                  placeholder="직접 입력하거나 비워두면 플랫폼 키 사용"
+                  placeholder={gen.hasSavedKey ? '저장된 키를 사용 중입니다 (직접 입력하면 대체)' : '직접 입력하거나 비워두면 플랫폼 키 사용'}
                   value={gen.apiKey}
                   onChange={e => gen.setApiKey(e.target.value)}
                 />
-                <div className="config-hint">무료 회원은 직접 API 키를 입력해야 합니다.</div>
+                <div className="config-hint">
+                  무료 회원은 직접 API 키를 입력해야 합니다.
+                  {' '}<Link to="/mypage" className="saved-key-link">MyPage에서 키 관리 →</Link>
+                </div>
               </div>
 
               {/* Additional instructions */}
@@ -203,15 +192,154 @@ const GenerateWizard: React.FC = () => {
   );
 };
 
+const TopicStep: React.FC = () => {
+  const gen = useGeneration();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [dragOver, setDragOver] = useState(false);
+  const [parsing, setParsing] = useState(false);
+
+  const handleFile = useCallback(async (file: File) => {
+    if (!isSupported(file)) {
+      alert('지원하지 않는 파일 형식입니다. (.pptx, .pdf, .txt, .md, .docx)');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      alert('파일 크기가 10MB를 초과합니다.');
+      return;
+    }
+    setParsing(true);
+    try {
+      const text = await extractTextFromFile(file);
+      gen.setUploadedFile(file);
+      gen.setReferenceContent(text);
+    } catch (err: any) {
+      alert('파일 파싱 실패: ' + (err.message || '알 수 없는 오류'));
+    } finally {
+      setParsing(false);
+    }
+  }, [gen]);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  }, [handleFile]);
+
+  const removeFile = () => {
+    gen.setUploadedFile(null);
+    gen.setReferenceContent('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  return (
+    <div className="wizard-panel">
+      <h2>프레젠테이션 주제</h2>
+      <p className="wizard-desc">어떤 주제로 프레젠테이션을 만들까요?</p>
+      <textarea
+        className="topic-input"
+        placeholder="예: 인공지능의 역사와 미래 발전 방향"
+        value={gen.topic}
+        onChange={e => gen.setTopic(e.target.value)}
+        rows={4}
+      />
+      <div className="wizard-desc" style={{ marginTop: 12, fontSize: 13, color: '#888' }}>
+        구체적으로 작성할수록 더 좋은 결과를 얻을 수 있습니다.
+      </div>
+
+      {/* File Upload Zone */}
+      <div
+        className={`file-upload-zone ${dragOver ? 'drag-over' : ''}`}
+        onClick={() => fileInputRef.current?.click()}
+        onDragOver={e => { e.preventDefault(); setDragOver(true); }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={handleDrop}
+      >
+        <div className="file-upload-icon">{parsing ? '⏳' : '📎'}</div>
+        <div className="file-upload-text">
+          {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업로드하세요 (선택)'}
+        </div>
+        <div className="file-upload-hint">
+          .pptx, .pdf, .txt, .md, .docx — 최대 10MB
+        </div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".pptx,.pdf,.txt,.md,.docx"
+          style={{ display: 'none' }}
+          onChange={e => {
+            const f = e.target.files?.[0];
+            if (f) handleFile(f);
+          }}
+        />
+      </div>
+
+      {gen.uploadedFile && (
+        <div className="file-upload-selected">
+          <span>📄 {gen.uploadedFile.name} ({getFileExtension(gen.uploadedFile).toUpperCase()}, {Math.round(gen.referenceContent.length / 1000)}K자)</span>
+          <button onClick={(e) => { e.stopPropagation(); removeFile(); }}>✕</button>
+        </div>
+      )}
+
+      <div className="wizard-actions">
+        <button
+          className="btn btn-primary"
+          disabled={!gen.topic.trim()}
+          onClick={() => gen.setStep(1)}
+        >
+          다음: 설정 →
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const ExportDropdown: React.FC<{ presentation: any }> = ({ presentation }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className="export-dropdown-wrapper" ref={ref}>
+      <button className="btn btn-secondary" onClick={() => setOpen(!open)}>
+        내보내기 ▾
+      </button>
+      {open && (
+        <div className="export-dropdown">
+          <button className="export-option" onClick={() => { exportAsHtmlZip(presentation); setOpen(false); }}>
+            📦 HTML (ZIP) <span style={{ fontSize: 11, color: '#999' }}>무료</span>
+          </button>
+          <button className="export-option" onClick={() => { exportAsPdf(presentation); setOpen(false); }}>
+            📄 PDF <span style={{ fontSize: 11, color: '#999' }}>무료</span>
+          </button>
+          <button className="export-option" onClick={() => { exportAsPptx(presentation); setOpen(false); }}>
+            📊 PPTX <span className="pro-tag">Pro</span>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ResultView: React.FC = () => {
   const gen = useGeneration();
   const pres = gen.presentation!;
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatProcessing, setChatProcessing] = useState(false);
   const { width, height } = pres.canvas;
 
-  // Calculate scale to fit in viewport
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [scale, setScale] = React.useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
 
   useEffect(() => {
     const updateScale = () => {
@@ -228,6 +356,49 @@ const ResultView: React.FC = () => {
     return () => window.removeEventListener('resize', updateScale);
   }, [width, height]);
 
+  const handleSendMessage = useCallback(async (message: string) => {
+    const userMsg: ChatMessage = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: message,
+      timestamp: Date.now(),
+    };
+    setChatMessages(prev => [...prev, userMsg]);
+    setChatProcessing(true);
+
+    try {
+      const result = await processEditRequest(
+        message,
+        pres.slides[currentSlide],
+        gen.aiEngine,
+        gen.apiKey || undefined
+      );
+
+      // Update the slide
+      const newSlides = [...pres.slides];
+      newSlides[currentSlide] = result.slide;
+      gen.updateSlides(newSlides);
+
+      const assistantMsg: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: result.explanation,
+        timestamp: Date.now(),
+      };
+      setChatMessages(prev => [...prev, assistantMsg]);
+    } catch (err: any) {
+      const errorMsg: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: `오류: ${err.message || '수정 실패'}`,
+        timestamp: Date.now(),
+      };
+      setChatMessages(prev => [...prev, errorMsg]);
+    } finally {
+      setChatProcessing(false);
+    }
+  }, [pres, currentSlide, gen]);
+
   return (
     <div className="result-view">
       <div className="result-header">
@@ -241,6 +412,7 @@ const ResultView: React.FC = () => {
           <button className="btn btn-secondary" onClick={() => gen.save()}>
             {gen.savedId ? '✓ 저장됨' : '저장'}
           </button>
+          <ExportDropdown presentation={pres} />
           <button className="btn btn-secondary" onClick={() => window.open(`/preview?data=${encodeURIComponent(JSON.stringify(pres))}`, '_blank')}>
             전체화면
           </button>
@@ -250,31 +422,41 @@ const ResultView: React.FC = () => {
         </div>
       </div>
 
-      <div ref={containerRef} className="slide-preview-area">
-        <div style={{ width: width * scale, height: height * scale, margin: '0 auto' }}>
-          <SlideRenderer
-            slide={pres.slides[currentSlide]}
+      <div className="result-with-chat">
+        <div>
+          <div ref={containerRef} className="slide-preview-area">
+            <div style={{ width: width * scale, height: height * scale, margin: '0 auto' }}>
+              <SlideRenderer
+                slide={pres.slides[currentSlide]}
+                colorScheme={pres.colorScheme}
+                width={width}
+                height={height}
+                scale={scale}
+              />
+            </div>
+            <div className="slide-nav">
+              <button disabled={currentSlide === 0} onClick={() => setCurrentSlide(currentSlide - 1)}>← 이전</button>
+              <span>{currentSlide + 1} / {pres.slides.length}</span>
+              <button disabled={currentSlide === pres.slides.length - 1} onClick={() => setCurrentSlide(currentSlide + 1)}>다음 →</button>
+            </div>
+          </div>
+
+          <SlideStrip
+            slides={pres.slides}
             colorScheme={pres.colorScheme}
+            currentIndex={currentSlide}
+            onSelectSlide={setCurrentSlide}
             width={width}
             height={height}
-            scale={scale}
           />
         </div>
-        <div className="slide-nav">
-          <button disabled={currentSlide === 0} onClick={() => setCurrentSlide(currentSlide - 1)}>← 이전</button>
-          <span>{currentSlide + 1} / {pres.slides.length}</span>
-          <button disabled={currentSlide === pres.slides.length - 1} onClick={() => setCurrentSlide(currentSlide + 1)}>다음 →</button>
-        </div>
-      </div>
 
-      <SlideStrip
-        slides={pres.slides}
-        colorScheme={pres.colorScheme}
-        currentIndex={currentSlide}
-        onSelectSlide={setCurrentSlide}
-        width={width}
-        height={height}
-      />
+        <ChatPanel
+          messages={chatMessages}
+          onSendMessage={handleSendMessage}
+          isProcessing={chatProcessing}
+        />
+      </div>
     </div>
   );
 };

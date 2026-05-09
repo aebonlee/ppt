@@ -399,6 +399,7 @@ export interface GenerateRequest {
   aiEngine: 'openai' | 'claude';
   apiKey?: string;
   additionalInstructions?: string;
+  referenceContent?: string;
 }
 
 export interface GenerationProgress {

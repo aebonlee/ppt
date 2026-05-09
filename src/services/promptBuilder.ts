@@ -73,12 +73,24 @@ ${request.additionalInstructions ? `ADDITIONAL INSTRUCTIONS: ${request.additiona
 }
 
 export function buildUserPrompt(request: GenerateRequest): string {
-  return `Create a presentation about: "${request.topic}"
+  let prompt = `Create a presentation about: "${request.topic}"
 
 Requirements:
 - Total slides: ${request.slideCount}
 - Orientation: ${request.orientation} (${request.orientation === 'portrait' ? '794x1123px' : '1123x794px'})
-- Slide type distribution: 1 cover + appropriate body slides + 1 summary/back-cover
+- Slide type distribution: 1 cover + appropriate body slides + 1 summary/back-cover`;
 
-Generate the JSON now.`;
+  if (request.referenceContent) {
+    const trimmed = request.referenceContent.substring(0, 8000);
+    prompt += `
+
+REFERENCE MATERIAL (use this as the basis for content):
+---
+${trimmed}
+---
+Use the above reference material to structure and populate the slides. Maintain the key points, data, and flow from the original content.`;
+  }
+
+  prompt += '\n\nGenerate the JSON now.';
+  return prompt;
 }

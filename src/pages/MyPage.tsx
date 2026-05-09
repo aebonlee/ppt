@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
 import { updateProfile } from '../utils/auth';
+import { saveApiKey, getDecryptedKey, deleteApiKey } from '../services/settingsService';
 import SEOHead from '../components/SEOHead';
 import '../styles/auth.css';
 
@@ -16,6 +17,14 @@ const MyPage = (): ReactElement => {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
 
+  // API Key state
+  const [openaiKey, setOpenaiKey] = useState('');
+  const [claudeKey, setClaudeKey] = useState('');
+  const [hasOpenaiKey, setHasOpenaiKey] = useState(false);
+  const [hasClaudeKey, setHasClaudeKey] = useState(false);
+  const [keySaving, setKeySaving] = useState<string | null>(null);
+  const [keyMessage, setKeyMessage] = useState('');
+
   useEffect(() => {
     if (profile) {
       setForm({
@@ -24,6 +33,13 @@ const MyPage = (): ReactElement => {
       });
     }
   }, [profile]);
+
+  // Load saved API keys status
+  useEffect(() => {
+    if (!user) return;
+    getDecryptedKey('openai').then(k => { if (k) setHasOpenaiKey(true); }).catch(() => {});
+    getDecryptedKey('claude').then(k => { if (k) setHasClaudeKey(true); }).catch(() => {});
+  }, [user]);
 
   const handleSave = async () => {
     setSaving(true);
@@ -40,6 +56,38 @@ const MyPage = (): ReactElement => {
       setMessage((err as Error).message);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleSaveApiKey = async (engine: 'openai' | 'claude') => {
+    const key = engine === 'openai' ? openaiKey : claudeKey;
+    if (!key.trim()) return;
+    setKeySaving(engine);
+    setKeyMessage('');
+    try {
+      await saveApiKey(engine, key.trim());
+      if (engine === 'openai') { setHasOpenaiKey(true); setOpenaiKey(''); }
+      else { setHasClaudeKey(true); setClaudeKey(''); }
+      setKeyMessage(`${engine === 'openai' ? 'OpenAI' : 'Claude'} API 키가 저장되었습니다.`);
+    } catch (err) {
+      setKeyMessage((err as Error).message);
+    } finally {
+      setKeySaving(null);
+    }
+  };
+
+  const handleDeleteApiKey = async (engine: 'openai' | 'claude') => {
+    setKeySaving(engine);
+    setKeyMessage('');
+    try {
+      await deleteApiKey(engine);
+      if (engine === 'openai') setHasOpenaiKey(false);
+      else setHasClaudeKey(false);
+      setKeyMessage(`${engine === 'openai' ? 'OpenAI' : 'Claude'} API 키가 삭제되었습니다.`);
+    } catch (err) {
+      setKeyMessage((err as Error).message);
+    } finally {
+      setKeySaving(null);
     }
   };
 
@@ -107,6 +155,87 @@ const MyPage = (): ReactElement => {
               )}
 
               {message && <div className="auth-message">{message}</div>}
+            </div>
+
+            {/* API Key Management */}
+            <div className="api-key-section">
+              <h3>🔑 API 키 관리</h3>
+              <div className="api-key-group">
+                <div className="api-key-item">
+                  <label>OpenAI</label>
+                  {hasOpenaiKey ? (
+                    <>
+                      <span className="api-key-saved">✓ 저장됨</span>
+                      <div className="api-key-actions">
+                        <button
+                          className="api-key-delete-btn"
+                          onClick={() => handleDeleteApiKey('openai')}
+                          disabled={keySaving === 'openai'}
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="password"
+                        placeholder="sk-..."
+                        value={openaiKey}
+                        onChange={e => setOpenaiKey(e.target.value)}
+                      />
+                      <div className="api-key-actions">
+                        <button
+                          className="api-key-save-btn"
+                          onClick={() => handleSaveApiKey('openai')}
+                          disabled={!openaiKey.trim() || keySaving === 'openai'}
+                        >
+                          {keySaving === 'openai' ? '...' : '저장'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="api-key-item">
+                  <label>Claude</label>
+                  {hasClaudeKey ? (
+                    <>
+                      <span className="api-key-saved">✓ 저장됨</span>
+                      <div className="api-key-actions">
+                        <button
+                          className="api-key-delete-btn"
+                          onClick={() => handleDeleteApiKey('claude')}
+                          disabled={keySaving === 'claude'}
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="password"
+                        placeholder="sk-ant-..."
+                        value={claudeKey}
+                        onChange={e => setClaudeKey(e.target.value)}
+                      />
+                      <div className="api-key-actions">
+                        <button
+                          className="api-key-save-btn"
+                          onClick={() => handleSaveApiKey('claude')}
+                          disabled={!claudeKey.trim() || keySaving === 'claude'}
+                        >
+                          {keySaving === 'claude' ? '...' : '저장'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="api-key-hint">
+                저장된 키는 PPT 생성 시 자동으로 사용됩니다. 키는 암호화되어 안전하게 보관됩니다.
+              </div>
+              {keyMessage && <div className="auth-message">{keyMessage}</div>}
             </div>
 
             <div className="mypage-sections">

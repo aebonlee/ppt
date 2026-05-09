@@ -87,7 +87,7 @@ export async function generatePresentation(
   return presentation;
 }
 
-async function callAIDirect(
+export async function callAIDirect(
   engine: 'openai' | 'claude',
   apiKey: string,
   systemPrompt: string,
@@ -145,7 +145,7 @@ async function callAIDirect(
   }
 }
 
-async function callAIViaEdgeFunction(
+export async function callAIViaEdgeFunction(
   engine: 'openai' | 'claude',
   systemPrompt: string,
   userPrompt: string
