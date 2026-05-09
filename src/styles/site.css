@@ -1,0 +1,30 @@
+/* ============================================
+   사이트 전용 스타일
+   하위 사이트에 맞게 이 파일을 수정하세요
+   ============================================ */
+
+/* Welcome Section */
+.site-welcome {
+  text-align: center;
+  padding: 4rem 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.site-welcome h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.site-welcome p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Section base */
+.section {
+  padding: 4rem 0;
+}

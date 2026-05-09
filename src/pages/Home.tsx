@@ -1,0 +1,124 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { colorSchemes } from '../config/colorSchemes';
+import '../styles/home.css';
+
+const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="hero">
+        <div className="container hero-content">
+          <div className="hero-badge">AI-Powered Presentation</div>
+          <h1 className="hero-title">
+            AI로 만드는<br />
+            <span className="hero-highlight">전문 프레젠테이션</span>
+          </h1>
+          <p className="hero-subtitle">
+            주제만 입력하면 OpenAI GPT-4o / Claude가<br />
+            구조화된 전문 슬라이드를 자동으로 생성합니다
+          </p>
+          <div className="hero-actions">
+            <button className="btn btn-hero-primary" onClick={() => navigate('/generate')}>
+              무료로 시작하기
+            </button>
+            <button className="btn btn-hero-secondary" onClick={() => navigate('/pricing')}>
+              요금제 보기
+            </button>
+          </div>
+          <div className="hero-stats">
+            <div className="stat"><span className="stat-number">8</span><span className="stat-label">슬라이드 템플릿</span></div>
+            <div className="stat"><span className="stat-number">8</span><span className="stat-label">색상 테마</span></div>
+            <div className="stat"><span className="stat-number">3</span><span className="stat-label">내보내기 형식</span></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="section features-section">
+        <div className="container">
+          <h2 className="section-title">왜 DreamIT PPT인가요?</h2>
+          <p className="section-subtitle">전문 디자이너 수준의 프레젠테이션을 몇 분 만에</p>
+          <div className="features-grid">
+            {[
+              { icon: '🤖', title: 'AI 자동 생성', desc: 'GPT-4o와 Claude가 주제를 분석하여 구조화된 콘텐츠를 자동 생성합니다.' },
+              { icon: '🎨', title: '전문 디자인', desc: '8가지 슬라이드 템플릿과 8가지 색상 테마로 전문적인 프레젠테이션을 완성합니다.' },
+              { icon: '📊', title: '다양한 슬라이드', desc: '표지, 목차, 본문, 다이어그램, 워크북, 요약 등 8종의 슬라이드 타입을 지원합니다.' },
+              { icon: '📥', title: '다양한 내보내기', desc: 'HTML(ZIP), PDF, PPTX 3가지 형식으로 내보낼 수 있습니다.' },
+              { icon: '🔑', title: '유연한 API 사용', desc: '플랫폼 키 또는 직접 API 키를 입력하여 사용할 수 있습니다.' },
+              { icon: '💰', title: '합리적 가격', desc: '월 9,900원부터 전문 프레젠테이션을 무제한 생성할 수 있습니다.' },
+            ].map((feat, i) => (
+              <div key={i} className="feature-card">
+                <div className="feature-icon">{feat.icon}</div>
+                <h3 className="feature-title">{feat.title}</h3>
+                <p className="feature-desc">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="section how-section">
+        <div className="container">
+          <h2 className="section-title">사용 방법</h2>
+          <p className="section-subtitle">3단계로 간단하게</p>
+          <div className="steps-grid">
+            {[
+              { num: '01', title: '주제 입력', desc: '프레젠테이션 주제와 세부 설정을 입력합니다.' },
+              { num: '02', title: 'AI 생성', desc: 'AI가 구조화된 콘텐츠를 자동으로 생성합니다.' },
+              { num: '03', title: '미리보기 & 내보내기', desc: '결과를 확인하고 원하는 형식으로 다운로드합니다.' },
+            ].map((step, i) => (
+              <div key={i} className="step-card">
+                <div className="step-num">{step.num}</div>
+                <h3 className="step-title">{step.title}</h3>
+                <p className="step-desc">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Color themes preview */}
+      <section className="section themes-section">
+        <div className="container">
+          <h2 className="section-title">8가지 색상 테마</h2>
+          <p className="section-subtitle">프레젠테이션의 분위기에 맞는 테마를 선택하세요</p>
+          <div className="themes-grid">
+            {colorSchemes.map(cs => (
+              <div key={cs.id} className="theme-card">
+                <div className="theme-preview">
+                  <div className="theme-primary" style={{ background: cs.primary }}>
+                    <span className="theme-accent-bar" style={{ background: cs.accent }} />
+                  </div>
+                  <div className="theme-colors">
+                    <span style={{ background: cs.primary }} />
+                    <span style={{ background: cs.accent }} />
+                    <span style={{ background: cs.accent2 }} />
+                    <span style={{ background: cs.background }} />
+                  </div>
+                </div>
+                <div className="theme-name">{cs.nameKo}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section cta-section">
+        <div className="container">
+          <h2 className="cta-title">지금 바로 시작하세요</h2>
+          <p className="cta-desc">무료 회원은 월 3회까지 프레젠테이션을 생성할 수 있습니다</p>
+          <button className="btn btn-hero-primary" onClick={() => navigate('/generate')}>
+            무료로 시작하기
+          </button>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Home;
