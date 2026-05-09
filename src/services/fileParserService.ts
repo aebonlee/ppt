@@ -7,12 +7,14 @@ const SUPPORTED_EXTENSIONS = ['.txt', '.md', '.pdf', '.docx', '.pptx'];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export function isSupported(file: File): boolean {
-  const ext = '.' + file.name.split('.').pop()?.toLowerCase();
+  const ext = getFileExtension(file);
   return SUPPORTED_EXTENSIONS.includes(ext);
 }
 
 export function getFileExtension(file: File): string {
-  return '.' + (file.name.split('.').pop()?.toLowerCase() || '');
+  const parts = file.name.split('.');
+  if (parts.length < 2) return '';
+  return '.' + parts.pop()!.toLowerCase();
 }
 
 export async function extractTextFromFile(file: File): Promise<string> {
@@ -23,47 +25,81 @@ export async function extractTextFromFile(file: File): Promise<string> {
   const ext = getFileExtension(file);
 
   if (!SUPPORTED_EXTENSIONS.includes(ext)) {
-    throw new Error(`지원하지 않는 파일 형식입니다: ${ext}`);
+    throw new Error(`지원하지 않는 파일 형식입니다: ${ext}\n지원 형식: .pptx, .pdf, .txt, .md, .docx`);
   }
 
-  switch (ext) {
-    case '.txt':
-    case '.md':
-      return file.text();
+  try {
+    switch (ext) {
+      case '.txt':
+      case '.md':
+        return await file.text();
 
-    case '.pdf':
-      return extractFromPdf(file);
+      case '.pdf':
+        return await extractFromPdf(file);
 
-    case '.docx':
-      return extractFromDocx(file);
+      case '.docx':
+        return await extractFromDocx(file);
 
-    case '.pptx':
-      return extractFromPptx(file);
+      case '.pptx':
+        return await extractFromPptx(file);
 
-    default:
-      throw new Error(`지원하지 않는 파일 형식입니다: ${ext}`);
+      default:
+        throw new Error(`지원하지 않는 파일 형식입니다: ${ext}`);
+    }
+  } catch (err: any) {
+    // Re-throw with more context
+    if (err.message.includes('지원하지 않는') || err.message.includes('10MB')) {
+      throw err;
+    }
+    throw new Error(`${ext} 파일 처리 중 오류: ${err.message || '알 수 없는 오류'}`);
   }
 }
 
 async function extractFromPdf(file: File): Promise<string> {
   const pdfjsLib = await import('pdfjs-dist');
 
-  // Set worker source
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+  // Try multiple worker sources for compatibility
+  if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
+    const version = pdfjsLib.version || '4.9.155';
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.mjs`;
+  }
 
   const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+  let pdf;
+  try {
+    pdf = await pdfjsLib.getDocument({
+      data: new Uint8Array(arrayBuffer),
+      useSystemFonts: true,
+    }).promise;
+  } catch {
+    // Fallback: disable worker and try again
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '';
+    pdf = await pdfjsLib.getDocument({
+      data: new Uint8Array(arrayBuffer),
+      useSystemFonts: true,
+      disableAutoFetch: true,
+    }).promise;
+  }
 
   const textParts: string[] = [];
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const content = await page.getTextContent();
     const pageText = content.items
+      .filter((item: any) => item.str)
       .map((item: any) => item.str)
-      .join(' ');
-    if (pageText.trim()) {
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (pageText) {
       textParts.push(`[Page ${i}]\n${pageText}`);
     }
+  }
+
+  if (textParts.length === 0) {
+    throw new Error('PDF에서 텍스트를 추출할 수 없습니다. (이미지 기반 PDF일 수 있습니다)');
   }
 
   return textParts.join('\n\n');
@@ -73,6 +109,9 @@ async function extractFromDocx(file: File): Promise<string> {
   const mammoth = await import('mammoth');
   const arrayBuffer = await file.arrayBuffer();
   const result = await mammoth.extractRawText({ arrayBuffer });
+  if (!result.value.trim()) {
+    throw new Error('DOCX에서 텍스트를 추출할 수 없습니다.');
+  }
   return result.value;
 }
 
@@ -104,6 +143,10 @@ async function extractFromPptx(file: File): Promise<string> {
       const slideNum = slidePath.match(/slide(\d+)/)?.[1] || '?';
       textParts.push(`[Slide ${slideNum}]\n${texts.join(' ')}`);
     }
+  }
+
+  if (textParts.length === 0) {
+    throw new Error('PPTX에서 텍스트를 추출할 수 없습니다.');
   }
 
   return textParts.join('\n\n');

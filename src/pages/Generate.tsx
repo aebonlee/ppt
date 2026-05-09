@@ -247,6 +247,20 @@ const TopicStep: React.FC = () => {
         구체적으로 작성할수록 더 좋은 결과를 얻을 수 있습니다.
       </div>
 
+      {/* Hidden file input - outside click zone to prevent event conflicts */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".pptx,.pdf,.txt,.md,.docx"
+        style={{ display: 'none' }}
+        onChange={e => {
+          const f = e.target.files?.[0];
+          if (f) handleFile(f);
+          // Reset so same file can be re-selected
+          e.target.value = '';
+        }}
+      />
+
       {/* File Upload Zone */}
       <div
         className={`file-upload-zone ${dragOver ? 'drag-over' : ''}`}
@@ -262,16 +276,6 @@ const TopicStep: React.FC = () => {
         <div className="file-upload-hint">
           .pptx, .pdf, .txt, .md, .docx — 최대 10MB
         </div>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".pptx,.pdf,.txt,.md,.docx"
-          style={{ display: 'none' }}
-          onChange={e => {
-            const f = e.target.files?.[0];
-            if (f) handleFile(f);
-          }}
-        />
       </div>
 
       {gen.uploadedFile && (
@@ -340,6 +344,9 @@ const ResultView: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
+  // Keep refs for latest values to avoid stale closures in callback
+  const currentSlideRef = useRef(currentSlide);
+  currentSlideRef.current = currentSlide;
 
   useEffect(() => {
     const updateScale = () => {
@@ -367,16 +374,25 @@ const ResultView: React.FC = () => {
     setChatProcessing(true);
 
     try {
+      // Use latest presentation and slide index from context/ref
+      const currentPres = gen.presentation!;
+      const slideIdx = currentSlideRef.current;
+      const currentSlideData = currentPres.slides[slideIdx];
+
+      if (!gen.apiKey) {
+        throw new Error('채팅 편집에는 API 키가 필요합니다. 설정에서 API 키를 입력하거나 MyPage에서 저장하세요.');
+      }
+
       const result = await processEditRequest(
         message,
-        pres.slides[currentSlide],
+        currentSlideData,
         gen.aiEngine,
-        gen.apiKey || undefined
+        gen.apiKey
       );
 
-      // Update the slide
-      const newSlides = [...pres.slides];
-      newSlides[currentSlide] = result.slide;
+      // Update the slide in presentation
+      const newSlides = [...currentPres.slides];
+      newSlides[slideIdx] = result.slide;
       gen.updateSlides(newSlides);
 
       const assistantMsg: ChatMessage = {
@@ -387,6 +403,7 @@ const ResultView: React.FC = () => {
       };
       setChatMessages(prev => [...prev, assistantMsg]);
     } catch (err: any) {
+      console.error('Chat edit error:', err);
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -397,7 +414,7 @@ const ResultView: React.FC = () => {
     } finally {
       setChatProcessing(false);
     }
-  }, [pres, currentSlide, gen]);
+  }, [gen]);
 
   return (
     <div className="result-view">
