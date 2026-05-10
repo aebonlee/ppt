@@ -162,20 +162,25 @@ const GenerateWizard: React.FC = () => {
 
               {/* API Key */}
               <div className="config-section">
-                <label className="config-label">API 키 (선택)</label>
-                {gen.hasSavedKey && (
-                  <div className="saved-key-indicator">✓ 저장된 API 키 사용 중</div>
+                <label className="config-label">API 키</label>
+                {gen.hasSavedKey ? (
+                  <div className="saved-key-indicator" style={{ background:'#ECFDF5', color:'#059669', border:'1px solid #A7F3D0', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
+                    &#10003; 저장된 {gen.aiEngine === 'openai' ? 'OpenAI' : 'Claude'} API 키 사용 중
+                  </div>
+                ) : (
+                  <div className="saved-key-indicator" style={{ background:'#FFFBEB', color:'#B45309', border:'1px solid #FDE68A', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
+                    API 키가 필요합니다 &mdash; <Link to="/mypage" style={{ color:'#B45309', textDecoration:'underline' }}>MyPage에서 키 저장</Link> 또는 아래에 직접 입력
+                  </div>
                 )}
                 <input
                   type="password"
                   className="api-key-input"
-                  placeholder={gen.hasSavedKey ? '저장된 키를 사용 중입니다 (직접 입력하면 대체)' : '직접 입력하거나 비워두면 플랫폼 키 사용'}
+                  placeholder={gen.hasSavedKey ? '저장된 키 사용 중 (직접 입력 시 대체)' : 'API 키를 입력하세요'}
                   value={gen.apiKey}
                   onChange={e => gen.setApiKey(e.target.value)}
                 />
                 <div className="config-hint">
-                  무료 회원은 직접 API 키를 입력해야 합니다.
-                  {' '}<Link to="/mypage" className="saved-key-link">MyPage에서 키 관리 →</Link>
+                  <Link to="/mypage" className="saved-key-link">MyPage</Link>에서 키를 저장하면 매번 입력할 필요 없이 자동 사용됩니다.
                 </div>
               </div>
 

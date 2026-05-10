@@ -277,8 +277,8 @@ export type DesignTemplateId = 'modern-corporate' | 'minimal-clean' | 'bold-grad
 
 export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
 
-export type CoverLayoutVariant = 'top-panel' | 'left-panel' | 'full-bleed' | 'center-band';
-export type ContentLayoutVariant = 'default' | 'top-accent' | 'clean-wide';
+export type CoverLayoutVariant = 'top-panel' | 'left-panel' | 'full-bleed' | 'center-band' | 'diagonal-split' | 'minimal-frame';
+export type ContentLayoutVariant = 'default' | 'top-accent' | 'clean-wide' | 'card-grid';
 
 export interface TemplateLayout {
   sidebar: { enabled: boolean; width: number; accentHeight: number };

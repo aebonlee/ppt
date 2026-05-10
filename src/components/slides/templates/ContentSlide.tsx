@@ -12,6 +12,8 @@ export const ContentSlide: React.FC<Props> = ({ slide, colors, width, height, te
       return renderTopAccent({ slide, colors, width, height, t });
     case 'clean-wide':
       return renderCleanWide({ slide, colors, width, height, t });
+    case 'card-grid':
+      return renderCardGrid({ slide, colors, width, height, t });
     case 'default':
     default:
       return renderDefault({ slide, colors, width, height, t });
@@ -249,6 +251,71 @@ function renderCleanWide({ slide, colors, width, height, t }: RenderProps) {
       <div style={{ position:'absolute', left:0, bottom:28, width, zIndex:10, textAlign:'center' }}>
         <span style={{ fontSize:9, color:colors.mute }}>{slide.footnote||''}</span>
       </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   card-grid — bold-gradient / education 전용
+   사이드바/헤더 없음, 연한 배경, 각 section을 독립 카드로 렌더링
+   흰 배경 카드 + 둥근 모서리 + 미세 테두리, 미니멀 페이지 번호
+   ════════════════════════════════════════════════════════════════ */
+function renderCardGrid({ slide, colors, width, height, t }: RenderProps) {
+  const mx = t.layout.marginX + 10;
+  const cardW = width - mx * 2;
+
+  return (
+    <div style={{ position:'relative', width, height, background:`${colors.primary}05`, color:colors.primary, overflow:'hidden' }}>
+      {/* ── Chapter area — top, minimal ── */}
+      <div style={{ position:'absolute', left:mx, top:36, width:cardW, zIndex:10 }}>
+        <div style={{ fontSize:9, letterSpacing:'0.3em', fontWeight:700, color:colors.accent2 }}>PART {String(slide.partNumber||1).padStart(2,'0')} &middot; {slide.partTitle||''}</div>
+      </div>
+      {/* Chapter number + title */}
+      <div style={{ position:'absolute', left:mx, top:58, width:cardW, zIndex:10, display:'flex', alignItems:'center', gap:14 }}>
+        <div style={{ width:40, height:40, borderRadius:10, background:colors.primary, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+          <span style={{ fontSize:18, fontWeight:900, color:'#fff' }}>{String(slide.chapterNumber||1).padStart(2,'0')}</span>
+        </div>
+        <div style={{ fontSize:t.typography.chapterTitle.fontSize, fontWeight:t.typography.chapterTitle.fontWeight, color:colors.primary, lineHeight:t.typography.chapterTitle.lineHeight }}>{slide.chapterTitle||slide.title||''}</div>
+      </div>
+
+      {/* ── Section cards ── */}
+      {slide.sections?.map((sec, si) => {
+        const cardTop = 120 + si * (t.layout.sectionSpacing - 20);
+        return (
+          <div key={si} style={{ position:'absolute', left:mx, top:cardTop, width:cardW, zIndex:10 }}>
+            <div style={{ background:'#fff', borderRadius:12, border:`1px solid ${colors.primary}12`, padding:'18px 24px', boxShadow:'0 1px 4px rgba(0,0,0,0.04)' }}>
+              {sec.subTitle && (
+                <div style={{ fontSize:t.typography.sectionTitle.fontSize, fontWeight:t.typography.sectionTitle.fontWeight, color:colors.primary, marginBottom:8 }}>{sec.subTitle}</div>
+              )}
+              {sec.keyTopic && (
+                <div style={{ fontSize:18, fontWeight:800, color:colors.primary, marginBottom:6 }}>
+                  <span style={{ color:colors.accent, marginRight:6 }}>&bull;</span>{sec.keyTopic}
+                </div>
+              )}
+              {sec.body && (
+                <div style={{ fontSize:t.typography.bodyText.fontSize, fontWeight:t.typography.bodyText.fontWeight, color:'#2D2D2D', lineHeight:t.typography.bodyText.lineHeight, textAlign:t.typography.bodyText.textAlign }} dangerouslySetInnerHTML={{ __html: sec.body.replace(/\n/g, '<br/>') }} />
+              )}
+              {sec.keyPoint && (
+                <div style={{ marginTop:12, background: sec.keyPoint.type==='caution' ? '#FFF5F2' : `${colors.accent}0A`, padding:'12px 16px', borderRadius:8, borderLeft:`4px solid ${sec.keyPoint.type==='caution' ? colors.accent2 : colors.accent}` }}>
+                  <div style={{ fontSize:10, letterSpacing:'0.25em', fontWeight:800, color: sec.keyPoint.type==='caution' ? '#C0392B' : colors.accent }}>{sec.keyPoint.title || 'KEY POINT'}</div>
+                  <div style={{ fontSize:t.typography.bodyText.fontSize, fontWeight:600, color:colors.primary, marginTop:4, lineHeight:1.55 }}>{sec.keyPoint.content}</div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* ── Footer — minimal page number, bottom-right ── */}
+      <div style={{ position:'absolute', right:mx, bottom:24, zIndex:10 }}>
+        <span style={{ fontSize:11, fontWeight:700, color:`${colors.primary}40` }}>{formatPageNumber(slide.pageNumber||0, t.layout.footer.pageNumberFormat)}</span>
+      </div>
+      {/* Footnote — bottom-left */}
+      {slide.footnote && (
+        <div style={{ position:'absolute', left:mx, bottom:24, zIndex:10 }}>
+          <span style={{ fontSize:9, color:colors.mute }}>{slide.footnote}</span>
+        </div>
+      )}
     </div>
   );
 }

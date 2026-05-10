@@ -157,9 +157,39 @@ const MyPage = (): ReactElement => {
               {message && <div className="auth-message">{message}</div>}
             </div>
 
+            {/* API Key Guide */}
+            <div className="api-key-guide">
+              <details>
+                <summary>API 키 발급 방법 안내</summary>
+                <div className="api-key-guide-content">
+                  <details>
+                    <summary className="api-key-guide-engine">OpenAI (GPT-4o)</summary>
+                    <ol>
+                      <li><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">platform.openai.com/api-keys</a> 접속</li>
+                      <li>회원가입 또는 로그인</li>
+                      <li>"Create new secret key" 클릭</li>
+                      <li>키 복사 (<code>sk-</code>로 시작, 한 번만 표시됨)</li>
+                    </ol>
+                    <p className="api-key-guide-note">비용: 입력 $2.50 / 출력 $10.00 (1M 토큰당)</p>
+                  </details>
+                  <details>
+                    <summary className="api-key-guide-engine">Anthropic (Claude Sonnet)</summary>
+                    <ol>
+                      <li><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">console.anthropic.com/settings/keys</a> 접속</li>
+                      <li>회원가입 또는 로그인</li>
+                      <li>"Create Key" 클릭</li>
+                      <li>키 복사 (<code>sk-ant-</code>로 시작, 한 번만 표시됨)</li>
+                    </ol>
+                    <p className="api-key-guide-note">비용: 입력 $3.00 / 출력 $15.00 (1M 토큰당)</p>
+                  </details>
+                  <p className="api-key-guide-cost">PPT 1개 생성 시 약 $0.05~0.15 소요</p>
+                </div>
+              </details>
+            </div>
+
             {/* API Key Management */}
             <div className="api-key-section">
-              <h3>🔑 API 키 관리</h3>
+              <h3>API 키 관리</h3>
               <div className="api-key-group">
                 <div className="api-key-item">
                   <label>OpenAI</label>

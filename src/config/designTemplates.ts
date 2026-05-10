@@ -60,6 +60,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'No sidebar, no decorations, center-aligned with generous whitespace.',
     descriptionKo: '사이드바 없음, 장식 없음, 중앙 정렬, 넓은 여백의 깔끔한 디자인',
     category: 'minimal',
+    coverLayoutVariant: 'minimal-frame',
+    contentLayoutVariant: 'clean-wide',
     layout: {
       sidebar: { enabled: false, width: 0, accentHeight: 0 },
       marginX: 80,
@@ -111,6 +113,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Rounded corners, large typography, energetic layout with pill-shaped chips.',
     descriptionKo: '둥근 모서리, 큰 타이포그래피, 에너지 넘치는 레이아웃',
     category: 'creative',
+    coverLayoutVariant: 'diagonal-split',
+    contentLayoutVariant: 'card-grid',
     layout: {
       sidebar: { enabled: true, width: 28, accentHeight: 60 },
       marginX: 57,
@@ -162,6 +166,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Serif typography, double-line borders, traditional numbering — academic elegance.',
     descriptionKo: '세리프 계열, 이중선 테두리, 전통적 번호 매김 — 학술 스타일',
     category: 'academic',
+    coverLayoutVariant: 'top-panel',
+    contentLayoutVariant: 'top-accent',
     layout: {
       sidebar: { enabled: false, width: 0, accentHeight: 0 },
       marginX: 65,
@@ -213,6 +219,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Monospace accents, tight grid, code-friendly — perfect for tech presentations.',
     descriptionKo: '모노스페이스 악센트, 타이트한 그리드, 코드 친화적 디자인',
     category: 'creative',
+    coverLayoutVariant: 'diagonal-split',
+    contentLayoutVariant: 'default',
     layout: {
       sidebar: { enabled: true, width: 4, accentHeight: 60 },
       marginX: 57,
@@ -264,6 +272,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Editorial style with full-width quotes, thin rule lines, and wide letter spacing.',
     descriptionKo: '에디토리얼 스타일, 풀쿼트, 얇은 룰 라인의 매거진 디자인',
     category: 'creative',
+    coverLayoutVariant: 'minimal-frame',
+    contentLayoutVariant: 'top-accent',
     layout: {
       sidebar: { enabled: false, width: 0, accentHeight: 0 },
       marginX: 60,
@@ -315,6 +325,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Learning-focused with step highlights, colorful callouts, and checklists.',
     descriptionKo: '학습 단계 강조, 컬러풀 콜아웃, 체크리스트 중심의 교육 디자인',
     category: 'academic',
+    coverLayoutVariant: 'left-panel',
+    contentLayoutVariant: 'card-grid',
     layout: {
       sidebar: { enabled: true, width: 40, accentHeight: 90 },
       marginX: 57,
@@ -366,6 +378,8 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Hairline borders, light-weight fonts, refined spacing — understated sophistication.',
     descriptionKo: '헤어라인 테두리, 라이트 웨이트 폰트, 세련된 간격의 우아한 디자인',
     category: 'minimal',
+    coverLayoutVariant: 'center-band',
+    contentLayoutVariant: 'default',
     layout: {
       sidebar: { enabled: false, width: 0, accentHeight: 0 },
       marginX: 70,

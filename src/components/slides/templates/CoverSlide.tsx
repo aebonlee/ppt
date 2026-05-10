@@ -14,6 +14,10 @@ export const CoverSlide: React.FC<Props> = ({ slide, colors, width, height, temp
       return renderFullBleed({ slide, colors, width, height, t });
     case 'center-band':
       return renderCenterBand({ slide, colors, width, height, t });
+    case 'diagonal-split':
+      return renderDiagonalSplit({ slide, colors, width, height, t });
+    case 'minimal-frame':
+      return renderMinimalFrame({ slide, colors, width, height, t });
     case 'top-panel':
     default:
       return renderTopPanel({ slide, colors, width, height, t });
@@ -306,6 +310,164 @@ function renderCenterBand({ slide, colors, width, height, t }: RenderProps) {
       {/* Publisher info — centered at bottom */}
       {slide.publisherInfo && (
         <div style={{ position:'absolute', left:0, bottom:35, width, zIndex:10, textAlign:'center' }}>
+          <div style={{ fontSize:10, fontWeight:600, color:colors.primary }}>{slide.publisherInfo.left}</div>
+          <div style={{ fontSize:9, color:colors.mute, marginTop:3 }}>{slide.publisherInfo.right}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   diagonal-split — bold-gradient / tech-startup 전용
+   대각선으로 primary/white 분할, 기하학적 악센트 라인
+   clip-path로 좌측 primary 영역, 우측 white 영역
+   ════════════════════════════════════════════════════════════════ */
+function renderDiagonalSplit({ slide, colors, width, height, t }: RenderProps) {
+  const mx = t.layout.marginX;
+  const chipRadius = getShapeBorderRadius(t.decorations.cover.categoryChip.shape, 34);
+
+  return (
+    <div style={{ position:'relative', width, height, background: colors.background, overflow:'hidden' }}>
+      {/* Primary diagonal area */}
+      <div style={{ position:'absolute', left:0, top:0, width, height, background:colors.primary, clipPath:'polygon(0 0, 100% 0, 65% 100%, 0 100%)', zIndex:2 }} />
+      {/* Accent diagonal line along edge */}
+      <div style={{ position:'absolute', left:0, top:0, width, height, zIndex:3 }}>
+        <div style={{ position:'absolute', left:0, top:0, width:'100%', height:'100%', background:colors.accent, clipPath:'polygon(64.5% 0%, 65.5% 0%, 65.5% 100%, 64.5% 100%)', opacity:0.6 }} />
+      </div>
+      {/* Geometric accent lines — diagonal direction */}
+      <div style={{ position:'absolute', left:0, top:0, width:width * 1.5, height:1, background:'rgba(255,255,255,0.08)', transform:'rotate(25deg)', transformOrigin:'0 0', zIndex:4 }} />
+      <div style={{ position:'absolute', left:0, top:80, width:width * 1.5, height:1, background:'rgba(255,255,255,0.05)', transform:'rotate(25deg)', transformOrigin:'0 0', zIndex:4 }} />
+      {/* Grid overlay on primary area */}
+      {t.decorations.cover.gridOverlay && (
+        <div style={{ position:'absolute', left:0, top:0, width, height, backgroundImage:'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize:'42px 42px', clipPath:'polygon(0 0, 100% 0, 65% 100%, 0 100%)', zIndex:4 }} />
+      )}
+      {/* Corner accents */}
+      {t.decorations.cover.cornerAccents && t.decorations.cover.cornerSize > 0 && (
+        <>
+          <div style={{ position:'absolute', left:0, top:0, width:t.decorations.cover.cornerSize, height:8, background:colors.accent, zIndex:6 }} />
+          <div style={{ position:'absolute', left:0, top:0, width:8, height:t.decorations.cover.cornerSize, background:colors.accent, zIndex:6 }} />
+        </>
+      )}
+      {/* Category chip — top-left on primary */}
+      {slide.categoryChip && (
+        <>
+          <div style={{ position:'absolute', left:mx, top:120, width:260, height:34, background:colors.accent, zIndex:8, borderRadius: chipRadius }} />
+          <div style={{ position:'absolute', left:mx, top:120, width:260, height:34, zIndex:11, display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, letterSpacing:'0.22em', fontWeight:800, color:colors.primary, borderRadius: chipRadius }}>
+            {slide.categoryChip}
+          </div>
+        </>
+      )}
+      {/* Headline — on primary area */}
+      <div style={{ position:'absolute', left:mx, top:185, width:Math.round(width * 0.55), zIndex:10, color:'#fff' }}>
+        <div style={{ fontSize:t.typography.coverHeadline.fontSize, fontWeight:t.typography.coverHeadline.fontWeight, lineHeight:t.typography.coverHeadline.lineHeight, letterSpacing:t.typography.coverHeadline.letterSpacing }}
+          dangerouslySetInnerHTML={{ __html: (slide.headline || slide.title || '').replace(/\n/g, '<br/>') }} />
+        {/* Accent underline */}
+        <div style={{ width:70, height:4, background:colors.accent, marginTop:20, borderRadius:2 }} />
+      </div>
+      {/* Subtitle — on white area, right side */}
+      {slide.subtitle && (
+        <div style={{ position:'absolute', right:mx, bottom:180, width:Math.round(width * 0.30), zIndex:10, textAlign:'right' }}>
+          <div style={{ fontSize:t.typography.coverSubtitle.fontSize, fontWeight:t.typography.coverSubtitle.fontWeight, letterSpacing:t.typography.coverSubtitle.letterSpacing, color:colors.primary }}>{slide.subtitle}</div>
+        </div>
+      )}
+      {/* Part index — bottom-right on white area */}
+      {slide.partIndex && slide.partIndex.length > 0 && (
+        <div style={{ position:'absolute', right:mx, bottom:60, width:Math.round(width * 0.30), zIndex:10 }}>
+          {slide.partIndex.map((p, i) => (
+            <div key={i} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12 }}>
+              <div style={{ width:24, height:24, borderRadius:'50%', background:colors.primary, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                <span style={{ fontSize:10, fontWeight:800, color:'#fff' }}>{i + 1}</span>
+              </div>
+              <div>
+                <div style={{ fontSize:8, letterSpacing:'0.2em', fontWeight:700, color:colors.accent2 }}>{p.partNumber}</div>
+                <div style={{ fontSize:11, fontWeight:700, color:colors.primary }}>{p.title}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Publisher info — bottom-left */}
+      {slide.publisherInfo && (
+        <div style={{ position:'absolute', left:mx, bottom:35, zIndex:10 }}>
+          <div style={{ fontSize:10, fontWeight:700, color:'rgba(255,255,255,0.7)' }}>{slide.publisherInfo.left}</div>
+          <div style={{ fontSize:9, color:'rgba(255,255,255,0.4)', marginTop:3 }}>{slide.publisherInfo.right}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   minimal-frame — minimal-clean / magazine 전용
+   흰 배경 + primary 색상 얇은 테두리 프레임 (30px 인셋)
+   모든 텍스트 중앙 정렬, 코너에 작은 accent 장식
+   ════════════════════════════════════════════════════════════════ */
+function renderMinimalFrame({ slide, colors, width, height, t }: RenderProps) {
+  const inset = 30;
+  const frameW = width - inset * 2;
+  const frameH = height - inset * 2;
+  const chipRadius = getShapeBorderRadius(t.decorations.cover.categoryChip.shape, 34);
+
+  return (
+    <div style={{ position:'relative', width, height, background: colors.background, overflow:'hidden' }}>
+      {/* Frame border */}
+      <div style={{ position:'absolute', left:inset, top:inset, width:frameW, height:frameH, border:`3px solid ${colors.primary}`, zIndex:3 }} />
+      {/* Corner accent — top-left */}
+      <div style={{ position:'absolute', left:inset - 4, top:inset - 4, width:24, height:24, zIndex:5 }}>
+        <div style={{ position:'absolute', left:0, top:0, width:24, height:3, background:colors.accent }} />
+        <div style={{ position:'absolute', left:0, top:0, width:3, height:24, background:colors.accent }} />
+      </div>
+      {/* Corner accent — top-right */}
+      <div style={{ position:'absolute', right:inset - 4, top:inset - 4, width:24, height:24, zIndex:5 }}>
+        <div style={{ position:'absolute', right:0, top:0, width:24, height:3, background:colors.accent }} />
+        <div style={{ position:'absolute', right:0, top:0, width:3, height:24, background:colors.accent }} />
+      </div>
+      {/* Corner accent — bottom-left */}
+      <div style={{ position:'absolute', left:inset - 4, bottom:inset - 4, width:24, height:24, zIndex:5 }}>
+        <div style={{ position:'absolute', left:0, bottom:0, width:24, height:3, background:colors.accent }} />
+        <div style={{ position:'absolute', left:0, bottom:0, width:3, height:24, background:colors.accent }} />
+      </div>
+      {/* Corner accent — bottom-right */}
+      <div style={{ position:'absolute', right:inset - 4, bottom:inset - 4, width:24, height:24, zIndex:5 }}>
+        <div style={{ position:'absolute', right:0, bottom:0, width:24, height:3, background:colors.accent }} />
+        <div style={{ position:'absolute', right:0, bottom:0, width:3, height:24, background:colors.accent }} />
+      </div>
+      {/* Category chip — centered, inside frame */}
+      {slide.categoryChip && (
+        <div style={{ position:'absolute', left:0, top:Math.round(height * 0.28), width, zIndex:11, textAlign:'center' }}>
+          <span style={{ display:'inline-block', padding:'7px 28px', background:`${colors.primary}0A`, border:`1px solid ${colors.primary}20`, fontSize:10, letterSpacing:'0.25em', fontWeight:700, color:colors.primary, borderRadius:chipRadius }}>
+            {slide.categoryChip}
+          </span>
+        </div>
+      )}
+      {/* Headline — centered, large */}
+      <div style={{ position:'absolute', left:inset + 50, top:Math.round(height * 0.36), width:frameW - 100, zIndex:10, textAlign:'center' }}>
+        <div style={{ fontSize:t.typography.coverHeadline.fontSize, fontWeight:t.typography.coverHeadline.fontWeight, lineHeight:t.typography.coverHeadline.lineHeight, letterSpacing:t.typography.coverHeadline.letterSpacing, color:colors.primary }}
+          dangerouslySetInnerHTML={{ __html: (slide.headline || slide.title || '').replace(/\n/g, '<br/>') }} />
+      </div>
+      {/* Centered divider */}
+      <div style={{ position:'absolute', left:Math.round(width / 2) - 30, top:Math.round(height * 0.58), width:60, height:2, background:colors.accent, zIndex:5 }} />
+      {/* Subtitle — centered */}
+      {slide.subtitle && (
+        <div style={{ position:'absolute', left:inset + 50, top:Math.round(height * 0.62), width:frameW - 100, zIndex:10, textAlign:'center' }}>
+          <div style={{ fontSize:t.typography.coverSubtitle.fontSize, fontWeight:t.typography.coverSubtitle.fontWeight, letterSpacing:t.typography.coverSubtitle.letterSpacing, color:colors.accent2 }}>{slide.subtitle}</div>
+        </div>
+      )}
+      {/* Part index — centered below subtitle */}
+      {slide.partIndex && slide.partIndex.length > 0 && (
+        <div style={{ position:'absolute', left:0, top:Math.round(height * 0.70), width, zIndex:10, display:'flex', justifyContent:'center', gap:28, flexWrap:'wrap', padding:'0 60px' }}>
+          {slide.partIndex.map((p, i) => (
+            <div key={i} style={{ textAlign:'center' }}>
+              <div style={{ fontSize:8, letterSpacing:'0.2em', fontWeight:600, color:colors.accent2 }}>{p.partNumber}</div>
+              <div style={{ fontSize:11, fontWeight:600, color:colors.primary, marginTop:3 }}>{p.title}</div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Publisher info — centered at bottom inside frame */}
+      {slide.publisherInfo && (
+        <div style={{ position:'absolute', left:0, bottom:inset + 20, width, zIndex:10, textAlign:'center' }}>
           <div style={{ fontSize:10, fontWeight:600, color:colors.primary }}>{slide.publisherInfo.left}</div>
           <div style={{ fontSize:9, color:colors.mute, marginTop:3 }}>{slide.publisherInfo.right}</div>
         </div>

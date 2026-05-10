@@ -181,6 +181,71 @@ export async function exportAsPptx(presentation: PresentationData): Promise<void
             }
             break;
           }
+          case 'diagonal-split': {
+            // Diagonal split: primary polygon + white background
+            pptxSlide.background = { color: colors.background.replace('#', '') };
+            // Approximate diagonal with a large primary rect (PPTX has no clip-path)
+            pptxSlide.addShape('rect' as any, {
+              x: 0, y: 0, w: slideW * 0.65, h: slideH,
+              fill: { color: colors.primary.replace('#', '') },
+            });
+            // Accent vertical line at diagonal edge
+            pptxSlide.addShape('rect' as any, {
+              x: slideW * 0.65 - 0.04, y: 0, w: 0.04, h: slideH,
+              fill: { color: colors.accent.replace('#', '') },
+            });
+            if (slide.categoryChip) {
+              pptxSlide.addText(slide.categoryChip, {
+                x: 0.6, y: 1.2,
+                fontSize: 8, color: colors.accent.replace('#', ''),
+                charSpacing: 2, bold: true,
+              });
+            }
+            pptxSlide.addText(slide.headline || slide.title || '', {
+              x: 0.6, y: slideH * 0.25, w: slideW * 0.55 - 0.6,
+              fontSize: 30, fontFace: 'Malgun Gothic',
+              bold: true, color: 'FFFFFF',
+            });
+            if (slide.subtitle) {
+              pptxSlide.addText(slide.subtitle, {
+                x: slideW * 0.65 + 0.3, y: slideH - 2.0, w: slideW * 0.35 - 0.6,
+                fontSize: 10, color: colors.primary.replace('#', ''),
+                align: 'right',
+              });
+            }
+            break;
+          }
+          case 'minimal-frame': {
+            // White background + primary border frame
+            pptxSlide.background = { color: colors.background.replace('#', '') };
+            // Outer frame (simulated with 4 thin rectangles)
+            const fi = 0.3; // frame inset in inches
+            const fw = 0.03; // frame width
+            pptxSlide.addShape('rect' as any, { x: fi, y: fi, w: slideW - fi * 2, h: fw, fill: { color: colors.primary.replace('#', '') } }); // top
+            pptxSlide.addShape('rect' as any, { x: fi, y: slideH - fi - fw, w: slideW - fi * 2, h: fw, fill: { color: colors.primary.replace('#', '') } }); // bottom
+            pptxSlide.addShape('rect' as any, { x: fi, y: fi, w: fw, h: slideH - fi * 2, fill: { color: colors.primary.replace('#', '') } }); // left
+            pptxSlide.addShape('rect' as any, { x: slideW - fi - fw, y: fi, w: fw, h: slideH - fi * 2, fill: { color: colors.primary.replace('#', '') } }); // right
+            if (slide.categoryChip) {
+              pptxSlide.addText(slide.categoryChip, {
+                x: 0.8, y: slideH * 0.28, w: slideW - 1.6,
+                fontSize: 8, color: colors.primary.replace('#', ''),
+                charSpacing: 2, align: 'center',
+              });
+            }
+            pptxSlide.addText(slide.headline || slide.title || '', {
+              x: 1.0, y: slideH * 0.36, w: slideW - 2.0,
+              fontSize: 28, fontFace: 'Malgun Gothic',
+              bold: true, color: colors.primary.replace('#', ''), align: 'center',
+            });
+            if (slide.subtitle) {
+              pptxSlide.addText(slide.subtitle, {
+                x: 1.0, y: slideH * 0.62, w: slideW - 2.0,
+                fontSize: 10, color: colors.accent2.replace('#', ''),
+                align: 'center', charSpacing: 1,
+              });
+            }
+            break;
+          }
           case 'top-panel':
           default:
             // Original: top 50% panel
@@ -276,6 +341,46 @@ export async function exportAsPptx(presentation: PresentationData): Promise<void
               });
             }
             break;
+
+          case 'card-grid': {
+            // Light background + card-style sections
+            pptxSlide.background = { color: 'FAFAFA' };
+            // Chapter number + title
+            pptxSlide.addText(`PART ${String(slide.partNumber||1).padStart(2,'0')} · ${slide.partTitle||''}`, {
+              x: 0.7, y: 0.3, fontSize: 7,
+              color: colors.accent2.replace('#', ''),
+              bold: true, charSpacing: 2,
+            });
+            pptxSlide.addText(slide.chapterTitle || slide.title || '', {
+              x: 1.2, y: 0.6, w: slideW - 1.8, fontSize: 18,
+              bold: true, color: colors.primary.replace('#', ''),
+            });
+            // Section cards as bordered rounded rects with text
+            let cardY = 1.3;
+            for (const sec of (slide.sections || [])) {
+              // Card background
+              pptxSlide.addShape('roundRect' as any, {
+                x: 0.7, y: cardY, w: slideW - 1.4, h: 1.6,
+                fill: { color: 'FFFFFF' },
+                line: { color: 'E8E8E8', width: 0.5 },
+                rectRadius: 0.1,
+              });
+              if (sec.subTitle) {
+                pptxSlide.addText(sec.subTitle, {
+                  x: 0.9, y: cardY + 0.15, w: slideW - 1.8, fontSize: 14,
+                  bold: true, color: colors.primary.replace('#', ''),
+                });
+              }
+              if (sec.body) {
+                pptxSlide.addText(sec.body, {
+                  x: 0.9, y: cardY + 0.5, w: slideW - 1.8, fontSize: 10,
+                  color: '2D2D2D', lineSpacing: 16,
+                });
+              }
+              cardY += 1.8;
+            }
+            break;
+          }
 
           default:
             pptxSlide.background = { color: 'FFFFFF' };
