@@ -1,0 +1,1 @@
+function o(){return window.IMP?window.IMP:(console.error("iamport SDK not loaded"),null)}const m=({orderId:n,orderName:r,totalAmount:t,payMethod:d,customer:a})=>new Promise(e=>{o();{console.warn("PortOne credentials not configured. Running in demo mode."),e({paymentId:`demo-pay-${Date.now()}`,txId:`demo-tx-${Date.now()}`});return}});export{m as r};
