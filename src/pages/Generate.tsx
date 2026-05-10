@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { GenerationProvider, useGeneration } from '../contexts/GenerationContext';
+import { useSubscription } from '../contexts/SubscriptionContext';
 import { colorSchemes, getColorScheme } from '../config/colorSchemes';
 import { designTemplates } from '../config/designTemplates';
 import { sampleCoverSlide } from '../config/sampleSlides';
@@ -9,8 +10,10 @@ import { SlideStrip } from '../components/slides/SlideStrip';
 import { extractTextFromFile, isSupported, getFileExtension } from '../services/fileParserService';
 import { exportAsHtmlZip, exportAsPdf, exportAsPptx } from '../services/exportService';
 import { processEditRequest, type ChatMessage } from '../services/chatEditService';
+import { estimateTokenCost } from '../services/subscriptionService';
 import ChatPanel from '../components/ChatPanel';
 import type { SlideOrientation, DesignTemplateId } from '../types';
+import { TOKEN_COST } from '../types';
 import '../styles/generate.css';
 
 const GenerateWizard: React.FC = () => {
@@ -52,158 +55,7 @@ const GenerateWizard: React.FC = () => {
 
         {/* Step 1: Config */}
         {gen.step === 1 && (
-          <div className="wizard-panel">
-            <h2>생성 설정</h2>
-
-            <div className="config-grid">
-              {/* Orientation */}
-              <div className="config-section">
-                <label className="config-label">슬라이드 방향</label>
-                <div className="orientation-picker">
-                  {(['portrait', 'landscape'] as SlideOrientation[]).map(o => (
-                    <button
-                      key={o}
-                      className={`orientation-btn ${gen.orientation === o ? 'active' : ''}`}
-                      onClick={() => gen.setOrientation(o)}
-                    >
-                      <div className={`orientation-icon ${o}`} />
-                      <span>{o === 'portrait' ? '세로 (A4)' : '가로 (와이드)'}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Slide count */}
-              <div className="config-section">
-                <label className="config-label">슬라이드 수: {gen.slideCount}장</label>
-                <input
-                  type="range"
-                  min={5}
-                  max={50}
-                  value={gen.slideCount}
-                  onChange={e => gen.setSlideCount(Number(e.target.value))}
-                  className="slide-count-range"
-                />
-                <div className="range-labels">
-                  <span>5</span><span>15</span><span>30</span><span>50</span>
-                </div>
-              </div>
-
-              {/* Design template */}
-              <div className="config-section">
-                <label className="config-label">디자인 템플릿</label>
-                <div className="template-picker-grid">
-                  {designTemplates.map(dt => {
-                    const previewColors = getColorScheme(gen.colorSchemeId);
-                    return (
-                      <button
-                        key={dt.id}
-                        className={`template-picker-btn ${gen.designTemplateId === dt.id ? 'active' : ''}`}
-                        onClick={() => gen.setDesignTemplateId(dt.id)}
-                        title={dt.descriptionKo}
-                      >
-                        <div className="template-picker-preview">
-                          <SlideRenderer
-                            slide={sampleCoverSlide}
-                            colorScheme={previewColors}
-                            width={595}
-                            height={842}
-                            scale={0.13}
-                            designTemplateId={dt.id}
-                          />
-                        </div>
-                        <span className="template-picker-name">{dt.nameKo}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Color scheme */}
-              <div className="config-section">
-                <label className="config-label">색상 테마</label>
-                <div className="color-scheme-grid">
-                  {colorSchemes.map(cs => (
-                    <button
-                      key={cs.id}
-                      className={`color-scheme-btn ${gen.colorSchemeId === cs.id ? 'active' : ''}`}
-                      onClick={() => gen.setColorSchemeId(cs.id)}
-                      title={cs.nameKo}
-                    >
-                      <div className="color-scheme-preview">
-                        <div style={{ flex: 3, background: cs.primary }} />
-                        <div style={{ flex: 1, background: cs.accent }} />
-                        <div style={{ flex: 1, background: cs.accent2 }} />
-                      </div>
-                      <span className="color-scheme-name">{cs.nameKo}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* AI Engine */}
-              <div className="config-section">
-                <label className="config-label">AI 엔진</label>
-                <div className="engine-picker">
-                  <button
-                    className={`engine-btn ${gen.aiEngine === 'openai' ? 'active' : ''}`}
-                    onClick={() => gen.setAiEngine('openai')}
-                  >
-                    OpenAI GPT-4o
-                  </button>
-                  <button
-                    className={`engine-btn ${gen.aiEngine === 'claude' ? 'active' : ''}`}
-                    onClick={() => gen.setAiEngine('claude')}
-                  >
-                    Claude Sonnet
-                  </button>
-                </div>
-              </div>
-
-              {/* API Key */}
-              <div className="config-section">
-                <label className="config-label">API 키</label>
-                {gen.hasSavedKey ? (
-                  <div className="saved-key-indicator" style={{ background:'#ECFDF5', color:'#059669', border:'1px solid #A7F3D0', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
-                    &#10003; 저장된 {gen.aiEngine === 'openai' ? 'OpenAI' : 'Claude'} API 키 사용 중
-                  </div>
-                ) : (
-                  <div className="saved-key-indicator" style={{ background:'#FFFBEB', color:'#B45309', border:'1px solid #FDE68A', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
-                    API 키가 필요합니다 &mdash; <Link to="/mypage" style={{ color:'#B45309', textDecoration:'underline' }}>MyPage에서 키 저장</Link> 또는 아래에 직접 입력
-                  </div>
-                )}
-                <input
-                  type="password"
-                  className="api-key-input"
-                  placeholder={gen.hasSavedKey ? '저장된 키 사용 중 (직접 입력 시 대체)' : 'API 키를 입력하세요'}
-                  value={gen.apiKey}
-                  onChange={e => gen.setApiKey(e.target.value)}
-                />
-                <div className="config-hint">
-                  <Link to="/mypage" className="saved-key-link">MyPage</Link>에서 키를 저장하면 매번 입력할 필요 없이 자동 사용됩니다.
-                </div>
-              </div>
-
-              {/* Additional instructions */}
-              <div className="config-section">
-                <label className="config-label">추가 지시사항 (선택)</label>
-                <textarea
-                  className="additional-input"
-                  placeholder="예: 대학생 대상으로 작성해주세요. 각 섹션에 퀴즈를 포함해주세요."
-                  value={gen.additionalInstructions}
-                  onChange={e => gen.setAdditionalInstructions(e.target.value)}
-                  rows={3}
-                />
-              </div>
-            </div>
-
-            <div className="wizard-actions">
-              <button className="btn btn-secondary" onClick={() => gen.setStep(0)}>← 이전</button>
-              <button className="btn btn-primary" onClick={() => { gen.setStep(2); gen.generate(); }}>
-                생성 시작 →
-              </button>
-            </div>
-          </div>
+          <ConfigStep />
         )}
 
         {/* Step 2: Generating */}
@@ -339,6 +191,226 @@ const TopicStep: React.FC = () => {
           onClick={() => gen.setStep(1)}
         >
           다음: 설정 →
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const ConfigStep: React.FC = () => {
+  const gen = useGeneration();
+  const { subscription, maxSlides, tokensRemaining, plan, canUsePlatformKey } = useSubscription();
+
+  const estimatedCost = estimateTokenCost(gen.aiEngine, gen.slideCount);
+  const isUsingOwnKey = !!gen.apiKey;
+  const hasSub = !!subscription && plan !== 'free';
+  const tokenInsufficient = hasSub && !isUsingOwnKey && tokensRemaining < estimatedCost;
+
+  return (
+    <div className="wizard-panel">
+      <h2>생성 설정</h2>
+
+      {/* Token Balance (구독자 전용) */}
+      {hasSub && !isUsingOwnKey && (
+        <div style={{
+          background: tokenInsufficient ? '#FEF2F2' : '#F0F9FF',
+          border: `1px solid ${tokenInsufficient ? '#FECACA' : '#BAE6FD'}`,
+          borderRadius: 10,
+          padding: '14px 18px',
+          marginBottom: 20,
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: tokenInsufficient ? '#DC2626' : '#0369A1' }}>
+              토큰 잔액
+            </span>
+            <span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+              {tokensRemaining.toLocaleString()} / {subscription!.tokenLimit.toLocaleString()}
+            </span>
+          </div>
+          <div style={{
+            height: 6,
+            background: '#E5E7EB',
+            borderRadius: 3,
+            overflow: 'hidden',
+            marginBottom: 8,
+          }}>
+            <div style={{
+              height: '100%',
+              width: `${Math.min((tokensRemaining / subscription!.tokenLimit) * 100, 100)}%`,
+              background: tokenInsufficient ? '#EF4444' : '#0284C7',
+              borderRadius: 3,
+              transition: 'width 0.3s',
+            }} />
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+            예상 사용: <strong>{estimatedCost.toLocaleString()}</strong> 토큰
+            ({gen.slideCount}장 x {TOKEN_COST[gen.aiEngine].perSlide.toLocaleString()}토큰)
+          </div>
+          {tokenInsufficient && (
+            <div style={{ fontSize: 12, color: '#DC2626', marginTop: 6, fontWeight: 600 }}>
+              토큰이 부족합니다. 슬라이드 수를 줄이거나 <Link to="/pricing" style={{ color: '#DC2626', textDecoration: 'underline' }}>플랜을 업그레이드</Link>하세요.
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className="config-grid">
+        {/* Orientation */}
+        <div className="config-section">
+          <label className="config-label">슬라이드 방향</label>
+          <div className="orientation-picker">
+            {(['portrait', 'landscape'] as SlideOrientation[]).map(o => (
+              <button
+                key={o}
+                className={`orientation-btn ${gen.orientation === o ? 'active' : ''}`}
+                onClick={() => gen.setOrientation(o)}
+              >
+                <div className={`orientation-icon ${o}`} />
+                <span>{o === 'portrait' ? '세로 (A4)' : '가로 (와이드)'}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Slide count */}
+        <div className="config-section">
+          <label className="config-label">슬라이드 수: {gen.slideCount}장 <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>(최대 {maxSlides}장)</span></label>
+          <input
+            type="range"
+            min={5}
+            max={maxSlides}
+            value={gen.slideCount}
+            onChange={e => gen.setSlideCount(Number(e.target.value))}
+            className="slide-count-range"
+          />
+          <div className="range-labels">
+            <span>5</span>
+            {maxSlides >= 15 && <span>15</span>}
+            {maxSlides >= 30 && <span>30</span>}
+            <span>{maxSlides}</span>
+          </div>
+        </div>
+
+        {/* Design template */}
+        <div className="config-section">
+          <label className="config-label">디자인 템플릿</label>
+          <div className="template-picker-grid">
+            {designTemplates.map(dt => {
+              const previewColors = getColorScheme(gen.colorSchemeId);
+              return (
+                <button
+                  key={dt.id}
+                  className={`template-picker-btn ${gen.designTemplateId === dt.id ? 'active' : ''}`}
+                  onClick={() => gen.setDesignTemplateId(dt.id)}
+                  title={dt.descriptionKo}
+                >
+                  <div className="template-picker-preview">
+                    <SlideRenderer
+                      slide={sampleCoverSlide}
+                      colorScheme={previewColors}
+                      width={595}
+                      height={842}
+                      scale={0.13}
+                      designTemplateId={dt.id}
+                    />
+                  </div>
+                  <span className="template-picker-name">{dt.nameKo}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Color scheme */}
+        <div className="config-section">
+          <label className="config-label">색상 테마</label>
+          <div className="color-scheme-grid">
+            {colorSchemes.map(cs => (
+              <button
+                key={cs.id}
+                className={`color-scheme-btn ${gen.colorSchemeId === cs.id ? 'active' : ''}`}
+                onClick={() => gen.setColorSchemeId(cs.id)}
+                title={cs.nameKo}
+              >
+                <div className="color-scheme-preview">
+                  <div style={{ flex: 3, background: cs.primary }} />
+                  <div style={{ flex: 1, background: cs.accent }} />
+                  <div style={{ flex: 1, background: cs.accent2 }} />
+                </div>
+                <span className="color-scheme-name">{cs.nameKo}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* AI Engine */}
+        <div className="config-section">
+          <label className="config-label">AI 엔진</label>
+          <div className="engine-picker">
+            <button
+              className={`engine-btn ${gen.aiEngine === 'openai' ? 'active' : ''}`}
+              onClick={() => gen.setAiEngine('openai')}
+            >
+              OpenAI GPT-4o
+            </button>
+            <button
+              className={`engine-btn ${gen.aiEngine === 'claude' ? 'active' : ''}`}
+              onClick={() => gen.setAiEngine('claude')}
+            >
+              Claude Sonnet
+            </button>
+          </div>
+        </div>
+
+        {/* API Key */}
+        <div className="config-section">
+          <label className="config-label">API 키</label>
+          {canUsePlatformKey && hasSub ? (
+            <div className="saved-key-indicator" style={{ background:'#ECFDF5', color:'#059669', border:'1px solid #A7F3D0', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
+              &#10003; {plan.charAt(0).toUpperCase() + plan.slice(1)} 구독 — 플랫폼 API 키 사용 중 (토큰 차감)
+            </div>
+          ) : gen.hasSavedKey ? (
+            <div className="saved-key-indicator" style={{ background:'#ECFDF5', color:'#059669', border:'1px solid #A7F3D0', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
+              &#10003; 저장된 {gen.aiEngine === 'openai' ? 'OpenAI' : 'Claude'} API 키 사용 중
+            </div>
+          ) : (
+            <div className="saved-key-indicator" style={{ background:'#FFFBEB', color:'#B45309', border:'1px solid #FDE68A', padding:'8px 14px', borderRadius:8, fontSize:13, fontWeight:600, marginBottom:8 }}>
+              API 키가 필요합니다 &mdash; <Link to="/pricing" style={{ color:'#B45309', textDecoration:'underline' }}>구독하기</Link> 또는 <Link to="/mypage" style={{ color:'#B45309', textDecoration:'underline' }}>MyPage에서 키 저장</Link>
+            </div>
+          )}
+          <input
+            type="password"
+            className="api-key-input"
+            placeholder={gen.hasSavedKey || (canUsePlatformKey && hasSub) ? '직접 입력 시 자체 키 사용 (토큰 차감 없음)' : 'API 키를 입력하세요'}
+            value={gen.apiKey}
+            onChange={e => gen.setApiKey(e.target.value)}
+          />
+          <div className="config-hint">
+            직접 API 키를 입력하면 토큰이 차감되지 않습니다. <Link to="/mypage" className="saved-key-link">MyPage</Link>에서 키를 저장할 수 있습니다.
+          </div>
+        </div>
+
+        {/* Additional instructions */}
+        <div className="config-section">
+          <label className="config-label">추가 지시사항 (선택)</label>
+          <textarea
+            className="additional-input"
+            placeholder="예: 대학생 대상으로 작성해주세요. 각 섹션에 퀴즈를 포함해주세요."
+            value={gen.additionalInstructions}
+            onChange={e => gen.setAdditionalInstructions(e.target.value)}
+            rows={3}
+          />
+        </div>
+      </div>
+
+      <div className="wizard-actions">
+        <button className="btn btn-secondary" onClick={() => gen.setStep(0)}>&#8592; 이전</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => { gen.setStep(2); gen.generate(); }}
+          disabled={tokenInsufficient}
+        >
+          생성 시작 &#8594;
         </button>
       </div>
     </div>

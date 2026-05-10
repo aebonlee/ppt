@@ -748,6 +748,13 @@
   position: relative;
 }
 
+/* Force the scaled slide to not expand its parent */
+.template-picker-preview > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .template-picker-name {
   font-size: 11px;
   color: #666;

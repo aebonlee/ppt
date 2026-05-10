@@ -179,7 +179,7 @@ export const translations: Record<string, Record<string, unknown>> = {
         pricing: '요금제'
       },
       home: {
-        title: 'DreamIT PPT Generator',
+        title: 'GenPPT',
         subtitle: 'AI 기반 프레젠테이션 자동 생성 서비스',
         welcome: 'AI로 전문 프레젠테이션을 만들어 보세요',
         description: 'OpenAI GPT-4o / Claude를 활용하여 구조화된 전문 슬라이드를 자동으로 생성합니다.'
@@ -389,7 +389,7 @@ export const translations: Record<string, Record<string, unknown>> = {
         pricing: 'Pricing'
       },
       home: {
-        title: 'DreamIT PPT Generator',
+        title: 'GenPPT',
         subtitle: 'AI-powered presentation generation service',
         welcome: 'Create professional presentations with AI',
         description: 'Automatically generate structured professional slides using OpenAI GPT-4o / Claude.'

@@ -42,7 +42,7 @@ const Home: React.FC = () => {
       {/* Features */}
       <section className="section features-section">
         <div className="container">
-          <h2 className="section-title">왜 DreamIT PPT인가요?</h2>
+          <h2 className="section-title">왜 GenPPT인가요?</h2>
           <p className="section-subtitle">전문 디자이너 수준의 프레젠테이션을 몇 분 만에</p>
           <div className="features-grid">
             {[

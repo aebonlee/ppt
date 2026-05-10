@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useCallback, useEffect } fr
 import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation, SlideData, DesignTemplateId } from '../types';
 import { generatePresentation, savePresentation } from '../services/aiService';
 import { useAuth } from './AuthContext';
+import { useSubscription } from './SubscriptionContext';
 import { getDecryptedKey } from '../services/settingsService';
 
 interface GenerationState {
@@ -58,6 +59,7 @@ const GenerationContext = createContext<GenerationState | null>(null);
 
 export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useAuth();
+  const { maxSlides, refreshSubscription } = useSubscription();
   const [step, setStep] = useState(0);
   const [topic, setTopic] = useState('');
   const [slideCount, setSlideCount] = useState(15);
@@ -73,6 +75,18 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [presentation, setPresentation] = useState<PresentationData | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
   const [hasSavedKey, setHasSavedKey] = useState(false);
+
+  // maxSlides 제한 적용
+  const handleSetSlideCount = useCallback((count: number) => {
+    setSlideCount(Math.min(count, maxSlides));
+  }, [maxSlides]);
+
+  // maxSlides 변경 시 현재 값 클램프
+  useEffect(() => {
+    if (slideCount > maxSlides) {
+      setSlideCount(maxSlides);
+    }
+  }, [maxSlides, slideCount]);
 
   // Auto-load saved API key when user or aiEngine changes
   useEffect(() => {
@@ -112,6 +126,9 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       const result = await generatePresentation(request, setProgress);
       setPresentation(result);
       setStep(3);
+
+      // 생성 성공 후 구독 상태 갱신 (토큰 잔액 반영)
+      refreshSubscription().catch(() => {});
     } catch (err: any) {
       console.error('Generation error:', err);
       setProgress({
@@ -120,7 +137,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         message: err.message || '프레젠테이션 생성 중 오류가 발생했습니다. 다시 시도해 주세요.',
       });
     }
-  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent]);
+  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
 
   const save = useCallback(async () => {
     if (!presentation) return;
@@ -156,7 +173,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   return (
     <GenerationContext.Provider value={{
-      step, setStep, topic, setTopic, slideCount, setSlideCount,
+      step, setStep, topic, setTopic, slideCount, setSlideCount: handleSetSlideCount,
       orientation, setOrientation, colorSchemeId, setColorSchemeId,
       designTemplateId, setDesignTemplateId,
       aiEngine, setAiEngine, apiKey, setApiKey,

@@ -1,0 +1,215 @@
+/**
+ * Subscription Service
+ * 구독 CRUD, 토큰 체크/차감 관리
+ */
+import getSupabase, { TABLES } from '../utils/supabase';
+import type { UserSubscription, SubscriptionPlan } from '../types';
+import { PLAN_CONFIGS, TOKEN_COST } from '../types';
+
+/**
+ * 활성 구독 조회 — active + expires_at > now()
+ * 만료된 구독이 있으면 자동으로 expired 처리
+ */
+export async function getActiveSubscription(): Promise<UserSubscription | null> {
+  const client = getSupabase();
+  if (!client) return null;
+
+  try {
+    const { data: { user } } = await client.auth.getUser();
+    if (!user) return null;
+
+    const { data, error } = await client
+      .from(TABLES.subscriptions)
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .order('purchased_at', { ascending: false })
+      .limit(1);
+
+    if (error || !data || data.length === 0) return null;
+
+    const sub = data[0];
+
+    // 만료 체크
+    if (new Date(sub.expires_at) < new Date()) {
+      // 자동 만료 처리
+      await client
+        .from(TABLES.subscriptions)
+        .update({ status: 'expired', updated_at: new Date().toISOString() })
+        .eq('id', sub.id);
+      return null;
+    }
+
+    return {
+      id: sub.id,
+      userId: sub.user_id,
+      plan: sub.plan as SubscriptionPlan,
+      tokenLimit: sub.token_limit,
+      tokensUsed: sub.tokens_used,
+      tokensRemaining: sub.token_limit - sub.tokens_used,
+      status: sub.status,
+      orderNumber: sub.order_number,
+      purchasedAt: sub.purchased_at,
+      expiresAt: sub.expires_at,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 예상 토큰 비용 계산
+ */
+export function estimateTokenCost(
+  engine: 'openai' | 'claude',
+  slideCount: number,
+  action: 'generate' | 'chat_edit' = 'generate'
+): number {
+  const cost = TOKEN_COST[engine];
+  return action === 'generate'
+    ? cost.perSlide * slideCount
+    : cost.perChatEdit * slideCount;
+}
+
+/**
+ * 생성 가능 여부 확인
+ */
+export async function canGenerate(
+  engine: 'openai' | 'claude',
+  slideCount: number
+): Promise<{ allowed: boolean; required: number; remaining: number }> {
+  const sub = await getActiveSubscription();
+  if (!sub) {
+    return { allowed: false, required: estimateTokenCost(engine, slideCount), remaining: 0 };
+  }
+
+  const required = estimateTokenCost(engine, slideCount);
+  const remaining = sub.tokensRemaining;
+
+  return {
+    allowed: remaining >= required,
+    required,
+    remaining,
+  };
+}
+
+/**
+ * 토큰 차감 + 사용 로그 기록
+ */
+export async function deductTokens(
+  action: 'generate' | 'chat_edit',
+  engine: 'openai' | 'claude',
+  slideCount: number,
+  presentationId?: string
+): Promise<boolean> {
+  const client = getSupabase();
+  if (!client) return false;
+
+  try {
+    const { data: { user } } = await client.auth.getUser();
+    if (!user) return false;
+
+    const sub = await getActiveSubscription();
+    if (!sub) return false;
+
+    const tokensToDeduct = estimateTokenCost(engine, slideCount, action);
+
+    // tokens_used 업데이트
+    const { error: updateError } = await client
+      .from(TABLES.subscriptions)
+      .update({
+        tokens_used: sub.tokensUsed + tokensToDeduct,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', sub.id);
+
+    if (updateError) {
+      console.error('Token deduction failed:', updateError);
+      return false;
+    }
+
+    // 사용 로그 기록
+    try {
+      await client
+        .from(TABLES.token_usage)
+        .insert({
+          user_id: user.id,
+          subscription_id: sub.id,
+          action,
+          engine,
+          slide_count: slideCount,
+          tokens_deducted: tokensToDeduct,
+          presentation_id: presentationId || null,
+        });
+    } catch {
+      // 로그 실패는 무시 (토큰 차감은 이미 완료)
+    }
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * 새 구독 생성
+ * 기존 active 구독이 있으면 만료 처리 후 신규 생성
+ */
+export async function createSubscription(
+  plan: 'basic' | 'pro',
+  orderNumber: string,
+  paymentId: string
+): Promise<UserSubscription | null> {
+  const client = getSupabase();
+  if (!client) return null;
+
+  const { data: { user } } = await client.auth.getUser();
+  if (!user) throw new Error('로그인이 필요합니다.');
+
+  const config = PLAN_CONFIGS[plan];
+
+  // 기존 active 구독 만료 처리
+  await client
+    .from(TABLES.subscriptions)
+    .update({ status: 'expired', updated_at: new Date().toISOString() })
+    .eq('user_id', user.id)
+    .eq('status', 'active');
+
+  // 신규 구독 생성
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // +30일
+
+  const { data, error } = await client
+    .from(TABLES.subscriptions)
+    .insert({
+      user_id: user.id,
+      plan,
+      token_limit: config.tokenLimit,
+      tokens_used: 0,
+      status: 'active',
+      order_number: orderNumber,
+      portone_payment_id: paymentId,
+      purchased_at: now.toISOString(),
+      expires_at: expiresAt.toISOString(),
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Subscription creation failed:', error);
+    throw new Error('구독 생성 실패: ' + error.message);
+  }
+
+  return {
+    id: data.id,
+    userId: data.user_id,
+    plan: data.plan,
+    tokenLimit: data.token_limit,
+    tokensUsed: 0,
+    tokensRemaining: data.token_limit,
+    status: 'active',
+    orderNumber: data.order_number,
+    purchasedAt: data.purchased_at,
+    expiresAt: data.expires_at,
+  };
+}

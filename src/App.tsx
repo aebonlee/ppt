@@ -3,6 +3,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { SubscriptionProvider } from './contexts/SubscriptionContext';
 import { ToastProvider } from './contexts/ToastContext';
 import PublicLayout from './layouts/PublicLayout';
 import site from './config/site';
@@ -16,6 +17,7 @@ function App(): ReactElement {
     <ThemeProvider>
       <LanguageProvider>
         <AuthProvider>
+          <SubscriptionProvider>
           <ToastProvider>
             <ShopWrapper>
               <Router>
@@ -27,6 +29,7 @@ function App(): ReactElement {
               </Router>
             </ShopWrapper>
           </ToastProvider>
+          </SubscriptionProvider>
         </AuthProvider>
       </LanguageProvider>
     </ThemeProvider>

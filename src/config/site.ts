@@ -2,8 +2,8 @@ import type { SiteConfig } from '../types';
 
 const site: SiteConfig = {
   id: 'ppt',
-  name: 'DreamIT PPT Generator',
-  nameKo: '드림아이티 PPT 생성기',
+  name: 'GenPPT',
+  nameKo: 'GenPPT',
   description: 'AI 기반 프레젠테이션 자동 생성 서비스 - OpenAI/Claude를 활용한 전문 슬라이드 제작',
   url: 'https://ppt.dreamitbiz.com',
   dbPrefix: 'ppt_',
@@ -15,9 +15,8 @@ const site: SiteConfig = {
 
   brand: {
     parts: [
-      { text: 'Dream', className: 'brand-dream' },
-      { text: 'IT', className: 'brand-it' },
-      { text: 'PPT', className: 'brand-biz' }
+      { text: 'Gen', className: 'brand-dream' },
+      { text: 'PPT', className: 'brand-it' }
     ]
   },
 

@@ -2,6 +2,7 @@ import type { GenerateRequest, PresentationData, SlideData, GenerationProgress }
 import { getColorScheme } from '../config/colorSchemes';
 import { buildSystemPrompt, buildUserPrompt } from './promptBuilder';
 import getSupabase from '../utils/supabase';
+import { canGenerate, deductTokens } from './subscriptionService';
 
 interface AIResponse {
   title: string;
@@ -53,6 +54,21 @@ export async function generatePresentation(
       const err = new Error('API 키가 필요합니다. 설정에서 API 키를 입력하거나 MyPage에서 저장하세요.');
       onProgress?.({ status: 'error', progress: 0, message: err.message });
       throw err;
+    }
+
+    // 플랫폼 키 사용 시 토큰 체크
+    try {
+      const check = await canGenerate(request.aiEngine, request.slideCount);
+      if (!check.allowed) {
+        const err = new Error(
+          `토큰이 부족합니다. 필요: ${check.required.toLocaleString()}토큰, 잔여: ${check.remaining.toLocaleString()}토큰. 요금제를 업그레이드하거나 직접 API 키를 사용하세요.`
+        );
+        onProgress?.({ status: 'error', progress: 0, message: err.message });
+        throw err;
+      }
+    } catch (tokenErr: any) {
+      if (tokenErr.message?.includes('토큰이 부족합니다')) throw tokenErr;
+      // 토큰 체크 실패 시 계속 진행 (edge function 폴백)
     }
   }
 
@@ -114,6 +130,15 @@ export async function generatePresentation(
     slides: validatedSlides,
     createdAt: new Date().toISOString(),
   };
+
+  // 플랫폼 키 사용 시 토큰 차감
+  if (!request.apiKey) {
+    try {
+      await deductTokens('generate', request.aiEngine, validatedSlides.length);
+    } catch {
+      // 토큰 차감 실패해도 생성 결과는 반환
+    }
+  }
 
   onProgress?.({
     status: 'complete',

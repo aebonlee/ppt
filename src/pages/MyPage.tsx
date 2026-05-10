@@ -2,6 +2,7 @@ import { useState, useEffect, type ReactElement } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
+import { useSubscription } from '../contexts/SubscriptionContext';
 import { updateProfile } from '../utils/auth';
 import { saveApiKey, getDecryptedKey, deleteApiKey } from '../services/settingsService';
 import SEOHead from '../components/SEOHead';
@@ -10,6 +11,7 @@ import '../styles/auth.css';
 const MyPage = (): ReactElement => {
   const { t } = useLanguage();
   const { user, profile, signOut, refreshProfile } = useAuth();
+  const { subscription, plan, tokensRemaining, maxSlides } = useSubscription();
   const navigate = useNavigate();
 
   const [editing, setEditing] = useState(false);
@@ -155,6 +157,70 @@ const MyPage = (): ReactElement => {
               )}
 
               {message && <div className="auth-message">{message}</div>}
+            </div>
+
+            {/* Subscription Status */}
+            <div style={{
+              background: 'var(--card-bg, #fff)',
+              border: '1px solid var(--border-color, #E5E7EB)',
+              borderRadius: 12,
+              padding: '20px 24px',
+              marginTop: 24,
+              marginBottom: 16,
+            }}>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>구독 현황</h3>
+              {subscription && plan !== 'free' ? (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                    <span style={{
+                      display: 'inline-block',
+                      background: plan === 'pro' ? '#7C3AED' : '#0284C7',
+                      color: '#fff',
+                      padding: '3px 12px',
+                      borderRadius: 12,
+                      fontSize: 12,
+                      fontWeight: 700,
+                    }}>
+                      {plan.charAt(0).toUpperCase() + plan.slice(1)}
+                    </span>
+                    <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
+                      만료일: {new Date(subscription.expiresAt).toLocaleDateString('ko-KR')}
+                    </span>
+                  </div>
+                  <div style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
+                      <span>토큰 잔액</span>
+                      <span>{tokensRemaining.toLocaleString()} / {subscription.tokenLimit.toLocaleString()}</span>
+                    </div>
+                    <div style={{
+                      height: 8,
+                      background: '#E5E7EB',
+                      borderRadius: 4,
+                      overflow: 'hidden',
+                    }}>
+                      <div style={{
+                        height: '100%',
+                        width: `${Math.min((tokensRemaining / subscription.tokenLimit) * 100, 100)}%`,
+                        background: tokensRemaining / subscription.tokenLimit > 0.2 ? '#0284C7' : '#EF4444',
+                        borderRadius: 4,
+                        transition: 'width 0.3s',
+                      }} />
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+                    최대 슬라이드: {maxSlides}장/회
+                  </div>
+                </>
+              ) : (
+                <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
+                  현재 무료 플랜입니다. 구독하면 플랫폼 API 키로 편리하게 생성할 수 있습니다.
+                  <div style={{ marginTop: 10 }}>
+                    <Link to="/pricing" className="board-btn primary" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                      구독하기
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* API Key Guide */}

@@ -481,14 +481,48 @@ export interface GenerationProgress {
 }
 
 export type SubscriptionPlan = 'free' | 'basic' | 'pro';
+export type SubscriptionStatus = 'active' | 'expired' | 'cancelled';
 
 export interface UserSubscription {
+  id: string;
   userId: string;
   plan: SubscriptionPlan;
-  monthlyLimit: number;
-  usedCount: number;
+  tokenLimit: number;
+  tokensUsed: number;
+  tokensRemaining: number;
+  status: SubscriptionStatus;
+  orderNumber?: string;
+  purchasedAt: string;
+  expiresAt: string;
+}
+
+export interface TokenUsageRecord {
+  id: string;
+  userId: string;
+  subscriptionId: string;
+  action: 'generate' | 'chat_edit';
+  engine: 'openai' | 'claude';
+  slideCount: number;
+  tokensDeducted: number;
+  presentationId?: string;
+  createdAt: string;
+}
+
+export interface PlanConfig {
+  price: number;
+  tokenLimit: number;
   maxSlides: number;
   canUsePlatformKey: boolean;
   canExportPptx: boolean;
-  expiresAt?: string;
 }
+
+export const PLAN_CONFIGS: Record<SubscriptionPlan, PlanConfig> = {
+  free:  { price: 0,     tokenLimit: 0,       maxSlides: 10, canUsePlatformKey: false, canExportPptx: false },
+  basic: { price: 9900,  tokenLimit: 830000,  maxSlides: 30, canUsePlatformKey: true,  canExportPptx: false },
+  pro:   { price: 29900, tokenLimit: 2500000, maxSlides: 50, canUsePlatformKey: true,  canExportPptx: true  },
+};
+
+export const TOKEN_COST = {
+  openai: { perSlide: 1000, perChatEdit: 1000 },
+  claude: { perSlide: 1500, perChatEdit: 1500 },
+} as const;
