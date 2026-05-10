@@ -1,4 +1,4 @@
-import{g as p}from"./colorSchemes-ucW8M7Qu.js";import{g as c}from"./index-5nX84R9W.js";const m=`{
+import{g as p}from"./colorSchemes-ucW8M7Qu.js";import{g as c}from"./index-DQgQnayA.js";const m=`{
   "title": "string - presentation title",
   "description": "string - short description",
   "slides": [
