@@ -88,6 +88,12 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, [user, aiEngine]);
 
   const generate = useCallback(async () => {
+    // Pre-validation
+    if (!topic.trim()) {
+      setProgress({ status: 'error', progress: 0, message: '주제를 입력해 주세요.' });
+      return;
+    }
+
     const request: GenerateRequest = {
       topic,
       slideCount,
@@ -102,14 +108,16 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     };
 
     try {
+      setProgress({ status: 'generating', progress: 5, message: '준비 중...' });
       const result = await generatePresentation(request, setProgress);
       setPresentation(result);
       setStep(3);
     } catch (err: any) {
+      console.error('Generation error:', err);
       setProgress({
         status: 'error',
         progress: 0,
-        message: err.message || '생성 실패',
+        message: err.message || '프레젠테이션 생성 중 오류가 발생했습니다. 다시 시도해 주세요.',
       });
     }
   }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent]);

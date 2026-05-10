@@ -57,32 +57,39 @@ export async function saveApiKey(engine: 'openai' | 'claude', apiKey: string): P
       updated_at: new Date().toISOString(),
     }, { onConflict: 'user_id' });
 
-  if (error) throw new Error('API 키 저장 실패: ' + error.message);
+  if (error) {
+    // Table may not exist
+    if (error.message?.includes('relation') && error.message?.includes('does not exist')) {
+      throw new Error('ppt_user_settings 테이블이 없습니다. Supabase에서 마이그레이션 SQL을 실행해 주세요.');
+    }
+    throw new Error('API 키 저장 실패: ' + error.message);
+  }
 }
 
 export async function getDecryptedKey(engine: 'openai' | 'claude'): Promise<string | null> {
   const client = getSupabase();
   if (!client) return null;
 
-  const { data: { user } } = await client.auth.getUser();
-  if (!user) return null;
-
-  const column = engine === 'openai' ? 'encrypted_openai_key' : 'encrypted_claude_key';
-
-  const { data, error } = await client
-    .from('ppt_user_settings')
-    .select(column)
-    .eq('user_id', user.id)
-    .single();
-
-  if (error || !data) return null;
-
-  const encoded = (data as any)[column];
-  if (!encoded) return null;
-
   try {
+    const { data: { user } } = await client.auth.getUser();
+    if (!user) return null;
+
+    const column = engine === 'openai' ? 'encrypted_openai_key' : 'encrypted_claude_key';
+
+    const { data, error } = await client
+      .from('ppt_user_settings')
+      .select(column)
+      .eq('user_id', user.id)
+      .single();
+
+    if (error || !data) return null;
+
+    const encoded = (data as any)[column];
+    if (!encoded) return null;
+
     return decodeKey(encoded);
   } catch {
+    // Table may not exist yet — silently return null
     return null;
   }
 }

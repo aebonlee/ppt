@@ -39,6 +39,23 @@ export async function generatePresentation(
     ? { width: 794, height: 1123 }
     : { width: 1123, height: 794 };
 
+  // Pre-validation
+  if (!request.topic?.trim()) {
+    const err = new Error('프레젠테이션 주제를 입력해 주세요.');
+    onProgress?.({ status: 'error', progress: 0, message: err.message });
+    throw err;
+  }
+
+  if (!request.apiKey) {
+    // No API key — check if Supabase edge function is available
+    const client = getSupabase();
+    if (!client) {
+      const err = new Error('API 키가 필요합니다. 설정에서 API 키를 입력하거나 MyPage에서 저장하세요.');
+      onProgress?.({ status: 'error', progress: 0, message: err.message });
+      throw err;
+    }
+  }
+
   // Step 1: Generate
   onProgress?.({
     status: 'generating',
@@ -54,19 +71,18 @@ export async function generatePresentation(
 
   try {
     if (request.apiKey) {
-      // User-provided API key - call directly from frontend
       aiResponse = await callAIDirect(request.aiEngine, request.apiKey, systemPrompt, userPrompt);
     } else {
-      // Platform key - call via Edge Function
       aiResponse = await callAIViaEdgeFunction(request.aiEngine, systemPrompt, userPrompt);
     }
   } catch (error: any) {
+    const message = friendlyErrorMessage(error);
     onProgress?.({
       status: 'error',
       progress: 0,
-      message: error.message || 'AI 생성 중 오류가 발생했습니다.',
+      message,
     });
-    throw error;
+    throw new Error(message);
   }
 
   // Step 2: Parse
@@ -115,53 +131,68 @@ export async function callAIDirect(
   systemPrompt: string,
   userPrompt: string
 ): Promise<AIResponse> {
-  if (engine === 'openai') {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt },
-        ],
-        response_format: { type: 'json_object' },
-        temperature: 0.7,
-        max_tokens: 16000,
-      }),
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || `OpenAI API error: ${res.status}`);
+  if (!apiKey?.trim()) {
+    throw new Error('API 키가 비어있습니다. MyPage에서 API 키를 입력해 주세요.');
+  }
+
+  try {
+    if (engine === 'openai') {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt },
+          ],
+          response_format: { type: 'json_object' },
+          temperature: 0.7,
+          max_tokens: 16000,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error?.message || `OpenAI API error: ${res.status}`);
+      }
+      const data = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error('OpenAI 응답이 비어있습니다. 다시 시도해 주세요.');
+      return extractJSON(content);
+    } else {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true',
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 16000,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }],
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error?.message || `Claude API error: ${res.status}`);
+      }
+      const data = await res.json();
+      const text = data.content?.[0]?.text;
+      if (!text) throw new Error('Claude 응답이 비어있습니다. 다시 시도해 주세요.');
+      return extractJSON(text);
     }
-    const data = await res.json();
-    return extractJSON(data.choices[0].message.content);
-  } else {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 16000,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userPrompt }],
-      }),
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || `Claude API error: ${res.status}`);
+  } catch (err: any) {
+    // Re-throw with more context if it's a generic fetch error
+    if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+      throw new Error(`${engine === 'openai' ? 'OpenAI' : 'Claude'} API 서버에 연결할 수 없습니다. 네트워크를 확인해 주세요.`);
     }
-    const data = await res.json();
-    const text = data.content[0].text;
-    return extractJSON(text);
+    throw err;
   }
 }
 
@@ -171,17 +202,79 @@ export async function callAIViaEdgeFunction(
   userPrompt: string
 ): Promise<AIResponse> {
   const client = getSupabase();
-  if (!client) throw new Error('Supabase가 설정되지 않았습니다.');
+  if (!client) throw new Error('Supabase가 설정되지 않았습니다. 환경 변수를 확인해 주세요.');
 
-  const { data, error } = await client.functions.invoke('ppt-generate', {
-    body: { engine, systemPrompt, userPrompt },
-  });
+  try {
+    const { data, error } = await client.functions.invoke('ppt-generate', {
+      body: { engine, systemPrompt, userPrompt },
+    });
 
-  if (error) throw new Error(error.message || 'Edge Function 호출 실패');
-  if (!data?.result) throw new Error('AI 응답이 비어있습니다.');
+    if (error) {
+      // Edge Function not found or deployment issue
+      const msg = error.message || '';
+      if (msg.includes('not found') || msg.includes('404') || msg.includes('Function not found')) {
+        throw new Error('서버 AI 기능이 아직 설정되지 않았습니다. MyPage에서 직접 API 키를 입력하고 사용해 주세요.');
+      }
+      throw new Error(msg || 'Edge Function 호출 실패');
+    }
 
-  const raw = typeof data.result === 'string' ? data.result : JSON.stringify(data.result);
-  return extractJSON(raw);
+    // Handle error response from the function itself
+    if (data?.error) {
+      throw new Error(data.error);
+    }
+
+    if (!data?.result) throw new Error('AI 응답이 비어있습니다. 다시 시도해 주세요.');
+
+    const raw = typeof data.result === 'string' ? data.result : JSON.stringify(data.result);
+    return extractJSON(raw);
+  } catch (err: any) {
+    // Network error or function invocation failure
+    if (err.message?.includes('Failed to fetch') || err.message?.includes('NetworkError')) {
+      throw new Error('서버 연결에 실패했습니다. MyPage에서 API 키를 직접 입력하고 사용해 주세요.');
+    }
+    throw err;
+  }
+}
+
+/** Convert raw errors to user-friendly messages */
+function friendlyErrorMessage(error: any): string {
+  const msg = error?.message || '';
+
+  // API key errors
+  if (msg.includes('401') || msg.includes('Unauthorized') || msg.includes('Invalid API Key') || msg.includes('invalid_api_key')) {
+    return 'API 키가 유효하지 않습니다. MyPage에서 올바른 키를 입력해 주세요.';
+  }
+  if (msg.includes('429') || msg.includes('Rate limit') || msg.includes('rate_limit')) {
+    return 'API 호출 한도를 초과했습니다. 잠시 후 다시 시도해 주세요.';
+  }
+  if (msg.includes('403') || msg.includes('Forbidden')) {
+    return 'API 접근이 거부되었습니다. API 키 권한을 확인해 주세요.';
+  }
+  if (msg.includes('insufficient_quota') || msg.includes('billing')) {
+    return 'API 사용량이 초과되었습니다. API 제공자의 결제 설정을 확인해 주세요.';
+  }
+
+  // JSON parsing errors
+  if (msg.includes('JSON') || msg.includes('SyntaxError') || msg.includes('Unexpected token')) {
+    return 'AI 응답을 처리하는 중 오류가 발생했습니다. 다시 시도해 주세요.';
+  }
+
+  // Network errors
+  if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('CORS')) {
+    return '네트워크 오류가 발생했습니다. 인터넷 연결을 확인하고 다시 시도해 주세요.';
+  }
+
+  // Supabase / Edge Function errors
+  if (msg.includes('Edge Function') || msg.includes('not found') || msg.includes('Function not found')) {
+    return '서버 AI 기능이 설정되지 않았습니다. MyPage에서 직접 API 키를 입력해 주세요.';
+  }
+
+  // Pass through our own Korean messages
+  if (/[가-힣]/.test(msg)) {
+    return msg;
+  }
+
+  return `AI 생성 중 오류: ${msg || '알 수 없는 오류가 발생했습니다.'}`;
 }
 
 function validateSlides(slides: SlideData[]): SlideData[] {
@@ -202,7 +295,7 @@ export async function savePresentation(presentation: PresentationData): Promise<
   if (!client) throw new Error('Supabase가 설정되지 않았습니다.');
 
   const { data: { user } } = await client.auth.getUser();
-  if (!user) throw new Error('로그인이 필요합니다.');
+  if (!user) throw new Error('로그인이 필요합니다. 저장하려면 로그인해 주세요.');
 
   const { data, error } = await client
     .from('ppt_presentations')
@@ -218,7 +311,12 @@ export async function savePresentation(presentation: PresentationData): Promise<
     .select('id')
     .single();
 
-  if (error) throw new Error('저장 실패: ' + error.message);
+  if (error) {
+    if (error.message?.includes('relation') && error.message?.includes('does not exist')) {
+      throw new Error('ppt_presentations 테이블이 없습니다. Supabase에서 마이그레이션 SQL을 실행해 주세요.');
+    }
+    throw new Error('저장 실패: ' + error.message);
+  }
   return data.id;
 }
 
