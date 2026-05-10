@@ -9,6 +9,27 @@ interface AIResponse {
   slides: SlideData[];
 }
 
+/** Multi-strategy JSON extraction with fallbacks */
+function extractJSON(text: string): any {
+  // 1. Direct parse
+  try { return JSON.parse(text.trim()); } catch { /* continue */ }
+
+  // 2. Extract from markdown code fences
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) {
+    try { return JSON.parse(fenceMatch[1].trim()); } catch { /* continue */ }
+  }
+
+  // 3. Find JSON object/array in surrounding text
+  const jsonStart = text.indexOf('{');
+  const jsonEnd = text.lastIndexOf('}');
+  if (jsonStart !== -1 && jsonEnd > jsonStart) {
+    try { return JSON.parse(text.slice(jsonStart, jsonEnd + 1)); } catch { /* continue */ }
+  }
+
+  throw new Error('AI 응답에서 유효한 JSON을 추출할 수 없습니다. 다시 시도해 주세요.');
+}
+
 export async function generatePresentation(
   request: GenerateRequest,
   onProgress?: (progress: GenerationProgress) => void
@@ -117,7 +138,7 @@ export async function callAIDirect(
       throw new Error(err.error?.message || `OpenAI API error: ${res.status}`);
     }
     const data = await res.json();
-    return JSON.parse(data.choices[0].message.content);
+    return extractJSON(data.choices[0].message.content);
   } else {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -140,9 +161,7 @@ export async function callAIDirect(
     }
     const data = await res.json();
     const text = data.content[0].text;
-    // Extract JSON from potential markdown code fences
-    const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/) || [null, text];
-    return JSON.parse(jsonMatch[1].trim());
+    return extractJSON(text);
   }
 }
 
@@ -161,7 +180,8 @@ export async function callAIViaEdgeFunction(
   if (error) throw new Error(error.message || 'Edge Function 호출 실패');
   if (!data?.result) throw new Error('AI 응답이 비어있습니다.');
 
-  return typeof data.result === 'string' ? JSON.parse(data.result) : data.result;
+  const raw = typeof data.result === 'string' ? data.result : JSON.stringify(data.result);
+  return extractJSON(raw);
 }
 
 function validateSlides(slides: SlideData[]): SlideData[] {
