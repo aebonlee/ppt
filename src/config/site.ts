@@ -52,7 +52,6 @@ const site: SiteConfig = {
   ],
 
   menuItems: [
-    { path: '/', labelKey: 'nav.home' },
     { path: '/generate', labelKey: 'site.nav.generate' },
     { path: '/templates', labelKey: 'site.nav.templates' },
     { path: '/my-presentations', labelKey: 'site.nav.myPresentations' },
@@ -60,7 +59,6 @@ const site: SiteConfig = {
   ],
 
   footerLinks: [
-    { path: '/', labelKey: 'nav.home' },
     { path: '/generate', labelKey: 'site.nav.generate' },
     { path: '/pricing', labelKey: 'site.nav.pricing' },
   ],
