@@ -177,7 +177,7 @@ export async function deductTokens(
  * 기존 active 구독이 있으면 만료 처리 후 신규 생성
  */
 export async function createSubscription(
-  plan: 'basic' | 'pro',
+  plan: 'starter' | 'basic' | 'pro',
   orderNumber: string,
   paymentId: string
 ): Promise<UserSubscription | null> {

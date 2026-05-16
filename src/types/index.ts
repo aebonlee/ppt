@@ -608,7 +608,7 @@ export interface GenerationProgress {
   totalSlides?: number;
 }
 
-export type SubscriptionPlan = 'free' | 'basic' | 'pro';
+export type SubscriptionPlan = 'free' | 'starter' | 'basic' | 'pro';
 export type SubscriptionStatus = 'active' | 'expired' | 'cancelled';
 
 export interface UserSubscription {
@@ -645,9 +645,10 @@ export interface PlanConfig {
 }
 
 export const PLAN_CONFIGS: Record<SubscriptionPlan, PlanConfig> = {
-  free:  { price: 0,     tokenLimit: 0,       maxSlides: 10, canUsePlatformKey: false, canExportPptx: false },
-  basic: { price: 9900,  tokenLimit: 830000,  maxSlides: 30, canUsePlatformKey: true,  canExportPptx: false },
-  pro:   { price: 29900, tokenLimit: 2500000, maxSlides: 50, canUsePlatformKey: true,  canExportPptx: true  },
+  free:    { price: 0,     tokenLimit: 0,      maxSlides: 10, canUsePlatformKey: false, canExportPptx: false },
+  starter: { price: 5900,  tokenLimit: 150000, maxSlides: 20, canUsePlatformKey: true,  canExportPptx: false },
+  basic:   { price: 14900, tokenLimit: 400000, maxSlides: 30, canUsePlatformKey: true,  canExportPptx: true  },
+  pro:     { price: 29900, tokenLimit: 800000, maxSlides: 50, canUsePlatformKey: true,  canExportPptx: true  },
 };
 
 export const TOKEN_COST = {

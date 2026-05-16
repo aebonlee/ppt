@@ -1,9 +1,9 @@
 /* Pricing page */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 960px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
   margin: 0 auto 80px;
 }
 
@@ -13,7 +13,7 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.5);
   border-radius: 12px;
-  padding: 32px;
+  padding: 28px;
   text-align: center;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -145,7 +145,14 @@ li.excluded .feature-check {
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 400px;

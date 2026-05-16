@@ -48,22 +48,42 @@ const plans: Plan[] = [
     buttonText: '무료로 시작',
   },
   {
-    id: 'basic',
-    name: 'Basic',
-    nameKo: '베이직',
-    price: '\u20a99,900',
-    priceNum: 9900,
+    id: 'starter',
+    name: 'Starter',
+    nameKo: '스타터',
+    price: '\u20a95,900',
+    priceNum: 5900,
     priceNote: '월',
-    tokenInfo: '830,000 토큰 / 월',
-    slideEstimate: '약 830장 슬라이드 (GPT-4o 기준)',
+    tokenInfo: '150,000 토큰 / 월',
+    slideEstimate: '약 150장 슬라이드 (GPT-4o 기준)',
     features: [
-      { text: '830,000 토큰 / 월', included: true },
-      { text: '최대 30슬라이드', included: true },
+      { text: '150,000 토큰 / 월', included: true },
+      { text: '최대 20슬라이드', included: true },
       { text: '플랫폼 API 키 사용', included: true },
       { text: 'HTML(ZIP) 내보내기', included: true },
       { text: 'PDF 내보내기', included: true },
       { text: '사용자 API 키 사용', included: true },
       { text: 'PPTX 내보내기', included: false },
+    ],
+    buttonText: '구독하기',
+  },
+  {
+    id: 'basic',
+    name: 'Basic',
+    nameKo: '베이직',
+    price: '\u20a914,900',
+    priceNum: 14900,
+    priceNote: '월',
+    tokenInfo: '400,000 토큰 / 월',
+    slideEstimate: '약 400장 슬라이드 (GPT-4o 기준)',
+    features: [
+      { text: '400,000 토큰 / 월', included: true },
+      { text: '최대 30슬라이드', included: true },
+      { text: '플랫폼 API 키 사용', included: true },
+      { text: 'HTML(ZIP) 내보내기', included: true },
+      { text: 'PDF 내보내기', included: true },
+      { text: '사용자 API 키 사용', included: true },
+      { text: 'PPTX 내보내기', included: true },
     ],
     buttonText: '구독하기',
     highlighted: true,
@@ -75,10 +95,10 @@ const plans: Plan[] = [
     price: '\u20a929,900',
     priceNum: 29900,
     priceNote: '월',
-    tokenInfo: '2,500,000 토큰 / 월',
-    slideEstimate: '약 2,500장 슬라이드 (GPT-4o 기준)',
+    tokenInfo: '800,000 토큰 / 월',
+    slideEstimate: '약 800장 슬라이드 (GPT-4o 기준)',
     features: [
-      { text: '2,500,000 토큰 / 월', included: true },
+      { text: '800,000 토큰 / 월', included: true },
       { text: '최대 50슬라이드', included: true },
       { text: '플랫폼 API 키 사용', included: true },
       { text: 'HTML(ZIP) 내보내기', included: true },
@@ -163,7 +183,7 @@ const Pricing: React.FC = () => {
       await updateOrderStatus(orderNumber, 'paid', result.paymentId);
 
       // 4. 구독 생성
-      await createSubscription(plan.id as 'basic' | 'pro', orderNumber, result.paymentId);
+      await createSubscription(plan.id as 'starter' | 'basic' | 'pro', orderNumber, result.paymentId);
 
       // 5. 구독 상태 갱신
       await refreshSubscription();
@@ -272,7 +292,7 @@ const Pricing: React.FC = () => {
           <div className="faq-grid">
             {[
               { q: '무료 플랜으로도 사용할 수 있나요?', a: '네, 무료 플랜에서는 사용자 본인의 API 키를 사용하여 프레젠테이션을 생성할 수 있습니다.' },
-              { q: '토큰이란 무엇인가요?', a: 'AI가 텍스트를 처리할 때 사용하는 단위입니다. 슬라이드 1장 생성 시 GPT-4o는 1,000토큰, Claude는 1,500토큰이 차감됩니다.' },
+              { q: '토큰이란 무엇인가요?', a: 'AI가 텍스트를 처리할 때 사용하는 단위입니다. 슬라이드 1장 생성 시 GPT-4o는 약 1,000토큰, Claude는 약 1,500토큰이 차감됩니다. 요금제별 토큰은 월 단위로 제공됩니다.' },
               { q: 'API 키는 어떻게 얻나요?', a: 'OpenAI(platform.openai.com) 또는 Anthropic(console.anthropic.com)에서 API 키를 발급받을 수 있습니다.' },
               { q: '환불 정책은 어떻게 되나요?', a: '결제 후 7일 이내에 환불 요청이 가능합니다. 단, 이미 사용한 토큰에 대해서는 차감됩니다.' },
             ].map((faq, i) => (

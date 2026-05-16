@@ -25,6 +25,7 @@ const Cart = lazy(() => import('../pages/Cart'));
 const Checkout = lazy(() => import('../pages/Checkout'));
 const OrderConfirmation = lazy(() => import('../pages/OrderConfirmation'));
 const OrderHistory = lazy(() => import('../pages/OrderHistory'));
+const About = lazy(() => import('../pages/About'));
 
 const Loading = (): ReactElement => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
@@ -70,6 +71,8 @@ const PublicLayout = (): ReactElement => {
             <Route path="/pricing" element={<Pricing />} />
 
             {/* 404 */}
+            <Route path="/about" element={<About />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
