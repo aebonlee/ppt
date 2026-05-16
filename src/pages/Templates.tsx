@@ -2,9 +2,15 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { designTemplates } from '../config/designTemplates';
 import { colorSchemes } from '../config/colorSchemes';
-import { sampleCoverSlide, sampleCoverSlideLandscape } from '../config/sampleSlides';
+import {
+  sampleCoverSlide,
+  sampleCoverSlideLandscape,
+  sampleCoverSlideSquare,
+  sampleCoverSlideUltraWide,
+  sampleCoverSlideCompact,
+} from '../config/sampleSlides';
 import { SlideRenderer } from '../components/slides/SlideRenderer';
-import type { TemplateCategory, TemplateOrientation } from '../types';
+import type { TemplateCategory, TemplateOrientation, DesignTemplate, SlideData } from '../types';
 import '../styles/templates.css';
 
 type FilterCategory = 'all' | TemplateCategory;
@@ -34,6 +40,31 @@ function getCanvasSize(dt: { orientation?: TemplateOrientation; canvasSize?: { w
   return { width: 595, height: 842 };
 }
 
+// 프리뷰 영역에 맞게 스케일을 동적 계산
+const PREVIEW_MAX_W = 300; // 프리뷰 박스 내 최대 폭
+const PREVIEW_MAX_H = 280; // 프리뷰 박스 내 최대 높이
+
+function computePreviewScale(canvasW: number, canvasH: number): number {
+  const scaleW = PREVIEW_MAX_W / canvasW;
+  const scaleH = PREVIEW_MAX_H / canvasH;
+  return Math.min(scaleW, scaleH);
+}
+
+// 템플릿 ID에 맞는 샘플 슬라이드 선택
+function getSampleSlide(dt: DesignTemplate): SlideData {
+  const orient = getTemplateOrientation(dt);
+  if (orient === 'portrait') return sampleCoverSlide;
+  if (orient === 'landscape') return sampleCoverSlideLandscape;
+  // custom — ID별 분기
+  switch (dt.id) {
+    case 'square-sns':      return sampleCoverSlideSquare;
+    case 'ultra-wide':      return sampleCoverSlideUltraWide;
+    case 'custom-compact':  return sampleCoverSlideCompact;
+    case 'letter-us':       return sampleCoverSlideLandscape;
+    default:                return sampleCoverSlide;
+  }
+}
+
 const Templates: React.FC = () => {
   const navigate = useNavigate();
   const [orientationFilter, setOrientationFilter] = useState<FilterOrientation>('portrait');
@@ -44,7 +75,6 @@ const Templates: React.FC = () => {
     return map;
   });
 
-  // Count templates per orientation
   const orientationCounts = useMemo(() => {
     const counts: Record<FilterOrientation, number> = { portrait: 0, landscape: 0, custom: 0 };
     designTemplates.forEach(dt => { counts[getTemplateOrientation(dt)]++; });
@@ -65,7 +95,7 @@ const Templates: React.FC = () => {
 
   const formatSizeLabel = (dt: { orientation?: TemplateOrientation; canvasSize?: { width: number; height: number } }) => {
     const size = getCanvasSize(dt);
-    return `${size.width}×${size.height}`;
+    return `${size.width}\u00D7${size.height}`;
   };
 
   return (
@@ -110,27 +140,29 @@ const Templates: React.FC = () => {
             const cs = colorSchemes.find(c => c.id === selectedColorId) || colorSchemes[0];
             const orient = getTemplateOrientation(dt);
             const size = getCanvasSize(dt);
-            const isLandscape = orient === 'landscape' || (orient === 'custom' && size.width > size.height);
-            const previewSlide = isLandscape ? sampleCoverSlideLandscape : sampleCoverSlide;
-            const previewScale = isLandscape ? 0.28 : 0.35;
+            const scale = computePreviewScale(size.width, size.height);
+            const previewSlide = getSampleSlide(dt);
+            const renderedW = Math.round(size.width * scale);
+            const renderedH = Math.round(size.height * scale);
+            const isWide = size.width >= size.height;
 
             return (
-              <div key={dt.id} className={`template-gallery-card ${isLandscape ? 'landscape' : ''}`}>
+              <div key={dt.id} className={`template-gallery-card ${isWide ? 'landscape' : ''}`}>
                 {/* Preview area */}
-                <div className={`template-gallery-preview ${isLandscape ? 'preview-landscape' : ''}`}>
+                <div className={`template-gallery-preview ${isWide ? 'preview-landscape' : 'preview-portrait'}`}>
                   <div
                     className="template-gallery-slide-wrapper"
-                    style={isLandscape ? {
-                      width: `${size.width * previewScale}px`,
-                      height: `${size.height * previewScale}px`,
-                    } : undefined}
+                    style={{
+                      width: `${renderedW}px`,
+                      height: `${renderedH}px`,
+                    }}
                   >
                     <SlideRenderer
                       slide={previewSlide}
                       colorScheme={cs}
                       width={size.width}
                       height={size.height}
-                      scale={previewScale}
+                      scale={scale}
                       designTemplateId={dt.id}
                     />
                   </div>

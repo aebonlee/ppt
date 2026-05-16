@@ -15,15 +15,47 @@ export const sampleCoverSlide: SlideData = {
 
 export const sampleCoverSlideLandscape: SlideData = {
   type: 'cover',
-  headline: '디지털 트랜스포메이션\n전략 가이드',
-  subtitle: 'DIGITAL TRANSFORMATION STRATEGY',
-  categoryChip: 'BUSINESS STRATEGY',
+  headline: '비즈니스 성장 전략',
+  subtitle: 'GROWTH STRATEGY 2026',
+  categoryChip: 'STRATEGY',
   partIndex: [
-    { partNumber: 'PART 01', title: '현황 분석' },
-    { partNumber: 'PART 02', title: '실행 전략' },
-    { partNumber: 'PART 03', title: '로드맵' },
+    { partNumber: 'PART 01', title: '전략' },
+    { partNumber: 'PART 02', title: '실행' },
   ],
-  publisherInfo: { left: 'DreamIT Biz', right: '2026 EDITION' },
+  publisherInfo: { left: 'DreamIT Biz', right: '2026' },
+};
+
+export const sampleCoverSlideSquare: SlideData = {
+  type: 'cover',
+  headline: '소셜 미디어\n콘텐츠 전략',
+  subtitle: 'SOCIAL MEDIA',
+  categoryChip: 'SNS',
+  partIndex: [
+    { partNumber: '01', title: '전략' },
+    { partNumber: '02', title: '실행' },
+  ],
+  publisherInfo: { left: 'DreamIT', right: '2026' },
+};
+
+export const sampleCoverSlideUltraWide: SlideData = {
+  type: 'cover',
+  headline: '디지털 배너 디자인',
+  subtitle: 'DIGITAL SIGNAGE',
+  categoryChip: 'BANNER',
+  partIndex: [],
+  publisherInfo: { left: 'DreamIT Biz', right: '2026' },
+};
+
+export const sampleCoverSlideCompact: SlideData = {
+  type: 'cover',
+  headline: '프로젝트 발표',
+  subtitle: 'PROJECT REPORT',
+  categoryChip: 'REPORT',
+  partIndex: [
+    { partNumber: '01', title: '개요' },
+    { partNumber: '02', title: '결론' },
+  ],
+  publisherInfo: { left: 'DreamIT', right: '2026' },
 };
 
 export const sampleContentSlide: SlideData = {

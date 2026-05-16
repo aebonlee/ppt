@@ -83,34 +83,33 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Preview area — portrait (default) */
+/* Preview area — shared base */
 .template-gallery-preview {
   background: #f0f0f0;
   padding: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 320px;
   overflow: hidden;
   position: relative;
 }
 
+/* Portrait preview — taller */
+.template-gallery-preview.preview-portrait {
+  min-height: 330px;
+}
+
+/* Landscape / wide preview — shorter */
+.template-gallery-preview.preview-landscape {
+  min-height: 240px;
+}
+
+/* Slide wrapper — NO hardcoded size, always use inline style */
 .template-gallery-slide-wrapper {
-  width: calc(595px * 0.35);
-  height: calc(842px * 0.35);
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Preview area — landscape */
-.template-gallery-preview.preview-landscape {
-  min-height: 260px;
-}
-
-.template-gallery-card.landscape .template-gallery-slide-wrapper {
-  width: auto;
-  height: auto;
+  flex-shrink: 0;
 }
 
 /* Badges */
@@ -224,13 +223,12 @@
     grid-template-columns: 1fr;
   }
 
-  .template-gallery-preview {
+  .template-gallery-preview.preview-portrait {
     min-height: 260px;
   }
 
-  .template-gallery-slide-wrapper {
-    width: calc(595px * 0.28);
-    height: calc(842px * 0.28);
+  .template-gallery-preview.preview-landscape {
+    min-height: 200px;
   }
 
   .template-orientation-tabs {
