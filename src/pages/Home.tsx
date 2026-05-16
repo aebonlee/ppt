@@ -46,15 +46,15 @@ const Home: React.FC = () => {
           <p className="section-subtitle">전문 디자이너 수준의 프레젠테이션을 몇 분 만에</p>
           <div className="features-grid">
             {[
-              { icon: '🤖', title: 'AI 자동 생성', desc: 'GPT-4o와 Claude가 주제를 분석하여 구조화된 콘텐츠를 자동 생성합니다.' },
-              { icon: '🎨', title: '전문 디자인', desc: '12가지 디자인 템플릿과 8가지 색상 테마로 전문적인 프레젠테이션을 완성합니다.' },
-              { icon: '📊', title: '다양한 슬라이드', desc: '차트, 타임라인, 매트릭스, KPI 대시보드, 조직도 등 25종의 슬라이드 타입을 지원합니다.' },
-              { icon: '📥', title: '다양한 내보내기', desc: 'HTML(ZIP), PDF, PPTX 3가지 형식으로 내보낼 수 있습니다.' },
-              { icon: '🔑', title: '유연한 API 사용', desc: '플랫폼 키 또는 직접 API 키를 입력하여 사용할 수 있습니다.' },
-              { icon: '💰', title: '합리적 가격', desc: '월 5,900원부터 플랫폼 API 키로 전문 프레젠테이션을 생성할 수 있습니다.' },
+              { icon: 'fa-robot', title: 'AI 자동 생성', desc: 'GPT-4o와 Claude가 주제를 분석하여 구조화된 콘텐츠를 자동 생성합니다.' },
+              { icon: 'fa-palette', title: '전문 디자인', desc: '12가지 디자인 템플릿과 8가지 색상 테마로 전문적인 프레젠테이션을 완성합니다.' },
+              { icon: 'fa-chart-pie', title: '다양한 슬라이드', desc: '차트, 타임라인, 매트릭스, KPI 대시보드, 조직도 등 25종의 슬라이드 타입을 지원합니다.' },
+              { icon: 'fa-file-export', title: '다양한 내보내기', desc: 'HTML(ZIP), PDF, PPTX 3가지 형식으로 내보낼 수 있습니다.' },
+              { icon: 'fa-key', title: '유연한 API 사용', desc: '플랫폼 키 또는 직접 API 키를 입력하여 사용할 수 있습니다.' },
+              { icon: 'fa-coins', title: '합리적 가격', desc: '월 5,900원부터 플랫폼 API 키로 전문 프레젠테이션을 생성할 수 있습니다.' },
             ].map((feat, i) => (
               <div key={i} className="feature-card">
-                <div className="feature-icon">{feat.icon}</div>
+                <div className="feature-icon"><i className={`fa-solid ${feat.icon}`} /></div>
                 <h3 className="feature-title">{feat.title}</h3>
                 <p className="feature-desc">{feat.desc}</p>
               </div>
