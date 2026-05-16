@@ -240,9 +240,9 @@ export async function createSubscription(
     .eq('user_id', user.id)
     .eq('status', 'active');
 
-  // 신규 구독 생성
+  // 신규 구독 생성 (토큰 소진 시까지 유효 — 만료일 10년 후)
   const now = new Date();
-  const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // +30일
+  const expiresAt = new Date(now.getTime() + 10 * 365 * 24 * 60 * 60 * 1000);
 
   const { data, error } = await client
     .from(TABLES.subscriptions)

@@ -236,9 +236,9 @@ export default function About(): ReactElement {
             <div className="about-plans">
               {[
                 { name: '무료', price: '₩0', period: '영구 무료', tokens: '-', slides: '자체 API 키 사용', highlight: false, badge: '' },
-                { name: '스타터', price: '₩5,900', period: '/월', tokens: '150,000 토큰', slides: '약 150장/월', highlight: false, badge: '' },
-                { name: '베이직', price: '₩14,900', period: '/월', tokens: '400,000 토큰', slides: '약 400장/월', highlight: true, badge: '인기' },
-                { name: '프로', price: '₩29,900', period: '/월', tokens: '800,000 토큰', slides: '약 800장/월', highlight: false, badge: '' },
+                { name: '스타터', price: '₩5,900', period: '/1회', tokens: '150,000 토큰', slides: '약 150장 분량', highlight: false, badge: '' },
+                { name: '베이직', price: '₩14,900', period: '/1회', tokens: '400,000 토큰', slides: '약 400장 분량', highlight: true, badge: '인기' },
+                { name: '프로', price: '₩29,900', period: '/1회', tokens: '800,000 토큰', slides: '약 800장 분량', highlight: false, badge: '' },
               ].map((plan, i) => (
                 <div key={i} className={`about-plan-card ${plan.highlight ? 'highlighted' : ''}`}>
                   {plan.badge && <div className="about-plan-badge">{plan.badge}</div>}

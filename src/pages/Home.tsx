@@ -51,7 +51,7 @@ const Home: React.FC = () => {
               { icon: 'fa-chart-pie', title: '다양한 슬라이드', desc: '차트, 타임라인, 매트릭스, KPI 대시보드, 조직도 등 25종의 슬라이드 타입을 지원합니다.' },
               { icon: 'fa-file-export', title: '다양한 내보내기', desc: 'HTML(ZIP), PDF, PPTX 3가지 형식으로 내보낼 수 있습니다.' },
               { icon: 'fa-key', title: '유연한 API 사용', desc: '플랫폼 키 또는 직접 API 키를 입력하여 사용할 수 있습니다.' },
-              { icon: 'fa-coins', title: '합리적 가격', desc: '월 5,900원부터 플랫폼 API 키로 전문 프레젠테이션을 생성할 수 있습니다.' },
+              { icon: 'fa-coins', title: '합리적 가격', desc: '5,900원부터 토큰을 충전하여 플랫폼 API 키로 전문 프레젠테이션을 생성할 수 있습니다.' },
             ].map((feat, i) => (
               <div key={i} className="feature-card">
                 <div className="feature-icon"><i className={`fa-solid ${feat.icon}`} /></div>
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
       <section className="section cta-section">
         <div className="container">
           <h2 className="cta-title">지금 바로 시작하세요</h2>
-          <p className="cta-desc">무료 회원은 월 3회까지 프레젠테이션을 생성할 수 있습니다</p>
+          <p className="cta-desc">무료 회원은 본인의 API 키로 프레젠테이션을 생성할 수 있습니다</p>
           <button className="btn btn-hero-primary" onClick={() => navigate('/generate')}>
             무료로 시작하기
           </button>

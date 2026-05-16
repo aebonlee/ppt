@@ -212,7 +212,7 @@ const MyPage = (): ReactElement => {
               marginTop: 24,
               marginBottom: 16,
             }}>
-              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>구독 현황</h3>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>토큰 현황</h3>
               {subscription && plan !== 'free' ? (
                 <>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
@@ -228,7 +228,7 @@ const MyPage = (): ReactElement => {
                       {plan.charAt(0).toUpperCase() + plan.slice(1)}
                     </span>
                     <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
-                      만료일: {new Date(subscription.expiresAt).toLocaleDateString('ko-KR')}
+                      충전일: {new Date(subscription.purchasedAt).toLocaleDateString('ko-KR')}
                     </span>
                   </div>
                   <div style={{ marginBottom: 8 }}>
@@ -252,15 +252,15 @@ const MyPage = (): ReactElement => {
                     </div>
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
-                    최대 슬라이드: {maxSlides}장/회
+                    최대 슬라이드: {maxSlides}장/회 | 토큰 소진 시까지 이용 가능
                   </div>
                 </>
               ) : (
                 <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
-                  현재 무료 플랜입니다. 구독하면 플랫폼 API 키로 편리하게 생성할 수 있습니다.
+                  현재 무료 플랜입니다. 토큰을 충전하면 플랫폼 API 키로 편리하게 생성할 수 있습니다.
                   <div style={{ marginTop: 10 }}>
                     <Link to="/pricing" className="board-btn primary" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                      구독하기
+                      토큰 충전하기
                     </Link>
                   </div>
                 </div>

@@ -53,11 +53,11 @@ const plans: Plan[] = [
     nameKo: '스타터',
     price: '\u20a95,900',
     priceNum: 5900,
-    priceNote: '월',
-    tokenInfo: '150,000 토큰 / 월',
+    priceNote: '1회',
+    tokenInfo: '150,000 토큰',
     slideEstimate: '약 150장 슬라이드 (GPT-4o 기준)',
     features: [
-      { text: '150,000 토큰 / 월', included: true },
+      { text: '150,000 토큰 충전', included: true },
       { text: '최대 20슬라이드', included: true },
       { text: '플랫폼 API 키 사용', included: true },
       { text: 'HTML(ZIP) 내보내기', included: true },
@@ -65,7 +65,7 @@ const plans: Plan[] = [
       { text: '사용자 API 키 사용', included: true },
       { text: 'PPTX 내보내기', included: false },
     ],
-    buttonText: '구독하기',
+    buttonText: '충전하기',
   },
   {
     id: 'basic',
@@ -73,11 +73,11 @@ const plans: Plan[] = [
     nameKo: '베이직',
     price: '\u20a914,900',
     priceNum: 14900,
-    priceNote: '월',
-    tokenInfo: '400,000 토큰 / 월',
+    priceNote: '1회',
+    tokenInfo: '400,000 토큰',
     slideEstimate: '약 400장 슬라이드 (GPT-4o 기준)',
     features: [
-      { text: '400,000 토큰 / 월', included: true },
+      { text: '400,000 토큰 충전', included: true },
       { text: '최대 30슬라이드', included: true },
       { text: '플랫폼 API 키 사용', included: true },
       { text: 'HTML(ZIP) 내보내기', included: true },
@@ -85,7 +85,7 @@ const plans: Plan[] = [
       { text: '사용자 API 키 사용', included: true },
       { text: 'PPTX 내보내기', included: true },
     ],
-    buttonText: '구독하기',
+    buttonText: '충전하기',
     highlighted: true,
   },
   {
@@ -94,11 +94,11 @@ const plans: Plan[] = [
     nameKo: '프로',
     price: '\u20a929,900',
     priceNum: 29900,
-    priceNote: '월',
-    tokenInfo: '800,000 토큰 / 월',
+    priceNote: '1회',
+    tokenInfo: '800,000 토큰',
     slideEstimate: '약 800장 슬라이드 (GPT-4o 기준)',
     features: [
-      { text: '800,000 토큰 / 월', included: true },
+      { text: '800,000 토큰 충전', included: true },
       { text: '최대 50슬라이드', included: true },
       { text: '플랫폼 API 키 사용', included: true },
       { text: 'HTML(ZIP) 내보내기', included: true },
@@ -106,7 +106,7 @@ const plans: Plan[] = [
       { text: '사용자 API 키 사용', included: true },
       { text: 'PPTX 내보내기', included: true },
     ],
-    buttonText: '구독하기',
+    buttonText: '충전하기',
   },
 ];
 
@@ -129,9 +129,9 @@ const Pricing: React.FC = () => {
       return;
     }
 
-    // 이미 같은 플랜 구독 중
-    if (subscription && currentPlan === plan.id) {
-      showToast('이미 해당 플랜을 구독 중입니다.', 'info');
+    // 이미 같은 플랜 이용 중 (잔여 토큰 있음)
+    if (subscription && currentPlan === plan.id && subscription.tokensRemaining > 0) {
+      showToast('해당 플랜의 잔여 토큰이 남아있습니다.', 'info');
       return;
     }
 
@@ -149,7 +149,7 @@ const Pricing: React.FC = () => {
         total_amount: plan.priceNum,
         payment_method: 'CARD',
         items: [{
-          product_title: `GenPPT ${plan.nameKo} 구독 (30일)`,
+          product_title: `GenPPT ${plan.nameKo} 토큰 충전`,
           quantity: 1,
           unit_price: plan.priceNum,
           subtotal: plan.priceNum,
@@ -159,7 +159,7 @@ const Pricing: React.FC = () => {
       // 2. 결제 요청
       const result = await requestPayment({
         orderId: orderNumber,
-        orderName: `GenPPT ${plan.nameKo} 구독 (30일)`,
+        orderName: `GenPPT ${plan.nameKo} 토큰 충전`,
         totalAmount: plan.priceNum,
         payMethod: 'CARD',
         customer: {
@@ -188,18 +188,13 @@ const Pricing: React.FC = () => {
       // 5. 구독 상태 갱신
       await refreshSubscription();
 
-      showToast(`${plan.nameKo} 플랜 구독이 시작되었습니다!`, 'success');
+      showToast(`${plan.nameKo} 플랜 토큰이 충전되었습니다!`, 'success');
     } catch (err: any) {
       console.error('Subscription error:', err);
       showToast(err.message || '구독 처리 중 오류가 발생했습니다.', 'error');
     } finally {
       setProcessing(null);
     }
-  };
-
-  const formatDate = (dateStr: string) => {
-    const d = new Date(dateStr);
-    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
   };
 
   return (
@@ -231,7 +226,7 @@ const Pricing: React.FC = () => {
                 현재 플랜: {PLAN_CONFIGS[currentPlan].price > 0 ? currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1) : 'Free'}
               </strong>
               <div style={{ fontSize: 13, opacity: 0.9, marginTop: 4 }}>
-                만료일: {formatDate(subscription.expiresAt)} | 잔여 토큰: {subscription.tokensRemaining.toLocaleString()} / {subscription.tokenLimit.toLocaleString()}
+                잔여 토큰: {subscription.tokensRemaining.toLocaleString()} / {subscription.tokenLimit.toLocaleString()}
               </div>
             </div>
             <div style={{
@@ -241,7 +236,7 @@ const Pricing: React.FC = () => {
               fontSize: 13,
               fontWeight: 600,
             }}>
-              구독 중
+              이용 중
             </div>
           </div>
         )}
@@ -279,7 +274,7 @@ const Pricing: React.FC = () => {
                   {processing === plan.id
                     ? '처리 중...'
                     : isCurrent && plan.id !== 'free'
-                      ? '구독 중'
+                      ? '이용 중'
                       : plan.buttonText}
                 </button>
               </div>
@@ -292,7 +287,7 @@ const Pricing: React.FC = () => {
           <div className="faq-grid">
             {[
               { q: '무료 플랜으로도 사용할 수 있나요?', a: '네, 무료 플랜에서는 사용자 본인의 API 키를 사용하여 프레젠테이션을 생성할 수 있습니다.' },
-              { q: '토큰이란 무엇인가요?', a: 'AI가 텍스트를 처리할 때 사용하는 단위입니다. 슬라이드 1장 생성 시 GPT-4o는 약 1,000토큰, Claude는 약 1,500토큰이 차감됩니다. 요금제별 토큰은 월 단위로 제공됩니다.' },
+              { q: '토큰이란 무엇인가요?', a: 'AI가 텍스트를 처리할 때 사용하는 단위입니다. 슬라이드 1장 생성 시 GPT-4o는 약 1,000토큰, Claude는 약 1,500토큰이 차감됩니다. 충전한 토큰은 소진될 때까지 사용 가능합니다.' },
               { q: 'API 키는 어떻게 얻나요?', a: 'OpenAI(platform.openai.com) 또는 Anthropic(console.anthropic.com)에서 API 키를 발급받을 수 있습니다.' },
               { q: '환불 정책은 어떻게 되나요?', a: '결제 후 7일 이내에 환불 요청이 가능합니다. 단, 이미 사용한 토큰에 대해서는 차감됩니다.' },
             ].map((faq, i) => (
