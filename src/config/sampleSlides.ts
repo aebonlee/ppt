@@ -58,6 +58,52 @@ export const sampleCoverSlideCompact: SlideData = {
   publisherInfo: { left: 'DreamIT', right: '2026' },
 };
 
+export const sampleCoverSlideInstaFeed: SlideData = {
+  type: 'cover',
+  headline: '오늘의\n마케팅 인사이트',
+  subtitle: 'MARKETING INSIGHT',
+  categoryChip: 'CARD NEWS',
+  partIndex: [
+    { partNumber: '01', title: '트렌드' },
+    { partNumber: '02', title: '전략' },
+    { partNumber: '03', title: '실행' },
+  ],
+  publisherInfo: { left: 'DreamIT', right: '@dreamitbiz' },
+};
+
+export const sampleCoverSlideInstaStory: SlideData = {
+  type: 'cover',
+  headline: '알아두면\n좋은 꿀팁 5가지',
+  subtitle: 'USEFUL TIPS',
+  categoryChip: 'STORY',
+  partIndex: [
+    { partNumber: '01', title: '시작' },
+    { partNumber: '02', title: '핵심' },
+  ],
+  publisherInfo: { left: 'DreamIT', right: 'Swipe Up' },
+};
+
+export const sampleCoverSlideFacebook: SlideData = {
+  type: 'cover',
+  headline: '주간 비즈니스 뉴스레터',
+  subtitle: 'WEEKLY NEWSLETTER',
+  categoryChip: 'FACEBOOK',
+  partIndex: [
+    { partNumber: '01', title: '이슈' },
+    { partNumber: '02', title: '분석' },
+  ],
+  publisherInfo: { left: 'DreamIT Biz', right: 'Weekly' },
+};
+
+export const sampleCoverSlideYoutube: SlideData = {
+  type: 'cover',
+  headline: '클릭률 높이는 썸네일 전략',
+  subtitle: 'YOUTUBE THUMBNAIL',
+  categoryChip: 'YOUTUBE',
+  partIndex: [],
+  publisherInfo: { left: 'DreamIT Biz', right: '2026' },
+};
+
 export const sampleContentSlide: SlideData = {
   type: 'content',
   partNumber: 1,

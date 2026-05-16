@@ -8,6 +8,10 @@ import {
   sampleCoverSlideSquare,
   sampleCoverSlideUltraWide,
   sampleCoverSlideCompact,
+  sampleCoverSlideInstaFeed,
+  sampleCoverSlideInstaStory,
+  sampleCoverSlideFacebook,
+  sampleCoverSlideYoutube,
 } from '../config/sampleSlides';
 import { SlideRenderer } from '../components/slides/SlideRenderer';
 import type { TemplateCategory, TemplateOrientation, DesignTemplate, SlideData } from '../types';
@@ -57,11 +61,15 @@ function getSampleSlide(dt: DesignTemplate): SlideData {
   if (orient === 'landscape') return sampleCoverSlideLandscape;
   // custom — ID별 분기
   switch (dt.id) {
-    case 'square-sns':      return sampleCoverSlideSquare;
-    case 'ultra-wide':      return sampleCoverSlideUltraWide;
-    case 'custom-compact':  return sampleCoverSlideCompact;
-    case 'letter-us':       return sampleCoverSlideLandscape;
-    default:                return sampleCoverSlide;
+    case 'square-sns':        return sampleCoverSlideSquare;
+    case 'ultra-wide':        return sampleCoverSlideUltraWide;
+    case 'custom-compact':    return sampleCoverSlideCompact;
+    case 'letter-us':         return sampleCoverSlideLandscape;
+    case 'card-insta-feed':   return sampleCoverSlideInstaFeed;
+    case 'card-insta-story':  return sampleCoverSlideInstaStory;
+    case 'card-facebook':     return sampleCoverSlideFacebook;
+    case 'card-youtube':      return sampleCoverSlideYoutube;
+    default:                  return sampleCoverSlide;
   }
 }
 

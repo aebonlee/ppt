@@ -288,7 +288,9 @@ export type DesignTemplateId =
   // 가로형 6개
   | 'wide-modern' | 'wide-minimal' | 'wide-bold' | 'wide-dark' | 'wide-pitch' | 'wide-creative'
   // 커스텀 4개
-  | 'square-sns' | 'ultra-wide' | 'letter-us' | 'custom-compact';
+  | 'square-sns' | 'ultra-wide' | 'letter-us' | 'custom-compact'
+  // 카드뉴스 4개
+  | 'card-insta-feed' | 'card-insta-story' | 'card-facebook' | 'card-youtube';
 
 export type TemplateOrientation = 'portrait' | 'landscape' | 'custom';
 
