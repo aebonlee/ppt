@@ -73,28 +73,41 @@ export function estimateTokenCost(
 
 /**
  * 생성 가능 여부 확인
+ * 구독 토큰 우선 → 구독 없으면 쿠폰 토큰 체크
  */
 export async function canGenerate(
   engine: 'openai' | 'claude',
   slideCount: number
-): Promise<{ allowed: boolean; required: number; remaining: number }> {
+): Promise<{ allowed: boolean; required: number; remaining: number; source: 'subscription' | 'coupon' | 'none' }> {
+  const required = estimateTokenCost(engine, slideCount);
+
+  // 1. 구독 토큰 체크
   const sub = await getActiveSubscription();
-  if (!sub) {
-    return { allowed: false, required: estimateTokenCost(engine, slideCount), remaining: 0 };
+  if (sub && sub.tokensRemaining >= required) {
+    return { allowed: true, required, remaining: sub.tokensRemaining, source: 'subscription' };
   }
 
-  const required = estimateTokenCost(engine, slideCount);
-  const remaining = sub.tokensRemaining;
+  // 2. 쿠폰 토큰 체크 (구독이 없거나 잔여 부족 시)
+  try {
+    const { canGenerateWithCoupon } = await import('./couponService');
+    const couponCheck = await canGenerateWithCoupon(engine, slideCount);
+    if (couponCheck.allowed) {
+      return { allowed: true, required, remaining: couponCheck.remaining, source: 'coupon' };
+    }
 
-  return {
-    allowed: remaining >= required,
-    required,
-    remaining,
-  };
+    // 둘 다 부족
+    const totalRemaining = (sub?.tokensRemaining || 0) + couponCheck.remaining;
+    return { allowed: false, required, remaining: totalRemaining, source: 'none' };
+  } catch {
+    // 쿠폰 서비스 로드 실패 시 구독만으로 판단
+    return { allowed: false, required, remaining: sub?.tokensRemaining || 0, source: 'none' };
+  }
 }
 
 /**
  * 토큰 차감 + 사용 로그 기록
+ * source를 지정하면 해당 소스에서 차감 (구독 or 쿠폰)
+ * source 미지정 시 자동 판별
  */
 export async function deductTokens(
   action: 'generate' | 'chat_edit',
@@ -109,43 +122,51 @@ export async function deductTokens(
     const { data: { user } } = await client.auth.getUser();
     if (!user) return false;
 
-    const sub = await getActiveSubscription();
-    if (!sub) return false;
-
     const tokensToDeduct = estimateTokenCost(engine, slideCount, action);
 
-    // tokens_used 업데이트
-    const { error: updateError } = await client
-      .from(TABLES.subscriptions)
-      .update({
-        tokens_used: sub.tokensUsed + tokensToDeduct,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', sub.id);
+    // 구독 우선 차감 시도
+    const sub = await getActiveSubscription();
+    if (sub && sub.tokensRemaining >= tokensToDeduct) {
+      // 구독에서 차감
+      const { error: updateError } = await client
+        .from(TABLES.subscriptions)
+        .update({
+          tokens_used: sub.tokensUsed + tokensToDeduct,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', sub.id);
 
-    if (updateError) {
-      console.error('Token deduction failed:', updateError);
+      if (updateError) {
+        console.error('Token deduction failed:', updateError);
+        return false;
+      }
+
+      // 사용 로그 기록
+      try {
+        await client
+          .from(TABLES.token_usage)
+          .insert({
+            user_id: user.id,
+            subscription_id: sub.id,
+            action,
+            engine,
+            slide_count: slideCount,
+            tokens_deducted: tokensToDeduct,
+            presentation_id: presentationId || null,
+            source: 'subscription',
+          });
+      } catch { /* 로그 실패 무시 */ }
+
+      return true;
+    }
+
+    // 쿠폰 토큰에서 차감
+    try {
+      const { deductCouponTokens } = await import('./couponService');
+      return await deductCouponTokens(action, engine, slideCount, presentationId);
+    } catch {
       return false;
     }
-
-    // 사용 로그 기록
-    try {
-      await client
-        .from(TABLES.token_usage)
-        .insert({
-          user_id: user.id,
-          subscription_id: sub.id,
-          action,
-          engine,
-          slide_count: slideCount,
-          tokens_deducted: tokensToDeduct,
-          presentation_id: presentationId || null,
-        });
-    } catch {
-      // 로그 실패는 무시 (토큰 차감은 이미 완료)
-    }
-
-    return true;
   } catch {
     return false;
   }

@@ -642,3 +642,32 @@ export const TOKEN_COST = {
   openai: { perSlide: 1000, perChatEdit: 1000 },
   claude: { perSlide: 1500, perChatEdit: 1500 },
 } as const;
+
+// ─── Coupon ───
+export type CouponStatus = 'active' | 'used' | 'expired' | 'disabled';
+
+export interface Coupon {
+  id: string;
+  code: string;
+  tokenAmount: number;
+  maxRedemptions: number;
+  currentRedemptions: number;
+  expiresAt: string | null;
+  status: CouponStatus;
+  description?: string;
+  createdAt: string;
+}
+
+export interface CouponRedemption {
+  id: string;
+  couponId: string;
+  userId: string;
+  tokensGranted: number;
+  redeemedAt: string;
+}
+
+export interface CouponBalance {
+  totalGranted: number;
+  totalUsed: number;
+  remaining: number;
+}

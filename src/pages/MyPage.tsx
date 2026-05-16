@@ -5,6 +5,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { useSubscription } from '../contexts/SubscriptionContext';
 import { updateProfile } from '../utils/auth';
 import { saveApiKey, getDecryptedKey, deleteApiKey } from '../services/settingsService';
+import { redeemCoupon, getCouponBalance } from '../services/couponService';
+import type { CouponBalance } from '../types';
 import SEOHead from '../components/SEOHead';
 import '../styles/auth.css';
 
@@ -27,6 +29,13 @@ const MyPage = (): ReactElement => {
   const [keySaving, setKeySaving] = useState<string | null>(null);
   const [keyMessage, setKeyMessage] = useState('');
 
+  // Coupon state
+  const [couponCode, setCouponCode] = useState('');
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponMessage, setCouponMessage] = useState('');
+  const [couponMessageType, setCouponMessageType] = useState<'success' | 'error'>('success');
+  const [couponBalance, setCouponBalance] = useState<CouponBalance | null>(null);
+
   useEffect(() => {
     if (profile) {
       setForm({
@@ -41,6 +50,8 @@ const MyPage = (): ReactElement => {
     if (!user) return;
     getDecryptedKey('openai').then(k => { if (k) setHasOpenaiKey(true); }).catch(() => {});
     getDecryptedKey('claude').then(k => { if (k) setHasClaudeKey(true); }).catch(() => {});
+    // Load coupon balance
+    getCouponBalance().then(setCouponBalance).catch(() => {});
   }, [user]);
 
   const handleSave = async () => {
@@ -90,6 +101,31 @@ const MyPage = (): ReactElement => {
       setKeyMessage((err as Error).message);
     } finally {
       setKeySaving(null);
+    }
+  };
+
+  const handleRedeemCoupon = async () => {
+    if (!couponCode.trim()) return;
+    setCouponLoading(true);
+    setCouponMessage('');
+    try {
+      const result = await redeemCoupon(couponCode.trim());
+      if (result.success) {
+        setCouponMessage(`쿠폰이 등록되었습니다! ${result.tokensGranted?.toLocaleString()} 토큰이 추가되었습니다.`);
+        setCouponMessageType('success');
+        setCouponCode('');
+        // Refresh balance
+        const balance = await getCouponBalance();
+        setCouponBalance(balance);
+      } else {
+        setCouponMessage(result.error || '쿠폰 등록에 실패했습니다.');
+        setCouponMessageType('error');
+      }
+    } catch (err: any) {
+      setCouponMessage(err.message || '오류가 발생했습니다.');
+      setCouponMessageType('error');
+    } finally {
+      setCouponLoading(false);
     }
   };
 
@@ -218,6 +254,86 @@ const MyPage = (): ReactElement => {
                     <Link to="/pricing" className="board-btn primary" style={{ textDecoration: 'none', display: 'inline-block' }}>
                       구독하기
                     </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Coupon Section */}
+            <div style={{
+              background: 'var(--card-bg, #fff)',
+              border: '1px solid var(--border-color, #E5E7EB)',
+              borderRadius: 12,
+              padding: '20px 24px',
+              marginBottom: 16,
+            }}>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>쿠폰 등록</h3>
+              <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
+                쿠폰 코드를 입력하면 토큰이 추가됩니다. 추가된 토큰으로 플랫폼 API 키를 사용하여 PPT를 생성할 수 있습니다.
+              </p>
+              <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+                <input
+                  type="text"
+                  placeholder="쿠폰 코드 입력"
+                  value={couponCode}
+                  onChange={e => setCouponCode(e.target.value.toUpperCase())}
+                  onKeyDown={e => e.key === 'Enter' && handleRedeemCoupon()}
+                  style={{
+                    flex: 1,
+                    padding: '10px 14px',
+                    border: '1px solid var(--border-color, #E5E7EB)',
+                    borderRadius: 8,
+                    fontSize: 14,
+                    letterSpacing: '0.1em',
+                    fontWeight: 600,
+                  }}
+                  disabled={couponLoading}
+                />
+                <button
+                  onClick={handleRedeemCoupon}
+                  disabled={!couponCode.trim() || couponLoading}
+                  style={{
+                    padding: '10px 20px',
+                    background: 'var(--primary-blue, #0046C8)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: 8,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: couponCode.trim() && !couponLoading ? 'pointer' : 'not-allowed',
+                    opacity: !couponCode.trim() || couponLoading ? 0.5 : 1,
+                  }}
+                >
+                  {couponLoading ? '확인 중...' : '등록'}
+                </button>
+              </div>
+              {couponMessage && (
+                <div style={{
+                  padding: '8px 12px',
+                  borderRadius: 6,
+                  fontSize: 13,
+                  background: couponMessageType === 'success' ? '#ECFDF5' : '#FEF2F2',
+                  color: couponMessageType === 'success' ? '#065F46' : '#991B1B',
+                  marginBottom: 12,
+                }}>
+                  {couponMessage}
+                </div>
+              )}
+              {couponBalance && couponBalance.totalGranted > 0 && (
+                <div style={{
+                  padding: '12px 16px',
+                  background: '#F0F9FF',
+                  borderRadius: 8,
+                  border: '1px solid #BAE6FD',
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
+                    <span style={{ fontWeight: 600 }}>쿠폰 토큰 잔액</span>
+                    <span style={{ fontWeight: 700, color: 'var(--primary-blue, #0046C8)' }}>
+                      {couponBalance.remaining.toLocaleString()} 토큰
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 11, color: '#64748B' }}>
+                    총 부여: {couponBalance.totalGranted.toLocaleString()} | 사용: {couponBalance.totalUsed.toLocaleString()}
                   </div>
                 </div>
               )}
