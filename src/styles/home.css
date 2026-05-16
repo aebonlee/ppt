@@ -175,7 +175,7 @@
 }
 
 .feature-icon {
-  font-size: 36px;
+  font-size: 24px;
   margin-bottom: 16px;
   display: inline-flex;
   align-items: center;
@@ -185,7 +185,6 @@
   border-radius: 14px;
   background: var(--primary-gradient, linear-gradient(135deg, #0046C8, #4A8FE7));
   color: #fff;
-  -webkit-text-fill-color: initial;
 }
 
 .feature-title {
