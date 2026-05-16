@@ -1,4 +1,4 @@
-import type { PresentationData, CoverLayoutVariant, ContentLayoutVariant } from '../types';
+import type { PresentationData, CoverLayoutVariant, ContentLayoutVariant, SlideData, ColorScheme } from '../types';
 import { getDesignTemplate } from '../config/designTemplates';
 
 // HTML/ZIP export
@@ -281,6 +281,57 @@ export async function exportAsPptx(presentation: PresentationData): Promise<void
         });
         break;
 
+      // ─── Chart slides ───
+      case 'column-chart':
+      case 'line-chart':
+      case 'pie-chart':
+      case 'bubble-chart':
+        exportChartSlide(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'kpi-dashboard':
+        exportKPIDashboard(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      // ─── Matrix slides ───
+      case 'comparison-table':
+      case 'assessment-table':
+        exportComparisonTable(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'bcg-matrix':
+      case 'priority-matrix':
+        exportMatrixSlide(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      // ─── Structure slides ───
+      case 'org-chart':
+        exportOrgChart(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'timeline':
+      case 'roadmap':
+        exportTimeline(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'process-flow':
+        exportProcessFlow(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      // ─── Special slides ───
+      case 'quote':
+        exportQuote(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'two-column':
+      case 'three-column':
+        exportMultiColumn(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
+      case 'stat-card':
+        exportStatCard(pptxSlide, slide, colors, slideW, slideH);
+        break;
+
       case 'content':
       default:
         switch (contentVariant) {
@@ -434,4 +485,372 @@ function downloadBlob(blob: Blob, filename: string): void {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// ─── New slide type export helpers ───
+
+function hexColor(c: string): string {
+  return c.replace('#', '');
+}
+
+function exportChartSlide(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  const chart = slide.chartConfig;
+  if (!chart) {
+    pptxSlide.addText(slide.title || 'Chart', { x: 0.6, y: 0.6, fontSize: 20, bold: true, color: hexColor(colors.primary) });
+    return;
+  }
+
+  // Title
+  pptxSlide.addText(slide.title || chart.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  // Use PptxGenJS native chart if applicable
+  const chartType = chart.type;
+  const chartColors = [colors.primary, colors.accent, colors.accent2, colors.mute].map(hexColor);
+
+  if (chartType === 'column' || chartType === 'bar' || chartType === 'line' || chartType === 'pie') {
+    const chartData = chart.series.map((s, i) => ({
+      name: s.name,
+      labels: chart.categories || s.data.map((_, idx) => String(idx + 1)),
+      values: s.data,
+      color: hexColor(s.color || chartColors[i % chartColors.length]),
+    }));
+
+    const typeMap: Record<string, string> = { column: 'bar', bar: 'bar', line: 'line', pie: 'pie' };
+    try {
+      pptxSlide.addChart(typeMap[chartType] as any, chartData, {
+        x: 0.5, y: 1.0, w: slideW - 1.0, h: slideH - 1.8,
+        showLegend: chart.showLegend !== false,
+        legendPos: 'b',
+        catAxisLabelFontSize: 8,
+        valAxisLabelFontSize: 8,
+        barDir: chartType === 'bar' ? 'bar' : 'col',
+      });
+    } catch {
+      // Fallback: text representation
+      pptxSlide.addText(`[${chartType} chart: ${chart.series.map(s => s.name).join(', ')}]`, {
+        x: 0.6, y: slideH / 2, w: slideW - 1.2, fontSize: 12, color: '666666', align: 'center',
+      });
+    }
+  } else {
+    // Bubble: text fallback
+    pptxSlide.addText(`[Bubble chart: ${chart.series.map(s => s.name).join(', ')}]`, {
+      x: 0.6, y: slideH / 2, w: slideW - 1.2, fontSize: 12, color: '666666', align: 'center',
+    });
+  }
+}
+
+function exportKPIDashboard(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, _slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || 'KPI Dashboard', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const metrics = slide.kpiMetrics || [];
+  const cols = Math.min(metrics.length, 3);
+  const cardW = (slideW - 1.2) / cols;
+  const cardH = 1.5;
+
+  metrics.forEach((m, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = 0.6 + col * cardW;
+    const y = 1.2 + row * (cardH + 0.3);
+
+    pptxSlide.addShape('roundRect' as any, {
+      x, y, w: cardW - 0.15, h: cardH,
+      fill: { color: 'F8F9FA' }, line: { color: 'E0E0E0', width: 0.5 }, rectRadius: 0.08,
+    });
+    pptxSlide.addText(m.label, { x: x + 0.15, y: y + 0.15, fontSize: 9, color: hexColor(colors.accent2), bold: true });
+    pptxSlide.addText(`${m.value}${m.unit ? ' ' + m.unit : ''}`, {
+      x: x + 0.15, y: y + 0.5, fontSize: 24, bold: true, color: hexColor(colors.primary),
+    });
+    if (m.trendValue) {
+      const trendColor = m.trend === 'up' ? '10B981' : m.trend === 'down' ? 'EF4444' : '6B7280';
+      pptxSlide.addText(`${m.trend === 'up' ? '\u25B2' : m.trend === 'down' ? '\u25BC' : '\u25CF'} ${m.trendValue}`, {
+        x: x + 0.15, y: y + cardH - 0.4, fontSize: 9, color: trendColor,
+      });
+    }
+  });
+}
+
+function exportComparisonTable(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const headers = slide.comparisonHeaders || [];
+  const rows = slide.comparisonRows || [];
+
+  // Build table data
+  const tableRows: any[][] = [];
+  // Header row
+  tableRows.push([
+    { text: 'Criteria', options: { bold: true, color: 'FFFFFF', fill: { color: hexColor(colors.primary) } } },
+    ...headers.map(h => ({ text: h, options: { bold: true, color: 'FFFFFF', fill: { color: hexColor(colors.accent2) } } })),
+  ]);
+  // Data rows
+  rows.forEach(row => {
+    tableRows.push([
+      { text: row.label, options: { bold: true, color: hexColor(colors.primary) } },
+      ...row.values.map(v => ({ text: v })),
+    ]);
+  });
+
+  try {
+    pptxSlide.addTable(tableRows, {
+      x: 0.5, y: 1.2, w: slideW - 1.0,
+      fontSize: 9, border: { type: 'solid', pt: 0.5, color: 'E0E0E0' },
+      colW: Array(headers.length + 1).fill((slideW - 1.0) / (headers.length + 1)),
+      rowH: 0.4,
+    });
+  } catch {
+    // fallback
+    pptxSlide.addText('[Comparison table]', { x: 0.6, y: slideH / 2, fontSize: 12, color: '666666' });
+  }
+}
+
+function exportMatrixSlide(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  const matrix = slide.matrixConfig;
+
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  if (!matrix) return;
+
+  const size = Math.min(slideW - 2, slideH - 2.5);
+  const ox = (slideW - size) / 2;
+  const oy = 1.2;
+
+  // Draw 4 quadrants
+  pptxSlide.addShape('rect' as any, { x: ox, y: oy, w: size / 2, h: size / 2, fill: { color: hexColor(colors.primary) + '20' } });
+  pptxSlide.addShape('rect' as any, { x: ox + size / 2, y: oy, w: size / 2, h: size / 2, fill: { color: hexColor(colors.accent) + '20' } });
+  pptxSlide.addShape('rect' as any, { x: ox, y: oy + size / 2, w: size / 2, h: size / 2, fill: { color: hexColor(colors.accent2) + '15' } });
+  pptxSlide.addShape('rect' as any, { x: ox + size / 2, y: oy + size / 2, w: size / 2, h: size / 2, fill: { color: hexColor(colors.mute) + '20' } });
+
+  // Quadrant labels
+  const quads = matrix.quadrants || [];
+  if (quads[0]) pptxSlide.addText(quads[0].label, { x: ox + 0.1, y: oy + 0.1, fontSize: 9, bold: true, color: hexColor(colors.primary) });
+  if (quads[1]) pptxSlide.addText(quads[1].label, { x: ox + size / 2 + 0.1, y: oy + 0.1, fontSize: 9, bold: true, color: hexColor(colors.accent) });
+  if (quads[2]) pptxSlide.addText(quads[2].label, { x: ox + 0.1, y: oy + size / 2 + 0.1, fontSize: 9, bold: true, color: hexColor(colors.accent2) });
+  if (quads[3]) pptxSlide.addText(quads[3].label, { x: ox + size / 2 + 0.1, y: oy + size / 2 + 0.1, fontSize: 9, bold: true, color: hexColor(colors.mute) });
+
+  // Items
+  matrix.items.forEach(item => {
+    const cx = ox + (item.x / 100) * size;
+    const cy = oy + size - (item.y / 100) * size;
+    pptxSlide.addShape('ellipse' as any, {
+      x: cx - 0.15, y: cy - 0.15, w: 0.3, h: 0.3,
+      fill: { color: hexColor(colors.accent) },
+    });
+    pptxSlide.addText(item.label, { x: cx - 0.5, y: cy + 0.2, w: 1.0, fontSize: 7, align: 'center', color: '333333' });
+  });
+
+  // Axis labels
+  if (matrix.xAxisLabel) pptxSlide.addText(matrix.xAxisLabel, { x: ox + size / 2 - 0.5, y: oy + size + 0.1, w: 1.0, fontSize: 8, align: 'center', color: '666666' });
+  if (matrix.yAxisLabel) pptxSlide.addText(matrix.yAxisLabel, { x: ox - 0.6, y: oy + size / 2, fontSize: 8, color: '666666', rotate: 270 });
+}
+
+function exportOrgChart(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, _slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || 'Organization', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const root = slide.orgChart;
+  if (!root) return;
+
+  // Flatten tree to render as text-based org chart
+  const renderLevel = (node: any, level: number, y: { val: number }) => {
+    const indent = level * 0.4;
+    pptxSlide.addText(`${'  '.repeat(level)}${level > 0 ? '\u2514 ' : ''}${node.name}${node.title ? ` (${node.title})` : ''}`, {
+      x: 0.6 + indent, y: y.val, w: slideW - 1.2 - indent, fontSize: 10,
+      color: level === 0 ? hexColor(colors.primary) : '333333',
+      bold: level === 0,
+    });
+    y.val += 0.35;
+    if (node.children) {
+      for (const child of node.children) {
+        renderLevel(child, level + 1, y);
+      }
+    }
+  };
+  renderLevel(root, 0, { val: 1.2 });
+}
+
+function exportTimeline(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const events = slide.timelineEvents || [];
+  const startY = 1.3;
+  const stepH = Math.min(0.8, (slideH - startY - 0.5) / events.length);
+
+  // Vertical line
+  pptxSlide.addShape('rect' as any, {
+    x: 1.2, y: startY, w: 0.02, h: events.length * stepH,
+    fill: { color: hexColor(colors.primary) },
+  });
+
+  events.forEach((ev, i) => {
+    const y = startY + i * stepH;
+    const statusColor = ev.status === 'completed' ? hexColor(colors.primary) : ev.status === 'in-progress' ? hexColor(colors.accent) : hexColor(colors.mute);
+
+    // Dot
+    pptxSlide.addShape('ellipse' as any, {
+      x: 1.12, y: y + 0.05, w: 0.18, h: 0.18,
+      fill: { color: statusColor },
+    });
+    // Date
+    pptxSlide.addText(ev.date, { x: 0.2, y: y + 0.02, w: 0.85, fontSize: 8, bold: true, color: hexColor(colors.accent2), align: 'right' });
+    // Title + description
+    pptxSlide.addText(ev.title, { x: 1.5, y: y, w: slideW - 2.2, fontSize: 11, bold: true, color: hexColor(colors.primary) });
+    if (ev.description) {
+      pptxSlide.addText(ev.description, { x: 1.5, y: y + 0.25, w: slideW - 2.2, fontSize: 9, color: '666666' });
+    }
+  });
+}
+
+function exportProcessFlow(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const steps = slide.processSteps || [];
+  const stepW = Math.min(1.5, (slideW - 1.2 - 0.3 * (steps.length - 1)) / steps.length);
+  const startX = (slideW - stepW * steps.length - 0.3 * (steps.length - 1)) / 2;
+  const y = slideH / 2 - 0.4;
+
+  steps.forEach((step, i) => {
+    const x = startX + i * (stepW + 0.3);
+    const isTerminal = step.type === 'start' || step.type === 'end';
+    const fillColor = isTerminal ? hexColor(colors.primary) : 'FFFFFF';
+    const textColor = isTerminal ? 'FFFFFF' : hexColor(colors.primary);
+
+    pptxSlide.addShape('roundRect' as any, {
+      x, y, w: stepW, h: 0.8,
+      fill: { color: fillColor },
+      line: { color: hexColor(colors.primary), width: 1.5 },
+      rectRadius: isTerminal ? 0.4 : 0.08,
+    });
+    pptxSlide.addText(step.label, {
+      x, y: y + 0.15, w: stepW, fontSize: 9, bold: true, color: textColor, align: 'center',
+    });
+    if (step.description) {
+      pptxSlide.addText(step.description, {
+        x, y: y + 0.4, w: stepW, fontSize: 7, color: isTerminal ? 'FFFFFFCC' : '666666', align: 'center',
+      });
+    }
+    // Arrow
+    if (i < steps.length - 1) {
+      pptxSlide.addText('\u25B6', {
+        x: x + stepW, y: y + 0.25, w: 0.3, fontSize: 12, color: hexColor(colors.primary), align: 'center',
+      });
+    }
+  });
+}
+
+function exportQuote(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  const quote = slide.quote;
+  if (!quote) return;
+
+  // Large quotation mark
+  pptxSlide.addText('\u201C', {
+    x: 0.6, y: slideH * 0.15, fontSize: 72, color: hexColor(colors.primary) + '30', fontFace: 'Georgia',
+  });
+
+  // Quote text
+  pptxSlide.addText(quote.text, {
+    x: 1.0, y: slideH * 0.3, w: slideW - 2.0, fontSize: 18, italic: true, color: hexColor(colors.primary), lineSpacing: 28,
+  });
+
+  // Author
+  if (quote.author) {
+    pptxSlide.addText(`\u2014 ${quote.author}${quote.source ? `, ${quote.source}` : ''}`, {
+      x: 1.0, y: slideH * 0.7, w: slideW - 2.0, fontSize: 12, color: hexColor(colors.accent2),
+    });
+  }
+}
+
+function exportMultiColumn(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, _slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const columns = slide.columns || [];
+  const colCount = slide.type === 'three-column' ? 3 : 2;
+  const colW = (slideW - 1.2) / colCount;
+
+  columns.slice(0, colCount).forEach((col, i) => {
+    const x = 0.6 + i * colW;
+    let y = 1.2;
+
+    if (col.title) {
+      pptxSlide.addText(col.title, { x, y, w: colW - 0.2, fontSize: 12, bold: true, color: hexColor(colors.primary) });
+      y += 0.4;
+    }
+    if (col.body) {
+      pptxSlide.addText(col.body, { x, y, w: colW - 0.2, fontSize: 10, color: '333333', lineSpacing: 16 });
+      y += 0.8;
+    }
+    if (col.items) {
+      col.items.forEach(item => {
+        pptxSlide.addText(`\u2022 ${item}`, { x: x + 0.1, y, w: colW - 0.3, fontSize: 9, color: '555555' });
+        y += 0.3;
+      });
+    }
+  });
+}
+
+function exportStatCard(pptxSlide: any, slide: SlideData, colors: ColorScheme, slideW: number, _slideH: number): void {
+  pptxSlide.background = { color: 'FFFFFF' };
+  pptxSlide.addText(slide.title || '', {
+    x: 0.6, y: 0.3, w: slideW - 1.2, fontSize: 18, bold: true, color: hexColor(colors.primary),
+  });
+
+  const stats = slide.statHighlight || [];
+  const cols = Math.min(stats.length, 3);
+  const cardW = (slideW - 1.4) / cols;
+  const cardH = 1.8;
+
+  stats.forEach((stat, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = 0.7 + col * (cardW + 0.1);
+    const y = 1.3 + row * (cardH + 0.2);
+    const color = stat.color ? hexColor(stat.color) : hexColor(colors.primary);
+
+    pptxSlide.addShape('roundRect' as any, {
+      x, y, w: cardW - 0.1, h: cardH,
+      fill: { color: 'F8F9FA' }, rectRadius: 0.1,
+    });
+    // Top accent bar
+    pptxSlide.addShape('rect' as any, {
+      x, y, w: cardW - 0.1, h: 0.04, fill: { color },
+    });
+    // Value
+    pptxSlide.addText(stat.value, {
+      x, y: y + 0.3, w: cardW - 0.1, fontSize: 28, bold: true, color, align: 'center',
+    });
+    // Label
+    pptxSlide.addText(stat.label, {
+      x, y: y + 1.0, w: cardW - 0.1, fontSize: 11, bold: true, color: hexColor(colors.primary), align: 'center',
+    });
+    // Description
+    if (stat.description) {
+      pptxSlide.addText(stat.description, {
+        x: x + 0.1, y: y + 1.3, w: cardW - 0.3, fontSize: 8, color: '666666', align: 'center',
+      });
+    }
+  });
 }

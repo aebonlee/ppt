@@ -267,7 +267,16 @@ export type ColorTheme = 'blue' | 'red' | 'green' | 'purple' | 'orange';
 export type Language = 'ko' | 'en';
 
 // === PPT 생성 관련 타입 ===
-export type SlideType = 'cover' | 'toc' | 'section-cover' | 'content' | 'diagram' | 'workbook' | 'summary' | 'back-cover';
+export type SlideType =
+  | 'cover' | 'toc' | 'section-cover' | 'content' | 'diagram' | 'workbook' | 'summary' | 'back-cover'
+  // Chart (5종)
+  | 'column-chart' | 'line-chart' | 'pie-chart' | 'bubble-chart' | 'kpi-dashboard'
+  // Matrix (4종)
+  | 'comparison-table' | 'bcg-matrix' | 'priority-matrix' | 'assessment-table'
+  // Structure (4종)
+  | 'org-chart' | 'timeline' | 'roadmap' | 'process-flow'
+  // Special (4종)
+  | 'quote' | 'two-column' | 'three-column' | 'stat-card';
 export type SlideOrientation = 'portrait' | 'landscape';
 
 // ─── Design Template ───
@@ -352,6 +361,101 @@ export interface ColorScheme {
 export interface TableData {
   headers: string[];
   rows: string[][];
+}
+
+// ─── Chart ───
+export interface ChartSeries {
+  name: string;
+  data: number[];
+  color?: string;
+}
+
+export interface ChartConfig {
+  type: 'column' | 'line' | 'pie' | 'bubble' | 'bar';
+  title?: string;
+  categories?: string[];
+  series: ChartSeries[];
+  xAxisLabel?: string;
+  yAxisLabel?: string;
+  showLegend?: boolean;
+}
+
+export interface KPIMetric {
+  label: string;
+  value: string;
+  unit?: string;
+  trend?: 'up' | 'down' | 'neutral';
+  trendValue?: string;
+  icon?: string;
+}
+
+// ─── Matrix ───
+export interface MatrixQuadrant {
+  label: string;
+  description?: string;
+}
+
+export interface MatrixItem {
+  label: string;
+  x: number;
+  y: number;
+  size?: number;
+}
+
+export interface MatrixConfig {
+  type: 'bcg' | 'priority' | 'custom';
+  xAxisLabel?: string;
+  yAxisLabel?: string;
+  quadrants?: MatrixQuadrant[];
+  items: MatrixItem[];
+}
+
+// ─── Timeline / Roadmap ───
+export interface TimelineEvent {
+  date: string;
+  title: string;
+  description?: string;
+  status?: 'completed' | 'in-progress' | 'planned';
+  color?: string;
+}
+
+// ─── Org Chart ───
+export interface OrgNode {
+  name: string;
+  title?: string;
+  department?: string;
+  children?: OrgNode[];
+}
+
+// ─── Process Flow ───
+export interface ProcessStep {
+  label: string;
+  description?: string;
+  type?: 'start' | 'process' | 'decision' | 'end';
+  nextSteps?: number[];
+}
+
+// ─── Quote ───
+export interface QuoteData {
+  text: string;
+  author?: string;
+  source?: string;
+}
+
+// ─── Column Content ───
+export interface ColumnContent {
+  title?: string;
+  body?: string;
+  icon?: string;
+  items?: string[];
+}
+
+// ─── Stat Highlight ───
+export interface StatHighlight {
+  value: string;
+  label: string;
+  description?: string;
+  color?: string;
 }
 
 export interface CodeBlock {
@@ -443,6 +547,18 @@ export interface SlideData {
   summaryHeadline?: string;
   summaryItems?: SummaryItem[];
   fromHere?: string;
+  // Extended slide type fields (Phase 1)
+  chartConfig?: ChartConfig;
+  kpiMetrics?: KPIMetric[];
+  matrixConfig?: MatrixConfig;
+  timelineEvents?: TimelineEvent[];
+  orgChart?: OrgNode;
+  processSteps?: ProcessStep[];
+  quote?: QuoteData;
+  columns?: ColumnContent[];
+  statHighlight?: StatHighlight[];
+  comparisonHeaders?: string[];
+  comparisonRows?: { label: string; values: string[] }[];
 }
 
 export interface PresentationData {

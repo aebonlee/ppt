@@ -6,7 +6,7 @@ const SLIDE_JSON_SCHEMA = `{
   "description": "string - short description",
   "slides": [
     {
-      "type": "cover | toc | section-cover | content | diagram | workbook | summary | back-cover",
+      "type": "cover | toc | section-cover | content | diagram | workbook | summary | back-cover | column-chart | line-chart | pie-chart | bubble-chart | kpi-dashboard | comparison-table | bcg-matrix | priority-matrix | assessment-table | org-chart | timeline | roadmap | process-flow | quote | two-column | three-column | stat-card",
       "title": "string",
       "subtitle": "string (optional)",
       "partNumber": "number (optional)",
@@ -43,7 +43,33 @@ const SLIDE_JSON_SCHEMA = `{
       "workbookCode": { "label": "string", "title": "string", "content": "string" },
       "summaryHeadline": "string",
       "summaryItems": [{ "partLabel": "string", "title": "string", "description": "string" }],
-      "fromHere": "string"
+      "fromHere": "string",
+
+      "chartConfig": {
+        "type": "column | line | pie | bubble | bar",
+        "title": "string (optional)",
+        "categories": ["string"],
+        "series": [{ "name": "string", "data": [number], "color": "string (optional hex)" }],
+        "xAxisLabel": "string (optional)",
+        "yAxisLabel": "string (optional)",
+        "showLegend": "boolean (optional, default true)"
+      },
+      "kpiMetrics": [{ "label": "string", "value": "string", "unit": "string (optional)", "trend": "up | down | neutral (optional)", "trendValue": "string (optional)" }],
+      "matrixConfig": {
+        "type": "bcg | priority | custom",
+        "xAxisLabel": "string (optional)",
+        "yAxisLabel": "string (optional)",
+        "quadrants": [{ "label": "string", "description": "string (optional)" }],
+        "items": [{ "label": "string", "x": "number (0-100)", "y": "number (0-100)", "size": "number (optional)" }]
+      },
+      "timelineEvents": [{ "date": "string", "title": "string", "description": "string (optional)", "status": "completed | in-progress | planned (optional)" }],
+      "orgChart": { "name": "string", "title": "string (optional)", "children": [{ "name": "string", "title": "string", "children": [] }] },
+      "processSteps": [{ "label": "string", "description": "string (optional)", "type": "start | process | decision | end (optional)" }],
+      "quote": { "text": "string", "author": "string (optional)", "source": "string (optional)" },
+      "columns": [{ "title": "string (optional)", "body": "string (optional)", "icon": "string (optional)", "items": ["string"] }],
+      "statHighlight": [{ "value": "string", "label": "string", "description": "string (optional)", "color": "string (optional hex)" }],
+      "comparisonHeaders": ["string"],
+      "comparisonRows": [{ "label": "string", "values": ["string"] }]
     }
   ]
 }`;
@@ -66,6 +92,28 @@ RULES:
 11. Keep text concise - each body text should be 2-4 sentences maximum.
 12. For keyPoint, use type "key-point" for important facts, "caution" for warnings, "tip" for helpful hints.
 
+ADVANCED SLIDE TYPE SELECTION RULES:
+13. When presenting numerical data or statistics, prefer chart slides:
+    - "column-chart" for comparing quantities across categories
+    - "line-chart" for trends over time
+    - "pie-chart" for showing proportions/market share
+    - "bubble-chart" for multi-dimensional comparisons
+14. When presenting key metrics or KPIs, use "kpi-dashboard" (3-6 metrics with trends).
+15. When comparing options/products/services side-by-side, use "comparison-table".
+16. For strategic positioning analysis, use "bcg-matrix" or "priority-matrix".
+17. For scoring/evaluation criteria, use "assessment-table".
+18. For organizational hierarchy or team structure, use "org-chart".
+19. For chronological events or milestones, use "timeline".
+20. For future plans or project phases, use "roadmap".
+21. For step-by-step processes or workflows, use "process-flow".
+22. For impactful quotes or testimonials, use "quote".
+23. For presenting 2-3 parallel concepts/pillars, use "two-column" or "three-column".
+24. For highlighting 1-4 key statistics with large numbers, use "stat-card".
+25. Mix slide types for variety. Avoid more than 3 consecutive "content" slides.
+26. For chart slides, always provide realistic sample data in chartConfig.series.
+27. For matrix slides, place 3-6 items with x/y coordinates (0-100 scale).
+28. For timeline/roadmap, provide 4-8 events with dates and status.
+
 JSON SCHEMA:
 ${SLIDE_JSON_SCHEMA}
 
@@ -78,7 +126,8 @@ export function buildUserPrompt(request: GenerateRequest): string {
 Requirements:
 - Total slides: ${request.slideCount}
 - Orientation: ${request.orientation} (${request.orientation === 'portrait' ? '794x1123px' : '1123x794px'})
-- Slide type distribution: 1 cover + appropriate body slides + 1 summary/back-cover`;
+- Slide type distribution: 1 cover + appropriate body slides + 1 summary/back-cover
+- Use a diverse mix of slide types (charts, tables, timelines, etc.) where appropriate for the content`;
 
   if (request.referenceContent) {
     const trimmed = request.referenceContent.substring(0, 8000);
