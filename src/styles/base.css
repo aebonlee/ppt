@@ -121,6 +121,11 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 h1, h2, h3, h4 {
     word-break: keep-all;
     overflow-wrap: break-word;
