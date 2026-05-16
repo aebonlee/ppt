@@ -14,6 +14,7 @@ export const TABLES = {
   token_usage: `${site.dbPrefix}token_usage`,
   coupons: `${site.dbPrefix}coupons`,
   coupon_redemptions: `${site.dbPrefix}coupon_redemptions`,
+  api_keys: `${site.dbPrefix}api_keys`,
 } as const;
 
 // Supabase client - initialized only when env vars are set
