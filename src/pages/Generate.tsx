@@ -20,12 +20,24 @@ const GenerateWizard: React.FC = () => {
   const gen = useGeneration();
   const location = window.location;
 
-  // Handle ?template=xxx query param
+  // Handle ?template=xxx&orientation=xxx query params
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const templateParam = params.get('template') as DesignTemplateId | null;
-    if (templateParam && designTemplates.some(t => t.id === templateParam)) {
-      gen.setDesignTemplateId(templateParam);
+    if (templateParam) {
+      const matched = designTemplates.find(t => t.id === templateParam);
+      if (matched) {
+        gen.setDesignTemplateId(templateParam);
+        // Set orientation from template or query param
+        const orientParam = params.get('orientation');
+        if (matched.orientation === 'landscape' || orientParam === 'landscape') {
+          gen.setOrientation('landscape');
+        } else if (!matched.orientation || matched.orientation === 'portrait' || orientParam === 'portrait') {
+          gen.setOrientation('portrait');
+        }
+        // Mark as entered from template for auto-save
+        gen.setFromTemplate(true);
+      }
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

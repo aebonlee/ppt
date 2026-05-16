@@ -280,9 +280,17 @@ export type SlideType =
 export type SlideOrientation = 'portrait' | 'landscape';
 
 // ─── Design Template ───
-export type DesignTemplateId = 'modern-corporate' | 'minimal-clean' | 'bold-gradient'
-  | 'classic-formal' | 'tech-startup' | 'magazine' | 'education' | 'elegant'
-  | 'pitch-deck' | 'dark-professional' | 'infographic' | 'nature-organic';
+export type DesignTemplateId =
+  // 세로형 12개
+  | 'modern-corporate' | 'minimal-clean' | 'bold-gradient' | 'classic-formal'
+  | 'tech-startup' | 'magazine' | 'education' | 'elegant'
+  | 'pitch-deck' | 'dark-professional' | 'infographic' | 'nature-organic'
+  // 가로형 6개
+  | 'wide-modern' | 'wide-minimal' | 'wide-bold' | 'wide-dark' | 'wide-pitch' | 'wide-creative'
+  // 커스텀 4개
+  | 'square-sns' | 'ultra-wide' | 'letter-us' | 'custom-compact';
+
+export type TemplateOrientation = 'portrait' | 'landscape' | 'custom';
 
 export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
 
@@ -340,6 +348,8 @@ export interface DesignTemplate {
   description: string;
   descriptionKo: string;
   category: TemplateCategory;
+  orientation?: TemplateOrientation;
+  canvasSize?: { width: number; height: number };
   coverLayoutVariant?: CoverLayoutVariant;
   contentLayoutVariant?: ContentLayoutVariant;
   layout: TemplateLayout;

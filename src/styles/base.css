@@ -102,6 +102,17 @@ html[data-color="orange"] {
     --highlight-gradient: linear-gradient(135deg, #FDCF93 0%, #FDE4BF 50%, #FFFFFF 100%);
 }
 
+/* Sticky footer — flexbox approach */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;

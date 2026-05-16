@@ -13,6 +13,19 @@ export const sampleCoverSlide: SlideData = {
   publisherInfo: { left: 'DreamIT Biz', right: '2026 EDITION' },
 };
 
+export const sampleCoverSlideLandscape: SlideData = {
+  type: 'cover',
+  headline: '디지털 트랜스포메이션\n전략 가이드',
+  subtitle: 'DIGITAL TRANSFORMATION STRATEGY',
+  categoryChip: 'BUSINESS STRATEGY',
+  partIndex: [
+    { partNumber: 'PART 01', title: '현황 분석' },
+    { partNumber: 'PART 02', title: '실행 전략' },
+    { partNumber: 'PART 03', title: '로드맵' },
+  ],
+  publisherInfo: { left: 'DreamIT Biz', right: '2026 EDITION' },
+};
+
 export const sampleContentSlide: SlideData = {
   type: 'content',
   partNumber: 1,

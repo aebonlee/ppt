@@ -2,12 +2,19 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { designTemplates } from '../config/designTemplates';
 import { colorSchemes } from '../config/colorSchemes';
-import { sampleCoverSlide } from '../config/sampleSlides';
+import { sampleCoverSlide, sampleCoverSlideLandscape } from '../config/sampleSlides';
 import { SlideRenderer } from '../components/slides/SlideRenderer';
-import type { TemplateCategory } from '../types';
+import type { TemplateCategory, TemplateOrientation } from '../types';
 import '../styles/templates.css';
 
 type FilterCategory = 'all' | TemplateCategory;
+type FilterOrientation = 'portrait' | 'landscape' | 'custom';
+
+const orientationLabels: Record<FilterOrientation, { ko: string; en: string }> = {
+  portrait:  { ko: '세로형', en: 'Portrait' },
+  landscape: { ko: '가로형', en: 'Landscape' },
+  custom:    { ko: '커스텀사이즈', en: 'Custom Size' },
+};
 
 const categoryLabels: Record<FilterCategory, { ko: string; en: string }> = {
   all: { ko: '전체', en: 'All' },
@@ -17,22 +24,48 @@ const categoryLabels: Record<FilterCategory, { ko: string; en: string }> = {
   minimal: { ko: '미니멀', en: 'Minimal' },
 };
 
+function getTemplateOrientation(dt: { orientation?: TemplateOrientation }): FilterOrientation {
+  return (dt.orientation as FilterOrientation) || 'portrait';
+}
+
+function getCanvasSize(dt: { orientation?: TemplateOrientation; canvasSize?: { width: number; height: number } }): { width: number; height: number } {
+  if (dt.canvasSize) return dt.canvasSize;
+  if (dt.orientation === 'landscape') return { width: 1123, height: 794 };
+  return { width: 595, height: 842 };
+}
+
 const Templates: React.FC = () => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState<FilterCategory>('all');
+  const [orientationFilter, setOrientationFilter] = useState<FilterOrientation>('portrait');
+  const [categoryFilter, setCategoryFilter] = useState<FilterCategory>('all');
   const [previewColorIds, setPreviewColorIds] = useState<Record<string, string>>(() => {
     const map: Record<string, string> = {};
     designTemplates.forEach(dt => { map[dt.id] = 'charcoal-yellow'; });
     return map;
   });
 
+  // Count templates per orientation
+  const orientationCounts = useMemo(() => {
+    const counts: Record<FilterOrientation, number> = { portrait: 0, landscape: 0, custom: 0 };
+    designTemplates.forEach(dt => { counts[getTemplateOrientation(dt)]++; });
+    return counts;
+  }, []);
+
   const filteredTemplates = useMemo(() => {
-    if (filter === 'all') return designTemplates;
-    return designTemplates.filter(dt => dt.category === filter);
-  }, [filter]);
+    return designTemplates.filter(dt => {
+      const matchOrientation = getTemplateOrientation(dt) === orientationFilter;
+      const matchCategory = categoryFilter === 'all' || dt.category === categoryFilter;
+      return matchOrientation && matchCategory;
+    });
+  }, [orientationFilter, categoryFilter]);
 
   const handleColorChange = (templateId: string, colorId: string) => {
     setPreviewColorIds(prev => ({ ...prev, [templateId]: colorId }));
+  };
+
+  const formatSizeLabel = (dt: { orientation?: TemplateOrientation; canvasSize?: { width: number; height: number } }) => {
+    const size = getCanvasSize(dt);
+    return `${size.width}×${size.height}`;
   };
 
   return (
@@ -44,13 +77,26 @@ const Templates: React.FC = () => {
         </div>
       </div>
       <div className="container" style={{ padding: '40px' }}>
-        {/* Category filter */}
+        {/* Orientation tabs (top tier) */}
+        <div className="template-orientation-tabs">
+          {(Object.keys(orientationLabels) as FilterOrientation[]).map(o => (
+            <button
+              key={o}
+              className={`template-orientation-tab ${orientationFilter === o ? 'active' : ''}`}
+              onClick={() => { setOrientationFilter(o); setCategoryFilter('all'); }}
+            >
+              {orientationLabels[o].ko} ({orientationCounts[o]})
+            </button>
+          ))}
+        </div>
+
+        {/* Category filter (bottom tier) */}
         <div className="template-filter-tabs">
           {(Object.keys(categoryLabels) as FilterCategory[]).map(cat => (
             <button
               key={cat}
-              className={`template-filter-tab ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
+              className={`template-filter-tab ${categoryFilter === cat ? 'active' : ''}`}
+              onClick={() => setCategoryFilter(cat)}
             >
               {categoryLabels[cat].ko}
             </button>
@@ -62,20 +108,38 @@ const Templates: React.FC = () => {
           {filteredTemplates.map(dt => {
             const selectedColorId = previewColorIds[dt.id] || 'charcoal-yellow';
             const cs = colorSchemes.find(c => c.id === selectedColorId) || colorSchemes[0];
+            const orient = getTemplateOrientation(dt);
+            const size = getCanvasSize(dt);
+            const isLandscape = orient === 'landscape' || (orient === 'custom' && size.width > size.height);
+            const previewSlide = isLandscape ? sampleCoverSlideLandscape : sampleCoverSlide;
+            const previewScale = isLandscape ? 0.28 : 0.35;
 
             return (
-              <div key={dt.id} className="template-gallery-card">
+              <div key={dt.id} className={`template-gallery-card ${isLandscape ? 'landscape' : ''}`}>
                 {/* Preview area */}
-                <div className="template-gallery-preview">
-                  <div className="template-gallery-slide-wrapper">
+                <div className={`template-gallery-preview ${isLandscape ? 'preview-landscape' : ''}`}>
+                  <div
+                    className="template-gallery-slide-wrapper"
+                    style={isLandscape ? {
+                      width: `${size.width * previewScale}px`,
+                      height: `${size.height * previewScale}px`,
+                    } : undefined}
+                  >
                     <SlideRenderer
-                      slide={sampleCoverSlide}
+                      slide={previewSlide}
                       colorScheme={cs}
-                      width={595}
-                      height={842}
-                      scale={0.35}
+                      width={size.width}
+                      height={size.height}
+                      scale={previewScale}
                       designTemplateId={dt.id}
                     />
+                  </div>
+                  {/* Badges */}
+                  <div className="template-badges">
+                    <span className={`template-badge badge-${orient}`}>
+                      {orient === 'portrait' ? '세로' : orient === 'landscape' ? '가로' : '커스텀'}
+                    </span>
+                    <span className="template-badge badge-size">{formatSizeLabel(dt)}</span>
                   </div>
                 </div>
 
@@ -102,7 +166,7 @@ const Templates: React.FC = () => {
                 {/* CTA */}
                 <button
                   className="btn btn-primary template-gallery-cta"
-                  onClick={() => navigate(`/generate?template=${dt.id}`)}
+                  onClick={() => navigate(`/generate?template=${dt.id}&orientation=${orient}`)}
                 >
                   이 템플릿으로 만들기
                 </button>
@@ -110,6 +174,12 @@ const Templates: React.FC = () => {
             );
           })}
         </div>
+
+        {filteredTemplates.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '60px 0', color: '#999' }}>
+            해당 조건에 맞는 템플릿이 없습니다.
+          </div>
+        )}
       </div>
     </>
   );

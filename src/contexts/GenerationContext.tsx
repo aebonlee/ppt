@@ -67,6 +67,10 @@ interface GenerationState {
   savedId: string | null;
   save: () => Promise<void>;
 
+  // Template entry
+  fromTemplate: boolean;
+  setFromTemplate: (v: boolean) => void;
+
   // Saved API key
   hasSavedKey: boolean;
 }
@@ -97,6 +101,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [presentation, setPresentation] = useState<PresentationData | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
   const [hasSavedKey, setHasSavedKey] = useState(false);
+  const [fromTemplate, setFromTemplate] = useState(false);
 
   // Phase 2: Outline mode state
   const [generationMode, setGenerationMode] = useState<GenerationMode>('direct');
@@ -160,6 +165,10 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       setPresentation(result);
       setStep(3);
       refreshSubscription().catch(() => {});
+      // 템플릿에서 진입한 경우 자동 저장
+      if (fromTemplate) {
+        savePresentation(result).then(id => setSavedId(id)).catch(() => {});
+      }
     } catch (err: any) {
       console.error('Generation error:', err);
       setProgress({
@@ -168,7 +177,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         message: err.message || '프레젠테이션 생성 중 오류가 발생했습니다.',
       });
     }
-  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
+  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription, fromTemplate]);
 
   // Phase 2: Start outline mode - generate Socratic questions
   const startOutlineMode = useCallback(async () => {
@@ -249,12 +258,15 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       setPresentation(result);
       setStep(3);
       refreshSubscription().catch(() => {});
+      if (fromTemplate) {
+        savePresentation(result).then(id => setSavedId(id)).catch(() => {});
+      }
     } catch (err: any) {
       console.error('Generation from outline error:', err);
       setMultiStepProgress({ stage: 'error', progress: 0, message: err.message || '생성 실패', outline });
       setProgress({ status: 'error', progress: 0, message: err.message || '생성 실패' });
     }
-  }, [outline, topic, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
+  }, [outline, topic, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription, fromTemplate]);
 
   // Phase 2: Quick outline + generate (no Q&A)
   const generateWithOutline = useCallback(async () => {
@@ -335,6 +347,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setOutlineAnswers({});
     setOutline(null);
     setMultiStepProgress(null);
+    setFromTemplate(false);
   }, []);
 
   return (
@@ -349,7 +362,7 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       outlineQuestions, outlineAnswers, setOutlineAnswer, outline, setOutline, multiStepProgress,
       progress, presentation, generate, generateWithOutline, startOutlineMode, submitOutlineAnswers, confirmOutline,
       reset, updateSlides,
-      savedId, save, hasSavedKey,
+      savedId, save, fromTemplate, setFromTemplate, hasSavedKey,
     }}>
       {children}
     </GenerationContext.Provider>
