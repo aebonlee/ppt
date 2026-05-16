@@ -8,6 +8,9 @@ const Presentations = lazy(() => import('../pages/admin/Presentations'));
 const Subscriptions = lazy(() => import('../pages/admin/Subscriptions'));
 const TokenUsage = lazy(() => import('../pages/admin/TokenUsage'));
 const CouponAdmin = lazy(() => import('../pages/admin/CouponAdmin'));
+const Members = lazy(() => import('../pages/admin/Members'));
+const ApiKeys = lazy(() => import('../pages/admin/ApiKeys'));
+const Revenue = lazy(() => import('../pages/admin/Revenue'));
 
 const Loading = (): ReactElement => (
   <div className="admin-loading">
@@ -46,6 +49,14 @@ const AdminLayout = (): ReactElement => {
               대시보드
             </NavLink>
             <NavLink
+              to="/admin/members"
+              className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
+              onClick={() => setSidebarOpen(false)}
+            >
+              <i className="fa-solid fa-users"></i>
+              회원 관리
+            </NavLink>
+            <NavLink
               to="/admin/presentations"
               className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
               onClick={() => setSidebarOpen(false)}
@@ -62,12 +73,28 @@ const AdminLayout = (): ReactElement => {
               구독 관리
             </NavLink>
             <NavLink
+              to="/admin/revenue"
+              className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
+              onClick={() => setSidebarOpen(false)}
+            >
+              <i className="fa-solid fa-chart-line"></i>
+              수익 분석
+            </NavLink>
+            <NavLink
               to="/admin/tokens"
               className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
               onClick={() => setSidebarOpen(false)}
             >
               <i className="fa-solid fa-coins"></i>
               토큰 사용량
+            </NavLink>
+            <NavLink
+              to="/admin/api-keys"
+              className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
+              onClick={() => setSidebarOpen(false)}
+            >
+              <i className="fa-solid fa-key"></i>
+              API Key
             </NavLink>
             <NavLink
               to="/admin/coupons"
@@ -91,9 +118,12 @@ const AdminLayout = (): ReactElement => {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route index element={<Dashboard />} />
+              <Route path="members" element={<Members />} />
               <Route path="presentations" element={<Presentations />} />
               <Route path="subscriptions" element={<Subscriptions />} />
+              <Route path="revenue" element={<Revenue />} />
               <Route path="tokens" element={<TokenUsage />} />
+              <Route path="api-keys" element={<ApiKeys />} />
               <Route path="coupons" element={<CouponAdmin />} />
               <Route path="*" element={<Navigate to="/admin" replace />} />
             </Routes>

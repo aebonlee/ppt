@@ -1,4 +1,5 @@
 import { useState, useEffect, type ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import {
   getAdminDashboardStats,
   getRecentPresentations,
@@ -6,7 +7,9 @@ import {
 } from '../../utils/adminApi';
 
 const Dashboard = (): ReactElement => {
-  const [stats, setStats] = useState({ presentations: 0, subscriptions: 0, tokens: 0, coupons: 0 });
+  const [stats, setStats] = useState({
+    presentations: 0, subscriptions: 0, tokens: 0, coupons: 0, members: 0, revenue: 0, paidOrders: 0,
+  });
   const [recentPres, setRecentPres] = useState<Record<string, unknown>[]>([]);
   const [recentTokens, setRecentTokens] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +28,7 @@ const Dashboard = (): ReactElement => {
   }, []);
 
   const formatDate = (d: string) => d ? new Date(d).toLocaleDateString('ko-KR') : '-';
+  const formatWon = (v: number) => `₩${Math.round(v).toLocaleString()}`;
   const getUserEmail = (row: Record<string, unknown>) => {
     const profile = row.user_profiles as Record<string, unknown> | undefined;
     return (profile?.email as string) || (row.user_email as string) || '-';
@@ -41,26 +45,45 @@ const Dashboard = (): ReactElement => {
         <div className="admin-loading"><div className="loading-spinner"></div></div>
       ) : (
         <>
+          {/* 핵심 지표 — 1행 */}
           <div className="admin-stats-grid">
             <div className="admin-stat-card">
-              <div className="admin-stat-icon blue"><i className="fa-solid fa-file-powerpoint"></i></div>
+              <div className="admin-stat-icon blue"><i className="fa-solid fa-users"></i></div>
+              <div className="admin-stat-info">
+                <h3>{stats.members.toLocaleString()}</h3>
+                <p>총 회원</p>
+              </div>
+            </div>
+            <div className="admin-stat-card">
+              <div className="admin-stat-icon green"><i className="fa-solid fa-won-sign"></i></div>
+              <div className="admin-stat-info">
+                <h3>{formatWon(stats.revenue)}</h3>
+                <p>총 매출 ({stats.paidOrders}건)</p>
+              </div>
+            </div>
+            <div className="admin-stat-card">
+              <div className="admin-stat-icon purple"><i className="fa-solid fa-file-powerpoint"></i></div>
               <div className="admin-stat-info">
                 <h3>{stats.presentations.toLocaleString()}</h3>
                 <p>총 프레젠테이션</p>
               </div>
             </div>
             <div className="admin-stat-card">
+              <div className="admin-stat-icon orange"><i className="fa-solid fa-coins"></i></div>
+              <div className="admin-stat-info">
+                <h3>{stats.tokens.toLocaleString()}</h3>
+                <p>토큰 사용량</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 2행 — 구독/쿠폰 + 빠른 링크 */}
+          <div className="admin-stats-grid" style={{ marginBottom: '32px' }}>
+            <div className="admin-stat-card">
               <div className="admin-stat-icon green"><i className="fa-solid fa-credit-card"></i></div>
               <div className="admin-stat-info">
                 <h3>{stats.subscriptions.toLocaleString()}</h3>
                 <p>활성 구독</p>
-              </div>
-            </div>
-            <div className="admin-stat-card">
-              <div className="admin-stat-icon purple"><i className="fa-solid fa-coins"></i></div>
-              <div className="admin-stat-info">
-                <h3>{stats.tokens.toLocaleString()}</h3>
-                <p>토큰 사용량</p>
               </div>
             </div>
             <div className="admin-stat-card">
@@ -70,6 +93,15 @@ const Dashboard = (): ReactElement => {
                 <p>쿠폰 발급</p>
               </div>
             </div>
+            <Link to="/admin/revenue" style={{ textDecoration: 'none' }}>
+              <div className="admin-stat-card" style={{ cursor: 'pointer' }}>
+                <div className="admin-stat-icon blue"><i className="fa-solid fa-chart-line"></i></div>
+                <div className="admin-stat-info">
+                  <h3 style={{ fontSize: '16px' }}>수익 분석 →</h3>
+                  <p>매출/비용/이익 상세</p>
+                </div>
+              </div>
+            </Link>
           </div>
 
           {/* 최근 프레젠테이션 */}
