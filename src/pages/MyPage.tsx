@@ -6,6 +6,7 @@ import { useSubscription } from '../contexts/SubscriptionContext';
 import { updateProfile } from '../utils/auth';
 import { saveApiKey, getDecryptedKey, deleteApiKey } from '../services/settingsService';
 import { redeemCoupon, getCouponBalance } from '../services/couponService';
+import { getMyTokenUsage, type TokenUsageRecord } from '../services/subscriptionService';
 import type { CouponBalance } from '../types';
 import SEOHead from '../components/SEOHead';
 import '../styles/auth.css';
@@ -36,6 +37,10 @@ const MyPage = (): ReactElement => {
   const [couponMessageType, setCouponMessageType] = useState<'success' | 'error'>('success');
   const [couponBalance, setCouponBalance] = useState<CouponBalance | null>(null);
 
+  // Token usage state
+  const [tokenUsageHistory, setTokenUsageHistory] = useState<TokenUsageRecord[]>([]);
+  const [tokenUsageLoading, setTokenUsageLoading] = useState(false);
+
   useEffect(() => {
     if (profile) {
       setForm({
@@ -52,6 +57,9 @@ const MyPage = (): ReactElement => {
     getDecryptedKey('claude').then(k => { if (k) setHasClaudeKey(true); }).catch(() => {});
     // Load coupon balance
     getCouponBalance().then(setCouponBalance).catch(() => {});
+    // Load token usage history
+    setTokenUsageLoading(true);
+    getMyTokenUsage(20).then(setTokenUsageHistory).catch(() => {}).finally(() => setTokenUsageLoading(false));
   }, [user]);
 
   const handleSave = async () => {
@@ -256,6 +264,108 @@ const MyPage = (): ReactElement => {
                     </Link>
                   </div>
                 </div>
+              )}
+            </div>
+
+            {/* Token Usage History */}
+            <div style={{
+              background: 'var(--card-bg, #fff)',
+              border: '1px solid var(--border-color, #E5E7EB)',
+              borderRadius: 12,
+              padding: '20px 24px',
+              marginBottom: 16,
+            }}>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>토큰 사용 내역</h3>
+              {tokenUsageLoading ? (
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>로딩 중...</p>
+              ) : tokenUsageHistory.length === 0 ? (
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>아직 사용 내역이 없습니다.</p>
+              ) : (
+                <>
+                  {/* 요약 */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: 12,
+                    marginBottom: 16,
+                  }}>
+                    <div style={{ background: '#F0F9FF', borderRadius: 8, padding: '12px 14px', textAlign: 'center' }}>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0284C7' }}>
+                        {tokenUsageHistory.reduce((s, r) => s + r.tokensDeducted, 0).toLocaleString()}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>총 사용 토큰</div>
+                    </div>
+                    <div style={{ background: '#F0FDF4', borderRadius: 8, padding: '12px 14px', textAlign: 'center' }}>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#16A34A' }}>
+                        {tokenUsageHistory.filter(r => r.engine === 'openai').length}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>OpenAI 사용</div>
+                    </div>
+                    <div style={{ background: '#FDF4FF', borderRadius: 8, padding: '12px 14px', textAlign: 'center' }}>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#9333EA' }}>
+                        {tokenUsageHistory.filter(r => r.engine === 'claude').length}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Claude 사용</div>
+                    </div>
+                  </div>
+                  {/* 테이블 */}
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid var(--border-color, #E5E7EB)' }}>
+                          <th style={{ padding: '8px 6px', textAlign: 'left', fontWeight: 600 }}>날짜</th>
+                          <th style={{ padding: '8px 6px', textAlign: 'left', fontWeight: 600 }}>액션</th>
+                          <th style={{ padding: '8px 6px', textAlign: 'left', fontWeight: 600 }}>엔진</th>
+                          <th style={{ padding: '8px 6px', textAlign: 'right', fontWeight: 600 }}>슬라이드</th>
+                          <th style={{ padding: '8px 6px', textAlign: 'right', fontWeight: 600 }}>차감 토큰</th>
+                          <th style={{ padding: '8px 6px', textAlign: 'left', fontWeight: 600 }}>소스</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {tokenUsageHistory.map(row => (
+                          <tr key={row.id} style={{ borderBottom: '1px solid var(--border-color, #F3F4F6)' }}>
+                            <td style={{ padding: '8px 6px', whiteSpace: 'nowrap' }}>
+                              {new Date(row.createdAt).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                            </td>
+                            <td style={{ padding: '8px 6px' }}>
+                              <span style={{
+                                display: 'inline-block',
+                                padding: '2px 8px',
+                                borderRadius: 4,
+                                fontSize: 11,
+                                fontWeight: 600,
+                                background: row.action === 'generate' ? '#DBEAFE' : '#FEF3C7',
+                                color: row.action === 'generate' ? '#1D4ED8' : '#92400E',
+                              }}>
+                                {row.action === 'generate' ? '생성' : '편집'}
+                              </span>
+                            </td>
+                            <td style={{ padding: '8px 6px' }}>
+                              <span style={{
+                                display: 'inline-block',
+                                padding: '2px 8px',
+                                borderRadius: 4,
+                                fontSize: 11,
+                                fontWeight: 600,
+                                background: row.engine === 'openai' ? '#ECFDF5' : '#F3E8FF',
+                                color: row.engine === 'openai' ? '#065F46' : '#6B21A8',
+                              }}>
+                                {row.engine === 'openai' ? 'GPT-4o' : 'Claude'}
+                              </span>
+                            </td>
+                            <td style={{ padding: '8px 6px', textAlign: 'right' }}>{row.slideCount}장</td>
+                            <td style={{ padding: '8px 6px', textAlign: 'right', fontWeight: 600, color: '#DC2626' }}>
+                              -{row.tokensDeducted.toLocaleString()}
+                            </td>
+                            <td style={{ padding: '8px 6px', fontSize: 11, color: '#64748B' }}>
+                              {row.source === 'coupon' ? '쿠폰' : '구독'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
               )}
             </div>
 

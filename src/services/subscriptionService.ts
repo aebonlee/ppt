@@ -173,6 +173,50 @@ export async function deductTokens(
 }
 
 /**
+ * 내 토큰 사용 내역 조회 (최근 20건)
+ */
+export interface TokenUsageRecord {
+  id: string;
+  action: 'generate' | 'chat_edit';
+  engine: 'openai' | 'claude';
+  slideCount: number;
+  tokensDeducted: number;
+  source: 'subscription' | 'coupon';
+  createdAt: string;
+}
+
+export async function getMyTokenUsage(limit = 20): Promise<TokenUsageRecord[]> {
+  const client = getSupabase();
+  if (!client) return [];
+
+  try {
+    const { data: { user } } = await client.auth.getUser();
+    if (!user) return [];
+
+    const { data, error } = await client
+      .from(TABLES.token_usage)
+      .select('id, action, engine, slide_count, tokens_deducted, source, created_at')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    if (error || !data) return [];
+
+    return data.map(row => ({
+      id: row.id,
+      action: row.action,
+      engine: row.engine,
+      slideCount: row.slide_count,
+      tokensDeducted: row.tokens_deducted,
+      source: row.source || 'subscription',
+      createdAt: row.created_at,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/**
  * 새 구독 생성
  * 기존 active 구독이 있으면 만료 처리 후 신규 생성
  */
