@@ -9,6 +9,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 export const TABLES = {
   orders: `${site.dbPrefix}orders`,
   order_items: `${site.dbPrefix}order_items`,
+  presentations: `${site.dbPrefix}presentations`,
   subscriptions: `${site.dbPrefix}subscriptions`,
   token_usage: `${site.dbPrefix}token_usage`,
   coupons: `${site.dbPrefix}coupons`,

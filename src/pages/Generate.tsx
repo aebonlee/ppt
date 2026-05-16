@@ -170,7 +170,7 @@ const TopicStep: React.FC = () => {
       >
         <div className="file-upload-icon">{parsing ? '⏳' : '📎'}</div>
         <div className="file-upload-text">
-          {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업���드하세요 (선택)'}
+          {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업로드하세요 (선택)'}
         </div>
         <div className="file-upload-hint">
           .pptx, .pdf, .txt, .md, .docx — 최대 50MB
@@ -290,7 +290,7 @@ const ConfigStep: React.FC = () => {
                 onClick={() => gen.setOrientation(o)}
               >
                 <div className={`orientation-icon ${o}`} />
-                <span>{o === 'portrait' ? '���로 (A4)' : '가로 (와이드)'}</span>
+                <span>{o === 'portrait' ? '세로 (A4)' : '가로 (와이드)'}</span>
               </button>
             ))}
           </div>
