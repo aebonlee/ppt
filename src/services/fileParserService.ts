@@ -3,7 +3,7 @@
  * Extracts text content from uploaded files (.txt, .md, .pdf, .docx, .pptx)
  */
 
-const SUPPORTED_EXTENSIONS = ['.txt', '.md', '.pdf', '.docx', '.pptx'];
+const SUPPORTED_EXTENSIONS = ['.txt', '.md', '.pdf', '.docx', '.pptx', '.xlsx', '.xls', '.csv'];
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 export function isSupported(file: File): boolean {
@@ -42,6 +42,13 @@ export async function extractTextFromFile(file: File): Promise<string> {
 
       case '.pptx':
         return await extractFromPptx(file);
+
+      case '.xlsx':
+      case '.xls':
+        return await extractFromXlsx(file);
+
+      case '.csv':
+        return await extractFromCsv(file);
 
       default:
         throw new Error(`지원하지 않는 파일 형식입니다: ${ext}`);
@@ -150,4 +157,33 @@ async function extractFromPptx(file: File): Promise<string> {
   }
 
   return textParts.join('\n\n');
+}
+
+async function extractFromXlsx(file: File): Promise<string> {
+  const XLSX = await import('xlsx');
+  const arrayBuffer = await file.arrayBuffer();
+  const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+  const textParts: string[] = [];
+  for (const sheetName of workbook.SheetNames) {
+    const sheet = workbook.Sheets[sheetName];
+    const csv = XLSX.utils.sheet_to_csv(sheet);
+    if (csv.trim()) {
+      textParts.push(`[Sheet: ${sheetName}]\n${csv}`);
+    }
+  }
+
+  if (textParts.length === 0) {
+    throw new Error('스프레드시트에서 데이터를 추출할 수 없습니다.');
+  }
+
+  return textParts.join('\n\n');
+}
+
+async function extractFromCsv(file: File): Promise<string> {
+  const text = await file.text();
+  if (!text.trim()) {
+    throw new Error('CSV 파일이 비어있습니다.');
+  }
+  return `[CSV Data]\n${text}`;
 }

@@ -1,6 +1,12 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import type { GenerateRequest, PresentationData, GenerationProgress, SlideOrientation, SlideData, DesignTemplateId } from '../types';
-import { generatePresentation, savePresentation } from '../services/aiService';
+import type {
+  GenerateRequest, PresentationData, GenerationProgress, SlideOrientation,
+  SlideData, DesignTemplateId, GenerationMode, PresentationOutline,
+  OutlineQuestion, MultiStepProgress,
+} from '../types';
+import { generatePresentation, savePresentation, generateFromOutline } from '../services/aiService';
+import { generateSocraticQuestions, generateOutline, generateQuickOutline } from '../services/outlineService';
+import { matchSlideTypes } from '../services/templateMatchingService';
 import { useAuth } from './AuthContext';
 import { useSubscription } from './SubscriptionContext';
 import { getDecryptedKey } from '../services/settingsService';
@@ -34,10 +40,26 @@ interface GenerationState {
   referenceContent: string;
   setReferenceContent: (content: string) => void;
 
+  // Generation mode (Phase 2)
+  generationMode: GenerationMode;
+  setGenerationMode: (mode: GenerationMode) => void;
+
+  // Outline mode state
+  outlineQuestions: OutlineQuestion[];
+  outlineAnswers: Record<string, string>;
+  setOutlineAnswer: (questionId: string, answer: string) => void;
+  outline: PresentationOutline | null;
+  setOutline: (outline: PresentationOutline | null) => void;
+  multiStepProgress: MultiStepProgress | null;
+
   // Generation
   progress: GenerationProgress;
   presentation: PresentationData | null;
   generate: () => Promise<void>;
+  generateWithOutline: () => Promise<void>;
+  startOutlineMode: () => Promise<void>;
+  submitOutlineAnswers: () => Promise<void>;
+  confirmOutline: () => Promise<void>;
   reset: () => void;
   updateSlides: (slides: SlideData[]) => void;
 
@@ -76,6 +98,13 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [savedId, setSavedId] = useState<string | null>(null);
   const [hasSavedKey, setHasSavedKey] = useState(false);
 
+  // Phase 2: Outline mode state
+  const [generationMode, setGenerationMode] = useState<GenerationMode>('direct');
+  const [outlineQuestions, setOutlineQuestions] = useState<OutlineQuestion[]>([]);
+  const [outlineAnswers, setOutlineAnswers] = useState<Record<string, string>>({});
+  const [outline, setOutline] = useState<PresentationOutline | null>(null);
+  const [multiStepProgress, setMultiStepProgress] = useState<MultiStepProgress | null>(null);
+
   // maxSlides 제한 적용
   const handleSetSlideCount = useCallback((count: number) => {
     setSlideCount(Math.min(count, maxSlides));
@@ -101,8 +130,12 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }).catch(() => setHasSavedKey(false));
   }, [user, aiEngine]);
 
+  const setOutlineAnswer = useCallback((questionId: string, answer: string) => {
+    setOutlineAnswers(prev => ({ ...prev, [questionId]: answer }));
+  }, []);
+
+  // Direct generation (기존 방식)
   const generate = useCallback(async () => {
-    // Pre-validation
     if (!topic.trim()) {
       setProgress({ status: 'error', progress: 0, message: '주제를 입력해 주세요.' });
       return;
@@ -126,16 +159,143 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       const result = await generatePresentation(request, setProgress);
       setPresentation(result);
       setStep(3);
-
-      // 생성 성공 후 구독 상태 갱신 (토큰 잔액 반영)
       refreshSubscription().catch(() => {});
     } catch (err: any) {
       console.error('Generation error:', err);
       setProgress({
         status: 'error',
         progress: 0,
-        message: err.message || '프레젠테이션 생성 중 오류가 발생했습니다. 다시 시도해 주세요.',
+        message: err.message || '프레젠테이션 생성 중 오류가 발생했습니다.',
       });
+    }
+  }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
+
+  // Phase 2: Start outline mode - generate Socratic questions
+  const startOutlineMode = useCallback(async () => {
+    if (!topic.trim()) {
+      setProgress({ status: 'error', progress: 0, message: '주제를 입력해 주세요.' });
+      return;
+    }
+
+    setMultiStepProgress({ stage: 'questions', progress: 10, message: 'AI가 기획 질문을 생성하고 있습니다...' });
+    setStep(2);
+
+    try {
+      const questions = await generateSocraticQuestions(topic, aiEngine, apiKey || undefined);
+      setOutlineQuestions(questions);
+      setMultiStepProgress({ stage: 'questions', progress: 100, message: '질문이 준비되었습니다.' });
+      setStep(4); // Outline Q&A step
+    } catch (err: any) {
+      console.error('Question generation error:', err);
+      setMultiStepProgress({ stage: 'error', progress: 0, message: err.message || '질문 생성 실패' });
+      setProgress({ status: 'error', progress: 0, message: err.message || '질문 생성 실패' });
+    }
+  }, [topic, aiEngine, apiKey]);
+
+  // Phase 2: Submit answers → generate outline
+  const submitOutlineAnswers = useCallback(async () => {
+    setMultiStepProgress({ stage: 'outline', progress: 30, message: '답변을 바탕으로 아웃라인을 생성하고 있습니다...' });
+    setStep(2);
+
+    try {
+      // Format answers with question text as keys
+      const formattedAnswers: Record<string, string> = {};
+      outlineQuestions.forEach(q => {
+        if (outlineAnswers[q.id]) {
+          formattedAnswers[q.question] = outlineAnswers[q.id];
+        }
+      });
+
+      const rawOutline = await generateOutline(
+        topic, formattedAnswers, slideCount, aiEngine, apiKey || undefined, referenceContent || undefined
+      );
+
+      // Type matching
+      setMultiStepProgress({ stage: 'type-matching', progress: 60, message: '슬라이드 유형을 최적화하고 있습니다...' });
+      const matchedOutline = await matchSlideTypes(rawOutline, aiEngine, apiKey || undefined);
+
+      setOutline(matchedOutline);
+      setMultiStepProgress({ stage: 'outline', progress: 100, message: '아웃라인이 준비되었습니다.', outline: matchedOutline });
+      setStep(5); // Outline review step
+    } catch (err: any) {
+      console.error('Outline generation error:', err);
+      setMultiStepProgress({ stage: 'error', progress: 0, message: err.message || '아웃라인 생성 실패' });
+      setProgress({ status: 'error', progress: 0, message: err.message || '아웃라인 생성 실패' });
+    }
+  }, [topic, slideCount, aiEngine, apiKey, referenceContent, outlineQuestions, outlineAnswers]);
+
+  // Phase 2: Confirm outline → generate full presentation
+  const confirmOutline = useCallback(async () => {
+    if (!outline) return;
+
+    const request: GenerateRequest = {
+      topic,
+      slideCount: outline.slides.length,
+      orientation,
+      colorSchemeId,
+      designTemplateId,
+      language: 'ko',
+      aiEngine,
+      apiKey: apiKey || undefined,
+      additionalInstructions: additionalInstructions || undefined,
+      referenceContent: referenceContent || undefined,
+    };
+
+    setStep(2);
+    setMultiStepProgress({ stage: 'content', progress: 40, message: '아웃라인을 기반으로 콘텐츠를 생성하고 있습니다...', outline });
+
+    try {
+      const result = await generateFromOutline(request, outline, setMultiStepProgress);
+      setPresentation(result);
+      setStep(3);
+      refreshSubscription().catch(() => {});
+    } catch (err: any) {
+      console.error('Generation from outline error:', err);
+      setMultiStepProgress({ stage: 'error', progress: 0, message: err.message || '생성 실패', outline });
+      setProgress({ status: 'error', progress: 0, message: err.message || '생성 실패' });
+    }
+  }, [outline, topic, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
+
+  // Phase 2: Quick outline + generate (no Q&A)
+  const generateWithOutline = useCallback(async () => {
+    if (!topic.trim()) {
+      setProgress({ status: 'error', progress: 0, message: '주제를 입력해 주세요.' });
+      return;
+    }
+
+    setStep(2);
+    setMultiStepProgress({ stage: 'outline', progress: 20, message: '아웃라인을 자동 생성하고 있습니다...' });
+
+    try {
+      const rawOutline = await generateQuickOutline(topic, slideCount, aiEngine, apiKey || undefined, referenceContent || undefined);
+
+      setMultiStepProgress({ stage: 'type-matching', progress: 40, message: '슬라이드 유형을 최적화하고 있습니다...' });
+      const matchedOutline = await matchSlideTypes(rawOutline, aiEngine, apiKey || undefined);
+      setOutline(matchedOutline);
+
+      // Generate content from outline
+      const request: GenerateRequest = {
+        topic,
+        slideCount: matchedOutline.slides.length,
+        orientation,
+        colorSchemeId,
+        designTemplateId,
+        language: 'ko',
+        aiEngine,
+        apiKey: apiKey || undefined,
+        additionalInstructions: additionalInstructions || undefined,
+        referenceContent: referenceContent || undefined,
+      };
+
+      setMultiStepProgress({ stage: 'content', progress: 60, message: '콘텐츠를 생성하고 있습니다...', outline: matchedOutline });
+      const result = await generateFromOutline(request, matchedOutline, setMultiStepProgress);
+      setPresentation(result);
+      setStep(3);
+      refreshSubscription().catch(() => {});
+    } catch (err: any) {
+      console.error('Quick outline generation error:', err);
+      setMultiStepProgress({ stage: 'error', progress: 0, message: err.message || '생성 실패' });
+      setProgress({ status: 'error', progress: 0, message: err.message || '생성 실패' });
     }
   }, [topic, slideCount, orientation, colorSchemeId, designTemplateId, aiEngine, apiKey, additionalInstructions, referenceContent, refreshSubscription]);
 
@@ -169,6 +329,12 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setPresentation(null);
     setSavedId(null);
     setHasSavedKey(false);
+    // Phase 2 reset
+    setGenerationMode('direct');
+    setOutlineQuestions([]);
+    setOutlineAnswers({});
+    setOutline(null);
+    setMultiStepProgress(null);
   }, []);
 
   return (
@@ -179,7 +345,10 @@ export const GenerationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       aiEngine, setAiEngine, apiKey, setApiKey,
       additionalInstructions, setAdditionalInstructions,
       uploadedFile, setUploadedFile, referenceContent, setReferenceContent,
-      progress, presentation, generate, reset, updateSlides,
+      generationMode, setGenerationMode,
+      outlineQuestions, outlineAnswers, setOutlineAnswer, outline, setOutline, multiStepProgress,
+      progress, presentation, generate, generateWithOutline, startOutlineMode, submitOutlineAnswers, confirmOutline,
+      reset, updateSlides,
       savedId, save, hasSavedKey,
     }}>
       {children}

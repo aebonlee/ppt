@@ -671,3 +671,56 @@ export interface CouponBalance {
   totalUsed: number;
   remaining: number;
 }
+
+// ─── Phase 2: Outline & Multi-step Generation ───
+export interface OutlineQuestion {
+  id: string;
+  question: string;
+  hint?: string;
+  options?: string[];  // 선택형 질문일 경우
+}
+
+export interface OutlineSlideItem {
+  index: number;
+  title: string;
+  description: string;
+  suggestedType: SlideType;
+  keyPoints?: string[];
+}
+
+export interface PresentationOutline {
+  title: string;
+  subtitle?: string;
+  targetAudience?: string;
+  tone?: string;
+  slides: OutlineSlideItem[];
+}
+
+export type GenerationMode = 'direct' | 'outline';
+
+export interface MultiStepProgress {
+  stage: 'questions' | 'outline' | 'type-matching' | 'content' | 'refinement' | 'complete' | 'error';
+  progress: number;
+  message: string;
+  outline?: PresentationOutline;
+}
+
+export interface DataColumn {
+  name: string;
+  type: 'number' | 'string' | 'date';
+  values: (string | number)[];
+}
+
+export interface ParsedSpreadsheet {
+  sheetName: string;
+  columns: DataColumn[];
+  rowCount: number;
+  preview: Record<string, (string | number)[]>;  // 첫 5행 미리보기
+}
+
+export interface ChartSuggestion {
+  chartType: ChartConfig['type'];
+  title: string;
+  description: string;
+  config: ChartConfig;
+}

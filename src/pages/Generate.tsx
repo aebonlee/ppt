@@ -29,6 +29,16 @@ const GenerateWizard: React.FC = () => {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Dynamic step labels based on mode
+  const getStepLabels = () => {
+    if (gen.generationMode === 'outline') {
+      return ['주제 입력', '설정', '생성 중', '결과'];
+    }
+    return ['주제 입력', '설정', '생성 중', '결과'];
+  };
+
+  const stepLabels = getStepLabels();
+
   return (
     <>
       <div className="page-header">
@@ -40,52 +50,31 @@ const GenerateWizard: React.FC = () => {
       <div className="container" style={{ padding: '40px' }}>
         {/* Progress Steps */}
         <div className="wizard-steps">
-          {['주제 입력', '설정', '생성 중', '결과'].map((label, i) => (
-            <div key={i} className={`wizard-step ${gen.step === i ? 'active' : ''} ${gen.step > i ? 'completed' : ''}`}>
-              <div className="step-number">{gen.step > i ? '✓' : i + 1}</div>
+          {stepLabels.map((label, i) => (
+            <div key={i} className={`wizard-step ${gen.step === i || (gen.step >= 4 && i === 2) ? 'active' : ''} ${gen.step > i && gen.step < 4 ? 'completed' : ''} ${gen.step === 3 && i < 3 ? 'completed' : ''}`}>
+              <div className="step-number">{(gen.step > i && gen.step < 4) || (gen.step === 3 && i < 3) ? '✓' : i + 1}</div>
               <div className="step-label">{label}</div>
             </div>
           ))}
         </div>
 
         {/* Step 0: Topic */}
-        {gen.step === 0 && (
-          <TopicStep />
-        )}
+        {gen.step === 0 && <TopicStep />}
 
         {/* Step 1: Config */}
-        {gen.step === 1 && (
-          <ConfigStep />
-        )}
+        {gen.step === 1 && <ConfigStep />}
 
-        {/* Step 2: Generating */}
-        {gen.step === 2 && (
-          <div className="wizard-panel generation-progress">
-            <div className="progress-icon">
-              {gen.progress.status === 'error' ? '❌' : '🎨'}
-            </div>
-            <h2>{gen.progress.status === 'error' ? '오류 발생' : 'AI가 프레젠테이션을 만들고 있습니다'}</h2>
-            <p className="progress-message">{gen.progress.message}</p>
-
-            {gen.progress.status !== 'error' && (
-              <div className="progress-bar-container">
-                <div className="progress-bar" style={{ width: `${gen.progress.progress}%` }} />
-              </div>
-            )}
-
-            {gen.progress.status === 'error' && (
-              <div className="wizard-actions">
-                <button className="btn btn-secondary" onClick={() => gen.setStep(1)}>← 설정으로 돌아가기</button>
-                <button className="btn btn-primary" onClick={() => { gen.generate(); }}>다시 시도</button>
-              </div>
-            )}
-          </div>
-        )}
+        {/* Step 2: Generating (both direct and outline) */}
+        {gen.step === 2 && <GeneratingStep />}
 
         {/* Step 3: Result */}
-        {gen.step === 3 && gen.presentation && (
-          <ResultView />
-        )}
+        {gen.step === 3 && gen.presentation && <ResultView />}
+
+        {/* Step 4: Outline Q&A (Phase 2) */}
+        {gen.step === 4 && <OutlineQAStep />}
+
+        {/* Step 5: Outline Review (Phase 2) */}
+        {gen.step === 5 && <OutlineReviewStep />}
       </div>
     </>
   );
@@ -146,7 +135,7 @@ const TopicStep: React.FC = () => {
         구체적으로 작성할수록 더 좋은 결과를 얻을 수 있습니다.
       </div>
 
-      {/* Hidden file input - outside click zone to prevent event conflicts */}
+      {/* Hidden file input */}
       <input
         ref={fileInputRef}
         type="file"
@@ -155,7 +144,6 @@ const TopicStep: React.FC = () => {
         onChange={e => {
           const f = e.target.files?.[0];
           if (f) handleFile(f);
-          // Reset so same file can be re-selected
           e.target.value = '';
         }}
       />
@@ -170,7 +158,7 @@ const TopicStep: React.FC = () => {
       >
         <div className="file-upload-icon">{parsing ? '⏳' : '📎'}</div>
         <div className="file-upload-text">
-          {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업로드하세요 (선택)'}
+          {parsing ? '파일을 분석하고 있습니다...' : '참고 자료를 업���드하세요 (선택)'}
         </div>
         <div className="file-upload-hint">
           .pptx, .pdf, .txt, .md, .docx — 최대 50MB
@@ -255,6 +243,30 @@ const ConfigStep: React.FC = () => {
       )}
 
       <div className="config-grid">
+        {/* Generation Mode (Phase 2) */}
+        <div className="config-section">
+          <label className="config-label">생성 방식</label>
+          <div className="engine-picker">
+            <button
+              className={`engine-btn ${gen.generationMode === 'direct' ? 'active' : ''}`}
+              onClick={() => gen.setGenerationMode('direct')}
+            >
+              빠른 생성
+            </button>
+            <button
+              className={`engine-btn ${gen.generationMode === 'outline' ? 'active' : ''}`}
+              onClick={() => gen.setGenerationMode('outline')}
+            >
+              아웃라인 모드
+            </button>
+          </div>
+          <div className="config-hint">
+            {gen.generationMode === 'direct'
+              ? '주제만으로 바로 생성합니다.'
+              : 'AI 질문 → 아웃라인 확인 → 최적화된 결과를 얻습니다.'}
+          </div>
+        </div>
+
         {/* Orientation */}
         <div className="config-section">
           <label className="config-label">슬라이드 방향</label>
@@ -266,7 +278,7 @@ const ConfigStep: React.FC = () => {
                 onClick={() => gen.setOrientation(o)}
               >
                 <div className={`orientation-icon ${o}`} />
-                <span>{o === 'portrait' ? '세로 (A4)' : '가로 (와이드)'}</span>
+                <span>{o === 'portrait' ? '���로 (A4)' : '가로 (와이드)'}</span>
               </button>
             ))}
           </div>
@@ -405,12 +417,247 @@ const ConfigStep: React.FC = () => {
 
       <div className="wizard-actions">
         <button className="btn btn-secondary" onClick={() => gen.setStep(0)}>&#8592; 이전</button>
+        {gen.generationMode === 'direct' ? (
+          <button
+            className="btn btn-primary"
+            onClick={() => { gen.setStep(2); gen.generate(); }}
+            disabled={tokenInsufficient}
+          >
+            생성 시작 &#8594;
+          </button>
+        ) : (
+          <button
+            className="btn btn-primary"
+            onClick={() => gen.startOutlineMode()}
+            disabled={tokenInsufficient}
+          >
+            아웃라인 생성 &#8594;
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+/** Step 2: Generation progress (shared for both direct and outline modes) */
+const GeneratingStep: React.FC = () => {
+  const gen = useGeneration();
+  const msProgress = gen.multiStepProgress;
+  const isError = gen.progress.status === 'error' || msProgress?.stage === 'error';
+  const message = msProgress?.message || gen.progress.message;
+  const progressPct = msProgress?.progress || gen.progress.progress;
+
+  return (
+    <div className="wizard-panel generation-progress">
+      <div className="progress-icon">
+        {isError ? '❌' : '🎨'}
+      </div>
+      <h2>{isError ? '오류 발생' : 'AI가 프레젠테이션을 만들고 있습니다'}</h2>
+
+      {msProgress && !isError && (
+        <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 8 }}>
+          {msProgress.stage === 'questions' && '1/4 질문 생성'}
+          {msProgress.stage === 'outline' && '2/4 아웃라인 생성'}
+          {msProgress.stage === 'type-matching' && '3/4 유형 매칭'}
+          {msProgress.stage === 'content' && '3/4 콘텐츠 생성'}
+          {msProgress.stage === 'refinement' && '4/4 최적화'}
+        </div>
+      )}
+
+      <p className="progress-message">{message}</p>
+
+      {!isError && (
+        <div className="progress-bar-container">
+          <div className="progress-bar" style={{ width: `${progressPct}%` }} />
+        </div>
+      )}
+
+      {isError && (
+        <div className="wizard-actions">
+          <button className="btn btn-secondary" onClick={() => gen.setStep(1)}>← 설정으로 돌아가기</button>
+          <button className="btn btn-primary" onClick={() => {
+            if (gen.generationMode === 'direct') {
+              gen.generate();
+            } else {
+              gen.startOutlineMode();
+            }
+          }}>다시 시도</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+/** Step 4: Outline Q&A (Phase 2) */
+const OutlineQAStep: React.FC = () => {
+  const gen = useGeneration();
+  const allAnswered = gen.outlineQuestions.every(q => gen.outlineAnswers[q.id]?.trim());
+
+  return (
+    <div className="wizard-panel">
+      <h2>프레젠테이션 기획</h2>
+      <p className="wizard-desc">
+        아래 질문에 답변하면 최적의 슬라이드 구성을 만들어 드립니다.
+      </p>
+
+      <div className="outline-questions">
+        {gen.outlineQuestions.map((q, idx) => (
+          <div key={q.id} className="outline-question-item" style={{
+            background: 'var(--card-bg, #F9FAFB)',
+            border: '1px solid var(--border-color, #E5E7EB)',
+            borderRadius: 10,
+            padding: '16px 20px',
+            marginBottom: 14,
+          }}>
+            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text-primary)' }}>
+              {idx + 1}. {q.question}
+            </div>
+            {q.hint && (
+              <div style={{ fontSize: 11, color: 'var(--text-secondary)', marginBottom: 8 }}>
+                💡 {q.hint}
+              </div>
+            )}
+
+            {/* Quick select options */}
+            {q.options && q.options.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}>
+                {q.options.map(opt => (
+                  <button
+                    key={opt}
+                    onClick={() => gen.setOutlineAnswer(q.id, opt)}
+                    style={{
+                      padding: '4px 10px',
+                      fontSize: 12,
+                      borderRadius: 16,
+                      border: gen.outlineAnswers[q.id] === opt ? '2px solid var(--primary-color, #0046C8)' : '1px solid #D1D5DB',
+                      background: gen.outlineAnswers[q.id] === opt ? 'var(--primary-color, #0046C8)' : 'white',
+                      color: gen.outlineAnswers[q.id] === opt ? 'white' : 'var(--text-primary)',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Text input for custom answer */}
+            <input
+              type="text"
+              value={gen.outlineAnswers[q.id] || ''}
+              onChange={e => gen.setOutlineAnswer(q.id, e.target.value)}
+              placeholder="직접 입력..."
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                border: '1px solid #D1D5DB',
+                borderRadius: 6,
+                fontSize: 13,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="wizard-actions">
+        <button className="btn btn-secondary" onClick={() => gen.setStep(1)}>← 설정으로</button>
         <button
           className="btn btn-primary"
-          onClick={() => { gen.setStep(2); gen.generate(); }}
-          disabled={tokenInsufficient}
+          disabled={!allAnswered}
+          onClick={() => gen.submitOutlineAnswers()}
         >
-          생성 시작 &#8594;
+          아웃라인 생성 &#8594;
+        </button>
+      </div>
+    </div>
+  );
+};
+
+/** Step 5: Outline Review (Phase 2) */
+const OutlineReviewStep: React.FC = () => {
+  const gen = useGeneration();
+  const outline = gen.outline;
+
+  if (!outline) return null;
+
+  const typeColors: Record<string, string> = {
+    'cover': '#6366F1', 'toc': '#8B5CF6', 'section-cover': '#A855F7', 'content': '#6B7280',
+    'diagram': '#14B8A6', 'workbook': '#F59E0B', 'summary': '#10B981', 'back-cover': '#6366F1',
+    'column-chart': '#3B82F6', 'line-chart': '#3B82F6', 'pie-chart': '#3B82F6', 'bubble-chart': '#3B82F6',
+    'kpi-dashboard': '#EF4444', 'comparison-table': '#F97316', 'bcg-matrix': '#EC4899',
+    'priority-matrix': '#EC4899', 'assessment-table': '#F97316', 'org-chart': '#8B5CF6',
+    'timeline': '#06B6D4', 'roadmap': '#06B6D4', 'process-flow': '#14B8A6',
+    'quote': '#A855F7', 'two-column': '#6B7280', 'three-column': '#6B7280', 'stat-card': '#EF4444',
+  };
+
+  return (
+    <div className="wizard-panel">
+      <h2>아웃라인 검토</h2>
+      <p className="wizard-desc">
+        아래 구성으로 프레젠테이션을 생성합니다. 확인 후 진행해주세요.
+      </p>
+
+      <div style={{
+        background: 'var(--card-bg, #F9FAFB)',
+        border: '1px solid var(--border-color, #E5E7EB)',
+        borderRadius: 10,
+        padding: '16px 20px',
+        marginBottom: 16,
+      }}>
+        <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 4 }}>{outline.title}</div>
+        {outline.subtitle && <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{outline.subtitle}</div>}
+        <div style={{ display: 'flex', gap: 12, marginTop: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
+          {outline.targetAudience && <span>👥 {outline.targetAudience}</span>}
+          {outline.tone && <span>🎨 {outline.tone}</span>}
+          <span>📄 {outline.slides.length}장</span>
+        </div>
+      </div>
+
+      <div style={{ maxHeight: 400, overflowY: 'auto', marginBottom: 16 }}>
+        {outline.slides.map((slide, idx) => (
+          <div key={idx} style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 10,
+            padding: '10px 0',
+            borderBottom: idx < outline.slides.length - 1 ? '1px solid var(--border-color, #E5E7EB)' : 'none',
+          }}>
+            <div style={{
+              minWidth: 28, height: 28, borderRadius: '50%',
+              background: '#F3F4F6', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 11, fontWeight: 600, color: '#6B7280',
+            }}>
+              {idx + 1}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 2 }}>{slide.title}</div>
+              <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{slide.description}</div>
+              {slide.keyPoints && slide.keyPoints.length > 0 && (
+                <div style={{ fontSize: 11, color: '#6B7280', marginTop: 3 }}>
+                  {slide.keyPoints.map((p, pi) => <span key={pi} style={{ marginRight: 8 }}>• {p}</span>)}
+                </div>
+              )}
+            </div>
+            <div style={{
+              padding: '2px 8px',
+              borderRadius: 10,
+              fontSize: 10,
+              fontWeight: 600,
+              color: 'white',
+              background: typeColors[slide.suggestedType] || '#6B7280',
+              whiteSpace: 'nowrap',
+            }}>
+              {slide.suggestedType}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="wizard-actions">
+        <button className="btn btn-secondary" onClick={() => gen.setStep(4)}>← 질문으로</button>
+        <button className="btn btn-primary" onClick={() => gen.confirmOutline()}>
+          이 아웃라인으로 생성 &#8594;
         </button>
       </div>
     </div>
@@ -463,7 +710,6 @@ const ResultView: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  // Keep refs for latest values to avoid stale closures in callback
   const currentSlideRef = useRef(currentSlide);
   currentSlideRef.current = currentSlide;
 
@@ -493,7 +739,6 @@ const ResultView: React.FC = () => {
     setChatProcessing(true);
 
     try {
-      // Use latest presentation and slide index from context/ref
       const currentPres = gen.presentation!;
       const slideIdx = currentSlideRef.current;
       const currentSlideData = currentPres.slides[slideIdx];
@@ -509,7 +754,6 @@ const ResultView: React.FC = () => {
         gen.apiKey
       );
 
-      // Update the slide in presentation
       const newSlides = [...currentPres.slides];
       newSlides[slideIdx] = result.slide;
       gen.updateSlides(newSlides);

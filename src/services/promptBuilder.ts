@@ -1,4 +1,4 @@
-import type { GenerateRequest } from '../types';
+import type { GenerateRequest, PresentationOutline } from '../types';
 
 // JSON schema definition for AI output
 const SLIDE_JSON_SCHEMA = `{
@@ -141,5 +141,41 @@ Use the above reference material to structure and populate the slides. Maintain 
   }
 
   prompt += '\n\nGenerate the JSON now.';
+  return prompt;
+}
+
+/**
+ * 아웃라인 기반 프롬프트 생성 (Phase 2 Multi-step)
+ * 아웃라인에서 정해진 구조/유형을 따르도록 지시
+ */
+export function buildOutlineBasedPrompt(request: GenerateRequest, outline: PresentationOutline): string {
+  const slideSpecs = outline.slides.map(s =>
+    `  - Slide ${s.index}: type="${s.suggestedType}", title="${s.title}" — ${s.description}${s.keyPoints?.length ? ` [Key: ${s.keyPoints.join(', ')}]` : ''}`
+  ).join('\n');
+
+  let prompt = `Create a presentation following this EXACT outline structure.
+
+PRESENTATION: "${outline.title}"${outline.subtitle ? ` — ${outline.subtitle}` : ''}
+${outline.targetAudience ? `TARGET AUDIENCE: ${outline.targetAudience}` : ''}
+${outline.tone ? `TONE: ${outline.tone}` : ''}
+
+SLIDE STRUCTURE (follow exactly):
+${slideSpecs}
+
+Requirements:
+- Total slides: ${outline.slides.length}
+- Orientation: ${request.orientation} (${request.orientation === 'portrait' ? '794x1123px' : '1123x794px'})
+- Follow the slide types specified above EXACTLY
+- Fill each slide with rich, detailed content appropriate for its type
+- For chart slides, provide realistic data in chartConfig
+- For timeline/roadmap slides, provide 4-8 events
+- For matrix slides, place 3-6 items with coordinates`;
+
+  if (request.referenceContent) {
+    const trimmed = request.referenceContent.substring(0, 6000);
+    prompt += `\n\nREFERENCE MATERIAL:\n---\n${trimmed}\n---\nUse this material to populate slide content.`;
+  }
+
+  prompt += '\n\nGenerate the full JSON now with all slide content filled in.';
   return prompt;
 }

@@ -1,6 +1,6 @@
-import type { GenerateRequest, PresentationData, SlideData, GenerationProgress } from '../types';
+import type { GenerateRequest, PresentationData, SlideData, GenerationProgress, PresentationOutline, MultiStepProgress } from '../types';
 import { getColorScheme } from '../config/colorSchemes';
-import { buildSystemPrompt, buildUserPrompt } from './promptBuilder';
+import { buildSystemPrompt, buildUserPrompt, buildOutlineBasedPrompt } from './promptBuilder';
 import getSupabase from '../utils/supabase';
 import { canGenerate, deductTokens } from './subscriptionService';
 
@@ -389,4 +389,98 @@ export async function deletePresentation(id: string): Promise<void> {
     .eq('id', id);
 
   if (error) throw new Error('삭제 실패: ' + error.message);
+}
+
+/**
+ * Multi-step generation: outline → type matching → content fill
+ * Phase 2 고도화 파이프라인
+ */
+export async function generateFromOutline(
+  request: GenerateRequest,
+  outline: PresentationOutline,
+  onProgress?: (progress: MultiStepProgress) => void
+): Promise<PresentationData> {
+  const colorScheme = getColorScheme(request.colorSchemeId);
+  const canvas = request.orientation === 'portrait'
+    ? { width: 794, height: 1123 }
+    : { width: 1123, height: 794 };
+
+  // Token check (same as direct generation)
+  if (!request.apiKey) {
+    const client = getSupabase();
+    if (!client) {
+      throw new Error('API 키가 필요합니다.');
+    }
+    try {
+      const check = await canGenerate(request.aiEngine, outline.slides.length);
+      if (!check.allowed) {
+        throw new Error(
+          `토큰이 부족합니다. 필요: ${check.required.toLocaleString()}토큰, 잔여: ${check.remaining.toLocaleString()}토큰.`
+        );
+      }
+    } catch (tokenErr: any) {
+      if (tokenErr.message?.includes('토큰이 부족합니다')) throw tokenErr;
+    }
+  }
+
+  // Stage: Content generation from outline
+  onProgress?.({
+    stage: 'content',
+    progress: 40,
+    message: '아웃라인을 기반으로 슬라이드 콘텐츠를 생성하고 있습니다...',
+    outline,
+  });
+
+  const systemPrompt = buildSystemPrompt(request);
+  const userPrompt = buildOutlineBasedPrompt(request, outline);
+
+  let aiResponse: { title: string; description?: string; slides: SlideData[] };
+
+  try {
+    if (request.apiKey) {
+      aiResponse = await callAIDirect(request.aiEngine, request.apiKey, systemPrompt, userPrompt);
+    } else {
+      aiResponse = await callAIViaEdgeFunction(request.aiEngine, systemPrompt, userPrompt);
+    }
+  } catch (error: any) {
+    onProgress?.({ stage: 'error', progress: 0, message: error.message, outline });
+    throw error;
+  }
+
+  // Stage: Validate & finalize
+  onProgress?.({
+    stage: 'refinement',
+    progress: 80,
+    message: '슬라이드를 최적화하고 있습니다...',
+    outline,
+  });
+
+  const validatedSlides = validateSlides(aiResponse.slides);
+
+  const presentation: PresentationData = {
+    title: aiResponse.title || outline.title,
+    description: aiResponse.description,
+    orientation: request.orientation,
+    colorScheme,
+    designTemplateId: request.designTemplateId,
+    canvas,
+    slides: validatedSlides,
+    createdAt: new Date().toISOString(),
+  };
+
+  // Token deduction
+  if (!request.apiKey) {
+    try {
+      await deductTokens('generate', request.aiEngine, validatedSlides.length);
+    } catch { /* 차감 실패해도 결과 반환 */ }
+  }
+
+  onProgress?.({
+    stage: 'complete',
+    progress: 100,
+    message: '프레젠테이션이 생성되었습니다!',
+    outline,
+  });
+
+  return presentation;
 }
