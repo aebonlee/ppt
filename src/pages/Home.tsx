@@ -32,9 +32,9 @@ const Home: React.FC = () => {
             </button>
           </div>
           <div className="hero-stats">
+            <div className="stat"><span className="stat-number">25</span><span className="stat-label">슬라이드 유형</span></div>
             <div className="stat"><span className="stat-number">12</span><span className="stat-label">디자인 템플릿</span></div>
             <div className="stat"><span className="stat-number">8</span><span className="stat-label">색상 테마</span></div>
-            <div className="stat"><span className="stat-number">3</span><span className="stat-label">내보내기 형식</span></div>
           </div>
         </div>
       </section>
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
             {[
               { icon: '🤖', title: 'AI 자동 생성', desc: 'GPT-4o와 Claude가 주제를 분석하여 구조화된 콘텐츠를 자동 생성합니다.' },
               { icon: '🎨', title: '전문 디자인', desc: '12가지 디자인 템플릿과 8가지 색상 테마로 전문적인 프레젠테이션을 완성합니다.' },
-              { icon: '📊', title: '다양한 슬라이드', desc: '표지, 목차, 본문, 다이어그램, 워크북, 요약 등 8종의 슬라이드 타입을 지원합니다.' },
+              { icon: '📊', title: '다양한 슬라이드', desc: '차트, 타임라인, 매트릭스, KPI 대시보드, 조직도 등 25종의 슬라이드 타입을 지원합니다.' },
               { icon: '📥', title: '다양한 내보내기', desc: 'HTML(ZIP), PDF, PPTX 3가지 형식으로 내보낼 수 있습니다.' },
               { icon: '🔑', title: '유연한 API 사용', desc: '플랫폼 키 또는 직접 API 키를 입력하여 사용할 수 있습니다.' },
               { icon: '💰', title: '합리적 가격', desc: '월 9,900원부터 전문 프레젠테이션을 무제한 생성할 수 있습니다.' },
@@ -119,14 +119,16 @@ const Home: React.FC = () => {
             {designTemplates.slice(0, 4).map(dt => (
               <div key={dt.id} className="template-preview-card" onClick={() => navigate(`/generate?template=${dt.id}`)}>
                 <div className="template-preview-slide">
-                  <SlideRenderer
-                    slide={sampleCoverSlide}
-                    colorScheme={colorSchemes[0]}
-                    width={595}
-                    height={842}
-                    scale={0.2}
-                    designTemplateId={dt.id}
-                  />
+                  <div style={{ width: 119, height: 168.4, overflow: 'hidden', position: 'relative' }}>
+                    <SlideRenderer
+                      slide={sampleCoverSlide}
+                      colorScheme={colorSchemes[0]}
+                      width={595}
+                      height={842}
+                      scale={0.2}
+                      designTemplateId={dt.id}
+                    />
+                  </div>
                 </div>
                 <div className="template-preview-name">{dt.nameKo}</div>
               </div>
