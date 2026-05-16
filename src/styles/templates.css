@@ -145,6 +145,11 @@
   color: #C87200;
 }
 
+.badge-sns {
+  background: #F0E8FE;
+  color: #8B1AC8;
+}
+
 .badge-size {
   background: rgba(0, 0, 0, 0.06);
   color: #555;

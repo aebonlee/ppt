@@ -292,7 +292,7 @@ export type DesignTemplateId =
   // 카드뉴스 4개
   | 'card-insta-feed' | 'card-insta-story' | 'card-facebook' | 'card-youtube';
 
-export type TemplateOrientation = 'portrait' | 'landscape' | 'custom';
+export type TemplateOrientation = 'portrait' | 'landscape' | 'custom' | 'sns';
 
 export type TemplateCategory = 'business' | 'creative' | 'academic' | 'minimal';
 

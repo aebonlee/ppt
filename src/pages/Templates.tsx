@@ -18,12 +18,13 @@ import type { TemplateCategory, TemplateOrientation, DesignTemplate, SlideData }
 import '../styles/templates.css';
 
 type FilterCategory = 'all' | TemplateCategory;
-type FilterOrientation = 'portrait' | 'landscape' | 'custom';
+type FilterOrientation = 'portrait' | 'landscape' | 'custom' | 'sns';
 
 const orientationLabels: Record<FilterOrientation, { ko: string; en: string }> = {
   portrait:  { ko: '세로형', en: 'Portrait' },
   landscape: { ko: '가로형', en: 'Landscape' },
   custom:    { ko: '커스텀사이즈', en: 'Custom Size' },
+  sns:       { ko: 'SNS / 카드뉴스', en: 'SNS / Card News' },
 };
 
 const categoryLabels: Record<FilterCategory, { ko: string; en: string }> = {
@@ -84,7 +85,7 @@ const Templates: React.FC = () => {
   });
 
   const orientationCounts = useMemo(() => {
-    const counts: Record<FilterOrientation, number> = { portrait: 0, landscape: 0, custom: 0 };
+    const counts: Record<FilterOrientation, number> = { portrait: 0, landscape: 0, custom: 0, sns: 0 };
     designTemplates.forEach(dt => { counts[getTemplateOrientation(dt)]++; });
     return counts;
   }, []);
@@ -177,7 +178,7 @@ const Templates: React.FC = () => {
                   {/* Badges */}
                   <div className="template-badges">
                     <span className={`template-badge badge-${orient}`}>
-                      {orient === 'portrait' ? '세로' : orient === 'landscape' ? '가로' : '커스텀'}
+                      {orient === 'portrait' ? '세로' : orient === 'landscape' ? '가로' : orient === 'sns' ? 'SNS' : '커스텀'}
                     </span>
                     <span className="template-badge badge-size">{formatSizeLabel(dt)}</span>
                   </div>

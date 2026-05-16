@@ -1132,7 +1132,7 @@ export const designTemplates: DesignTemplate[] = [
   },
 
   // ═══════════════════════════════════════════
-  // 카드뉴스 (Card News / SNS)
+  // 카드뉴스 / SNS
   // ═══════════════════════════════════════════
 
   // ─── 23. 인스타그램 피드 카드뉴스 (1080×1350, 4:5) ───
@@ -1143,7 +1143,7 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Instagram feed card news — 4:5 vertical, optimized for carousel posts.',
     descriptionKo: '인스타그램 피드 카드뉴스 — 4:5 세로, 캐러셀 포스트에 최적화',
     category: 'creative',
-    orientation: 'custom',
+    orientation: 'sns',
     canvasSize: { width: 1080, height: 1350 },
     coverLayoutVariant: 'center-band',
     contentLayoutVariant: 'card-grid',
@@ -1192,7 +1192,7 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Instagram Story & Reels — 9:16 full-screen vertical format.',
     descriptionKo: '인스타그램 스토리/릴스 — 9:16 풀스크린 세로 포맷',
     category: 'creative',
-    orientation: 'custom',
+    orientation: 'sns',
     canvasSize: { width: 1080, height: 1920 },
     coverLayoutVariant: 'full-bleed',
     contentLayoutVariant: 'card-grid',
@@ -1241,7 +1241,7 @@ export const designTemplates: DesignTemplate[] = [
     description: 'Facebook feed card news — 1200×630, optimized for link previews and shares.',
     descriptionKo: '페이스북 피드 카드뉴스 — 1200×630, 링크 프리뷰/공유에 최적화',
     category: 'creative',
-    orientation: 'custom',
+    orientation: 'sns',
     canvasSize: { width: 1200, height: 630 },
     coverLayoutVariant: 'diagonal-split',
     contentLayoutVariant: 'clean-wide',
@@ -1290,7 +1290,7 @@ export const designTemplates: DesignTemplate[] = [
     description: 'YouTube thumbnail — 1280×720, 16:9 HD format for video covers.',
     descriptionKo: '유튜브 썸네일 — 1280×720, 16:9 HD 영상 커버용',
     category: 'creative',
-    orientation: 'custom',
+    orientation: 'sns',
     canvasSize: { width: 1280, height: 720 },
     coverLayoutVariant: 'full-bleed',
     contentLayoutVariant: 'clean-wide',
